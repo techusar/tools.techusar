@@ -1,0 +1,6 @@
+{
+  "name": "TechTools by TechUsar",
+  "description": "Fast, privacy-friendly online utilities and AI tools for developers, designers, creators, and businesses.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

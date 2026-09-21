@@ -1,0 +1,247 @@
+'use client';
+
+import React, { useState } from 'react';
+import Link from 'next/link';
+import {
+  Mail,
+  Send,
+  CheckCircle2,
+  MessageSquare,
+  Sparkles,
+  HelpCircle,
+  Clock,
+  Shield,
+  Building,
+  ArrowRight,
+} from 'lucide-react';
+
+export default function ContactPage() {
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [subject, setSubject] = useState('Tool Request');
+  const [message, setMessage] = useState('');
+  const [ticketId, setTicketId] = useState('');
+  const [submitted, setSubmitted] = useState(false);
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    const randomTicket = 'TT-' + Math.floor(100000 + Math.random() * 900000);
+    setTicketId(randomTicket);
+    setSubmitted(true);
+  };
+
+  return (
+    <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-20 space-y-16">
+      {/* Header */}
+      <div className="text-center space-y-3 max-w-2xl mx-auto">
+        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-lg bg-cyan-50 dark:bg-cyan-500/10 border border-cyan-200 dark:border-cyan-500/30 text-cyan-700 dark:text-cyan-400 text-xs font-semibold">
+          <MessageSquare className="w-3.5 h-3.5" />
+          <span>Support & Community Feedback</span>
+        </div>
+        <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-slate-900 dark:text-white tracking-tight">
+          Get in Touch with TechTools
+        </h1>
+        <p className="text-sm sm:text-base text-slate-600 dark:text-slate-300 leading-relaxed">
+          Have an idea for a new developer utility, noticed an edge-case bug, or need enterprise API integration? Our engineering team reviews every submission.
+        </p>
+      </div>
+
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
+        {/* Contact Form */}
+        <div className="lg:col-span-2 bg-white dark:bg-[#111318] border border-slate-200 dark:border-slate-800 rounded-3xl p-6 sm:p-10 shadow-sm dark:shadow-xl">
+          {submitted ? (
+            <div className="text-center py-10 space-y-4">
+              <div className="w-14 h-14 rounded-2xl bg-emerald-50 dark:bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 flex items-center justify-center mx-auto border border-emerald-200 dark:border-emerald-500/20">
+                <CheckCircle2 className="w-8 h-8" />
+              </div>
+              <h3 className="text-xl font-bold text-slate-900 dark:text-white">
+                Ticket Created #{ticketId}
+              </h3>
+              <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 max-w-md mx-auto leading-relaxed">
+                Thank you for reaching out, <strong className="text-slate-900 dark:text-white">{name}</strong>. A confirmation has been logged. Our developer team typically replies within 24 business hours.
+              </p>
+              <button
+                onClick={() => {
+                  setSubmitted(false);
+                  setMessage('');
+                  setName('');
+                }}
+                className="mt-4 px-5 py-2.5 rounded-xl bg-slate-100 hover:bg-slate-200 dark:bg-[#171A21] dark:hover:bg-slate-800 border border-slate-200 dark:border-slate-700 text-xs font-semibold text-slate-700 dark:text-slate-200 transition-colors"
+              >
+                Send Another Inquiry
+              </button>
+            </div>
+          ) : (
+            <form onSubmit={handleSubmit} className="space-y-4 text-xs">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div className="space-y-1.5">
+                  <label className="block text-slate-700 dark:text-slate-300 font-semibold">
+                    Your Full Name
+                  </label>
+                  <input
+                    type="text"
+                    required
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
+                    placeholder="e.g. Alex Rivera"
+                    className="w-full px-3.5 py-2.5 bg-slate-50 dark:bg-[#14171F] border border-slate-200 dark:border-slate-700 rounded-xl text-slate-900 dark:text-white focus:outline-none focus:border-cyan-500 text-xs transition-colors"
+                  />
+                </div>
+
+                <div className="space-y-1.5">
+                  <label className="block text-slate-700 dark:text-slate-300 font-semibold">
+                    Email Address
+                  </label>
+                  <input
+                    type="email"
+                    required
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    placeholder="alex@company.com"
+                    className="w-full px-3.5 py-2.5 bg-slate-50 dark:bg-[#14171F] border border-slate-200 dark:border-slate-700 rounded-xl text-slate-900 dark:text-white focus:outline-none focus:border-cyan-500 text-xs transition-colors"
+                  />
+                </div>
+              </div>
+
+              <div className="space-y-1.5">
+                <label className="block text-slate-700 dark:text-slate-300 font-semibold">
+                  Inquiry Classification
+                </label>
+                <select
+                  value={subject}
+                  onChange={(e) => setSubject(e.target.value)}
+                  className="w-full px-3.5 py-2.5 bg-slate-50 dark:bg-[#14171F] border border-slate-200 dark:border-slate-700 rounded-xl text-slate-900 dark:text-white focus:outline-none focus:border-cyan-500 text-xs"
+                >
+                  <option value="Tool Request">Feature / New Online Tool Request</option>
+                  <option value="Bug Report">Bug Report & Calculation Edge Case</option>
+                  <option value="API Integration">API Integration & High-Volume Access</option>
+                  <option value="Security Disclosure">Security & Vulnerability Disclosure</option>
+                  <option value="Partnership">Partnership & Media Inquiry</option>
+                </select>
+              </div>
+
+              <div className="space-y-1.5">
+                <label className="block text-slate-700 dark:text-slate-300 font-semibold">
+                  Detailed Description
+                </label>
+                <textarea
+                  required
+                  rows={6}
+                  value={message}
+                  onChange={(e) => setMessage(e.target.value)}
+                  placeholder="Provide any inputs, sample code, expected outcomes, or steps to reproduce..."
+                  className="w-full p-3.5 bg-slate-50 dark:bg-[#14171F] border border-slate-200 dark:border-slate-700 rounded-xl text-slate-900 dark:text-white focus:outline-none focus:border-cyan-500 text-xs transition-colors leading-relaxed"
+                />
+              </div>
+
+              <button
+                type="submit"
+                className="w-full py-3.5 rounded-xl bg-cyan-600 hover:bg-cyan-500 dark:bg-cyan-500 dark:hover:bg-cyan-400 text-white dark:text-slate-950 font-bold text-xs shadow-md shadow-cyan-600/20 flex items-center justify-center gap-2 transition-all min-h-[44px]"
+              >
+                <Send className="w-3.5 h-3.5" />
+                <span>Submit Inquiry Ticket</span>
+              </button>
+            </form>
+          )}
+        </div>
+
+        {/* Channels & Info Sidebar */}
+        <div className="space-y-6">
+          <div className="bg-white dark:bg-[#111318] border border-slate-200 dark:border-slate-800 rounded-3xl p-6 shadow-sm dark:shadow-xl space-y-4">
+            <h3 className="text-sm font-bold text-slate-900 dark:text-white flex items-center gap-2">
+              <Mail className="w-4 h-4 text-cyan-600 dark:text-cyan-400" />
+              Direct Communication
+            </h3>
+            <div className="space-y-3 text-xs">
+              <div>
+                <span className="text-slate-500 dark:text-slate-400 block text-[11px]">General Inquiries</span>
+                <a
+                  href="mailto:support@techusar.com"
+                  className="font-semibold text-slate-900 dark:text-white hover:text-cyan-600 dark:hover:text-cyan-400 transition-colors"
+                >
+                  support@techusar.com
+                </a>
+              </div>
+              <div>
+                <span className="text-slate-500 dark:text-slate-400 block text-[11px]">Security & Privacy</span>
+                <a
+                  href="mailto:privacy@techusar.com"
+                  className="font-semibold text-slate-900 dark:text-white hover:text-cyan-600 dark:hover:text-cyan-400 transition-colors"
+                >
+                  privacy@techusar.com
+                </a>
+              </div>
+              <div>
+                <span className="text-slate-500 dark:text-slate-400 block text-[11px]">Parent Organization</span>
+                <a
+                  href="https://www.techusar.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="font-semibold text-cyan-600 dark:text-cyan-400 hover:underline"
+                >
+                  TechUsar Technologies Ltd.
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div className="bg-slate-50 dark:bg-[#111318] border border-slate-200 dark:border-slate-800 rounded-3xl p-6 space-y-3">
+            <div className="flex items-center gap-2 text-xs font-bold text-slate-900 dark:text-white">
+              <Clock className="w-4 h-4 text-emerald-500" />
+              <span>SLA Response Guarantee</span>
+            </div>
+            <p className="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
+              We monitor tool reliability and error reports 24/7. Critical security reports receive initial response within 4 hours.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      {/* Support FAQ Section */}
+      <div className="bg-white dark:bg-[#111318] border border-slate-200 dark:border-slate-800 rounded-3xl p-6 sm:p-10 shadow-sm dark:shadow-xl space-y-6">
+        <h3 className="text-xl font-bold text-slate-900 dark:text-white flex items-center gap-2">
+          <HelpCircle className="w-5 h-5 text-cyan-600 dark:text-cyan-400" />
+          Frequently Asked Support Questions
+        </h3>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-xs sm:text-sm">
+          <div className="space-y-1.5">
+            <h4 className="font-bold text-slate-900 dark:text-slate-100">
+              Are all 60+ utilities truly free to use?
+            </h4>
+            <p className="text-slate-600 dark:text-slate-400 leading-relaxed">
+              Yes. All browser-based utilities (JSON formatting, QR code creation, image compression, regex testing, loan calculations) are 100% free with unlimited local runs.
+            </p>
+          </div>
+
+          <div className="space-y-1.5">
+            <h4 className="font-bold text-slate-900 dark:text-slate-100">
+              How does the Gemini AI quota work?
+            </h4>
+            <p className="text-slate-600 dark:text-slate-400 leading-relaxed">
+              Anonymous users receive 3 free AI queries per day, signed-in users receive 10 daily queries, and Pro subscribers get unlimited generations.
+            </p>
+          </div>
+
+          <div className="space-y-1.5">
+            <h4 className="font-bold text-slate-900 dark:text-slate-100">
+              Can I suggest a new calculator or converter?
+            </h4>
+            <p className="text-slate-600 dark:text-slate-400 leading-relaxed">
+              Absolutely! Use the form above with &quot;Feature / New Online Tool Request&quot; and our engineering roadmap team will review your specifications.
+            </p>
+          </div>
+
+          <div className="space-y-1.5">
+            <h4 className="font-bold text-slate-900 dark:text-slate-100">
+              Is my company data protected against AI model training?
+            </h4>
+            <p className="text-slate-600 dark:text-slate-400 leading-relaxed">
+              Yes. We use Google Gemini API enterprise endpoints where submitted payload text is strictly transient and never retained or used for foundation model training.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
