@@ -20,17 +20,20 @@ import {
 import { useUser } from '../auth/UserContext';
 import { CommandPalette } from '../tools/CommandPalette';
 import { ThemeToggle } from '../theme/ThemeToggle';
+import { NavbarSearchBar } from './NavbarSearchBar';
 import { ToolItem } from '@/lib/types';
+import { INITIAL_TOOLS } from '@/lib/data/initial-data';
 
 interface NavbarProps {
   tools?: ToolItem[];
 }
 
-export function Navbar({ tools = [] }: NavbarProps) {
+export function Navbar({ tools = INITIAL_TOOLS }: NavbarProps) {
   const pathname = usePathname();
   const { user, isAuthenticated, openAuthModal, logout, favorites } = useUser();
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isMobileSearchExpanded, setIsMobileSearchExpanded] = useState(false);
   const [isUserMenuOpen, setIsUserMenuOpen] = useState(false);
 
   // Listen to search open event
@@ -92,22 +95,9 @@ export function Navbar({ tools = [] }: NavbarProps) {
               </nav>
             </div>
 
-            {/* Middle Search Button */}
-            <div className="hidden lg:flex flex-1 max-w-md mx-2">
-              <button
-                onClick={() => setIsSearchOpen(true)}
-                className="w-full flex items-center justify-between px-3.5 py-2 rounded-xl bg-slate-100 hover:bg-slate-200/70 dark:bg-[#14171F] dark:hover:bg-[#1A1E27] border border-slate-200 dark:border-slate-800 hover:border-slate-300 dark:hover:border-slate-700 text-slate-500 dark:text-slate-400 text-xs transition-all shadow-inner"
-              >
-                <div className="flex items-center gap-2.5">
-                  <Search className="w-4 h-4 text-cyan-600 dark:text-cyan-400" />
-                  <span>Search 60+ online tools & utilities...</span>
-                </div>
-                <div className="flex items-center gap-1">
-                  <kbd className="px-1.5 py-0.5 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded text-[10px] font-mono text-slate-500 dark:text-slate-400 shadow-xs">
-                    ⌘K
-                  </kbd>
-                </div>
-              </button>
+            {/* Middle Global Search Bar with Fuzzy Search */}
+            <div className="hidden lg:flex flex-1 max-w-md mx-3 xl:mx-6">
+              <NavbarSearchBar tools={tools} />
             </div>
 
             {/* Right Actions */}
@@ -117,9 +107,13 @@ export function Navbar({ tools = [] }: NavbarProps) {
 
               {/* Search button mobile */}
               <button
-                onClick={() => setIsSearchOpen(true)}
-                className="lg:hidden p-2 rounded-xl text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
-                aria-label="Search"
+                onClick={() => setIsMobileSearchExpanded(!isMobileSearchExpanded)}
+                className={`lg:hidden p-2 rounded-xl transition-colors ${
+                  isMobileSearchExpanded
+                    ? 'text-cyan-600 dark:text-cyan-400 bg-cyan-50 dark:bg-cyan-500/10'
+                    : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800'
+                }`}
+                aria-label="Toggle Search"
               >
                 <Search className="w-5 h-5" />
               </button>
@@ -233,22 +227,36 @@ export function Navbar({ tools = [] }: NavbarProps) {
           </div>
         </div>
 
+        {/* Mobile Expandable Search Bar */}
+        {isMobileSearchExpanded && (
+          <div className="lg:hidden border-t border-slate-200 dark:border-slate-800 bg-white/95 dark:bg-[#0D0F14]/95 px-4 py-2.5 shadow-md">
+            <div className="flex items-center gap-2">
+              <NavbarSearchBar
+                tools={tools}
+                isMobile={true}
+                onNavigate={() => setIsMobileSearchExpanded(false)}
+              />
+              <button
+                onClick={() => setIsMobileSearchExpanded(false)}
+                className="p-2 rounded-xl text-slate-500 hover:text-slate-700 dark:hover:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors shrink-0"
+                aria-label="Close search"
+              >
+                <X className="w-4 h-4" />
+              </button>
+            </div>
+          </div>
+        )}
+
         {/* Mobile Navigation Drawer */}
         {isMobileMenuOpen && (
-          <div className="md:hidden border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-[#0D0F13] px-4 py-4 space-y-2 shadow-xl">
-            <button
-              onClick={() => {
-                setIsMobileMenuOpen(false);
-                setIsSearchOpen(true);
-              }}
-              className="w-full flex items-center justify-between px-3.5 py-2.5 rounded-xl bg-slate-100 dark:bg-[#171A21] border border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-300 text-xs mb-3"
-            >
-              <span className="flex items-center gap-2">
-                <Search className="w-4 h-4 text-cyan-600 dark:text-cyan-400" />
-                Search all 60+ tools...
-              </span>
-              <kbd className="px-1.5 py-0.5 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-500 dark:text-slate-400 rounded text-[10px]">⌘K</kbd>
-            </button>
+          <div className="md:hidden border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-[#0D0F13] px-4 py-4 space-y-3 shadow-xl">
+            <div className="mb-2">
+              <NavbarSearchBar
+                tools={tools}
+                isMobile={true}
+                onNavigate={() => setIsMobileMenuOpen(false)}
+              />
+            </div>
 
             {navLinks.map((link) => (
               <Link

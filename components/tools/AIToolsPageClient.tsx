@@ -17,6 +17,7 @@ import {
 import { ToolItem } from '@/lib/types';
 import { ToolCard } from '@/components/tools/ToolCard';
 import { useUser } from '@/components/auth/UserContext';
+import { Breadcrumb } from '@/components/navigation/Breadcrumb';
 
 export function AIToolsPageClient({ aiTools }: { aiTools: ToolItem[] }) {
   const { isFavorite, toggleFavorite } = useUser();
@@ -33,7 +34,15 @@ export function AIToolsPageClient({ aiTools }: { aiTools: ToolItem[] }) {
   });
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-16 space-y-12">
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-16 space-y-8">
+      {/* Breadcrumb Navigation */}
+      <Breadcrumb
+        items={[
+          { label: 'Home', href: '/' },
+          { label: 'AI Utilities', current: true },
+        ]}
+      />
+
       {/* Hero Banner */}
       <div className="bg-white dark:bg-[#111318] border border-slate-200 dark:border-slate-800 rounded-3xl p-6 sm:p-10 shadow-sm dark:shadow-xl space-y-4">
         <div className="flex flex-wrap items-center gap-2">

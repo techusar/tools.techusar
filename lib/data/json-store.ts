@@ -112,6 +112,18 @@ export const DataStore = {
 
   getTools(): ToolItem[] {
     const data = readJsonFile<ToolItem[]>('tools.json', memoryCache.tools);
+    // Ensure any tools newly added to INITIAL_TOOLS (e.g. PDF tools) are synced
+    const existingSlugs = new Set(data.map((t) => t.slug));
+    let hasNew = false;
+    for (const initTool of INITIAL_TOOLS) {
+      if (!existingSlugs.has(initTool.slug)) {
+        data.push(initTool);
+        hasNew = true;
+      }
+    }
+    if (hasNew) {
+      writeJsonFile('tools.json', data);
+    }
     memoryCache.tools = data;
     return data;
   },

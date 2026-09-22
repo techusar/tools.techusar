@@ -1,9 +1,10 @@
 import { MetadataRoute } from 'next';
 import { getAllTools, getCategories } from '@/lib/data/toolsRepository';
 import { getAllBlogPosts } from '@/lib/data/blogData';
+import { SEO_CONFIG } from '@/lib/seo/config';
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const baseUrl = 'https://techtools.techusar.com';
+  const baseUrl = SEO_CONFIG.siteUrl;
 
   const [tools, categories, blogPosts] = await Promise.all([
     getAllTools(),

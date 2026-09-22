@@ -19,7 +19,7 @@ import {
 export const metadata: Metadata = {
   title: 'About Us - TechTools by TechUsar',
   description:
-    'Learn about TechTools by TechUsar, our mission to build ad-free, ultra-fast online developer and AI tools with zero data storage.',
+    'Learn about TechTools by TechUsar, our mission to build fast, private online developer and AI utilities with zero data retention.',
 };
 
 export default function AboutPage() {
@@ -107,10 +107,10 @@ export default function AboutPage() {
           <div className="space-y-3">
             <h4 className="text-sm font-bold text-slate-900 dark:text-white flex items-center gap-2">
               <CheckCircle2 className="w-4 h-4 text-emerald-500" />
-              Zero Third-Party Ad Trackers
+              Privacy-Conscious Architecture
             </h4>
             <p>
-              We deliberately banned third-party ad networks, pop-ups, and user session replay scripts that slow down tool execution and compromise privacy.
+              We prioritize transparent, non-intrusive design without disruptive modal paywalls or deceptive countdown counters that obstruct your workflow.
             </p>
           </div>
 
@@ -129,10 +129,10 @@ export default function AboutPage() {
       {/* Platform Statistics */}
       <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-6">
         {[
-          { label: 'Interactive Tools', value: '60+' },
-          { label: 'Client-Side Privacy', value: '100%' },
-          { label: 'Monthly Computations', value: '2.4M+' },
-          { label: 'Uptime SLA', value: '99.99%' },
+          { label: 'Interactive Utilities', value: '40+' },
+          { label: 'In-Browser Privacy', value: '100%' },
+          { label: 'Client Execution', value: 'Instant' },
+          { label: 'AI Intelligence', value: 'Gemini' },
         ].map((stat, i) => (
           <div
             key={i}
@@ -159,7 +159,7 @@ export default function AboutPage() {
             href="/tools"
             className="px-6 py-3 rounded-xl bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold text-xs shadow-lg shadow-cyan-500/20 flex items-center gap-2"
           >
-            <span>Browse All 60+ Tools</span>
+            <span>Browse All 40+ Tools</span>
             <ArrowRight className="w-3.5 h-3.5" />
           </Link>
           <Link

@@ -10,6 +10,7 @@ import {
 import { ToolShell } from '@/components/tools/ToolShell';
 import { ToolViewResolver } from '@/components/tools/ToolViewResolver';
 import { getEnrichedToolSEO, generateToolJsonLd } from '@/lib/seo/toolSeoHelper';
+import { SEO_CONFIG, getCanonicalUrl } from '@/lib/seo/config';
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -41,7 +42,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     tool.seoDescription ||
     `${tool.name}: ${tool.description} Fast, secure, and 100% private in-browser utility with zero data retention.`;
 
-  const canonicalUrl = `https://techtools.techusar.com/tools/${tool.slug}`;
+  const canonicalUrl = getCanonicalUrl(`/tools/${tool.slug}`);
 
   return {
     title,
@@ -60,11 +61,11 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       canonical: canonicalUrl,
     },
     openGraph: {
-      title: `${tool.name} - Free Online Tool | TechTools`,
+      title: `${tool.name} - Free Online Tool | ${SEO_CONFIG.shortName}`,
       description,
       url: canonicalUrl,
       type: 'website',
-      siteName: 'TechTools by TechUsar',
+      siteName: SEO_CONFIG.siteName,
       images: [
         {
           url: `/api/og?title=${encodeURIComponent(tool.name)}&cat=${encodeURIComponent(tool.categoryName)}`,
@@ -78,7 +79,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       card: 'summary_large_image',
       title: `${tool.name} - Free Online Tool`,
       description,
-      creator: '@TechUsar',
+      creator: SEO_CONFIG.twitterHandle,
       images: [`/api/og?title=${encodeURIComponent(tool.name)}`],
     },
     robots: {

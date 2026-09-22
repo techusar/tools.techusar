@@ -52,6 +52,12 @@ import { DummyDataGeneratorView } from './views/DummyDataGeneratorView';
 import { NumberBaseConverterView } from './views/NumberBaseConverterView';
 import { PdfViewerToolView } from './views/PdfViewerToolView';
 import { GenericToolFallbackView } from './views/GenericToolFallbackView';
+import { JpgToPngView } from './views/JpgToPngView';
+import { PngToJpgView } from './views/PngToJpgView';
+import { ImageToWebpView } from './views/ImageToWebpView';
+import { CharacterCounterView } from './views/CharacterCounterView';
+import { JsonValidatorView } from './views/JsonValidatorView';
+import { GstCalculatorView } from './views/GstCalculatorView';
 
 export function ToolViewResolver({ tool }: { tool: ToolItem }) {
   const slug = tool.slug.toLowerCase();
@@ -67,7 +73,10 @@ export function ToolViewResolver({ tool }: { tool: ToolItem }) {
   }
 
   // 2. Developer & Code Formats
-  if (slug.includes('json-formatter') || slug.includes('json-validator') || slug === 'json-formatter') {
+  if (slug === 'json-validator' || slug.includes('json-validator') || slug.includes('validate-json')) {
+    return <JsonValidatorView tool={tool} />;
+  }
+  if (slug.includes('json-formatter') || slug === 'json-formatter') {
     return <JsonFormatterView tool={tool} />;
   }
   if (slug.includes('csv') || slug.includes('tsv')) {
@@ -125,6 +134,15 @@ export function ToolViewResolver({ tool }: { tool: ToolItem }) {
   }
 
   // 4. Image & PDF Tools
+  if (slug.includes('jpg-to-png') || slug.includes('jpeg-to-png')) {
+    return <JpgToPngView tool={tool} />;
+  }
+  if (slug.includes('png-to-jpg') || slug.includes('png-to-jpeg')) {
+    return <PngToJpgView tool={tool} />;
+  }
+  if (slug.includes('image-to-webp') || slug.includes('to-webp')) {
+    return <ImageToWebpView tool={tool} />;
+  }
   if (slug.includes('compressor') || slug.includes('compress-image')) {
     return <ImageCompressorView tool={tool} />;
   }
@@ -162,6 +180,9 @@ export function ToolViewResolver({ tool }: { tool: ToolItem }) {
   }
 
   // 6. Text & Content
+  if (slug === 'character-counter' || slug.includes('character-counter')) {
+    return <CharacterCounterView tool={tool} />;
+  }
   if (slug.includes('word-counter') || slug.includes('char-counter')) {
     return <WordCounterView tool={tool} />;
   }
@@ -176,6 +197,9 @@ export function ToolViewResolver({ tool }: { tool: ToolItem }) {
   }
 
   // 7. Finance & Business
+  if (slug.includes('gst-calculator') || slug.includes('gst')) {
+    return <GstCalculatorView tool={tool} />;
+  }
   if (slug.includes('invoice') || slug.includes('receipt')) {
     return <InvoiceGeneratorView tool={tool} />;
   }

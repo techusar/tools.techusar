@@ -8,12 +8,24 @@ export const ToolRepository = {
 
   getBySlug(slug: string): ToolItem | undefined {
     const tools = DataStore.getTools();
-    return tools.find((t) => t.slug === slug || t.id === slug);
+    const cleanSlug = (slug || '').toLowerCase().trim();
+    const direct = tools.find((t) => t.slug === cleanSlug || t.id === cleanSlug);
+    if (direct) return direct;
+    return tools.find((t) => t.aliases && t.aliases.some((a) => a.toLowerCase() === cleanSlug));
   },
 
-  getByCategory(categorySlug: ToolCategorySlug): ToolItem[] {
+  getByCategory(categorySlug: ToolCategorySlug | string): ToolItem[] {
     const tools = DataStore.getTools();
-    return tools.filter((t) => t.category === categorySlug);
+    const target = (categorySlug || '').toLowerCase().trim();
+    return tools.filter((t) => {
+      const toolCat = (t.category || '').toLowerCase().trim();
+      return (
+        toolCat === target ||
+        toolCat === target.replace(/-tools$/, '') ||
+        target === toolCat.replace(/-tools$/, '') ||
+        (target.includes('pdf') && (toolCat.includes('pdf') || t.slug.includes('pdf')))
+      );
+    });
   },
 
   getFeatured(): ToolItem[] {

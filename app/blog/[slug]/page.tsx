@@ -14,6 +14,12 @@ import {
   ArrowRight,
 } from 'lucide-react';
 import { getAllBlogPosts, getBlogPostBySlug } from '@/lib/data/blogData';
+import { AdWrapper } from '@/components/ads/AdWrapper';
+import { Breadcrumb } from '@/components/navigation/Breadcrumb';
+import { extractHeadings } from '@/lib/blog/tableOfContents';
+import { TableOfContents } from '@/components/blog/TableOfContents';
+import { ArticleContent } from '@/components/blog/ArticleContent';
+import { ReadingProgressBar } from '@/components/blog/ReadingProgressBar';
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -67,11 +73,7 @@ export default async function BlogPostPage({ params }: PageProps) {
   const allPosts = await getAllBlogPosts();
   const relatedPosts = allPosts.filter((p) => p.slug !== post.slug).slice(0, 2);
 
-  const paragraphs: string[] = Array.isArray(post.content)
-    ? post.content
-    : typeof post.content === 'string'
-    ? post.content.split('\n\n').filter((p) => p.trim().length > 0)
-    : [];
+  const headings = extractHeadings(post.content);
 
   const readTimeDisplay = post.readTime || post.readingTime || '5 min read';
   const publishDateDisplay = post.publishedAt || post.publishDate || 'Recent';
@@ -104,20 +106,33 @@ export default async function BlogPostPage({ params }: PageProps) {
   };
 
   return (
-    <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-16 space-y-10">
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(blogJsonLd) }}
-      />
+    <>
+      {/* Dynamic Scroll-Tracking Reading Progress Bar at Top of Page */}
+      <ReadingProgressBar targetSelector="#blog-article-body" />
 
-      {/* Back to Blog */}
-      <Link
-        href="/blog"
-        className="inline-flex items-center gap-1.5 text-xs font-semibold text-slate-500 dark:text-slate-400 hover:text-cyan-600 dark:hover:text-cyan-400 transition-colors py-1"
-      >
-        <ArrowLeft className="w-4 h-4" />
-        <span>Back to All Guides & Articles</span>
-      </Link>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-16 space-y-8 sm:space-y-10">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(blogJsonLd) }}
+        />
+
+      {/* Breadcrumb Navigation & Back to Guides */}
+      <div className="flex flex-wrap items-center justify-between gap-4">
+        <Breadcrumb
+          items={[
+            { label: 'Home', href: '/' },
+            { label: 'Blog', href: '/blog' },
+            { label: post.title, current: true },
+          ]}
+        />
+        <Link
+          href="/blog"
+          className="inline-flex items-center gap-1.5 text-xs font-semibold text-slate-500 dark:text-slate-400 hover:text-cyan-600 dark:hover:text-cyan-400 transition-colors py-1"
+        >
+          <ArrowLeft className="w-3.5 h-3.5" />
+          <span>All Guides</span>
+        </Link>
+      </div>
 
       {/* Article Header */}
       <div className="bg-white dark:bg-[#111318] border border-slate-200 dark:border-slate-800 rounded-3xl p-6 sm:p-10 shadow-sm dark:shadow-xl space-y-5">
@@ -170,44 +185,123 @@ export default async function BlogPostPage({ params }: PageProps) {
         </div>
       </div>
 
-      {/* Article Body Content */}
-      <article className="bg-white dark:bg-[#111318] border border-slate-200 dark:border-slate-800 rounded-3xl p-6 sm:p-10 shadow-sm dark:shadow-xl space-y-6 text-sm sm:text-base text-slate-700 dark:text-slate-300 leading-relaxed">
-        {paragraphs.map((paragraph, index) => (
-          <p key={index} className="leading-relaxed">
-            {paragraph}
-          </p>
-        ))}
+      {/* Main Content Layout with Table of Contents */}
+      {headings.length > 0 ? (
+        <div className="lg:grid lg:grid-cols-12 lg:gap-8 items-start">
+          {/* Main Article Column */}
+          <div className="lg:col-span-8 space-y-6">
+            {/* Mobile / Tablet Table of Contents: Rendered above article body */}
+            <div className="lg:hidden">
+              <TableOfContents
+                items={headings}
+                variant="mobile"
+                articleTitle={post.title}
+              />
+            </div>
 
-        <div className="my-8 p-5 sm:p-6 rounded-2xl bg-cyan-50 dark:bg-cyan-500/10 border border-cyan-200 dark:border-cyan-500/20 text-cyan-900 dark:text-cyan-200 space-y-2">
-          <h4 className="text-sm font-bold flex items-center gap-2">
-            <Sparkles className="w-4 h-4 text-cyan-600 dark:text-cyan-400" />
-            Try It Directly in TechTools
-          </h4>
-          <p className="text-xs sm:text-sm leading-relaxed text-slate-700 dark:text-slate-300">
-            Put these concepts into practice instantly with our zero-data-retention interactive tools.
-          </p>
-          <div className="pt-2 flex flex-wrap gap-2">
-            <Link
-              href="/tools/json-formatter"
-              className="px-3 py-1.5 rounded-lg bg-cyan-600 hover:bg-cyan-500 text-white font-semibold text-xs transition-colors"
+            {/* Article Body Content */}
+            <article
+              id="blog-article-body"
+              className="bg-white dark:bg-[#111318] border border-slate-200 dark:border-slate-800 rounded-3xl p-6 sm:p-10 shadow-sm dark:shadow-xl space-y-6"
             >
-              Open JSON Formatter
-            </Link>
-            <Link
-              href="/tools/image-compressor"
-              className="px-3 py-1.5 rounded-lg bg-white dark:bg-[#171A21] border border-slate-200 dark:border-slate-700 text-slate-800 dark:text-slate-200 text-xs font-semibold hover:bg-slate-50 transition-colors"
-            >
-              Open Image Compressor
-            </Link>
-            <Link
-              href="/tools"
-              className="px-3 py-1.5 rounded-lg bg-white dark:bg-[#171A21] border border-slate-200 dark:border-slate-700 text-slate-800 dark:text-slate-200 text-xs font-semibold hover:bg-slate-50 transition-colors"
-            >
-              Browse All Tools
-            </Link>
+              <ArticleContent content={post.content} headings={headings} />
+
+              <div className="my-8 p-5 sm:p-6 rounded-2xl bg-cyan-50 dark:bg-cyan-500/10 border border-cyan-200 dark:border-cyan-500/20 text-cyan-900 dark:text-cyan-200 space-y-2">
+                <h4 className="text-sm font-bold flex items-center gap-2">
+                  <Sparkles className="w-4 h-4 text-cyan-600 dark:text-cyan-400" />
+                  Try It Directly in TechTools
+                </h4>
+                <p className="text-xs sm:text-sm leading-relaxed text-slate-700 dark:text-slate-300">
+                  Put these concepts into practice instantly with our zero-data-retention interactive tools.
+                </p>
+                <div className="pt-2 flex flex-wrap gap-2">
+                  <Link
+                    href="/tools/json-formatter"
+                    className="px-3 py-1.5 rounded-lg bg-cyan-600 hover:bg-cyan-500 text-white font-semibold text-xs transition-colors"
+                  >
+                    Open JSON Formatter
+                  </Link>
+                  <Link
+                    href="/tools/image-compressor"
+                    className="px-3 py-1.5 rounded-lg bg-white dark:bg-[#171A21] border border-slate-200 dark:border-slate-700 text-slate-800 dark:text-slate-200 text-xs font-semibold hover:bg-slate-50 transition-colors"
+                  >
+                    Open Image Compressor
+                  </Link>
+                  <Link
+                    href="/tools"
+                    className="px-3 py-1.5 rounded-lg bg-white dark:bg-[#171A21] border border-slate-200 dark:border-slate-700 text-slate-800 dark:text-slate-200 text-xs font-semibold hover:bg-slate-50 transition-colors"
+                  >
+                    Browse All Tools
+                  </Link>
+                </div>
+              </div>
+            </article>
+
+            {/* Ad Placement: Bottom of blog article */}
+            <AdWrapper slot="blogArticleBottom" placement="blog-bottom" />
+          </div>
+
+          {/* Desktop Sticky Sidebar */}
+          <div className="hidden lg:block lg:col-span-4 space-y-6">
+            <TableOfContents
+              items={headings}
+              variant="sidebar"
+              articleTitle={post.title}
+            />
+
+            {/* Quick Interactive Tools Card in Sidebar */}
+            <div className="bg-white dark:bg-[#111318] border border-slate-200 dark:border-slate-800 rounded-3xl p-5 sm:p-6 shadow-xs space-y-4">
+              <div className="flex items-center gap-2">
+                <span className="p-1.5 rounded-lg bg-cyan-50 dark:bg-cyan-500/10 text-cyan-600 dark:text-cyan-400">
+                  <Sparkles className="w-4 h-4" />
+                </span>
+                <h4 className="text-xs font-bold uppercase tracking-wider text-slate-900 dark:text-white">
+                  Featured Utilities
+                </h4>
+              </div>
+
+              <div className="space-y-2">
+                <Link
+                  href="/tools/json-formatter"
+                  className="flex items-center justify-between p-2.5 rounded-xl hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors group"
+                >
+                  <span className="text-xs font-medium text-slate-700 dark:text-slate-300 group-hover:text-cyan-600 dark:group-hover:text-cyan-400">
+                    JSON Formatter & Validator
+                  </span>
+                  <ArrowRight className="w-3.5 h-3.5 text-slate-400 group-hover:text-cyan-600 group-hover:translate-x-0.5 transition-all" />
+                </Link>
+
+                <Link
+                  href="/tools/image-compressor"
+                  className="flex items-center justify-between p-2.5 rounded-xl hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors group"
+                >
+                  <span className="text-xs font-medium text-slate-700 dark:text-slate-300 group-hover:text-cyan-600 dark:group-hover:text-cyan-400">
+                    Client-Side Image Compressor
+                  </span>
+                  <ArrowRight className="w-3.5 h-3.5 text-slate-400 group-hover:text-cyan-600 group-hover:translate-x-0.5 transition-all" />
+                </Link>
+
+                <Link
+                  href="/tools/regex-tester"
+                  className="flex items-center justify-between p-2.5 rounded-xl hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors group"
+                >
+                  <span className="text-xs font-medium text-slate-700 dark:text-slate-300 group-hover:text-cyan-600 dark:group-hover:text-cyan-400">
+                    Interactive RegEx Debugger
+                  </span>
+                  <ArrowRight className="w-3.5 h-3.5 text-slate-400 group-hover:text-cyan-600 group-hover:translate-x-0.5 transition-all" />
+                </Link>
+              </div>
+            </div>
           </div>
         </div>
-      </article>
+      ) : (
+        <div className="max-w-4xl mx-auto space-y-6">
+          <article className="bg-white dark:bg-[#111318] border border-slate-200 dark:border-slate-800 rounded-3xl p-6 sm:p-10 shadow-sm dark:shadow-xl space-y-6">
+            <ArticleContent content={post.content} headings={[]} />
+          </article>
+          <AdWrapper slot="blogArticleBottom" placement="blog-bottom" />
+        </div>
+      )}
 
       {/* Related Reading */}
       {relatedPosts.length > 0 && (
@@ -233,5 +327,6 @@ export default async function BlogPostPage({ params }: PageProps) {
         </div>
       )}
     </div>
+  </>
   );
 }

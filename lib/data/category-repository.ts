@@ -5,19 +5,36 @@ export const CategoryRepository = {
   getAll(): ToolCategory[] {
     const categories = DataStore.getCategories();
     const tools = DataStore.getTools();
-    // Dynamically calculate actual tool counts
+    // Dynamically calculate actual tool counts from the real tool collection
     return categories.map((cat) => {
-      const count = tools.filter((t) => t.category === cat.slug).length;
+      const catSlug = (cat.slug || '').toLowerCase().trim();
+      const catId = (cat.id || '').toLowerCase().trim();
+      const count = tools.filter((t) => {
+        const toolCat = (t.category || '').toLowerCase().trim();
+        return (
+          toolCat === catSlug ||
+          toolCat === catId ||
+          toolCat === catSlug.replace(/-tools$/, '') ||
+          catSlug === toolCat.replace(/-tools$/, '') ||
+          (catId === 'pdf' && (toolCat.includes('pdf') || t.slug.includes('pdf')))
+        );
+      }).length;
       return {
         ...cat,
-        toolCount: count > 0 ? count : cat.toolCount,
+        toolCount: count,
       };
     });
   },
 
   getBySlug(slug: ToolCategorySlug | string): ToolCategory | undefined {
     const categories = this.getAll();
-    return categories.find((c) => c.slug === slug || c.id === slug);
+    const target = (slug || '').toLowerCase().trim();
+    return categories.find(
+      (c) =>
+        c.slug.toLowerCase() === target ||
+        c.id.toLowerCase() === target ||
+        c.slug.replace(/-tools$/, '') === target.replace(/-tools$/, '')
+    );
   },
 
   updateCategory(category: ToolCategory): boolean {

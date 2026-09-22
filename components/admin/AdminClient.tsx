@@ -607,6 +607,18 @@ Return strictly a JSON object with this exact structure:
             >
               Sign In to Admin Console
             </button>
+
+            <button
+              type="button"
+              onClick={async () => {
+                setAdminEmail('admin@techusar.com');
+                setAdminPassword('admin123');
+                await login('admin@techusar.com', 'admin123');
+              }}
+              className="w-full py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-cyan-400 font-semibold text-xs border border-slate-700 transition-colors"
+            >
+              ⚡ Quick Fill & Instant Sign In
+            </button>
           </form>
 
           <div className="p-3 bg-[#14171F] rounded-xl border border-slate-800 text-[11px] text-slate-400 text-center">

@@ -27,6 +27,8 @@ import { useUser } from '../auth/UserContext';
 import { ToolCard } from './ToolCard';
 import { copyToClipboard } from '@/lib/utils';
 import { getEnrichedToolSEO } from '@/lib/seo/toolSeoHelper';
+import { AdWrapper } from '@/components/ads/AdWrapper';
+import { Breadcrumb } from '@/components/navigation/Breadcrumb';
 
 interface ToolShellProps {
   tool: ToolItem;
@@ -90,26 +92,14 @@ export function ToolShell({
     >
       <div className="max-w-6xl mx-auto px-3 sm:px-6 lg:px-8 space-y-6 sm:space-y-8">
         {/* Section 0: Breadcrumb Navigation */}
-        <nav aria-label="Breadcrumb" className="flex items-center flex-wrap gap-1.5 sm:gap-2 text-xs text-slate-500 dark:text-slate-400">
-          <Link href="/" className="hover:text-cyan-600 dark:hover:text-cyan-400 transition-colors py-1">
-            Home
-          </Link>
-          <ChevronRight className="w-3.5 h-3.5 text-slate-400 dark:text-slate-600 shrink-0" />
-          <Link href="/categories" className="hover:text-cyan-600 dark:hover:text-cyan-400 transition-colors py-1">
-            Categories
-          </Link>
-          <ChevronRight className="w-3.5 h-3.5 text-slate-400 dark:text-slate-600 shrink-0" />
-          <Link
-            href={`/categories/${tool.category}`}
-            className="hover:text-cyan-600 dark:hover:text-cyan-400 transition-colors py-1"
-          >
-            {tool.categoryName}
-          </Link>
-          <ChevronRight className="w-3.5 h-3.5 text-slate-400 dark:text-slate-600 shrink-0" />
-          <span className="text-slate-800 dark:text-slate-200 font-semibold truncate max-w-[180px] sm:max-w-xs">
-            {tool.name}
-          </span>
-        </nav>
+        <Breadcrumb
+          items={[
+            { label: 'Home', href: '/' },
+            { label: 'Categories', href: '/categories' },
+            { label: tool.categoryName, href: `/categories/${tool.category}` },
+            { label: tool.name, current: true },
+          ]}
+        />
 
         {/* Section 1: Tool Title + Short Intro (30-60 words) */}
         <header className="bg-white dark:bg-[#111318] border border-slate-200 dark:border-slate-800/90 rounded-2xl p-5 sm:p-7 md:p-8 shadow-xs dark:shadow-xl relative overflow-hidden">
@@ -193,6 +183,9 @@ export function ToolShell({
         <section aria-label={`${tool.name} Workspace`} className="bg-white dark:bg-[#111318] border border-slate-200 dark:border-slate-800 rounded-2xl p-4 sm:p-6 md:p-8 shadow-xs dark:shadow-2xl overflow-hidden">
           {children}
         </section>
+
+        {/* Ad Placement: Safely isolated directly below tool workspace */}
+        <AdWrapper slot="toolBelow" placement="tool-workspace-below" />
 
         {/* Section 3: What is this tool? (100-150 words) */}
         <section className="bg-white dark:bg-[#111318] border border-slate-200 dark:border-slate-800/80 rounded-2xl p-5 sm:p-7 md:p-8 shadow-xs space-y-4">
@@ -352,6 +345,9 @@ export function ToolShell({
           </section>
         )}
 
+        {/* Ad Placement: Bottom of tool content */}
+        <AdWrapper slot="toolBottom" placement="tool-content-bottom" />
+
         {/* Section 8: Related Tools (with Short Descriptions & Links) */}
         {actualRelatedTools.length > 0 && (
           <section className="space-y-4 pt-2">
@@ -378,6 +374,21 @@ export function ToolShell({
               {actualRelatedTools.slice(0, 3).map((rt) => (
                 <ToolCard key={rt.id} tool={rt} />
               ))}
+            </div>
+
+            {/* Internal linking to Engineering & Productivity Guides */}
+            <div className="mt-4 p-4 rounded-xl bg-slate-100/70 dark:bg-slate-800/40 border border-slate-200/80 dark:border-slate-800 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 text-xs">
+              <div className="flex items-center gap-2 text-slate-700 dark:text-slate-300">
+                <BookOpen className="w-4 h-4 text-cyan-500 shrink-0" />
+                <span>Looking for in-depth engineering best practices, tutorials, and performance guides?</span>
+              </div>
+              <Link
+                href="/blog"
+                className="font-medium text-cyan-600 dark:text-cyan-400 hover:underline whitespace-nowrap flex items-center gap-1"
+              >
+                <span>Browse Developer Blog</span>
+                <ArrowRight className="w-3 h-3" />
+              </Link>
             </div>
           </section>
         )}

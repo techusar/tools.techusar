@@ -21,6 +21,7 @@ import { ToolItem, ToolCategory } from '@/lib/types';
 import { ToolCard } from '@/components/tools/ToolCard';
 import { CategoryCard } from '@/components/tools/CategoryCard';
 import { useUser } from '@/components/auth/UserContext';
+import { AdWrapper } from '@/components/ads/AdWrapper';
 
 interface HomeClientProps {
   initialTools: ToolItem[];
@@ -69,13 +70,13 @@ export function HomeClient({ initialTools, categories, featuredTools }: HomeClie
         <h1 className="text-4xl sm:text-6xl lg:text-7xl font-black text-slate-900 dark:text-white tracking-tight leading-[1.1] max-w-4xl mx-auto">
           Developer & AI Tools.{' '}
           <span className="bg-gradient-to-r from-cyan-600 via-teal-600 to-blue-600 dark:from-cyan-400 dark:via-teal-300 dark:to-blue-500 bg-clip-text text-transparent">
-            Fast, Private, Ad-Free.
+            Fast, Private, Instant.
           </span>
         </h1>
 
         <p className="mt-5 text-base sm:text-lg text-slate-600 dark:text-slate-400 max-w-2xl mx-auto leading-relaxed">
-          Over 60+ free tools for developers, creators, marketers, and businesses.
-          Everything runs in your browser with zero data logging and instantaneous speed.
+          Over {initialTools.length}+ free utilities for developers, creators, marketers, and businesses.
+          Everything runs client-side in your browser with zero data retention and instantaneous speed.
         </p>
 
         {/* Hero Search Bar */}
@@ -86,7 +87,7 @@ export function HomeClient({ initialTools, categories, featuredTools }: HomeClie
               type="text"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              placeholder="Search 60+ tools (e.g. JSON, Password, QR Code, Base64, AI Copy)..."
+              placeholder={`Search ${initialTools.length}+ utilities (e.g. JSON, Password, QR Code, PDF, Base64, AI)...`}
               className="w-full pl-12 pr-28 py-4 bg-white dark:bg-[#14171F]/90 border border-slate-300 dark:border-slate-700/80 hover:border-cyan-500/60 dark:hover:border-cyan-500/50 focus:border-cyan-600 dark:focus:border-cyan-500 rounded-2xl text-sm sm:text-base text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 shadow-lg dark:shadow-2xl backdrop-blur-md focus:outline-none transition-all"
             />
             <div className="absolute right-3 flex items-center gap-1.5">
@@ -142,7 +143,7 @@ export function HomeClient({ initialTools, categories, featuredTools }: HomeClie
         </div>
       </section>
 
-      {/* Categories Grid */}
+      {/* Categories Grid (Strictly max 5 per row) */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between mb-6">
           <div className="flex items-center gap-2.5">
@@ -151,12 +152,17 @@ export function HomeClient({ initialTools, categories, featuredTools }: HomeClie
           </div>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
           {categories.map((cat) => (
             <CategoryCard key={cat.id} category={cat} />
           ))}
         </div>
       </section>
+
+      {/* Ad Placement: Middle of Home between categories and tools directory */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <AdWrapper slot="homeMiddle" placement="in-feed" />
+      </div>
 
       {/* Full Tools Directory with Live Filtering */}
       <section id="all-tools" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -278,9 +284,9 @@ export function HomeClient({ initialTools, categories, featuredTools }: HomeClie
               <div className="w-10 h-10 rounded-xl bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 flex items-center justify-center">
                 <Zap className="w-5 h-5" />
               </div>
-              <h3 className="text-base font-bold text-slate-900 dark:text-white">Ad-Free & Instant Speed</h3>
+              <h3 className="text-base font-bold text-slate-900 dark:text-white">Clean & High-Speed Execution</h3>
               <p className="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
-                No intrusive popups, countdown timers, or cookie trackers. Launch any tool and start working in milliseconds.
+                No disruptive modal popups, countdown blockers, or sneaky paywalls. Launch any tool and get immediate results.
               </p>
             </div>
 

@@ -6,6 +6,8 @@ import { Search, ArrowLeft, Layers, Sparkles, Shield, ArrowRight } from 'lucide-
 import { ToolItem, ToolCategory } from '@/lib/types';
 import { ToolCard } from '@/components/tools/ToolCard';
 import { useUser } from '@/components/auth/UserContext';
+import { AdWrapper } from '@/components/ads/AdWrapper';
+import { Breadcrumb } from '@/components/navigation/Breadcrumb';
 
 interface CategoryToolsClientProps {
   category: ToolCategory;
@@ -29,14 +31,23 @@ export function CategoryToolsClient({ category, tools }: CategoryToolsClientProp
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-16 space-y-8">
-      {/* Back button */}
-      <Link
-        href="/categories"
-        className="inline-flex items-center gap-1.5 text-xs font-semibold text-slate-500 dark:text-slate-400 hover:text-cyan-600 dark:hover:text-cyan-400 transition-colors py-1"
-      >
-        <ArrowLeft className="w-4 h-4" />
-        <span>Back to All Categories</span>
-      </Link>
+      {/* Breadcrumb Navigation & Category Switcher */}
+      <div className="flex flex-wrap items-center justify-between gap-4">
+        <Breadcrumb
+          items={[
+            { label: 'Home', href: '/' },
+            { label: 'Categories', href: '/categories' },
+            { label: category.name, current: true },
+          ]}
+        />
+        <Link
+          href="/categories"
+          className="inline-flex items-center gap-1.5 text-xs font-semibold text-slate-500 dark:text-slate-400 hover:text-cyan-600 dark:hover:text-cyan-400 transition-colors py-1"
+        >
+          <ArrowLeft className="w-3.5 h-3.5" />
+          <span>All Categories</span>
+        </Link>
+      </div>
 
       {/* Header Banner */}
       <div className="bg-white dark:bg-[#111318] border border-slate-200 dark:border-slate-800 rounded-3xl p-6 sm:p-10 shadow-sm dark:shadow-xl flex flex-col md:flex-row md:items-end justify-between gap-6">
@@ -74,7 +85,7 @@ export function CategoryToolsClient({ category, tools }: CategoryToolsClientProp
               Showing <strong>{filteredTools.length}</strong> utilities in this collection
             </span>
             <Link href="/tools" className="text-cyan-600 dark:text-cyan-400 font-semibold hover:underline">
-              View all 60+ tools →
+              View all utilities →
             </Link>
           </div>
 
@@ -88,6 +99,9 @@ export function CategoryToolsClient({ category, tools }: CategoryToolsClientProp
               />
             ))}
           </div>
+
+          {/* Ad Placement: Bottom of category directory */}
+          <AdWrapper slot="categoryBottom" placement="category-bottom" />
         </div>
       ) : (
         <div className="p-12 text-center rounded-3xl bg-white dark:bg-[#111318] border border-slate-200 dark:border-slate-800 space-y-3 max-w-md mx-auto">

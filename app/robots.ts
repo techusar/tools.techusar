@@ -1,14 +1,13 @@
 import { MetadataRoute } from 'next';
+import { SEO_CONFIG } from '@/lib/seo/config';
 
 export default function robots(): MetadataRoute.Robots {
-  const baseUrl = 'https://techtools.techusar.com';
-
   return {
     rules: {
       userAgent: '*',
       allow: '/',
-      disallow: ['/admin/', '/api/'],
+      disallow: ['/admin/', '/api/', '/account/', '/favorites/'],
     },
-    sitemap: `${baseUrl}/sitemap.xml`,
+    sitemap: `${SEO_CONFIG.siteUrl}/sitemap.xml`,
   };
 }

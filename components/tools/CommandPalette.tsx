@@ -101,7 +101,7 @@ export function CommandPalette({ isOpen, onClose, tools }: CommandPaletteProps) 
           <input
             ref={inputRef}
             type="text"
-            placeholder="Search 60+ tools (JSON, QR, compress, EMI)..."
+            placeholder="Search 40+ utilities (JSON, QR, PDF, compress, hash)..."
             value={query}
             onChange={(e) => {
               setQuery(e.target.value);

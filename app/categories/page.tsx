@@ -3,11 +3,21 @@ import Link from 'next/link';
 import { Metadata } from 'next';
 import { getCategories, getAllTools } from '@/lib/data/toolsRepository';
 import { Layers, ArrowRight, Sparkles, Shield, Code, Image, FileText, Calculator, Wrench } from 'lucide-react';
+import { SEO_CONFIG, getCanonicalUrl } from '@/lib/seo/config';
+import { Breadcrumb } from '@/components/navigation/Breadcrumb';
 
 export const metadata: Metadata = {
-  title: 'All Tool Categories - TechTools by TechUsar',
+  title: `All Tool Categories - ${SEO_CONFIG.shortName}`,
   description:
-    'Explore 60+ online tools organized across Developer, AI, Security, Image, Text, and Business categories.',
+    'Explore 40+ free online developer, AI, security, image, text, and business productivity utilities.',
+  alternates: {
+    canonical: getCanonicalUrl('/categories'),
+  },
+  openGraph: {
+    title: `All Tool Categories - ${SEO_CONFIG.shortName}`,
+    description: 'Explore 40+ free online developer, AI, security, and productivity utilities.',
+    url: getCanonicalUrl('/categories'),
+  },
 };
 
 export default async function CategoriesPage() {
@@ -16,9 +26,41 @@ export default async function CategoriesPage() {
     getAllTools(),
   ]);
 
+  const breadcrumbJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      {
+        '@type': 'ListItem',
+        position: 1,
+        name: 'Home',
+        item: SEO_CONFIG.siteUrl,
+      },
+      {
+        '@type': 'ListItem',
+        position: 2,
+        name: 'Categories',
+        item: getCanonicalUrl('/categories'),
+      },
+    ],
+  };
+
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-16 space-y-12">
-      {/* Header Banner */}
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+      />
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-16 space-y-8">
+        {/* Breadcrumb Navigation */}
+        <Breadcrumb
+          items={[
+            { label: 'Home', href: '/' },
+            { label: 'Categories', current: true },
+          ]}
+        />
+
+        {/* Header Banner */}
       <div className="bg-white dark:bg-[#111318] border border-slate-200 dark:border-slate-800 rounded-3xl p-6 sm:p-10 shadow-sm dark:shadow-xl space-y-4">
         <div className="inline-flex items-center gap-2 px-3 py-1 rounded-lg bg-cyan-50 dark:bg-cyan-500/10 border border-cyan-200 dark:border-cyan-500/20 text-cyan-700 dark:text-cyan-400 text-xs font-semibold">
           <Layers className="w-3.5 h-3.5" />
@@ -93,5 +135,6 @@ export default async function CategoriesPage() {
         })}
       </div>
     </div>
+    </>
   );
 }

@@ -17,6 +17,7 @@ import {
 import { ToolItem, ToolCategory } from '@/lib/types';
 import { ToolCard } from '@/components/tools/ToolCard';
 import { useUser } from '@/components/auth/UserContext';
+import { Breadcrumb } from '@/components/navigation/Breadcrumb';
 
 interface AllToolsDirectoryClientProps {
   initialTools: ToolItem[];
@@ -74,6 +75,14 @@ export function AllToolsDirectoryClient({
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-14 space-y-8">
+      {/* Breadcrumb Navigation */}
+      <Breadcrumb
+        items={[
+          { label: 'Home', href: '/' },
+          { label: 'All Utilities', current: true },
+        ]}
+      />
+
       {/* Header Banner */}
       <div className="bg-white dark:bg-[#111318] border border-slate-200 dark:border-slate-800 rounded-3xl p-6 sm:p-10 shadow-sm dark:shadow-xl space-y-4">
         <div className="flex flex-wrap items-center gap-2">

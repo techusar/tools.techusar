@@ -184,1611 +184,2545 @@ export const INITIAL_CATEGORIES: ToolCategory[] = [
 ];
 
 export const INITIAL_TOOLS: ToolItem[] = [
-  // DEVELOPER TOOLS
   {
-    id: 'json-formatter',
-    slug: 'json-formatter',
-    name: 'JSON Formatter & Validator',
-    category: 'developer-tools',
-    categoryName: 'Developer Tools',
-    description: 'Format, validate, beautify, and minify your JSON data with instant syntax error highlighting.',
-    type: 'client',
-    status: 'free',
-    icon: 'Braces',
-    tags: ['json', 'formatter', 'validator', 'beautifier', 'minify'],
-    featured: true,
-    popular: true,
-    trending: true,
-    unlimited: true,
-    anonymousLimit: 2,
-    authenticatedLimit: 4,
-    seoTitle: 'JSON Formatter & Validator Online – Free JSON Tool | TechTools',
-    seoDescription: 'Format, validate, beautify and minify JSON code instantly with TechTools. 100% privacy-friendly, runs directly in your browser.',
-    howToUse: [
-      'Paste your raw or minified JSON string into the input editor.',
-      'Click "Format / Beautify" to indent with 2 or 4 spaces.',
-      'Click "Minify" to remove whitespace, or "Validate" to check syntax validity.',
-      'Copy the output or download as a .json file.',
+    "id": "json-formatter",
+    "slug": "json-formatter",
+    "name": "JSON Formatter & Validator",
+    "category": "developer-tools",
+    "categoryName": "Developer Tools",
+    "description": "Format, validate, beautify, and minify your JSON data with instant syntax error highlighting.",
+    "type": "client",
+    "status": "free",
+    "icon": "Braces",
+    "tags": [
+      "json",
+      "formatter",
+      "validator",
+      "beautifier",
+      "minify"
     ],
-    features: [
-      'Instant syntax validation with precise line-number error reporting',
-      'Configurable 2-space, 4-space, or tab indentation',
-      'One-click JSON minification',
-      'JSON to CSV export support',
-      '100% client-side execution — your data never leaves your device',
+    "featured": true,
+    "popular": true,
+    "trending": true,
+    "unlimited": true,
+    "anonymousLimit": 2,
+    "authenticatedLimit": 4,
+    "seoTitle": "JSON Formatter & Validator Online – Free JSON Tool | TechTools",
+    "seoDescription": "Format, validate, beautify and minify JSON code instantly with TechTools. 100% privacy-friendly, runs directly in your browser.",
+    "howToUse": [
+      "Paste your raw or minified JSON string into the input editor.",
+      "Click \"Format / Beautify\" to indent with 2 or 4 spaces.",
+      "Click \"Minify\" to remove whitespace, or \"Validate\" to check syntax validity.",
+      "Copy the output or download as a .json file."
     ],
-    faqs: [
+    "features": [
+      "Instant syntax validation with precise line-number error reporting",
+      "Configurable 2-space, 4-space, or tab indentation",
+      "One-click JSON minification",
+      "JSON to CSV export support",
+      "100% client-side execution — your data never leaves your device"
+    ],
+    "faqs": [
       {
-        question: 'Is my JSON data sent to an external server?',
-        answer: 'No. TechTools processes all JSON formatting and validation entirely in your browser using JavaScript. No payload data is transferred.',
+        "question": "Is my JSON data sent to an external server?",
+        "answer": "No. TechTools processes all JSON formatting and validation entirely in your browser using JavaScript. No payload data is transferred."
       },
       {
-        question: 'Can this tool handle large JSON files?',
-        answer: 'Yes! It effortlessly handles multi-megabyte JSON payloads using efficient browser parsing.',
-      },
+        "question": "Can this tool handle large JSON files?",
+        "answer": "Yes! It effortlessly handles multi-megabyte JSON payloads using efficient browser parsing."
+      }
     ],
-    relatedTools: ['base64-encoder-decoder', 'jwt-decoder', 'uuid-generator', 'url-encoder-decoder'],
+    "relatedTools": [
+      "base64-encoder-decoder",
+      "jwt-decoder",
+      "uuid-generator",
+      "url-encoder-decoder"
+    ]
   },
   {
-    id: 'base64-encoder-decoder',
-    slug: 'base64-encoder-decoder',
-    name: 'Base64 Encoder & Decoder',
-    category: 'developer-tools',
-    categoryName: 'Developer Tools',
-    description: 'Encode text or binary data into Base64 format or decode Base64 strings with UTF-8 support.',
-    type: 'client',
-    status: 'free',
-    icon: 'Binary',
-    tags: ['base64', 'encode', 'decode', 'converter', 'string'],
-    featured: true,
-    popular: true,
-    unlimited: true,
-    anonymousLimit: 2,
-    authenticatedLimit: 4,
-    seoTitle: 'Base64 Encode & Decode Online – TechTools',
-    seoDescription: 'Fast, secure online Base64 encoder and decoder. Full UTF-8 support, instant conversions, and copyable results.',
-    howToUse: [
-      'Type or paste your text in the input box.',
-      'Choose "Encode" or "Decode" mode.',
-      'View the real-time converted output.',
-      'Copy or download the output string.',
+    "id": "base64-encoder-decoder",
+    "slug": "base64-encoder-decoder",
+    "name": "Base64 Encoder & Decoder",
+    "category": "developer-tools",
+    "categoryName": "Developer Tools",
+    "description": "Encode text or binary data into Base64 format or decode Base64 strings with UTF-8 support.",
+    "type": "client",
+    "status": "free",
+    "icon": "Binary",
+    "tags": [
+      "base64",
+      "encode",
+      "decode",
+      "converter",
+      "string"
     ],
-    features: [
-      'Dual mode: text to Base64 and Base64 to text',
-      'Safe UTF-8 character encoding support',
-      'Instant copy to clipboard',
+    "featured": true,
+    "popular": true,
+    "unlimited": true,
+    "anonymousLimit": 2,
+    "authenticatedLimit": 4,
+    "seoTitle": "Base64 Encode & Decode Online – TechTools",
+    "seoDescription": "Fast, secure online Base64 encoder and decoder. Full UTF-8 support, instant conversions, and copyable results.",
+    "howToUse": [
+      "Type or paste your text in the input box.",
+      "Choose \"Encode\" or \"Decode\" mode.",
+      "View the real-time converted output.",
+      "Copy or download the output string."
     ],
-    faqs: [
+    "features": [
+      "Dual mode: text to Base64 and Base64 to text",
+      "Safe UTF-8 character encoding support",
+      "Instant copy to clipboard"
+    ],
+    "faqs": [
       {
-        question: 'What is Base64 encoding used for?',
-        answer: 'Base64 encoding is commonly used to transmit binary data (like images or encryption keys) across networks that only support ASCII text.',
-      },
+        "question": "What is Base64 encoding used for?",
+        "answer": "Base64 encoding is commonly used to transmit binary data (like images or encryption keys) across networks that only support ASCII text."
+      }
     ],
-    relatedTools: ['url-encoder-decoder', 'jwt-decoder', 'hash-generator'],
+    "relatedTools": [
+      "url-encoder-decoder",
+      "jwt-decoder",
+      "hash-generator"
+    ],
+    "aliases": [
+      "base64-encoder",
+      "base64-decoder"
+    ]
   },
   {
-    id: 'jwt-decoder',
-    slug: 'jwt-decoder',
-    name: 'JWT Debugger & Decoder',
-    category: 'developer-tools',
-    categoryName: 'Developer Tools',
-    description: 'Decode and inspect JSON Web Tokens (JWT) headers, payloads, and expiration claims securely.',
-    type: 'client',
-    status: 'free',
-    icon: 'KeyRound',
-    tags: ['jwt', 'token', 'decoder', 'auth', 'security'],
-    featured: true,
-    popular: true,
-    anonymousLimit: 2,
-    authenticatedLimit: 4,
-    seoTitle: 'JWT Decoder Online – Inspect JSON Web Tokens | TechTools',
-    seoDescription: 'Decode and inspect JWT headers and payload claims instantly. 100% private in-browser decoding.',
-    howToUse: [
-      'Paste your encoded JSON Web Token (JWT) into the input field.',
-      'Inspect the decoded Header, Payload claims, and Expiration status.',
-      'Check if the token is currently valid or expired.',
+    "id": "jwt-decoder",
+    "slug": "jwt-decoder",
+    "name": "JWT Debugger & Decoder",
+    "category": "developer-tools",
+    "categoryName": "Developer Tools",
+    "description": "Decode and inspect JSON Web Tokens (JWT) headers, payloads, and expiration claims securely.",
+    "type": "client",
+    "status": "free",
+    "icon": "KeyRound",
+    "tags": [
+      "jwt",
+      "token",
+      "decoder",
+      "auth",
+      "security"
     ],
-    features: [
-      'Visual breakdown of Header, Payload, and Signature',
-      'Automatic token expiration calculation and status indicator',
-      'Formatted readable JSON outputs',
+    "featured": true,
+    "popular": true,
+    "anonymousLimit": 2,
+    "authenticatedLimit": 4,
+    "seoTitle": "JWT Decoder Online – Inspect JSON Web Tokens | TechTools",
+    "seoDescription": "Decode and inspect JWT headers and payload claims instantly. 100% private in-browser decoding.",
+    "howToUse": [
+      "Paste your encoded JSON Web Token (JWT) into the input field.",
+      "Inspect the decoded Header, Payload claims, and Expiration status.",
+      "Check if the token is currently valid or expired."
     ],
-    faqs: [
+    "features": [
+      "Visual breakdown of Header, Payload, and Signature",
+      "Automatic token expiration calculation and status indicator",
+      "Formatted readable JSON outputs"
+    ],
+    "faqs": [
       {
-        question: 'Is it safe to paste production JWTs here?',
-        answer: 'Yes. TechTools decodes tokens strictly inside your browser using client-side JavaScript. No tokens are logged or transmitted.',
-      },
+        "question": "Is it safe to paste production JWTs here?",
+        "answer": "Yes. TechTools decodes tokens strictly inside your browser using client-side JavaScript. No tokens are logged or transmitted."
+      }
     ],
-    relatedTools: ['base64-encoder-decoder', 'hash-generator', 'uuid-generator'],
+    "relatedTools": [
+      "base64-encoder-decoder",
+      "hash-generator",
+      "uuid-generator"
+    ]
   },
   {
-    id: 'uuid-generator',
-    slug: 'uuid-generator',
-    name: 'UUID / GUID Generator',
-    category: 'developer-tools',
-    categoryName: 'Developer Tools',
-    description: 'Generate bulk cryptographically random Version 4 UUIDs and GUIDs with custom formatting options.',
-    type: 'client',
-    status: 'free',
-    icon: 'Fingerprint',
-    tags: ['uuid', 'guid', 'v4', 'generator', 'random'],
-    featured: false,
-    popular: true,
-    unlimited: true,
-    anonymousLimit: 2,
-    authenticatedLimit: 4,
-    seoTitle: 'UUID v4 Generator Online – Free Bulk GUID Generator | TechTools',
-    seoDescription: 'Generate random UUID v4 and GUID strings in bulk with custom uppercase/hyphen options.',
-    howToUse: [
-      'Select how many UUIDs you want to generate (1 to 100).',
-      'Toggle uppercase/lowercase and hyphen options.',
-      'Click "Generate UUIDs" and copy with one click.',
+    "id": "uuid-generator",
+    "slug": "uuid-generator",
+    "name": "UUID / GUID Generator",
+    "category": "developer-tools",
+    "categoryName": "Developer Tools",
+    "description": "Generate bulk cryptographically random Version 4 UUIDs and GUIDs with custom formatting options.",
+    "type": "client",
+    "status": "free",
+    "icon": "Fingerprint",
+    "tags": [
+      "uuid",
+      "guid",
+      "v4",
+      "generator",
+      "random"
     ],
-    features: [
-      'Cryptographically secure random values via Web Crypto API',
-      'Bulk generation up to 100 UUIDs at once',
-      'Format customization (hyphens, braces, uppercase)',
+    "featured": false,
+    "popular": true,
+    "unlimited": true,
+    "anonymousLimit": 2,
+    "authenticatedLimit": 4,
+    "seoTitle": "UUID v4 Generator Online – Free Bulk GUID Generator | TechTools",
+    "seoDescription": "Generate random UUID v4 and GUID strings in bulk with custom uppercase/hyphen options.",
+    "howToUse": [
+      "Select how many UUIDs you want to generate (1 to 100).",
+      "Toggle uppercase/lowercase and hyphen options.",
+      "Click \"Generate UUIDs\" and copy with one click."
     ],
-    faqs: [
+    "features": [
+      "Cryptographically secure random values via Web Crypto API",
+      "Bulk generation up to 100 UUIDs at once",
+      "Format customization (hyphens, braces, uppercase)"
+    ],
+    "faqs": [
       {
-        question: 'Are these UUIDs truly unique?',
-        answer: 'Yes. They are generated using RFC 4122 Version 4 specifications using browser crypto.getRandomValues().',
-      },
+        "question": "Are these UUIDs truly unique?",
+        "answer": "Yes. They are generated using RFC 4122 Version 4 specifications using browser crypto.getRandomValues()."
+      }
     ],
-    relatedTools: ['hash-generator', 'password-generator', 'slug-generator'],
+    "relatedTools": [
+      "hash-generator",
+      "password-generator",
+      "slug-generator"
+    ]
   },
   {
-    id: 'regex-tester',
-    slug: 'regex-tester',
-    name: 'Regex Tester & Matcher',
-    category: 'developer-tools',
-    categoryName: 'Developer Tools',
-    description: 'Test and debug Regular Expressions in real-time with visual match highlighting and capture group breakdown.',
-    type: 'client',
-    status: 'free',
-    icon: 'Regex',
-    tags: ['regex', 'regular expression', 'tester', 'matcher', 'debug'],
-    featured: true,
-    popular: true,
-    anonymousLimit: 2,
-    authenticatedLimit: 4,
-    seoTitle: 'Online Regex Tester & Debugger – TechTools',
-    seoDescription: 'Interactive JavaScript regex tester with real-time match highlighting, flags, and capture group tables.',
-    howToUse: [
-      'Enter your regular expression pattern and select flags (g, i, m, s, u).',
-      'Paste your test string into the text area.',
-      'Inspect matches highlighted live with capture groups listed below.',
+    "id": "regex-tester",
+    "slug": "regex-tester",
+    "name": "Regex Tester & Matcher",
+    "category": "developer-tools",
+    "categoryName": "Developer Tools",
+    "description": "Test and debug Regular Expressions in real-time with visual match highlighting and capture group breakdown.",
+    "type": "client",
+    "status": "free",
+    "icon": "Regex",
+    "tags": [
+      "regex",
+      "regular expression",
+      "tester",
+      "matcher",
+      "debug"
     ],
-    features: [
-      'Real-time match highlighting with contrast badges',
-      'Capture group inspection table',
-      'Common regex pattern cheat sheet presets (Email, URL, IP, Date)',
+    "featured": true,
+    "popular": true,
+    "anonymousLimit": 2,
+    "authenticatedLimit": 4,
+    "seoTitle": "Online Regex Tester & Debugger – TechTools",
+    "seoDescription": "Interactive JavaScript regex tester with real-time match highlighting, flags, and capture group tables.",
+    "howToUse": [
+      "Enter your regular expression pattern and select flags (g, i, m, s, u).",
+      "Paste your test string into the text area.",
+      "Inspect matches highlighted live with capture groups listed below."
     ],
-    faqs: [
+    "features": [
+      "Real-time match highlighting with contrast badges",
+      "Capture group inspection table",
+      "Common regex pattern cheat sheet presets (Email, URL, IP, Date)"
+    ],
+    "faqs": [
       {
-        question: 'Which regex engine is used?',
-        answer: 'It runs standard ECMAScript / JavaScript RegExp engine directly in your browser.',
-      },
+        "question": "Which regex engine is used?",
+        "answer": "It runs standard ECMAScript / JavaScript RegExp engine directly in your browser."
+      }
     ],
-    relatedTools: ['ai-regex-generator', 'text-diff', 'word-counter'],
+    "relatedTools": [
+      "ai-regex-generator",
+      "text-diff",
+      "word-counter"
+    ]
   },
   {
-    id: 'hash-generator',
-    slug: 'hash-generator',
-    name: 'Hash Generator (MD5, SHA-256, SHA-512)',
-    category: 'developer-tools',
-    categoryName: 'Developer Tools',
-    description: 'Generate cryptographic checksums and hashes including SHA-256, SHA-512, SHA-1, and MD5.',
-    type: 'client',
-    status: 'free',
-    icon: 'Shield',
-    tags: ['hash', 'sha256', 'md5', 'sha512', 'checksum', 'crypto'],
-    featured: false,
-    popular: true,
-    unlimited: true,
-    anonymousLimit: 2,
-    authenticatedLimit: 4,
-    seoTitle: 'Hash Generator (SHA256, MD5, SHA512) Online – TechTools',
-    seoDescription: 'Generate secure cryptographic hashes for text in your browser with SHA-256, SHA-512, SHA-1, and MD5.',
-    howToUse: [
-      'Enter text into the input field.',
-      'View all calculated hash digests simultaneously.',
-      'Click the copy icon next to any algorithm to copy the hex hash.',
+    "id": "hash-generator",
+    "slug": "hash-generator",
+    "name": "Hash Generator (MD5, SHA-256, SHA-512)",
+    "category": "developer-tools",
+    "categoryName": "Developer Tools",
+    "description": "Generate cryptographic checksums and hashes including SHA-256, SHA-512, SHA-1, and MD5.",
+    "type": "client",
+    "status": "free",
+    "icon": "Shield",
+    "tags": [
+      "hash",
+      "sha256",
+      "md5",
+      "sha512",
+      "checksum",
+      "crypto"
     ],
-    features: [
-      'Simultaneous output for SHA-256, SHA-512, SHA-384, SHA-1, and MD5',
-      'Native Web Crypto API acceleration',
-      'Instant real-time computation',
+    "featured": false,
+    "popular": true,
+    "unlimited": true,
+    "anonymousLimit": 2,
+    "authenticatedLimit": 4,
+    "seoTitle": "Hash Generator (SHA256, MD5, SHA512) Online – TechTools",
+    "seoDescription": "Generate secure cryptographic hashes for text in your browser with SHA-256, SHA-512, SHA-1, and MD5.",
+    "howToUse": [
+      "Enter text into the input field.",
+      "View all calculated hash digests simultaneously.",
+      "Click the copy icon next to any algorithm to copy the hex hash."
     ],
-    faqs: [
+    "features": [
+      "Simultaneous output for SHA-256, SHA-512, SHA-384, SHA-1, and MD5",
+      "Native Web Crypto API acceleration",
+      "Instant real-time computation"
+    ],
+    "faqs": [
       {
-        question: 'Are these hashes safe for password verification?',
-        answer: 'For password hashing in real production backends, prefer salted algorithms like bcrypt or argon2. SHA-256 and MD5 are great for checksums and identifiers.',
-      },
+        "question": "Are these hashes safe for password verification?",
+        "answer": "For password hashing in real production backends, prefer salted algorithms like bcrypt or argon2. SHA-256 and MD5 are great for checksums and identifiers."
+      }
     ],
-    relatedTools: ['password-generator', 'uuid-generator', 'base64-encoder-decoder'],
+    "relatedTools": [
+      "password-generator",
+      "uuid-generator",
+      "base64-encoder-decoder"
+    ]
   },
   {
-    id: 'url-encoder-decoder',
-    slug: 'url-encoder-decoder',
-    name: 'URL Encoder & Decoder',
-    category: 'developer-tools',
-    categoryName: 'Developer Tools',
-    description: 'Encode special characters into percent-encoded URL formats or decode encoded URI strings.',
-    type: 'client',
-    status: 'free',
-    icon: 'Link',
-    tags: ['url', 'uri', 'encode', 'decode', 'percent-encoding'],
-    featured: false,
-    popular: false,
-    unlimited: true,
-    anonymousLimit: 2,
-    authenticatedLimit: 4,
-    seoTitle: 'URL Encoder & Decoder Online – Percent-Encoding Tool | TechTools',
-    seoDescription: 'Quickly encode and decode URLs and URI query parameters online with instant copy.',
-    howToUse: [
-      'Paste your URL or parameter string.',
-      'Select "Encode URI Component" or "Decode".',
-      'Copy the resulting URL string.',
+    "id": "url-encoder-decoder",
+    "slug": "url-encoder-decoder",
+    "name": "URL Encoder & Decoder",
+    "category": "developer-tools",
+    "categoryName": "Developer Tools",
+    "description": "Encode special characters into percent-encoded URL formats or decode encoded URI strings.",
+    "type": "client",
+    "status": "free",
+    "icon": "Link",
+    "tags": [
+      "url",
+      "uri",
+      "encode",
+      "decode",
+      "percent-encoding"
     ],
-    features: [
-      'Standard encodeURIComponent and decodeURIComponent support',
-      'Component vs Full URL modes',
-      'Instant copy button',
+    "featured": false,
+    "popular": false,
+    "unlimited": true,
+    "anonymousLimit": 2,
+    "authenticatedLimit": 4,
+    "seoTitle": "URL Encoder & Decoder Online – Percent-Encoding Tool | TechTools",
+    "seoDescription": "Quickly encode and decode URLs and URI query parameters online with instant copy.",
+    "howToUse": [
+      "Paste your URL or parameter string.",
+      "Select \"Encode URI Component\" or \"Decode\".",
+      "Copy the resulting URL string."
     ],
-    faqs: [
+    "features": [
+      "Standard encodeURIComponent and decodeURIComponent support",
+      "Component vs Full URL modes",
+      "Instant copy button"
+    ],
+    "faqs": [
       {
-        question: 'Why do URLs need encoding?',
-        answer: 'Special characters like spaces, ?, &, and = have special meaning in URLs. Encoding converts them safely into %XX format.',
-      },
+        "question": "Why do URLs need encoding?",
+        "answer": "Special characters like spaces, ?, &, and = have special meaning in URLs. Encoding converts them safely into %XX format."
+      }
     ],
-    relatedTools: ['utm-builder', 'base64-encoder-decoder', 'slug-generator'],
+    "relatedTools": [
+      "utm-builder",
+      "base64-encoder-decoder",
+      "slug-generator"
+    ]
   },
   {
-    id: 'unix-timestamp-converter',
-    slug: 'unix-timestamp-converter',
-    name: 'Unix Timestamp Converter',
-    category: 'developer-tools',
-    categoryName: 'Developer Tools',
-    description: 'Convert Unix epoch timestamps (seconds & milliseconds) to human-readable dates and vice versa.',
-    type: 'client',
-    status: 'free',
-    icon: 'Clock',
-    tags: ['unix', 'timestamp', 'epoch', 'date', 'converter'],
-    featured: false,
-    popular: true,
-    unlimited: true,
-    anonymousLimit: 2,
-    authenticatedLimit: 4,
-    seoTitle: 'Unix Timestamp Converter – Epoch to Human Date | TechTools',
-    seoDescription: 'Convert Unix epoch timestamps to UTC and local human dates with real-time clock ticker.',
-    howToUse: [
-      'Enter an epoch timestamp in seconds or milliseconds.',
-      'Or pick a calendar date to generate its Unix timestamp.',
-      'View formatted UTC, ISO 8601, and local timezone outputs.',
+    "id": "unix-timestamp-converter",
+    "slug": "unix-timestamp-converter",
+    "name": "Unix Timestamp Converter",
+    "category": "developer-tools",
+    "categoryName": "Developer Tools",
+    "description": "Convert Unix epoch timestamps (seconds & milliseconds) to human-readable dates and vice versa.",
+    "type": "client",
+    "status": "free",
+    "icon": "Clock",
+    "tags": [
+      "unix",
+      "timestamp",
+      "epoch",
+      "date",
+      "converter"
     ],
-    features: [
-      'Live current epoch ticker',
-      'Two-way conversion: Date <-> Timestamp',
-      'Relative time breakdown (e.g. 5 minutes ago)',
+    "featured": false,
+    "popular": true,
+    "unlimited": true,
+    "anonymousLimit": 2,
+    "authenticatedLimit": 4,
+    "seoTitle": "Unix Timestamp Converter – Epoch to Human Date | TechTools",
+    "seoDescription": "Convert Unix epoch timestamps to UTC and local human dates with real-time clock ticker.",
+    "howToUse": [
+      "Enter an epoch timestamp in seconds or milliseconds.",
+      "Or pick a calendar date to generate its Unix timestamp.",
+      "View formatted UTC, ISO 8601, and local timezone outputs."
     ],
-    faqs: [
+    "features": [
+      "Live current epoch ticker",
+      "Two-way conversion: Date <-> Timestamp",
+      "Relative time breakdown (e.g. 5 minutes ago)"
+    ],
+    "faqs": [
       {
-        question: 'What is Unix Epoch time?',
-        answer: 'Unix epoch time is the number of seconds that have elapsed since midnight UTC on January 1, 1970.',
-      },
+        "question": "What is Unix Epoch time?",
+        "answer": "Unix epoch time is the number of seconds that have elapsed since midnight UTC on January 1, 1970."
+      }
     ],
-    relatedTools: ['age-calculator', 'date-difference', 'time-zone-converter'],
+    "relatedTools": [
+      "age-calculator",
+      "date-difference",
+      "time-zone-converter"
+    ],
+    "aliases": [
+      "timestamp-converter"
+    ]
   },
-
-  // AI TOOLS (Gemini powered)
   {
-    id: 'ai-text-summarizer',
-    slug: 'ai-text-summarizer',
-    name: 'AI Text Summarizer',
-    category: 'ai-tools',
-    categoryName: 'AI Tools',
-    description: 'Condense long articles, reports, meeting notes, and research into clear, structured bullet points.',
-    type: 'ai',
-    status: 'free',
-    icon: 'Sparkles',
-    tags: ['ai', 'summarizer', 'gemini', 'text', 'bullet points'],
-    featured: true,
-    popular: true,
-    trending: true,
-    anonymousLimit: 2,
-    authenticatedLimit: 4,
-    seoTitle: 'AI Text Summarizer Online – Instant Summaries with Gemini | TechTools',
-    seoDescription: 'Summarize articles, essays, and notes in seconds using advanced AI. Choose between bullet points, executive summaries, and key takeaways.',
-    howToUse: [
-      'Paste your article, meeting transcript, or document text.',
-      'Select your desired length (Concise, Balanced, or Detailed).',
-      'Click "Summarize with AI" to generate the structured summary.',
-      'Copy the output or export it.',
+    "id": "ai-text-summarizer",
+    "slug": "ai-text-summarizer",
+    "name": "AI Text Summarizer",
+    "category": "ai-tools",
+    "categoryName": "AI Tools",
+    "description": "Condense long articles, reports, meeting notes, and research into clear, structured bullet points.",
+    "type": "ai",
+    "status": "free",
+    "icon": "Sparkles",
+    "tags": [
+      "ai",
+      "summarizer",
+      "gemini",
+      "text",
+      "bullet points"
     ],
-    features: [
-      'High-speed server-side Gemini 3.8 Flash model processing',
-      'Custom length and tone control (Executive, Bullets, Key Takeaways)',
-      'Safe API key architecture — your credentials remain secure',
+    "featured": true,
+    "popular": true,
+    "trending": true,
+    "anonymousLimit": 2,
+    "authenticatedLimit": 4,
+    "seoTitle": "AI Text Summarizer Online – Instant Summaries with Gemini | TechTools",
+    "seoDescription": "Summarize articles, essays, and notes in seconds using advanced AI. Choose between bullet points, executive summaries, and key takeaways.",
+    "howToUse": [
+      "Paste your article, meeting transcript, or document text.",
+      "Select your desired length (Concise, Balanced, or Detailed).",
+      "Click \"Summarize with AI\" to generate the structured summary.",
+      "Copy the output or export it."
     ],
-    faqs: [
+    "features": [
+      "High-speed server-side Gemini 3.8 Flash model processing",
+      "Custom length and tone control (Executive, Bullets, Key Takeaways)",
+      "Safe API key architecture — your credentials remain secure"
+    ],
+    "faqs": [
       {
-        question: 'How does the AI text summarizer work?',
-        answer: 'It uses Google Gemini AI models running securely on our server to analyze the key arguments and synthesise them into an accurate brief.',
-      },
+        "question": "How does the AI text summarizer work?",
+        "answer": "It uses Google Gemini AI models running securely on our server to analyze the key arguments and synthesise them into an accurate brief."
+      }
     ],
-    aiConfig: {
-      provider: 'gemini',
-      model: 'gemini-3.8-flash',
-      systemPrompt: 'You are an expert executive summarizer. Analyze the provided text and produce a high-impact, accurate, well-structured summary with key bullet points and takeaways. Use clean Markdown.',
-      temperature: 0.3,
+    "aiConfig": {
+      "provider": "gemini",
+      "model": "gemini-3.8-flash",
+      "systemPrompt": "You are an expert executive summarizer. Analyze the provided text and produce a high-impact, accurate, well-structured summary with key bullet points and takeaways. Use clean Markdown.",
+      "temperature": 0.3
     },
-    relatedTools: ['ai-rewriter', 'ai-grammar-fixer', 'word-counter'],
+    "relatedTools": [
+      "ai-rewriter",
+      "ai-grammar-fixer",
+      "word-counter"
+    ]
   },
   {
-    id: 'ai-rewriter',
-    slug: 'ai-rewriter',
-    name: 'AI Content Rewriter & Paraphraser',
-    category: 'ai-tools',
-    categoryName: 'AI Tools',
-    description: 'Rewrite and rephrase sentences, paragraphs, or articles to improve clarity, tone, and flow.',
-    type: 'ai',
-    status: 'free',
-    icon: 'Wand2',
-    tags: ['ai', 'rewriter', 'paraphrase', 'content', 'tone'],
-    featured: true,
-    popular: true,
-    anonymousLimit: 2,
-    authenticatedLimit: 4,
-    seoTitle: 'AI Rewriter & Paraphrasing Tool – TechTools',
-    seoDescription: 'Paraphrase and rewrite text in multiple professional tones (Professional, Casual, Academic, Creative) using AI.',
-    howToUse: [
-      'Enter the text you want to rewrite.',
-      'Pick a tone (Professional, Engaging, Academic, Simplified, Punchy).',
-      'Click "Rewrite Content" to view fresh variations.',
+    "id": "ai-rewriter",
+    "slug": "ai-rewriter",
+    "name": "AI Content Rewriter & Paraphraser",
+    "category": "ai-tools",
+    "categoryName": "AI Tools",
+    "description": "Rewrite and rephrase sentences, paragraphs, or articles to improve clarity, tone, and flow.",
+    "type": "ai",
+    "status": "free",
+    "icon": "Wand2",
+    "tags": [
+      "ai",
+      "rewriter",
+      "paraphrase",
+      "content",
+      "tone"
     ],
-    features: [
-      'Multiple tone selection options',
-      'Preserves core factual meaning while eliminating redundancy',
-      'Side-by-side comparison',
+    "featured": true,
+    "popular": true,
+    "anonymousLimit": 2,
+    "authenticatedLimit": 4,
+    "seoTitle": "AI Rewriter & Paraphrasing Tool – TechTools",
+    "seoDescription": "Paraphrase and rewrite text in multiple professional tones (Professional, Casual, Academic, Creative) using AI.",
+    "howToUse": [
+      "Enter the text you want to rewrite.",
+      "Pick a tone (Professional, Engaging, Academic, Simplified, Punchy).",
+      "Click \"Rewrite Content\" to view fresh variations."
     ],
-    faqs: [
+    "features": [
+      "Multiple tone selection options",
+      "Preserves core factual meaning while eliminating redundancy",
+      "Side-by-side comparison"
+    ],
+    "faqs": [
       {
-        question: 'Does this change the meaning of my text?',
-        answer: 'No, the AI is instructed to preserve all core facts and intent while enhancing vocabulary and sentence structure.',
-      },
+        "question": "Does this change the meaning of my text?",
+        "answer": "No, the AI is instructed to preserve all core facts and intent while enhancing vocabulary and sentence structure."
+      }
     ],
-    aiConfig: {
-      provider: 'gemini',
-      model: 'gemini-3.8-flash',
-      systemPrompt: 'You are a master copy editor and writing specialist. Paraphrase and rewrite the user input according to the selected tone. Maintain original facts and produce polished, flowing copy.',
-      temperature: 0.5,
+    "aiConfig": {
+      "provider": "gemini",
+      "model": "gemini-3.8-flash",
+      "systemPrompt": "You are a master copy editor and writing specialist. Paraphrase and rewrite the user input according to the selected tone. Maintain original facts and produce polished, flowing copy.",
+      "temperature": 0.5
     },
-    relatedTools: ['ai-grammar-fixer', 'ai-text-summarizer', 'case-converter'],
+    "relatedTools": [
+      "ai-grammar-fixer",
+      "ai-text-summarizer",
+      "case-converter"
+    ]
   },
   {
-    id: 'ai-grammar-fixer',
-    slug: 'ai-grammar-fixer',
-    name: 'AI Grammar & Style Fixer',
-    category: 'ai-tools',
-    categoryName: 'AI Tools',
-    description: 'Detect and fix grammatical errors, typos, punctuation mistakes, and awkward phrasing instantly.',
-    type: 'ai',
-    status: 'free',
-    icon: 'CheckSquare',
-    tags: ['ai', 'grammar', 'proofread', 'spelling', 'style'],
-    featured: false,
-    popular: true,
-    anonymousLimit: 2,
-    authenticatedLimit: 4,
-    seoTitle: 'AI Grammar Checker & Proofreader – Free Online Tool | TechTools',
-    seoDescription: 'Fix grammar, spelling, punctuation, and phrasing errors instantly with AI-powered proofreading.',
-    howToUse: [
-      'Paste your draft or email message.',
-      'Click "Check & Fix Grammar".',
-      'Review the corrected text and the list of identified improvements.',
+    "id": "ai-grammar-fixer",
+    "slug": "ai-grammar-fixer",
+    "name": "AI Grammar & Style Fixer",
+    "category": "ai-tools",
+    "categoryName": "AI Tools",
+    "description": "Detect and fix grammatical errors, typos, punctuation mistakes, and awkward phrasing instantly.",
+    "type": "ai",
+    "status": "free",
+    "icon": "CheckSquare",
+    "tags": [
+      "ai",
+      "grammar",
+      "proofread",
+      "spelling",
+      "style"
     ],
-    features: [
-      'Comprehensive spelling, punctuation, and grammar corrections',
-      'Explanation of changes made',
-      'One-click copy of corrected text',
+    "featured": false,
+    "popular": true,
+    "anonymousLimit": 2,
+    "authenticatedLimit": 4,
+    "seoTitle": "AI Grammar Checker & Proofreader – Free Online Tool | TechTools",
+    "seoDescription": "Fix grammar, spelling, punctuation, and phrasing errors instantly with AI-powered proofreading.",
+    "howToUse": [
+      "Paste your draft or email message.",
+      "Click \"Check & Fix Grammar\".",
+      "Review the corrected text and the list of identified improvements."
     ],
-    faqs: [
+    "features": [
+      "Comprehensive spelling, punctuation, and grammar corrections",
+      "Explanation of changes made",
+      "One-click copy of corrected text"
+    ],
+    "faqs": [
       {
-        question: 'Does it support British and American English?',
-        answer: 'Yes, it accurately understands American, British, Canadian, and Australian English conventions.',
-      },
+        "question": "Does it support British and American English?",
+        "answer": "Yes, it accurately understands American, British, Canadian, and Australian English conventions."
+      }
     ],
-    aiConfig: {
-      provider: 'gemini',
-      model: 'gemini-3.8-flash',
-      systemPrompt: 'You are a professional proofreader. Correct all grammar, spelling, punctuation, and syntax errors in the provided text. Provide the corrected text first, followed by a brief summary of corrections.',
-      temperature: 0.2,
+    "aiConfig": {
+      "provider": "gemini",
+      "model": "gemini-3.8-flash",
+      "systemPrompt": "You are a professional proofreader. Correct all grammar, spelling, punctuation, and syntax errors in the provided text. Provide the corrected text first, followed by a brief summary of corrections.",
+      "temperature": 0.2
     },
-    relatedTools: ['ai-rewriter', 'word-counter', 'ai-email-writer'],
+    "relatedTools": [
+      "ai-rewriter",
+      "word-counter",
+      "ai-email-writer"
+    ]
   },
   {
-    id: 'ai-code-explainer',
-    slug: 'ai-code-explainer',
-    name: 'AI Code Explainer & Optimizer',
-    category: 'ai-tools',
-    categoryName: 'AI Tools',
-    description: 'Get clear, step-by-step explanations for complex code snippets, find bugs, and receive optimization tips.',
-    type: 'ai',
-    status: 'free',
-    icon: 'Code',
-    tags: ['ai', 'code', 'developer', 'debugger', 'optimizer'],
-    featured: true,
-    popular: true,
-    anonymousLimit: 2,
-    authenticatedLimit: 4,
-    seoTitle: 'AI Code Explainer & Reviewer Online – TechTools',
-    seoDescription: 'Explain, debug, and optimize code snippets in JavaScript, Python, TypeScript, SQL, Rust, and more with Gemini AI.',
-    howToUse: [
-      'Paste your code snippet and select the programming language.',
-      'Click "Explain & Review Code".',
-      'Read the breakdown, time/space complexity analysis, and suggested improvements.',
+    "id": "ai-code-explainer",
+    "slug": "ai-code-explainer",
+    "name": "AI Code Explainer & Optimizer",
+    "category": "ai-tools",
+    "categoryName": "AI Tools",
+    "description": "Get clear, step-by-step explanations for complex code snippets, find bugs, and receive optimization tips.",
+    "type": "ai",
+    "status": "free",
+    "icon": "Code",
+    "tags": [
+      "ai",
+      "code",
+      "developer",
+      "debugger",
+      "optimizer"
     ],
-    features: [
-      'Multi-language support (JavaScript, Python, Go, Rust, Java, C++, SQL, HTML/CSS)',
-      'Algorithm complexity (Big-O) breakdown',
-      'Refactored cleaner code recommendation',
+    "featured": true,
+    "popular": true,
+    "anonymousLimit": 2,
+    "authenticatedLimit": 4,
+    "seoTitle": "AI Code Explainer & Reviewer Online – TechTools",
+    "seoDescription": "Explain, debug, and optimize code snippets in JavaScript, Python, TypeScript, SQL, Rust, and more with Gemini AI.",
+    "howToUse": [
+      "Paste your code snippet and select the programming language.",
+      "Click \"Explain & Review Code\".",
+      "Read the breakdown, time/space complexity analysis, and suggested improvements."
     ],
-    faqs: [
+    "features": [
+      "Multi-language support (JavaScript, Python, Go, Rust, Java, C++, SQL, HTML/CSS)",
+      "Algorithm complexity (Big-O) breakdown",
+      "Refactored cleaner code recommendation"
+    ],
+    "faqs": [
       {
-        question: 'Can it help me find logic bugs?',
-        answer: 'Yes! The AI reviews edge cases, potential null references, and performance bottlenecks.',
-      },
+        "question": "Can it help me find logic bugs?",
+        "answer": "Yes! The AI reviews edge cases, potential null references, and performance bottlenecks."
+      }
     ],
-    aiConfig: {
-      provider: 'gemini',
-      model: 'gemini-3.8-flash',
-      systemPrompt: 'You are a senior software engineer and technical educator. Explain the provided code snippet clearly, point out any bugs or edge case vulnerabilities, describe time/space complexity, and provide an optimized refactored version.',
-      temperature: 0.2,
+    "aiConfig": {
+      "provider": "gemini",
+      "model": "gemini-3.8-flash",
+      "systemPrompt": "You are a senior software engineer and technical educator. Explain the provided code snippet clearly, point out any bugs or edge case vulnerabilities, describe time/space complexity, and provide an optimized refactored version.",
+      "temperature": 0.2
     },
-    relatedTools: ['json-formatter', 'regex-tester', 'ai-regex-generator'],
+    "relatedTools": [
+      "json-formatter",
+      "regex-tester",
+      "ai-regex-generator"
+    ]
   },
   {
-    id: 'ai-regex-generator',
-    slug: 'ai-regex-generator',
-    name: 'AI Regex Generator & Explainer',
-    category: 'ai-tools',
-    categoryName: 'AI Tools',
-    description: 'Describe what you want to match in plain English, and let AI generate the exact Regular Expression.',
-    type: 'ai',
-    status: 'free',
-    icon: 'SearchCode',
-    tags: ['ai', 'regex', 'pattern', 'generator', 'regular expression'],
-    featured: false,
-    popular: true,
-    anonymousLimit: 2,
-    authenticatedLimit: 4,
-    seoTitle: 'AI Regex Generator – Generate Regular Expressions with AI | TechTools',
-    seoDescription: 'Generate precise Regular Expressions from plain English descriptions with Gemini AI.',
-    howToUse: [
-      'Describe what pattern you want to match (e.g. "match international phone numbers with optional country code").',
-      'Click "Generate Regex Pattern".',
-      'Test the generated pattern immediately with sample strings.',
+    "id": "ai-regex-generator",
+    "slug": "ai-regex-generator",
+    "name": "AI Regex Generator & Explainer",
+    "category": "ai-tools",
+    "categoryName": "AI Tools",
+    "description": "Describe what you want to match in plain English, and let AI generate the exact Regular Expression.",
+    "type": "ai",
+    "status": "free",
+    "icon": "SearchCode",
+    "tags": [
+      "ai",
+      "regex",
+      "pattern",
+      "generator",
+      "regular expression"
     ],
-    features: [
-      'Converts natural language into bulletproof RegExp',
-      'Includes regex flag recommendations',
-      'Provides test case examples and detailed breakdown',
+    "featured": false,
+    "popular": true,
+    "anonymousLimit": 2,
+    "authenticatedLimit": 4,
+    "seoTitle": "AI Regex Generator – Generate Regular Expressions with AI | TechTools",
+    "seoDescription": "Generate precise Regular Expressions from plain English descriptions with Gemini AI.",
+    "howToUse": [
+      "Describe what pattern you want to match (e.g. \"match international phone numbers with optional country code\").",
+      "Click \"Generate Regex Pattern\".",
+      "Test the generated pattern immediately with sample strings."
     ],
-    faqs: [
+    "features": [
+      "Converts natural language into bulletproof RegExp",
+      "Includes regex flag recommendations",
+      "Provides test case examples and detailed breakdown"
+    ],
+    "faqs": [
       {
-        question: 'Can I test the regex right after generating it?',
-        answer: 'Yes! You can copy it directly into our Regex Tester tool with one click.',
-      },
+        "question": "Can I test the regex right after generating it?",
+        "answer": "Yes! You can copy it directly into our Regex Tester tool with one click."
+      }
     ],
-    aiConfig: {
-      provider: 'gemini',
-      model: 'gemini-3.8-flash',
-      systemPrompt: 'You are a regex specialist. When given a natural language requirement, produce the exact regular expression pattern, explaining each part of the token, recommended flags, and positive/negative test string examples.',
-      temperature: 0.2,
+    "aiConfig": {
+      "provider": "gemini",
+      "model": "gemini-3.8-flash",
+      "systemPrompt": "You are a regex specialist. When given a natural language requirement, produce the exact regular expression pattern, explaining each part of the token, recommended flags, and positive/negative test string examples.",
+      "temperature": 0.2
     },
-    relatedTools: ['regex-tester', 'ai-code-explainer'],
+    "relatedTools": [
+      "regex-tester",
+      "ai-code-explainer"
+    ]
   },
   {
-    id: 'ai-seo-meta-generator',
-    slug: 'ai-seo-meta-generator',
-    name: 'AI SEO Title & Meta Description Generator',
-    category: 'ai-tools',
-    categoryName: 'AI Tools',
-    description: 'Generate high-CTR SEO meta titles, descriptions, and OpenGraph tags tailored for Google search rankings.',
-    type: 'ai',
-    status: 'free',
-    icon: 'Sparkle',
-    tags: ['ai', 'seo', 'meta tags', 'google', 'ctr'],
-    featured: true,
-    popular: true,
-    anonymousLimit: 2,
-    authenticatedLimit: 4,
-    seoTitle: 'AI SEO Title & Meta Description Generator – TechTools',
-    seoDescription: 'Generate click-worthy SEO titles and meta descriptions with proper pixel/character length constraints using Gemini.',
-    howToUse: [
-      'Enter your page topic, target keywords, and brand name.',
-      'Click "Generate SEO Tags".',
-      'Review 5 high-converting meta title and description options.',
+    "id": "ai-seo-meta-generator",
+    "slug": "ai-seo-meta-generator",
+    "name": "AI SEO Title & Meta Description Generator",
+    "category": "ai-tools",
+    "categoryName": "AI Tools",
+    "description": "Generate high-CTR SEO meta titles, descriptions, and OpenGraph tags tailored for Google search rankings.",
+    "type": "ai",
+    "status": "free",
+    "icon": "Sparkle",
+    "tags": [
+      "ai",
+      "seo",
+      "meta tags",
+      "google",
+      "ctr"
     ],
-    features: [
-      'Strict adherence to Google pixel/character lengths (55-60 chars for title, 150-160 for description)',
-      'Includes power words and emotional triggers to maximize CTR',
-      'Ready-to-use HTML meta tag snippets',
+    "featured": true,
+    "popular": true,
+    "anonymousLimit": 2,
+    "authenticatedLimit": 4,
+    "seoTitle": "AI SEO Title & Meta Description Generator – TechTools",
+    "seoDescription": "Generate click-worthy SEO titles and meta descriptions with proper pixel/character length constraints using Gemini.",
+    "howToUse": [
+      "Enter your page topic, target keywords, and brand name.",
+      "Click \"Generate SEO Tags\".",
+      "Review 5 high-converting meta title and description options."
     ],
-    faqs: [
+    "features": [
+      "Strict adherence to Google pixel/character lengths (55-60 chars for title, 150-160 for description)",
+      "Includes power words and emotional triggers to maximize CTR",
+      "Ready-to-use HTML meta tag snippets"
+    ],
+    "faqs": [
       {
-        question: 'Why are character lengths important for SEO titles?',
-        answer: 'Google search truncates titles longer than ~60 characters or ~600px. Staying within limits ensures your title is fully visible in search results.',
-      },
+        "question": "Why are character lengths important for SEO titles?",
+        "answer": "Google search truncates titles longer than ~60 characters or ~600px. Staying within limits ensures your title is fully visible in search results."
+      }
     ],
-    aiConfig: {
-      provider: 'gemini',
-      model: 'gemini-3.8-flash',
-      systemPrompt: 'You are a world-class SEO strategist. Generate 5 distinct, high-CTR meta title options (under 60 chars) and meta description options (140-155 chars) optimized for Google search. Include character counts and ready-to-copy HTML tags.',
-      temperature: 0.4,
+    "aiConfig": {
+      "provider": "gemini",
+      "model": "gemini-3.8-flash",
+      "systemPrompt": "You are a world-class SEO strategist. Generate 5 distinct, high-CTR meta title options (under 60 chars) and meta description options (140-155 chars) optimized for Google search. Include character counts and ready-to-copy HTML tags.",
+      "temperature": 0.4
     },
-    relatedTools: ['serp-snippet-preview', 'og-meta-generator', 'ai-text-summarizer'],
+    "relatedTools": [
+      "serp-snippet-preview",
+      "og-meta-generator",
+      "ai-text-summarizer"
+    ]
   },
   {
-    id: 'ai-email-writer',
-    slug: 'ai-email-writer',
-    name: 'AI Professional Email Writer',
-    category: 'ai-tools',
-    categoryName: 'AI Tools',
-    description: 'Craft professional business emails, follow-ups, client outreach, and polite inquiries in seconds.',
-    type: 'ai',
-    status: 'free',
-    icon: 'Mail',
-    tags: ['ai', 'email', 'business', 'communication', 'outreach'],
-    featured: false,
-    popular: true,
-    anonymousLimit: 2,
-    authenticatedLimit: 4,
-    seoTitle: 'AI Professional Email Generator – TechTools',
-    seoDescription: 'Write formal, persuasive, and polished business emails and replies in seconds with AI.',
-    howToUse: [
-      'Describe the purpose of your email and key points to cover.',
-      'Select the tone (Formal, Warm, Direct, Persuasive, Follow-up).',
-      'Click "Generate Email".',
+    "id": "ai-email-writer",
+    "slug": "ai-email-writer",
+    "name": "AI Professional Email Writer",
+    "category": "ai-tools",
+    "categoryName": "AI Tools",
+    "description": "Craft professional business emails, follow-ups, client outreach, and polite inquiries in seconds.",
+    "type": "ai",
+    "status": "free",
+    "icon": "Mail",
+    "tags": [
+      "ai",
+      "email",
+      "business",
+      "communication",
+      "outreach"
     ],
-    features: [
-      'Includes catchy subject line options',
-      'Proper opening greetings and professional sign-offs',
-      'Placeholders for personalization',
+    "featured": false,
+    "popular": true,
+    "anonymousLimit": 2,
+    "authenticatedLimit": 4,
+    "seoTitle": "AI Professional Email Generator – TechTools",
+    "seoDescription": "Write formal, persuasive, and polished business emails and replies in seconds with AI.",
+    "howToUse": [
+      "Describe the purpose of your email and key points to cover.",
+      "Select the tone (Formal, Warm, Direct, Persuasive, Follow-up).",
+      "Click \"Generate Email\"."
     ],
-    faqs: [
+    "features": [
+      "Includes catchy subject line options",
+      "Proper opening greetings and professional sign-offs",
+      "Placeholders for personalization"
+    ],
+    "faqs": [
       {
-        question: 'Can I generate email replies too?',
-        answer: 'Yes! Just paste the email you received and specify how you wish to reply.',
-      },
+        "question": "Can I generate email replies too?",
+        "answer": "Yes! Just paste the email you received and specify how you wish to reply."
+      }
     ],
-    aiConfig: {
-      provider: 'gemini',
-      model: 'gemini-3.8-flash',
-      systemPrompt: 'You are an executive communications specialist. Write a concise, courteous, and professional business email based on the prompt. Provide 3 subject line options followed by the email body.',
-      temperature: 0.4,
+    "aiConfig": {
+      "provider": "gemini",
+      "model": "gemini-3.8-flash",
+      "systemPrompt": "You are an executive communications specialist. Write a concise, courteous, and professional business email based on the prompt. Provide 3 subject line options followed by the email body.",
+      "temperature": 0.4
     },
-    relatedTools: ['ai-rewriter', 'ai-grammar-fixer', 'invoice-generator'],
-  },
-
-  // IMAGE TOOLS
-  {
-    id: 'image-compressor',
-    slug: 'image-compressor',
-    name: 'Image Compressor & Optimizer',
-    category: 'image-tools',
-    categoryName: 'Image Tools',
-    description: 'Compress PNG, JPG, and WebP images directly in your browser with zero server uploads and live visual comparison.',
-    type: 'client',
-    status: 'free',
-    icon: 'Minimize2',
-    tags: ['image', 'compress', 'optimize', 'png', 'jpg', 'webp'],
-    featured: true,
-    popular: true,
-    trending: true,
-    unlimited: true,
-    anonymousLimit: 2,
-    authenticatedLimit: 4,
-    seoTitle: 'Free Online Image Compressor (PNG, JPG, WebP) – TechTools',
-    seoDescription: 'Compress images online without losing quality. 100% private browser processing. Shrink image file sizes up to 80%.',
-    howToUse: [
-      'Drag and drop your image (PNG, JPG, WebP) into the upload box.',
-      'Adjust the compression quality slider (1% to 100%).',
-      'Compare original vs compressed size and preview quality.',
-      'Download your optimized image instantly.',
-    ],
-    features: [
-      '100% browser-based compression using HTML5 Canvas — zero server upload',
-      'Live before/after file size reduction percentage calculation',
-      'Supports PNG, JPG, and WebP formats',
-      'Custom width/height scaling options',
-    ],
-    faqs: [
-      {
-        question: 'Are my photos uploaded to your servers?',
-        answer: 'No! All compression is performed locally inside your browser via the HTML5 Canvas API. Your photos never leave your device.',
-      },
-    ],
-    relatedTools: ['image-resizer', 'image-to-base64', 'color-palette-generator'],
+    "relatedTools": [
+      "ai-rewriter",
+      "ai-grammar-fixer",
+      "invoice-generator"
+    ]
   },
   {
-    id: 'image-resizer',
-    slug: 'image-resizer',
-    name: 'Image Resizer & Format Converter',
-    category: 'image-tools',
-    categoryName: 'Image Tools',
-    description: 'Resize images by pixels or percentage, lock aspect ratios, and convert between JPG, PNG, and WebP.',
-    type: 'client',
-    status: 'free',
-    icon: 'Maximize2',
-    tags: ['image', 'resize', 'scale', 'convert', 'dimensions'],
-    featured: false,
-    popular: true,
-    unlimited: true,
-    anonymousLimit: 2,
-    authenticatedLimit: 4,
-    seoTitle: 'Image Resizer Online – Resize & Convert Images | TechTools',
-    seoDescription: 'Easily resize images to exact dimensions or percentage scale. Convert formats (PNG, JPEG, WebP) in your browser.',
-    howToUse: [
-      'Upload your image.',
-      'Enter desired width and height, or scale by percentage.',
-      'Choose output format (JPG, PNG, WebP) and download.',
+    "id": "image-compressor",
+    "slug": "image-compressor",
+    "name": "Image Compressor & Optimizer",
+    "category": "image-tools",
+    "categoryName": "Image Tools",
+    "description": "Compress PNG, JPG, and WebP images directly in your browser with zero server uploads and live visual comparison.",
+    "type": "client",
+    "status": "free",
+    "icon": "Minimize2",
+    "tags": [
+      "image",
+      "compress",
+      "optimize",
+      "png",
+      "jpg",
+      "webp"
     ],
-    features: [
-      'Aspect ratio lock to prevent distortion',
-      'Instant format conversion between JPG, PNG, and WebP',
-      'Crisp high-resolution canvas resampling',
+    "featured": true,
+    "popular": true,
+    "trending": true,
+    "unlimited": true,
+    "anonymousLimit": 2,
+    "authenticatedLimit": 4,
+    "seoTitle": "Free Online Image Compressor (PNG, JPG, WebP) – TechTools",
+    "seoDescription": "Compress images online without losing quality. 100% private browser processing. Shrink image file sizes up to 80%.",
+    "howToUse": [
+      "Drag and drop your image (PNG, JPG, WebP) into the upload box.",
+      "Adjust the compression quality slider (1% to 100%).",
+      "Compare original vs compressed size and preview quality.",
+      "Download your optimized image instantly."
     ],
-    faqs: [
+    "features": [
+      "100% browser-based compression using HTML5 Canvas — zero server upload",
+      "Live before/after file size reduction percentage calculation",
+      "Supports PNG, JPG, and WebP formats",
+      "Custom width/height scaling options"
+    ],
+    "faqs": [
       {
-        question: 'Can I enlarge an image without losing quality?',
-        answer: 'Canvas interpolation will preserve as much clarity as possible, but scaling up small images significantly may reveal pixelation.',
-      },
+        "question": "Are my photos uploaded to your servers?",
+        "answer": "No! All compression is performed locally inside your browser via the HTML5 Canvas API. Your photos never leave your device."
+      }
     ],
-    relatedTools: ['image-compressor', 'aspect-ratio-calculator', 'favicon-generator'],
+    "relatedTools": [
+      "image-resizer",
+      "image-to-base64",
+      "color-palette-generator"
+    ]
   },
   {
-    id: 'image-to-base64',
-    slug: 'image-to-base64',
-    name: 'Image to Base64 & Data URI Converter',
-    category: 'image-tools',
-    categoryName: 'Image Tools',
-    description: 'Convert any image file into a Base64 encoded Data URI string for direct embedding into HTML, CSS, or JSON.',
-    type: 'client',
-    status: 'free',
-    icon: 'CodeXml',
-    tags: ['image', 'base64', 'data-uri', 'html', 'css'],
-    featured: false,
-    popular: true,
-    unlimited: true,
-    anonymousLimit: 2,
-    authenticatedLimit: 4,
-    seoTitle: 'Image to Base64 Converter Online – TechTools',
-    seoDescription: 'Convert PNG, JPG, SVG, and WebP images to Base64 strings and CSS/HTML Data URIs in your browser.',
-    howToUse: [
-      'Select or drop an image file.',
-      'View the generated Base64 Data URI string.',
-      'Copy as plain Base64, HTML `<img src="..." />`, or CSS `background-image`.',
+    "id": "image-resizer",
+    "slug": "image-resizer",
+    "name": "Image Resizer & Format Converter",
+    "category": "image-tools",
+    "categoryName": "Image Tools",
+    "description": "Resize images by pixels or percentage, lock aspect ratios, and convert between JPG, PNG, and WebP.",
+    "type": "client",
+    "status": "free",
+    "icon": "Maximize2",
+    "tags": [
+      "image",
+      "resize",
+      "scale",
+      "convert",
+      "dimensions"
     ],
-    features: [
-      'Generates ready-to-paste HTML, CSS, and Markdown tags',
-      'Preview image alongside Base64 code',
-      'Instant one-click copy',
+    "featured": false,
+    "popular": true,
+    "unlimited": true,
+    "anonymousLimit": 2,
+    "authenticatedLimit": 4,
+    "seoTitle": "Image Resizer Online – Resize & Convert Images | TechTools",
+    "seoDescription": "Easily resize images to exact dimensions or percentage scale. Convert formats (PNG, JPEG, WebP) in your browser.",
+    "howToUse": [
+      "Upload your image.",
+      "Enter desired width and height, or scale by percentage.",
+      "Choose output format (JPG, PNG, WebP) and download."
     ],
-    faqs: [
+    "features": [
+      "Aspect ratio lock to prevent distortion",
+      "Instant format conversion between JPG, PNG, and WebP",
+      "Crisp high-resolution canvas resampling"
+    ],
+    "faqs": [
       {
-        question: 'When should I use Base64 images in HTML/CSS?',
-        answer: 'Base64 images eliminate extra HTTP network requests for small icons and logos, speeding up initial page rendering.',
-      },
+        "question": "Can I enlarge an image without losing quality?",
+        "answer": "Canvas interpolation will preserve as much clarity as possible, but scaling up small images significantly may reveal pixelation."
+      }
     ],
-    relatedTools: ['base64-encoder-decoder', 'image-compressor'],
+    "relatedTools": [
+      "image-compressor",
+      "aspect-ratio-calculator",
+      "favicon-generator"
+    ]
   },
   {
-    id: 'favicon-generator',
-    slug: 'favicon-generator',
-    name: 'Favicon & App Icon Generator',
-    category: 'image-tools',
-    categoryName: 'Image Tools',
-    description: 'Create multi-resolution website favicons and mobile app icons (16x16, 32x32, 48x48, 180x180, 512x512) from any image.',
-    type: 'client',
-    status: 'free',
-    icon: 'AppWindow',
-    tags: ['favicon', 'icon', 'app', 'apple-touch', 'generator'],
-    featured: false,
-    popular: true,
-    anonymousLimit: 2,
-    authenticatedLimit: 4,
-    seoTitle: 'Favicon & App Icon Generator – TechTools',
-    seoDescription: 'Generate complete favicon packages for modern web browsers, iOS, and Android from a single image.',
-    howToUse: [
-      'Upload a square logo or image (minimum 512x512 recommended).',
-      'Preview generated sizes: 16x16, 32x32, 48x48, 180x180 (Apple Touch), and 512x512.',
-      'Download individual sizes or copy HTML `<link rel="icon">` tags.',
+    "id": "image-to-base64",
+    "slug": "image-to-base64",
+    "name": "Image to Base64 & Data URI Converter",
+    "category": "image-tools",
+    "categoryName": "Image Tools",
+    "description": "Convert any image file into a Base64 encoded Data URI string for direct embedding into HTML, CSS, or JSON.",
+    "type": "client",
+    "status": "free",
+    "icon": "CodeXml",
+    "tags": [
+      "image",
+      "base64",
+      "data-uri",
+      "html",
+      "css"
     ],
-    features: [
-      'Multi-size batch generation in browser',
-      'Includes Apple Touch icon and Android PWA manifest icons',
-      'Generates ready-to-paste `<head>` HTML code',
+    "featured": false,
+    "popular": true,
+    "unlimited": true,
+    "anonymousLimit": 2,
+    "authenticatedLimit": 4,
+    "seoTitle": "Image to Base64 Converter Online – TechTools",
+    "seoDescription": "Convert PNG, JPG, SVG, and WebP images to Base64 strings and CSS/HTML Data URIs in your browser.",
+    "howToUse": [
+      "Select or drop an image file.",
+      "View the generated Base64 Data URI string.",
+      "Copy as plain Base64, HTML `<img src=\"...\" />`, or CSS `background-image`."
     ],
-    faqs: [
+    "features": [
+      "Generates ready-to-paste HTML, CSS, and Markdown tags",
+      "Preview image alongside Base64 code",
+      "Instant one-click copy"
+    ],
+    "faqs": [
       {
-        question: 'What is the recommended source image size?',
-        answer: 'A high-resolution 512x512 PNG with a transparent background works best.',
-      },
+        "question": "When should I use Base64 images in HTML/CSS?",
+        "answer": "Base64 images eliminate extra HTTP network requests for small icons and logos, speeding up initial page rendering."
+      }
     ],
-    relatedTools: ['image-resizer', 'image-compressor', 'qr-code-generator'],
-  },
-
-  // TEXT & CONTENT TOOLS
-  {
-    id: 'word-counter',
-    slug: 'word-counter',
-    name: 'Word & Character Counter',
-    category: 'text-tools',
-    categoryName: 'Text Tools',
-    description: 'Real-time word, character, sentence, paragraph, reading time, speaking time, and keyword density analyzer.',
-    type: 'client',
-    status: 'free',
-    icon: 'Type',
-    tags: ['word counter', 'character counter', 'reading time', 'text statistics'],
-    featured: true,
-    popular: true,
-    unlimited: true,
-    anonymousLimit: 2,
-    authenticatedLimit: 4,
-    seoTitle: 'Word Counter & Character Counter Online – Free Text Analyzer | TechTools',
-    seoDescription: 'Count words, characters, sentences, paragraphs, and estimate reading/speaking time with real-time keyword density analytics.',
-    howToUse: [
-      'Type or paste your text into the editor.',
-      'View live counts of words, characters (with & without spaces), sentences, and paragraphs.',
-      'Check estimated reading and speaking duration plus top keyword density.',
-    ],
-    features: [
-      'Live metric cards with instant zero-lag recalculation',
-      'Reading time (225 wpm) and speaking time (130 wpm) estimates',
-      'Top 10 keyword frequency table',
-      'Uppercase, lowercase, and clear controls',
-    ],
-    faqs: [
-      {
-        question: 'How is reading time calculated?',
-        answer: 'It uses standard reading speeds of ~225 words per minute for silent reading and ~130 wpm for speech.',
-      },
-    ],
-    relatedTools: ['case-converter', 'ai-rewriter', 'text-diff'],
+    "relatedTools": [
+      "base64-encoder-decoder",
+      "image-compressor"
+    ]
   },
   {
-    id: 'case-converter',
-    slug: 'case-converter',
-    name: 'Text Case Converter',
-    category: 'text-tools',
-    categoryName: 'Text Tools',
-    description: 'Convert text instantly to UPPERCASE, lowercase, Title Case, Sentence case, camelCase, PascalCase, snake_case, and kebab-case.',
-    type: 'client',
-    status: 'free',
-    icon: 'CaseSensitive',
-    tags: ['case', 'uppercase', 'lowercase', 'camelcase', 'snake_case', 'kebab-case', 'title case'],
-    featured: false,
-    popular: true,
-    unlimited: true,
-    anonymousLimit: 2,
-    authenticatedLimit: 4,
-    seoTitle: 'Text Case Converter Online – CamelCase, Snake, Kebab & Title | TechTools',
-    seoDescription: 'Convert any text into camelCase, UPPERCASE, lowercase, Title Case, snake_case, kebab-case, and PascalCase with one click.',
-    howToUse: [
-      'Type or paste your text.',
-      'Click on any conversion button (e.g. "camelCase", "Title Case", "snake_case").',
-      'Copy the converted text instantly to your clipboard.',
+    "id": "favicon-generator",
+    "slug": "favicon-generator",
+    "name": "Favicon & App Icon Generator",
+    "category": "image-tools",
+    "categoryName": "Image Tools",
+    "description": "Create multi-resolution website favicons and mobile app icons (16x16, 32x32, 48x48, 180x180, 512x512) from any image.",
+    "type": "client",
+    "status": "free",
+    "icon": "AppWindow",
+    "tags": [
+      "favicon",
+      "icon",
+      "app",
+      "apple-touch",
+      "generator"
     ],
-    features: [
-      '8 distinct casing formats in 1-click',
-      'Clean developer identifier normalization',
-      'Instant copy feedback',
+    "featured": false,
+    "popular": true,
+    "anonymousLimit": 2,
+    "authenticatedLimit": 4,
+    "seoTitle": "Favicon & App Icon Generator – TechTools",
+    "seoDescription": "Generate complete favicon packages for modern web browsers, iOS, and Android from a single image.",
+    "howToUse": [
+      "Upload a square logo or image (minimum 512x512 recommended).",
+      "Preview generated sizes: 16x16, 32x32, 48x48, 180x180 (Apple Touch), and 512x512.",
+      "Download individual sizes or copy HTML `<link rel=\"icon\">` tags."
     ],
-    faqs: [
+    "features": [
+      "Multi-size batch generation in browser",
+      "Includes Apple Touch icon and Android PWA manifest icons",
+      "Generates ready-to-paste `<head>` HTML code"
+    ],
+    "faqs": [
       {
-        question: 'What is kebab-case used for?',
-        answer: 'kebab-case separates words with hyphens and is commonly used in URLs and CSS class names.',
-      },
+        "question": "What is the recommended source image size?",
+        "answer": "A high-resolution 512x512 PNG with a transparent background works best."
+      }
     ],
-    relatedTools: ['slug-generator', 'word-counter', 'whitespace-cleaner'],
+    "relatedTools": [
+      "image-resizer",
+      "image-compressor",
+      "qr-code-generator"
+    ]
   },
   {
-    id: 'text-diff',
-    slug: 'text-diff',
-    name: 'Text Diff & Comparison Tool',
-    category: 'text-tools',
-    categoryName: 'Text Tools',
-    description: 'Compare two text snippets side-by-side or inline to spot additions, deletions, and differences instantly.',
-    type: 'client',
-    status: 'free',
-    icon: 'GitCompare',
-    tags: ['diff', 'compare', 'text comparison', 'changes', 'git'],
-    featured: false,
-    popular: true,
-    anonymousLimit: 2,
-    authenticatedLimit: 4,
-    seoTitle: 'Online Text Diff & Comparison Tool – TechTools',
-    seoDescription: 'Compare two texts side-by-side or line-by-line to see differences, additions, and deletions with color highlights.',
-    howToUse: [
-      'Paste original text in the left panel and modified text in the right panel.',
-      'Click "Compare Texts" to view green additions and red deletions.',
+    "id": "word-counter",
+    "slug": "word-counter",
+    "name": "Word & Character Counter",
+    "category": "text-tools",
+    "categoryName": "Text Tools",
+    "description": "Real-time word, character, sentence, paragraph, reading time, speaking time, and keyword density analyzer.",
+    "type": "client",
+    "status": "free",
+    "icon": "Type",
+    "tags": [
+      "word counter",
+      "character counter",
+      "reading time",
+      "text statistics"
     ],
-    features: [
-      'Side-by-side and unified diff visualization',
-      'Character and line-level difference detection',
-      'Swap inputs button',
+    "featured": true,
+    "popular": true,
+    "unlimited": true,
+    "anonymousLimit": 2,
+    "authenticatedLimit": 4,
+    "seoTitle": "Word Counter & Character Counter Online – Free Text Analyzer | TechTools",
+    "seoDescription": "Count words, characters, sentences, paragraphs, and estimate reading/speaking time with real-time keyword density analytics.",
+    "howToUse": [
+      "Type or paste your text into the editor.",
+      "View live counts of words, characters (with & without spaces), sentences, and paragraphs.",
+      "Check estimated reading and speaking duration plus top keyword density."
     ],
-    faqs: [
+    "features": [
+      "Live metric cards with instant zero-lag recalculation",
+      "Reading time (225 wpm) and speaking time (130 wpm) estimates",
+      "Top 10 keyword frequency table",
+      "Uppercase, lowercase, and clear controls"
+    ],
+    "faqs": [
       {
-        question: 'Can I compare code snippets?',
-        answer: 'Yes! It works great for text, JSON, configuration files, and code in any programming language.',
-      },
+        "question": "How is reading time calculated?",
+        "answer": "It uses standard reading speeds of ~225 words per minute for silent reading and ~130 wpm for speech."
+      }
     ],
-    relatedTools: ['word-counter', 'json-formatter', 'ai-code-explainer'],
+    "relatedTools": [
+      "case-converter",
+      "ai-rewriter",
+      "text-diff"
+    ]
   },
   {
-    id: 'lorem-ipsum-generator',
-    slug: 'lorem-ipsum-generator',
-    name: 'Lorem Ipsum Generator',
-    category: 'text-tools',
-    categoryName: 'Text Tools',
-    description: 'Generate customizable dummy placeholder text by paragraphs, sentences, words, or unordered list items.',
-    type: 'client',
-    status: 'free',
-    icon: 'FileCode2',
-    tags: ['lorem ipsum', 'placeholder', 'dummy text', 'generator'],
-    featured: false,
-    popular: true,
-    unlimited: true,
-    anonymousLimit: 2,
-    authenticatedLimit: 4,
-    seoTitle: 'Lorem Ipsum Generator – Custom Placeholder Text | TechTools',
-    seoDescription: 'Generate custom dummy Latin placeholder text for UI layouts, wireframes, and mockups in seconds.',
-    howToUse: [
-      'Select count (e.g. 3) and unit (Paragraphs, Sentences, Words, or Lists).',
-      'Toggle "Start with Lorem ipsum dolor sit amet...".',
-      'Click "Generate Text" and copy directly.',
+    "id": "case-converter",
+    "slug": "case-converter",
+    "name": "Text Case Converter",
+    "category": "text-tools",
+    "categoryName": "Text Tools",
+    "description": "Convert text instantly to UPPERCASE, lowercase, Title Case, Sentence case, camelCase, PascalCase, snake_case, and kebab-case.",
+    "type": "client",
+    "status": "free",
+    "icon": "CaseSensitive",
+    "tags": [
+      "case",
+      "uppercase",
+      "lowercase",
+      "camelcase",
+      "snake_case",
+      "kebab-case",
+      "title case"
     ],
-    features: [
-      'Paragraphs, sentences, words, and list generators',
-      'HTML `<p>` tag wrapping mode',
-      'Instant copy to clipboard',
+    "featured": false,
+    "popular": true,
+    "unlimited": true,
+    "anonymousLimit": 2,
+    "authenticatedLimit": 4,
+    "seoTitle": "Text Case Converter Online – CamelCase, Snake, Kebab & Title | TechTools",
+    "seoDescription": "Convert any text into camelCase, UPPERCASE, lowercase, Title Case, snake_case, kebab-case, and PascalCase with one click.",
+    "howToUse": [
+      "Type or paste your text.",
+      "Click on any conversion button (e.g. \"camelCase\", \"Title Case\", \"snake_case\").",
+      "Copy the converted text instantly to your clipboard."
     ],
-    faqs: [
+    "features": [
+      "8 distinct casing formats in 1-click",
+      "Clean developer identifier normalization",
+      "Instant copy feedback"
+    ],
+    "faqs": [
       {
-        question: 'Where does Lorem Ipsum come from?',
-        answer: 'It originated from sections 1.10.32 and 1.10.33 of Cicero\'s "de Finibus Bonorum et Malorum" written in 45 BC.',
-      },
+        "question": "What is kebab-case used for?",
+        "answer": "kebab-case separates words with hyphens and is commonly used in URLs and CSS class names."
+      }
     ],
-    relatedTools: ['word-counter', 'case-converter', 'slug-generator'],
-  },
-
-  // SEO TOOLS
-  {
-    id: 'serp-snippet-preview',
-    slug: 'serp-snippet-preview',
-    name: 'Google SERP Snippet Preview',
-    category: 'seo-tools',
-    categoryName: 'SEO Tools',
-    description: 'Simulate how your webpage appears on Google Desktop and Mobile search results with real-time character & pixel meters.',
-    type: 'client',
-    status: 'free',
-    icon: 'Search',
-    tags: ['seo', 'serp', 'google preview', 'meta title', 'meta description'],
-    featured: true,
-    popular: true,
-    anonymousLimit: 2,
-    authenticatedLimit: 4,
-    seoTitle: 'Google SERP Snippet Preview Tool – TechTools',
-    seoDescription: 'Preview and optimize your meta title and description with realistic Google desktop and mobile search simulation.',
-    howToUse: [
-      'Enter your page title, URL slug, and meta description.',
-      'Toggle between Desktop and Mobile preview modes.',
-      'Check the pixel and character limit meters to prevent search result truncation.',
-    ],
-    features: [
-      'Pixel-accurate Google Desktop & Mobile snippet rendering',
-      'Real-time length warning indicators (green/yellow/red)',
-      'Rich snippet features (Date, Favicon preview)',
-    ],
-    faqs: [
-      {
-        question: 'What is the optimal meta description length in 2026?',
-        answer: 'Between 140 to 160 characters (approx. 960 pixels on desktop).',
-      },
-    ],
-    relatedTools: ['og-meta-generator', 'ai-seo-meta-generator', 'schema-markup-generator'],
+    "relatedTools": [
+      "slug-generator",
+      "word-counter",
+      "whitespace-cleaner"
+    ]
   },
   {
-    id: 'og-meta-generator',
-    slug: 'og-meta-generator',
-    name: 'Open Graph & Twitter Card Generator',
-    category: 'seo-tools',
-    categoryName: 'SEO Tools',
-    description: 'Generate and preview OpenGraph (Facebook/LinkedIn) and Twitter card meta tags with live social share simulation.',
-    type: 'client',
-    status: 'free',
-    icon: 'Share2',
-    tags: ['open graph', 'og tags', 'twitter card', 'social meta', 'seo'],
-    featured: false,
-    popular: true,
-    anonymousLimit: 2,
-    authenticatedLimit: 4,
-    seoTitle: 'Open Graph & Twitter Card Meta Generator – TechTools',
-    seoDescription: 'Create perfect Open Graph and Twitter Card HTML tags with live Facebook, Twitter, and LinkedIn preview cards.',
-    howToUse: [
-      'Fill in Title, Description, Image URL, Canonical URL, and Site Name.',
-      'Inspect the live social card preview.',
-      'Copy the ready-to-paste `<meta>` tag block into your HTML `<head>`.',
+    "id": "text-diff",
+    "slug": "text-diff",
+    "name": "Text Diff & Comparison Tool",
+    "category": "text-tools",
+    "categoryName": "Text Tools",
+    "description": "Compare two text snippets side-by-side or inline to spot additions, deletions, and differences instantly.",
+    "type": "client",
+    "status": "free",
+    "icon": "GitCompare",
+    "tags": [
+      "diff",
+      "compare",
+      "text comparison",
+      "changes",
+      "git"
     ],
-    features: [
-      'Live Facebook / LinkedIn and Twitter Summary Large Image card previews',
-      'Generates complete HTML meta tag snippets',
-      'Validates image URL presence and title lengths',
+    "featured": false,
+    "popular": true,
+    "anonymousLimit": 2,
+    "authenticatedLimit": 4,
+    "seoTitle": "Online Text Diff & Comparison Tool – TechTools",
+    "seoDescription": "Compare two texts side-by-side or line-by-line to see differences, additions, and deletions with color highlights.",
+    "howToUse": [
+      "Paste original text in the left panel and modified text in the right panel.",
+      "Click \"Compare Texts\" to view green additions and red deletions."
     ],
-    faqs: [
+    "features": [
+      "Side-by-side and unified diff visualization",
+      "Character and line-level difference detection",
+      "Swap inputs button"
+    ],
+    "faqs": [
       {
-        question: 'What is the recommended Open Graph image size?',
-        answer: '1200 x 630 pixels with an aspect ratio of 1.91:1 provides the sharpest preview on Facebook, Twitter, and LinkedIn.',
-      },
+        "question": "Can I compare code snippets?",
+        "answer": "Yes! It works great for text, JSON, configuration files, and code in any programming language."
+      }
     ],
-    relatedTools: ['serp-snippet-preview', 'ai-seo-meta-generator', 'schema-markup-generator'],
+    "relatedTools": [
+      "word-counter",
+      "json-formatter",
+      "ai-code-explainer"
+    ]
   },
   {
-    id: 'schema-markup-generator',
-    slug: 'schema-markup-generator',
-    name: 'Schema.org JSON-LD Generator',
-    category: 'seo-tools',
-    categoryName: 'SEO Tools',
-    description: 'Build valid Schema.org structured data in JSON-LD format for Articles, FAQs, Products, Organizations, and Local Businesses.',
-    type: 'client',
-    status: 'free',
-    icon: 'FileJson',
-    tags: ['schema', 'json-ld', 'structured data', 'rich snippets', 'seo'],
-    featured: true,
-    popular: true,
-    anonymousLimit: 2,
-    authenticatedLimit: 4,
-    seoTitle: 'Schema.org JSON-LD Generator – Rich Snippets Tool | TechTools',
-    seoDescription: 'Generate valid Schema.org JSON-LD structured data for FAQ, Article, Product, Organization, and HowTo schemas.',
-    howToUse: [
-      'Select schema type (FAQ, Article, Product, Organization, BreadcrumbList).',
-      'Fill in the structured fields.',
-      'Copy the generated `<script type="application/ld+json">` code block.',
+    "id": "lorem-ipsum-generator",
+    "slug": "lorem-ipsum-generator",
+    "name": "Lorem Ipsum Generator",
+    "category": "text-tools",
+    "categoryName": "Text Tools",
+    "description": "Generate customizable dummy placeholder text by paragraphs, sentences, words, or unordered list items.",
+    "type": "client",
+    "status": "free",
+    "icon": "FileCode2",
+    "tags": [
+      "lorem ipsum",
+      "placeholder",
+      "dummy text",
+      "generator"
     ],
-    features: [
-      'Supports FAQPage, Article, Product, Organization, and Breadcrumbs',
-      'Validates JSON-LD structure in real-time',
-      'Ready for Google Rich Results Test',
+    "featured": false,
+    "popular": true,
+    "unlimited": true,
+    "anonymousLimit": 2,
+    "authenticatedLimit": 4,
+    "seoTitle": "Lorem Ipsum Generator – Custom Placeholder Text | TechTools",
+    "seoDescription": "Generate custom dummy Latin placeholder text for UI layouts, wireframes, and mockups in seconds.",
+    "howToUse": [
+      "Select count (e.g. 3) and unit (Paragraphs, Sentences, Words, or Lists).",
+      "Toggle \"Start with Lorem ipsum dolor sit amet...\".",
+      "Click \"Generate Text\" and copy directly."
     ],
-    faqs: [
+    "features": [
+      "Paragraphs, sentences, words, and list generators",
+      "HTML `<p>` tag wrapping mode",
+      "Instant copy to clipboard"
+    ],
+    "faqs": [
       {
-        question: 'Where should I place the JSON-LD script?',
-        answer: 'Place it inside the `<head>` or before the closing `</body>` tag of your HTML page.',
-      },
+        "question": "Where does Lorem Ipsum come from?",
+        "answer": "It originated from sections 1.10.32 and 1.10.33 of Cicero's \"de Finibus Bonorum et Malorum\" written in 45 BC."
+      }
     ],
-    relatedTools: ['serp-snippet-preview', 'json-formatter', 'og-meta-generator'],
+    "relatedTools": [
+      "word-counter",
+      "case-converter",
+      "slug-generator"
+    ]
   },
   {
-    id: 'utm-builder',
-    slug: 'utm-builder',
-    name: 'UTM Campaign URL Builder',
-    category: 'seo-tools',
-    categoryName: 'SEO Tools',
-    description: 'Add campaign parameters (utm_source, utm_medium, utm_campaign, utm_term, utm_content) to track marketing performance.',
-    type: 'client',
-    status: 'free',
-    icon: 'Link2',
-    tags: ['utm', 'campaign', 'analytics', 'tracking', 'google analytics'],
-    featured: false,
-    popular: false,
-    unlimited: true,
-    anonymousLimit: 2,
-    authenticatedLimit: 4,
-    seoTitle: 'UTM Campaign URL Builder – Google Analytics Tracker | TechTools',
-    seoDescription: 'Build tracking URLs with UTM source, medium, campaign, content, and term parameters for Google Analytics 4.',
-    howToUse: [
-      'Enter your website destination URL.',
-      'Specify Source (e.g. google, newsletter), Medium (e.g. cpc, email), and Campaign name.',
-      'Copy your clean tracked URL or generate a QR code for it.',
+    "id": "serp-snippet-preview",
+    "slug": "serp-snippet-preview",
+    "name": "Google SERP Snippet Preview",
+    "category": "seo-tools",
+    "categoryName": "SEO Tools",
+    "description": "Simulate how your webpage appears on Google Desktop and Mobile search results with real-time character & pixel meters.",
+    "type": "client",
+    "status": "free",
+    "icon": "Search",
+    "tags": [
+      "seo",
+      "serp",
+      "google preview",
+      "meta title",
+      "meta description"
     ],
-    features: [
-      'Instant URL sanitization and parameter encoding',
-      'Preview final URL as you type',
-      'One-click QR code creation for physical print campaigns',
+    "featured": true,
+    "popular": true,
+    "anonymousLimit": 2,
+    "authenticatedLimit": 4,
+    "seoTitle": "Google SERP Snippet Preview Tool – TechTools",
+    "seoDescription": "Preview and optimize your meta title and description with realistic Google desktop and mobile search simulation.",
+    "howToUse": [
+      "Enter your page title, URL slug, and meta description.",
+      "Toggle between Desktop and Mobile preview modes.",
+      "Check the pixel and character limit meters to prevent search result truncation."
     ],
-    faqs: [
+    "features": [
+      "Pixel-accurate Google Desktop & Mobile snippet rendering",
+      "Real-time length warning indicators (green/yellow/red)",
+      "Rich snippet features (Date, Favicon preview)"
+    ],
+    "faqs": [
       {
-        question: 'Are UTM parameters case-sensitive in GA4?',
-        answer: 'Yes! It is best practice to keep all UTM values strictly in lowercase.',
-      },
+        "question": "What is the optimal meta description length in 2026?",
+        "answer": "Between 140 to 160 characters (approx. 960 pixels on desktop)."
+      }
     ],
-    relatedTools: ['qr-code-generator', 'url-encoder-decoder', 'slug-generator'],
-  },
-
-  // BUSINESS & FINANCE TOOLS
-  {
-    id: 'invoice-generator',
-    slug: 'invoice-generator',
-    name: 'Invoice & Receipt Generator',
-    category: 'business-tools',
-    categoryName: 'Business Tools',
-    description: 'Create professional invoices and receipts with custom line items, tax, discount, logo, currency, and instant PDF print.',
-    type: 'client',
-    status: 'free',
-    icon: 'Receipt',
-    tags: ['invoice', 'receipt', 'business', 'billing', 'pdf'],
-    featured: true,
-    popular: true,
-    trending: true,
-    anonymousLimit: 2,
-    authenticatedLimit: 4,
-    seoTitle: 'Free Online Invoice Generator – Create & Print PDF Invoices | TechTools',
-    seoDescription: 'Generate professional business invoices and receipts online in seconds. Add line items, taxes, currency, and export to PDF/print.',
-    howToUse: [
-      'Enter your company details, client info, and invoice number/date.',
-      'Add line items with quantity, unit rate, and descriptions.',
-      'Set tax rate and discount if applicable.',
-      'Click "Print / Download PDF" to get a clean printable invoice.',
-    ],
-    features: [
-      'Dynamic line-item calculations with subtotals, tax, and discounts',
-      'Supports USD ($), EUR (€), GBP (£), INR (₹), CAD, AUD, and more',
-      'Clean professional printable invoice design',
-      'Local browser storage remembers your company details',
-    ],
-    faqs: [
-      {
-        question: 'Are my invoice details saved online?',
-        answer: 'No, all details stay safely in your browser. You can save your company defaults locally for future sessions.',
-      },
-    ],
-    relatedTools: ['profit-margin-calculator', 'loan-emi-calculator', 'percentage-calculator'],
+    "relatedTools": [
+      "og-meta-generator",
+      "ai-seo-meta-generator",
+      "schema-markup-generator"
+    ]
   },
   {
-    id: 'profit-margin-calculator',
-    slug: 'profit-margin-calculator',
-    name: 'Profit Margin & Markup Calculator',
-    category: 'finance-tools',
-    categoryName: 'Finance Tools',
-    description: 'Calculate gross profit margin, markup percentage, revenue, and gross profit from cost and selling price.',
-    type: 'client',
-    status: 'free',
-    icon: 'TrendingUp',
-    tags: ['profit margin', 'markup', 'revenue', 'business', 'finance'],
-    featured: true,
-    popular: true,
-    unlimited: true,
-    anonymousLimit: 2,
-    authenticatedLimit: 4,
-    seoTitle: 'Profit Margin & Markup Calculator – TechTools',
-    seoDescription: 'Calculate gross profit, profit margin percentage, and markup percentage instantly from cost and revenue.',
-    howToUse: [
-      'Enter Cost of Goods Sold (COGS) and Selling Price (Revenue).',
-      'View Gross Profit, Profit Margin (%), and Markup (%).',
+    "id": "og-meta-generator",
+    "slug": "og-meta-generator",
+    "name": "Open Graph & Twitter Card Generator",
+    "category": "seo-tools",
+    "categoryName": "SEO Tools",
+    "description": "Generate and preview OpenGraph (Facebook/LinkedIn) and Twitter card meta tags with live social share simulation.",
+    "type": "client",
+    "status": "free",
+    "icon": "Share2",
+    "tags": [
+      "open graph",
+      "og tags",
+      "twitter card",
+      "social meta",
+      "seo"
     ],
-    features: [
-      'Instant breakdown of Gross Margin vs Markup %',
-      'Supports reverse calculation (calculate selling price from target margin)',
-      'Visual profit ratio bar',
+    "featured": false,
+    "popular": true,
+    "anonymousLimit": 2,
+    "authenticatedLimit": 4,
+    "seoTitle": "Open Graph & Twitter Card Meta Generator – TechTools",
+    "seoDescription": "Create perfect Open Graph and Twitter Card HTML tags with live Facebook, Twitter, and LinkedIn preview cards.",
+    "howToUse": [
+      "Fill in Title, Description, Image URL, Canonical URL, and Site Name.",
+      "Inspect the live social card preview.",
+      "Copy the ready-to-paste `<meta>` tag block into your HTML `<head>`."
     ],
-    faqs: [
+    "features": [
+      "Live Facebook / LinkedIn and Twitter Summary Large Image card previews",
+      "Generates complete HTML meta tag snippets",
+      "Validates image URL presence and title lengths"
+    ],
+    "faqs": [
       {
-        question: 'What is the difference between Margin and Markup?',
-        answer: 'Profit Margin is profit divided by selling price (revenue). Markup is profit divided by cost.',
-      },
+        "question": "What is the recommended Open Graph image size?",
+        "answer": "1200 x 630 pixels with an aspect ratio of 1.91:1 provides the sharpest preview on Facebook, Twitter, and LinkedIn."
+      }
     ],
-    relatedTools: ['invoice-generator', 'percentage-calculator', 'break-even-calculator'],
+    "relatedTools": [
+      "serp-snippet-preview",
+      "ai-seo-meta-generator",
+      "schema-markup-generator"
+    ]
   },
   {
-    id: 'loan-emi-calculator',
-    slug: 'loan-emi-calculator',
-    name: 'Loan EMI & Mortgage Calculator',
-    category: 'finance-tools',
-    categoryName: 'Finance Tools',
-    description: 'Calculate monthly loan EMI payments, total interest payable, and breakdown schedule for home or personal loans.',
-    type: 'client',
-    status: 'free',
-    icon: 'Landmark',
-    tags: ['loan', 'emi', 'mortgage', 'interest', 'amortization'],
-    featured: true,
-    popular: true,
-    unlimited: true,
-    anonymousLimit: 2,
-    authenticatedLimit: 4,
-    seoTitle: 'Loan EMI & Mortgage Calculator – TechTools',
-    seoDescription: 'Calculate monthly loan payments, total interest, and total repayment amount with interactive sliders.',
-    howToUse: [
-      'Enter Loan Amount (Principal), Annual Interest Rate (%), and Loan Tenure (Years/Months).',
-      'Inspect monthly EMI, total interest, and principal vs interest ratio.',
+    "id": "schema-markup-generator",
+    "slug": "schema-markup-generator",
+    "name": "Schema.org JSON-LD Generator",
+    "category": "seo-tools",
+    "categoryName": "SEO Tools",
+    "description": "Build valid Schema.org structured data in JSON-LD format for Articles, FAQs, Products, Organizations, and Local Businesses.",
+    "type": "client",
+    "status": "free",
+    "icon": "FileJson",
+    "tags": [
+      "schema",
+      "json-ld",
+      "structured data",
+      "rich snippets",
+      "seo"
     ],
-    features: [
-      'Interactive sliders for instant visual feedback',
-      'Principal vs Total Interest breakdown',
-      'Support for yearly and monthly tenures',
+    "featured": true,
+    "popular": true,
+    "anonymousLimit": 2,
+    "authenticatedLimit": 4,
+    "seoTitle": "Schema.org JSON-LD Generator – Rich Snippets Tool | TechTools",
+    "seoDescription": "Generate valid Schema.org JSON-LD structured data for FAQ, Article, Product, Organization, and HowTo schemas.",
+    "howToUse": [
+      "Select schema type (FAQ, Article, Product, Organization, BreadcrumbList).",
+      "Fill in the structured fields.",
+      "Copy the generated `<script type=\"application/ld+json\">` code block."
     ],
-    faqs: [
+    "features": [
+      "Supports FAQPage, Article, Product, Organization, and Breadcrumbs",
+      "Validates JSON-LD structure in real-time",
+      "Ready for Google Rich Results Test"
+    ],
+    "faqs": [
       {
-        question: 'What is EMI?',
-        answer: 'Equated Monthly Installment (EMI) is a fixed payment amount made by a borrower to a lender at a specified date each calendar month.',
-      },
+        "question": "Where should I place the JSON-LD script?",
+        "answer": "Place it inside the `<head>` or before the closing `</body>` tag of your HTML page."
+      }
     ],
-    relatedTools: ['compound-interest-calculator', 'profit-margin-calculator', 'percentage-calculator'],
+    "relatedTools": [
+      "serp-snippet-preview",
+      "json-formatter",
+      "og-meta-generator"
+    ]
   },
   {
-    id: 'compound-interest-calculator',
-    slug: 'compound-interest-calculator',
-    name: 'Compound Interest Calculator',
-    category: 'finance-tools',
-    categoryName: 'Finance Tools',
-    description: 'Calculate compound interest growth over time with monthly contributions and customizable compounding frequencies.',
-    type: 'client',
-    status: 'free',
-    icon: 'Percent',
-    tags: ['compound interest', 'investment', 'savings', 'growth', 'finance'],
-    featured: false,
-    popular: true,
-    unlimited: true,
-    anonymousLimit: 2,
-    authenticatedLimit: 4,
-    seoTitle: 'Compound Interest Calculator – Investment Growth | TechTools',
-    seoDescription: 'Simulate compound interest and investment returns with annual/monthly compounding and periodic deposits.',
-    howToUse: [
-      'Enter Initial Principal, Annual Interest Rate, Investment Horizon (Years), and Monthly Deposit.',
-      'Select Compounding Frequency (Annually, Semi-annually, Quarterly, Monthly, Daily).',
-      'View final balance, total contributions, and total earned interest.',
+    "id": "utm-builder",
+    "slug": "utm-builder",
+    "name": "UTM Campaign URL Builder",
+    "category": "seo-tools",
+    "categoryName": "SEO Tools",
+    "description": "Add campaign parameters (utm_source, utm_medium, utm_campaign, utm_term, utm_content) to track marketing performance.",
+    "type": "client",
+    "status": "free",
+    "icon": "Link2",
+    "tags": [
+      "utm",
+      "campaign",
+      "analytics",
+      "tracking",
+      "google analytics"
     ],
-    features: [
-      'Flexible compounding frequencies',
-      'Monthly contribution simulation',
-      'Detailed year-by-year growth table',
+    "featured": false,
+    "popular": false,
+    "unlimited": true,
+    "anonymousLimit": 2,
+    "authenticatedLimit": 4,
+    "seoTitle": "UTM Campaign URL Builder – Google Analytics Tracker | TechTools",
+    "seoDescription": "Build tracking URLs with UTM source, medium, campaign, content, and term parameters for Google Analytics 4.",
+    "howToUse": [
+      "Enter your website destination URL.",
+      "Specify Source (e.g. google, newsletter), Medium (e.g. cpc, email), and Campaign name.",
+      "Copy your clean tracked URL or generate a QR code for it."
     ],
-    faqs: [
+    "features": [
+      "Instant URL sanitization and parameter encoding",
+      "Preview final URL as you type",
+      "One-click QR code creation for physical print campaigns"
+    ],
+    "faqs": [
       {
-        question: 'Why does compound interest grow so quickly?',
-        answer: 'Compound interest earns interest on both your initial principal and previous interest accumulated over time.',
-      },
+        "question": "Are UTM parameters case-sensitive in GA4?",
+        "answer": "Yes! It is best practice to keep all UTM values strictly in lowercase."
+      }
     ],
-    relatedTools: ['loan-emi-calculator', 'percentage-calculator', 'profit-margin-calculator'],
-  },
-
-  // CALCULATORS & GENERAL
-  {
-    id: 'percentage-calculator',
-    slug: 'percentage-calculator',
-    name: 'All-in-One Percentage Calculator',
-    category: 'calculators',
-    categoryName: 'Calculators',
-    description: 'Calculate what is X% of Y, percentage increase/decrease between numbers, and fractional percentages with ease.',
-    type: 'client',
-    status: 'free',
-    icon: 'Percent',
-    tags: ['percentage', 'increase', 'decrease', 'calculator', 'math'],
-    featured: true,
-    popular: true,
-    unlimited: true,
-    anonymousLimit: 2,
-    authenticatedLimit: 4,
-    seoTitle: 'Percentage Calculator Online – Percentage Increase & Decrease | TechTools',
-    seoDescription: 'Free percentage calculator: find X% of Y, percentage difference between two numbers, and percentage increase or decrease.',
-    howToUse: [
-      'Select the calculation mode you need.',
-      'Enter the values to calculate instant results.',
-    ],
-    features: [
-      'Mode 1: What is X% of Y?',
-      'Mode 2: X is what percent of Y?',
-      'Mode 3: Percentage increase / decrease from X to Y',
-      'Clear step-by-step formula breakdown',
-    ],
-    faqs: [
-      {
-        question: 'How do you calculate percentage increase?',
-        answer: 'Subtract the old value from the new value, divide by the old value, and multiply by 100.',
-      },
-    ],
-    relatedTools: ['profit-margin-calculator', 'age-calculator', 'unit-converter'],
+    "relatedTools": [
+      "qr-code-generator",
+      "url-encoder-decoder",
+      "slug-generator"
+    ]
   },
   {
-    id: 'age-calculator',
-    slug: 'age-calculator',
-    name: 'Exact Age & Date Calculator',
-    category: 'calculators',
-    categoryName: 'Calculators',
-    description: 'Calculate your exact age in years, months, days, hours, and minutes, plus days remaining until your next birthday.',
-    type: 'client',
-    status: 'free',
-    icon: 'Calendar',
-    tags: ['age', 'birthday', 'date', 'calculator', 'time'],
-    featured: false,
-    popular: true,
-    unlimited: true,
-    anonymousLimit: 2,
-    authenticatedLimit: 4,
-    seoTitle: 'Exact Age Calculator – Calculate Age in Years, Months, Days | TechTools',
-    seoDescription: 'Find your exact age down to days and hours, see your day of birth, and calculate the countdown to your next birthday.',
-    howToUse: [
-      'Select your Date of Birth.',
-      'Optionally specify a "Calculate age as of" date.',
-      'Inspect detailed age metrics, total days lived, and next birthday countdown.',
+    "id": "invoice-generator",
+    "slug": "invoice-generator",
+    "name": "Invoice & Receipt Generator",
+    "category": "business-tools",
+    "categoryName": "Business Tools",
+    "description": "Create professional invoices and receipts with custom line items, tax, discount, logo, currency, and instant PDF print.",
+    "type": "client",
+    "status": "free",
+    "icon": "Receipt",
+    "tags": [
+      "invoice",
+      "receipt",
+      "business",
+      "billing",
+      "pdf"
     ],
-    features: [
-      'Exact breakdown: Years, Months, Days, Hours, and Minutes',
-      'Next birthday countdown tracker',
-      'Weekday of birth detection (e.g. Friday)',
+    "featured": true,
+    "popular": true,
+    "trending": true,
+    "anonymousLimit": 2,
+    "authenticatedLimit": 4,
+    "seoTitle": "Free Online Invoice Generator – Create & Print PDF Invoices | TechTools",
+    "seoDescription": "Generate professional business invoices and receipts online in seconds. Add line items, taxes, currency, and export to PDF/print.",
+    "howToUse": [
+      "Enter your company details, client info, and invoice number/date.",
+      "Add line items with quantity, unit rate, and descriptions.",
+      "Set tax rate and discount if applicable.",
+      "Click \"Print / Download PDF\" to get a clean printable invoice."
     ],
-    faqs: [
+    "features": [
+      "Dynamic line-item calculations with subtotals, tax, and discounts",
+      "Supports USD ($), EUR (€), GBP (£), INR (₹), CAD, AUD, and more",
+      "Clean professional printable invoice design",
+      "Local browser storage remembers your company details"
+    ],
+    "faqs": [
       {
-        question: 'Does this account for leap years?',
-        answer: 'Yes, leap years and variable month lengths (28, 30, 31 days) are accurately factored into calculations.',
-      },
+        "question": "Are my invoice details saved online?",
+        "answer": "No, all details stay safely in your browser. You can save your company defaults locally for future sessions."
+      }
     ],
-    relatedTools: ['date-difference', 'unix-timestamp-converter', 'time-zone-converter'],
+    "relatedTools": [
+      "profit-margin-calculator",
+      "loan-emi-calculator",
+      "percentage-calculator"
+    ]
   },
   {
-    id: 'unit-converter',
-    slug: 'unit-converter',
-    name: 'Universal Unit Converter',
-    category: 'converters',
-    categoryName: 'Converters',
-    description: 'Convert units for Length (meters, feet, miles, inches), Weight (kg, lbs, oz), Temperature (°C, °F, K), and Data Storage (MB, GB, TB).',
-    type: 'client',
-    status: 'free',
-    icon: 'Scale',
-    tags: ['unit converter', 'length', 'weight', 'temperature', 'data storage', 'speed'],
-    featured: true,
-    popular: true,
-    unlimited: true,
-    anonymousLimit: 2,
-    authenticatedLimit: 4,
-    seoTitle: 'Universal Unit Converter Online – Length, Weight, Temp & Data | TechTools',
-    seoDescription: 'Convert between metric and imperial units for length, mass, temperature, data storage, speed, and area with instant precision.',
-    howToUse: [
-      'Select measurement category (Length, Weight, Temperature, Data Storage, Speed, Area).',
-      'Enter value and select input unit.',
-      'Select output unit or view all conversions simultaneously.',
+    "id": "profit-margin-calculator",
+    "slug": "profit-margin-calculator",
+    "name": "Profit Margin & Markup Calculator",
+    "category": "finance-tools",
+    "categoryName": "Finance Tools",
+    "description": "Calculate gross profit margin, markup percentage, revenue, and gross profit from cost and selling price.",
+    "type": "client",
+    "status": "free",
+    "icon": "TrendingUp",
+    "tags": [
+      "profit margin",
+      "markup",
+      "revenue",
+      "business",
+      "finance"
     ],
-    features: [
-      '6 major measurement categories',
-      'High-precision float calculation',
-      'Instant swap units button',
+    "featured": true,
+    "popular": true,
+    "unlimited": true,
+    "anonymousLimit": 2,
+    "authenticatedLimit": 4,
+    "seoTitle": "Profit Margin & Markup Calculator – TechTools",
+    "seoDescription": "Calculate gross profit, profit margin percentage, and markup percentage instantly from cost and revenue.",
+    "howToUse": [
+      "Enter Cost of Goods Sold (COGS) and Selling Price (Revenue).",
+      "View Gross Profit, Profit Margin (%), and Markup (%)."
     ],
-    faqs: [
+    "features": [
+      "Instant breakdown of Gross Margin vs Markup %",
+      "Supports reverse calculation (calculate selling price from target margin)",
+      "Visual profit ratio bar"
+    ],
+    "faqs": [
       {
-        question: 'How many bytes are in a Megabyte?',
-        answer: 'In standard decimal SI units, 1 MB = 1,000,000 bytes. In binary (Mebibytes / MiB), 1 MiB = 1,048,576 bytes.',
-      },
+        "question": "What is the difference between Margin and Markup?",
+        "answer": "Profit Margin is profit divided by selling price (revenue). Markup is profit divided by cost."
+      }
     ],
-    relatedTools: ['percentage-calculator', 'color-converter', 'unix-timestamp-converter'],
-  },
-
-  // SECURITY & GENERATORS
-  {
-    id: 'password-generator',
-    slug: 'password-generator',
-    name: 'Strong Password Generator & Security Analyzer',
-    category: 'security-tools',
-    categoryName: 'Security Tools',
-    description: 'Generate ultra-secure, cryptographically strong passwords with custom lengths, symbols, entropy scores, and crack time estimates.',
-    type: 'client',
-    status: 'free',
-    icon: 'Lock',
-    tags: ['password', 'generator', 'security', 'entropy', 'random'],
-    featured: true,
-    popular: true,
-    trending: true,
-    unlimited: true,
-    anonymousLimit: 2,
-    authenticatedLimit: 4,
-    seoTitle: 'Strong Password Generator & Security Analyzer – TechTools',
-    seoDescription: 'Generate cryptographically secure passwords online with custom length, symbols, entropy analysis, and estimated crack time.',
-    howToUse: [
-      'Choose desired length (8 to 64 characters).',
-      'Toggle uppercase, lowercase, numbers, and special symbols.',
-      'View the real-time Entropy (bits) and crack time estimate.',
-      'Click "Generate Password" and copy.',
-    ],
-    features: [
-      'Generated using Web Crypto API `window.crypto.getRandomValues()`',
-      'Live entropy bit meter and crack time estimation',
-      'Pronounceable & easy-to-read mode options',
-    ],
-    faqs: [
-      {
-        question: 'Are generated passwords saved on your servers?',
-        answer: 'Never. Passwords are generated exclusively on your local device via Web Crypto and are never transmitted or stored.',
-      },
-    ],
-    relatedTools: ['hash-generator', 'uuid-generator', 'qr-code-generator'],
+    "relatedTools": [
+      "invoice-generator",
+      "percentage-calculator",
+      "break-even-calculator"
+    ]
   },
   {
-    id: 'qr-code-generator',
-    slug: 'qr-code-generator',
-    name: 'QR Code Generator',
-    category: 'generators',
-    categoryName: 'Generators',
-    description: 'Create high-resolution QR codes for URLs, WiFi credentials, plain text, Email, and vCard contacts with custom colors and PNG download.',
-    type: 'client',
-    status: 'free',
-    icon: 'QrCode',
-    tags: ['qr code', 'generator', 'wifi', 'vcard', 'url'],
-    featured: true,
-    popular: true,
-    trending: true,
-    unlimited: true,
-    anonymousLimit: 2,
-    authenticatedLimit: 4,
-    seoTitle: 'Free QR Code Generator – Custom Colors & PNG Download | TechTools',
-    seoDescription: 'Generate custom QR codes for websites, WiFi networks, text, and contact cards. Download high-resolution PNG in seconds.',
-    howToUse: [
-      'Select QR code type (URL, Plain Text, WiFi Network, Email, Phone).',
-      'Enter your information.',
-      'Customize foreground and background colors.',
-      'Download your PNG QR code image.',
+    "id": "loan-emi-calculator",
+    "slug": "loan-emi-calculator",
+    "name": "Loan EMI & Mortgage Calculator",
+    "category": "finance-tools",
+    "categoryName": "Finance Tools",
+    "description": "Calculate monthly loan EMI payments, total interest payable, and breakdown schedule for home or personal loans.",
+    "type": "client",
+    "status": "free",
+    "icon": "Landmark",
+    "tags": [
+      "loan",
+      "emi",
+      "mortgage",
+      "interest",
+      "amortization"
     ],
-    features: [
-      'Multi-type support (Website URL, WiFi login, Text, Email, Phone)',
-      'Custom color pickers for brand matching',
-      'High-resolution PNG download',
-      'Runs 100% locally in your browser',
+    "featured": true,
+    "popular": true,
+    "unlimited": true,
+    "anonymousLimit": 2,
+    "authenticatedLimit": 4,
+    "seoTitle": "Loan EMI & Mortgage Calculator – TechTools",
+    "seoDescription": "Calculate monthly loan payments, total interest, and total repayment amount with interactive sliders.",
+    "howToUse": [
+      "Enter Loan Amount (Principal), Annual Interest Rate (%), and Loan Tenure (Years/Months).",
+      "Inspect monthly EMI, total interest, and principal vs interest ratio."
     ],
-    faqs: [
+    "features": [
+      "Interactive sliders for instant visual feedback",
+      "Principal vs Total Interest breakdown",
+      "Support for yearly and monthly tenures"
+    ],
+    "faqs": [
       {
-        question: 'Do these QR codes ever expire?',
-        answer: 'No! These are standard static QR codes encoding the raw data directly. They will work forever without redirection.',
-      },
+        "question": "What is EMI?",
+        "answer": "Equated Monthly Installment (EMI) is a fixed payment amount made by a borrower to a lender at a specified date each calendar month."
+      }
     ],
-    relatedTools: ['utm-builder', 'password-generator', 'slug-generator'],
+    "relatedTools": [
+      "compound-interest-calculator",
+      "profit-margin-calculator",
+      "percentage-calculator"
+    ]
   },
   {
-    id: 'slug-generator',
-    slug: 'slug-generator',
-    name: 'URL Slug Generator',
-    category: 'generators',
-    categoryName: 'Generators',
-    description: 'Convert any title, sentence, or article name into a clean, SEO-friendly, lowercase URL slug with custom separators.',
-    type: 'client',
-    status: 'free',
-    icon: 'Link',
-    tags: ['slug', 'url', 'seo', 'permalink', 'generator'],
-    featured: false,
-    popular: false,
-    unlimited: true,
-    anonymousLimit: 2,
-    authenticatedLimit: 4,
-    seoTitle: 'URL Slug Generator – SEO Friendly Permalinks | TechTools',
-    seoDescription: 'Clean and format string titles into SEO-friendly URL slugs with hyphen or underscore separators.',
-    howToUse: [
-      'Enter your article or product title.',
-      'Select separator (- or _), lowercase mode, and stop word removal.',
-      'Copy the clean slug for your URL.',
+    "id": "compound-interest-calculator",
+    "slug": "compound-interest-calculator",
+    "name": "Compound Interest Calculator",
+    "category": "finance-tools",
+    "categoryName": "Finance Tools",
+    "description": "Calculate compound interest growth over time with monthly contributions and customizable compounding frequencies.",
+    "type": "client",
+    "status": "free",
+    "icon": "Percent",
+    "tags": [
+      "compound interest",
+      "investment",
+      "savings",
+      "growth",
+      "finance"
     ],
-    features: [
-      'Removes special characters, accents, and punctuation',
-      'Optional English stop word cleaner (a, an, the, and)',
-      'Instant copy button',
+    "featured": false,
+    "popular": true,
+    "unlimited": true,
+    "anonymousLimit": 2,
+    "authenticatedLimit": 4,
+    "seoTitle": "Compound Interest Calculator – Investment Growth | TechTools",
+    "seoDescription": "Simulate compound interest and investment returns with annual/monthly compounding and periodic deposits.",
+    "howToUse": [
+      "Enter Initial Principal, Annual Interest Rate, Investment Horizon (Years), and Monthly Deposit.",
+      "Select Compounding Frequency (Annually, Semi-annually, Quarterly, Monthly, Daily).",
+      "View final balance, total contributions, and total earned interest."
     ],
-    faqs: [
+    "features": [
+      "Flexible compounding frequencies",
+      "Monthly contribution simulation",
+      "Detailed year-by-year growth table"
+    ],
+    "faqs": [
       {
-        question: 'Why are clean URL slugs important for SEO?',
-        answer: 'Search engines prefer short, descriptive, hyphen-separated URLs that clearly convey the page content to human readers.',
-      },
+        "question": "Why does compound interest grow so quickly?",
+        "answer": "Compound interest earns interest on both your initial principal and previous interest accumulated over time."
+      }
     ],
-    relatedTools: ['case-converter', 'url-encoder-decoder', 'utm-builder'],
-  },
-
-  // DESIGN & COLOR TOOLS
-  {
-    id: 'color-converter',
-    slug: 'color-converter',
-    name: 'Color Code Converter & Picker',
-    category: 'color-tools',
-    categoryName: 'Color Tools',
-    description: 'Convert colors between HEX, RGB, HSL, HSV, and CMYK formats with live visual color picker and CSS code export.',
-    type: 'client',
-    status: 'free',
-    icon: 'Palette',
-    tags: ['color', 'hex', 'rgb', 'hsl', 'cmyk', 'picker'],
-    featured: true,
-    popular: true,
-    unlimited: true,
-    anonymousLimit: 2,
-    authenticatedLimit: 4,
-    seoTitle: 'Color Converter & Visual Color Picker (HEX, RGB, HSL) – TechTools',
-    seoDescription: 'Convert HEX, RGB, HSL, and CMYK color values in real-time with visual color wheel and copyable CSS snippets.',
-    howToUse: [
-      'Pick a color using the visual picker or enter any HEX/RGB/HSL value.',
-      'View real-time conversions in all major formats.',
-      'Copy your preferred format with one click.',
-    ],
-    features: [
-      'Simultaneous HEX, RGB, HSL, HSV, and CMYK outputs',
-      'Visual color preview box with alpha channel transparency',
-      'One-click CSS code copier',
-    ],
-    faqs: [
-      {
-        question: 'Which color model is best for web development?',
-        answer: 'HEX and RGB(A) are standard, while HSL (Hue, Saturation, Lightness) is often preferred for creating cohesive design systems and theme palettes.',
-      },
-    ],
-    relatedTools: ['wcag-contrast-checker', 'css-box-shadow-generator', 'color-palette-generator'],
+    "relatedTools": [
+      "loan-emi-calculator",
+      "percentage-calculator",
+      "profit-margin-calculator"
+    ]
   },
   {
-    id: 'wcag-contrast-checker',
-    slug: 'wcag-contrast-checker',
-    name: 'WCAG Color Contrast Checker',
-    category: 'color-tools',
-    categoryName: 'Color Tools',
-    description: 'Check color contrast ratios against WCAG 2.1 AA and AAA accessibility standards for normal and large text.',
-    type: 'client',
-    status: 'free',
-    icon: 'Eye',
-    tags: ['contrast', 'wcag', 'accessibility', 'a11y', 'color'],
-    featured: false,
-    popular: true,
-    unlimited: true,
-    anonymousLimit: 2,
-    authenticatedLimit: 4,
-    seoTitle: 'WCAG Color Contrast Checker Online – Accessibility Tool | TechTools',
-    seoDescription: 'Verify color combinations against WCAG 2.1 AA and AAA standards. Test contrast ratios for accessible web design.',
-    howToUse: [
-      'Select Text (Foreground) Color and Background Color.',
-      'Inspect the calculated Contrast Ratio (e.g. 7.5:1).',
-      'Check pass/fail status for Normal Text, Large Text, and UI Components.',
+    "id": "percentage-calculator",
+    "slug": "percentage-calculator",
+    "name": "All-in-One Percentage Calculator",
+    "category": "calculators",
+    "categoryName": "Calculators",
+    "description": "Calculate what is X% of Y, percentage increase/decrease between numbers, and fractional percentages with ease.",
+    "type": "client",
+    "status": "free",
+    "icon": "Percent",
+    "tags": [
+      "percentage",
+      "increase",
+      "decrease",
+      "calculator",
+      "math"
     ],
-    features: [
-      'Exact WCAG 2.1 relative luminance calculation',
-      'Live simulated text preview in small and large typography',
-      'Pass/Fail ratings for AA and AAA levels',
+    "featured": true,
+    "popular": true,
+    "unlimited": true,
+    "anonymousLimit": 2,
+    "authenticatedLimit": 4,
+    "seoTitle": "Percentage Calculator Online – Percentage Increase & Decrease | TechTools",
+    "seoDescription": "Free percentage calculator: find X% of Y, percentage difference between two numbers, and percentage increase or decrease.",
+    "howToUse": [
+      "Select the calculation mode you need.",
+      "Enter the values to calculate instant results."
     ],
-    faqs: [
+    "features": [
+      "Mode 1: What is X% of Y?",
+      "Mode 2: X is what percent of Y?",
+      "Mode 3: Percentage increase / decrease from X to Y",
+      "Clear step-by-step formula breakdown"
+    ],
+    "faqs": [
       {
-        question: 'What is the minimum contrast ratio for WCAG AA?',
-        answer: 'WCAG 2.1 Level AA requires a contrast ratio of at least 4.5:1 for normal body text and 3:1 for large text (18pt or 14pt bold).',
-      },
+        "question": "How do you calculate percentage increase?",
+        "answer": "Subtract the old value from the new value, divide by the old value, and multiply by 100."
+      }
     ],
-    relatedTools: ['color-converter', 'css-box-shadow-generator'],
+    "relatedTools": [
+      "profit-margin-calculator",
+      "age-calculator",
+      "unit-converter"
+    ]
   },
   {
-    id: 'css-box-shadow-generator',
-    slug: 'css-box-shadow-generator',
-    name: 'CSS Box Shadow & Glow Generator',
-    category: 'design-tools',
-    categoryName: 'Design & CSS',
-    description: 'Design elegant multi-layer CSS box shadows and glows with visual sliders and instant CSS code output.',
-    type: 'client',
-    status: 'free',
-    icon: 'Layers',
-    tags: ['css', 'box shadow', 'generator', 'design', 'ui'],
-    featured: false,
-    popular: true,
-    unlimited: true,
-    anonymousLimit: 2,
-    authenticatedLimit: 4,
-    seoTitle: 'CSS Box Shadow Generator – Visual Shadow & Glow Tool | TechTools',
-    seoDescription: 'Design modern, multi-layer CSS box shadows and glassmorphism styles with interactive sliders and copyable CSS.',
-    howToUse: [
-      'Adjust Horizontal Shift, Vertical Shift, Blur Radius, and Spread Radius.',
-      'Customize Shadow Color, Opacity, and Inset toggle.',
-      'Copy the resulting `box-shadow` CSS property.',
+    "id": "age-calculator",
+    "slug": "age-calculator",
+    "name": "Exact Age & Date Calculator",
+    "category": "calculators",
+    "categoryName": "Calculators",
+    "description": "Calculate your exact age in years, months, days, hours, and minutes, plus days remaining until your next birthday.",
+    "type": "client",
+    "status": "free",
+    "icon": "Calendar",
+    "tags": [
+      "age",
+      "birthday",
+      "date",
+      "calculator",
+      "time"
     ],
-    features: [
-      'Multi-layer soft shadows for modern SaaS interfaces',
-      'Live interactive preview container with light/dark backdrop toggle',
-      'One-click CSS property copy',
+    "featured": false,
+    "popular": true,
+    "unlimited": true,
+    "anonymousLimit": 2,
+    "authenticatedLimit": 4,
+    "seoTitle": "Exact Age Calculator – Calculate Age in Years, Months, Days | TechTools",
+    "seoDescription": "Find your exact age down to days and hours, see your day of birth, and calculate the countdown to your next birthday.",
+    "howToUse": [
+      "Select your Date of Birth.",
+      "Optionally specify a \"Calculate age as of\" date.",
+      "Inspect detailed age metrics, total days lived, and next birthday countdown."
     ],
-    faqs: [
+    "features": [
+      "Exact breakdown: Years, Months, Days, Hours, and Minutes",
+      "Next birthday countdown tracker",
+      "Weekday of birth detection (e.g. Friday)"
+    ],
+    "faqs": [
       {
-        question: 'How do multi-layer shadows make designs look more realistic?',
-        answer: 'In real life, light creates both sharp immediate ambient occlusion and softer dispersed shadows. Layering two or three shadows simulates natural physical lighting.',
-      },
+        "question": "Does this account for leap years?",
+        "answer": "Yes, leap years and variable month lengths (28, 30, 31 days) are accurately factored into calculations."
+      }
     ],
-    relatedTools: ['color-converter', 'wcag-contrast-checker'],
+    "relatedTools": [
+      "date-difference",
+      "unix-timestamp-converter",
+      "time-zone-converter"
+    ]
   },
+  {
+    "id": "unit-converter",
+    "slug": "unit-converter",
+    "name": "Universal Unit Converter",
+    "category": "converters",
+    "categoryName": "Converters",
+    "description": "Convert units for Length (meters, feet, miles, inches), Weight (kg, lbs, oz), Temperature (°C, °F, K), and Data Storage (MB, GB, TB).",
+    "type": "client",
+    "status": "free",
+    "icon": "Scale",
+    "tags": [
+      "unit converter",
+      "length",
+      "weight",
+      "temperature",
+      "data storage",
+      "speed"
+    ],
+    "featured": true,
+    "popular": true,
+    "unlimited": true,
+    "anonymousLimit": 2,
+    "authenticatedLimit": 4,
+    "seoTitle": "Universal Unit Converter Online – Length, Weight, Temp & Data | TechTools",
+    "seoDescription": "Convert between metric and imperial units for length, mass, temperature, data storage, speed, and area with instant precision.",
+    "howToUse": [
+      "Select measurement category (Length, Weight, Temperature, Data Storage, Speed, Area).",
+      "Enter value and select input unit.",
+      "Select output unit or view all conversions simultaneously."
+    ],
+    "features": [
+      "6 major measurement categories",
+      "High-precision float calculation",
+      "Instant swap units button"
+    ],
+    "faqs": [
+      {
+        "question": "How many bytes are in a Megabyte?",
+        "answer": "In standard decimal SI units, 1 MB = 1,000,000 bytes. In binary (Mebibytes / MiB), 1 MiB = 1,048,576 bytes."
+      }
+    ],
+    "relatedTools": [
+      "percentage-calculator",
+      "color-converter",
+      "unix-timestamp-converter"
+    ]
+  },
+  {
+    "id": "password-generator",
+    "slug": "password-generator",
+    "name": "Strong Password Generator & Security Analyzer",
+    "category": "security-tools",
+    "categoryName": "Security Tools",
+    "description": "Generate ultra-secure, cryptographically strong passwords with custom lengths, symbols, entropy scores, and crack time estimates.",
+    "type": "client",
+    "status": "free",
+    "icon": "Lock",
+    "tags": [
+      "password",
+      "generator",
+      "security",
+      "entropy",
+      "random"
+    ],
+    "featured": true,
+    "popular": true,
+    "trending": true,
+    "unlimited": true,
+    "anonymousLimit": 2,
+    "authenticatedLimit": 4,
+    "seoTitle": "Strong Password Generator & Security Analyzer – TechTools",
+    "seoDescription": "Generate cryptographically secure passwords online with custom length, symbols, entropy analysis, and estimated crack time.",
+    "howToUse": [
+      "Choose desired length (8 to 64 characters).",
+      "Toggle uppercase, lowercase, numbers, and special symbols.",
+      "View the real-time Entropy (bits) and crack time estimate.",
+      "Click \"Generate Password\" and copy."
+    ],
+    "features": [
+      "Generated using Web Crypto API `window.crypto.getRandomValues()`",
+      "Live entropy bit meter and crack time estimation",
+      "Pronounceable & easy-to-read mode options"
+    ],
+    "faqs": [
+      {
+        "question": "Are generated passwords saved on your servers?",
+        "answer": "Never. Passwords are generated exclusively on your local device via Web Crypto and are never transmitted or stored."
+      }
+    ],
+    "relatedTools": [
+      "hash-generator",
+      "uuid-generator",
+      "qr-code-generator"
+    ]
+  },
+  {
+    "id": "qr-code-generator",
+    "slug": "qr-code-generator",
+    "name": "QR Code Generator",
+    "category": "generators",
+    "categoryName": "Generators",
+    "description": "Create high-resolution QR codes for URLs, WiFi credentials, plain text, Email, and vCard contacts with custom colors and PNG download.",
+    "type": "client",
+    "status": "free",
+    "icon": "QrCode",
+    "tags": [
+      "qr code",
+      "generator",
+      "wifi",
+      "vcard",
+      "url"
+    ],
+    "featured": true,
+    "popular": true,
+    "trending": true,
+    "unlimited": true,
+    "anonymousLimit": 2,
+    "authenticatedLimit": 4,
+    "seoTitle": "Free QR Code Generator – Custom Colors & PNG Download | TechTools",
+    "seoDescription": "Generate custom QR codes for websites, WiFi networks, text, and contact cards. Download high-resolution PNG in seconds.",
+    "howToUse": [
+      "Select QR code type (URL, Plain Text, WiFi Network, Email, Phone).",
+      "Enter your information.",
+      "Customize foreground and background colors.",
+      "Download your PNG QR code image."
+    ],
+    "features": [
+      "Multi-type support (Website URL, WiFi login, Text, Email, Phone)",
+      "Custom color pickers for brand matching",
+      "High-resolution PNG download",
+      "Runs 100% locally in your browser"
+    ],
+    "faqs": [
+      {
+        "question": "Do these QR codes ever expire?",
+        "answer": "No! These are standard static QR codes encoding the raw data directly. They will work forever without redirection."
+      }
+    ],
+    "relatedTools": [
+      "utm-builder",
+      "password-generator",
+      "slug-generator"
+    ],
+    "aliases": [
+      "qr-generator"
+    ]
+  },
+  {
+    "id": "slug-generator",
+    "slug": "slug-generator",
+    "name": "URL Slug Generator",
+    "category": "generators",
+    "categoryName": "Generators",
+    "description": "Convert any title, sentence, or article name into a clean, SEO-friendly, lowercase URL slug with custom separators.",
+    "type": "client",
+    "status": "free",
+    "icon": "Link",
+    "tags": [
+      "slug",
+      "url",
+      "seo",
+      "permalink",
+      "generator"
+    ],
+    "featured": false,
+    "popular": false,
+    "unlimited": true,
+    "anonymousLimit": 2,
+    "authenticatedLimit": 4,
+    "seoTitle": "URL Slug Generator – SEO Friendly Permalinks | TechTools",
+    "seoDescription": "Clean and format string titles into SEO-friendly URL slugs with hyphen or underscore separators.",
+    "howToUse": [
+      "Enter your article or product title.",
+      "Select separator (- or _), lowercase mode, and stop word removal.",
+      "Copy the clean slug for your URL."
+    ],
+    "features": [
+      "Removes special characters, accents, and punctuation",
+      "Optional English stop word cleaner (a, an, the, and)",
+      "Instant copy button"
+    ],
+    "faqs": [
+      {
+        "question": "Why are clean URL slugs important for SEO?",
+        "answer": "Search engines prefer short, descriptive, hyphen-separated URLs that clearly convey the page content to human readers."
+      }
+    ],
+    "relatedTools": [
+      "case-converter",
+      "url-encoder-decoder",
+      "utm-builder"
+    ]
+  },
+  {
+    "id": "color-converter",
+    "slug": "color-converter",
+    "name": "Color Code Converter & Picker",
+    "category": "color-tools",
+    "categoryName": "Color Tools",
+    "description": "Convert colors between HEX, RGB, HSL, HSV, and CMYK formats with live visual color picker and CSS code export.",
+    "type": "client",
+    "status": "free",
+    "icon": "Palette",
+    "tags": [
+      "color",
+      "hex",
+      "rgb",
+      "hsl",
+      "cmyk",
+      "picker"
+    ],
+    "featured": true,
+    "popular": true,
+    "unlimited": true,
+    "anonymousLimit": 2,
+    "authenticatedLimit": 4,
+    "seoTitle": "Color Converter & Visual Color Picker (HEX, RGB, HSL) – TechTools",
+    "seoDescription": "Convert HEX, RGB, HSL, and CMYK color values in real-time with visual color wheel and copyable CSS snippets.",
+    "howToUse": [
+      "Pick a color using the visual picker or enter any HEX/RGB/HSL value.",
+      "View real-time conversions in all major formats.",
+      "Copy your preferred format with one click."
+    ],
+    "features": [
+      "Simultaneous HEX, RGB, HSL, HSV, and CMYK outputs",
+      "Visual color preview box with alpha channel transparency",
+      "One-click CSS code copier"
+    ],
+    "faqs": [
+      {
+        "question": "Which color model is best for web development?",
+        "answer": "HEX and RGB(A) are standard, while HSL (Hue, Saturation, Lightness) is often preferred for creating cohesive design systems and theme palettes."
+      }
+    ],
+    "relatedTools": [
+      "wcag-contrast-checker",
+      "css-box-shadow-generator",
+      "color-palette-generator"
+    ]
+  },
+  {
+    "id": "wcag-contrast-checker",
+    "slug": "wcag-contrast-checker",
+    "name": "WCAG Color Contrast Checker",
+    "category": "color-tools",
+    "categoryName": "Color Tools",
+    "description": "Check color contrast ratios against WCAG 2.1 AA and AAA accessibility standards for normal and large text.",
+    "type": "client",
+    "status": "free",
+    "icon": "Eye",
+    "tags": [
+      "contrast",
+      "wcag",
+      "accessibility",
+      "a11y",
+      "color"
+    ],
+    "featured": false,
+    "popular": true,
+    "unlimited": true,
+    "anonymousLimit": 2,
+    "authenticatedLimit": 4,
+    "seoTitle": "WCAG Color Contrast Checker Online – Accessibility Tool | TechTools",
+    "seoDescription": "Verify color combinations against WCAG 2.1 AA and AAA standards. Test contrast ratios for accessible web design.",
+    "howToUse": [
+      "Select Text (Foreground) Color and Background Color.",
+      "Inspect the calculated Contrast Ratio (e.g. 7.5:1).",
+      "Check pass/fail status for Normal Text, Large Text, and UI Components."
+    ],
+    "features": [
+      "Exact WCAG 2.1 relative luminance calculation",
+      "Live simulated text preview in small and large typography",
+      "Pass/Fail ratings for AA and AAA levels"
+    ],
+    "faqs": [
+      {
+        "question": "What is the minimum contrast ratio for WCAG AA?",
+        "answer": "WCAG 2.1 Level AA requires a contrast ratio of at least 4.5:1 for normal body text and 3:1 for large text (18pt or 14pt bold)."
+      }
+    ],
+    "relatedTools": [
+      "color-converter",
+      "css-box-shadow-generator"
+    ]
+  },
+  {
+    "id": "css-box-shadow-generator",
+    "slug": "css-box-shadow-generator",
+    "name": "CSS Box Shadow & Glow Generator",
+    "category": "design-tools",
+    "categoryName": "Design & CSS",
+    "description": "Design elegant multi-layer CSS box shadows and glows with visual sliders and instant CSS code output.",
+    "type": "client",
+    "status": "free",
+    "icon": "Layers",
+    "tags": [
+      "css",
+      "box shadow",
+      "generator",
+      "design",
+      "ui"
+    ],
+    "featured": false,
+    "popular": true,
+    "unlimited": true,
+    "anonymousLimit": 2,
+    "authenticatedLimit": 4,
+    "seoTitle": "CSS Box Shadow Generator – Visual Shadow & Glow Tool | TechTools",
+    "seoDescription": "Design modern, multi-layer CSS box shadows and glassmorphism styles with interactive sliders and copyable CSS.",
+    "howToUse": [
+      "Adjust Horizontal Shift, Vertical Shift, Blur Radius, and Spread Radius.",
+      "Customize Shadow Color, Opacity, and Inset toggle.",
+      "Copy the resulting `box-shadow` CSS property."
+    ],
+    "features": [
+      "Multi-layer soft shadows for modern SaaS interfaces",
+      "Live interactive preview container with light/dark backdrop toggle",
+      "One-click CSS property copy"
+    ],
+    "faqs": [
+      {
+        "question": "How do multi-layer shadows make designs look more realistic?",
+        "answer": "In real life, light creates both sharp immediate ambient occlusion and softer dispersed shadows. Layering two or three shadows simulates natural physical lighting."
+      }
+    ],
+    "relatedTools": [
+      "color-converter",
+      "wcag-contrast-checker"
+    ]
+  },
+  {
+    "id": "pdf-viewer",
+    "slug": "pdf-viewer",
+    "name": "Online PDF Viewer & Inspector",
+    "category": "pdf-tools",
+    "categoryName": "PDF & Docs",
+    "description": "Inspect PDF metadata, examine page counts, view file properties, and preview PDF documents securely in your browser.",
+    "type": "client",
+    "status": "free",
+    "icon": "FileText",
+    "tags": [
+      "pdf",
+      "pdf viewer",
+      "inspect pdf",
+      "pdf reader",
+      "document",
+      "pdf metadata"
+    ],
+    "featured": true,
+    "popular": true,
+    "trending": true,
+    "unlimited": true,
+    "anonymousLimit": 50,
+    "authenticatedLimit": 100,
+    "seoTitle": "Free Online PDF Viewer & Inspector – View PDFs Privately | TechTools",
+    "seoDescription": "Open, inspect, and read PDF files directly in your web browser. 100% private, zero server uploads, with full metadata inspection and preview.",
+    "howToUse": [
+      "Click or drag-and-drop any PDF document into the upload zone.",
+      "Instantly view document file size, MIME type, and metadata.",
+      "Preview the complete PDF document inside the secure in-browser sandboxed reader.",
+      "Copy file specs or open in a dedicated tab with one click."
+    ],
+    "features": [
+      "100% client-side rendering with zero server uploads",
+      "Instant document metadata and file size inspection",
+      "Interactive document reader with zoom and navigation",
+      "Fast, lightweight, and works completely offline"
+    ],
+    "faqs": [
+      {
+        "question": "Does this tool upload my PDF to an external server?",
+        "answer": "No. The entire inspection and rendering process executes 100% in your local browser sandbox via HTML5 object URLs. Your documents never leave your device."
+      },
+      {
+        "question": "What is the maximum PDF file size supported?",
+        "answer": "Because processing occurs directly in your local browser memory, files up to 100MB+ can be opened seamlessly depending on your device RAM."
+      }
+    ],
+    "relatedTools": [
+      "invoice-generator",
+      "image-to-base64",
+      "word-counter"
+    ]
+  },
+  {
+    "id": "pdf-metadata-viewer",
+    "slug": "pdf-metadata-viewer",
+    "name": "PDF Metadata & Page Inspector",
+    "category": "pdf-tools",
+    "categoryName": "PDF & Docs",
+    "description": "Examine detailed metadata, page properties, file dimensions, and structural details of PDF documents.",
+    "type": "client",
+    "status": "free",
+    "icon": "FileCheck",
+    "tags": [
+      "pdf metadata",
+      "pdf properties",
+      "inspect pdf",
+      "pdf page count",
+      "document analyzer"
+    ],
+    "featured": false,
+    "popular": true,
+    "trending": false,
+    "unlimited": true,
+    "anonymousLimit": 50,
+    "authenticatedLimit": 100,
+    "seoTitle": "PDF Metadata & Properties Inspector – Free Online Tool | TechTools",
+    "seoDescription": "Analyze PDF document metadata, properties, MIME types, and file structure safely in your browser without uploading files.",
+    "howToUse": [
+      "Select or drop a PDF file into the inspection zone.",
+      "Review document attributes including file name, byte size, format, and last modification timestamp.",
+      "Verify that document tags and properties are clean before sharing with clients."
+    ],
+    "features": [
+      "Instant file attribute parsing",
+      "Zero server transmission for confidential documents",
+      "Quick copy of document specs for audits and reports",
+      "Works seamlessly across desktop, tablets, and smartphones"
+    ],
+    "faqs": [
+      {
+        "question": "Can I inspect confidential legal or financial PDFs?",
+        "answer": "Yes! Because TechTools runs entirely on client-side Web APIs, sensitive legal contracts and financial statements are never uploaded over the internet."
+      }
+    ],
+    "relatedTools": [
+      "pdf-viewer",
+      "invoice-generator",
+      "hash-generator"
+    ]
+  },
+  {
+    "id": "jpg-to-png",
+    "slug": "jpg-to-png",
+    "name": "JPG to PNG Converter",
+    "category": "image-tools",
+    "categoryName": "Image Tools",
+    "description": "Convert JPG and JPEG images to lossless PNG format directly in your browser with zero quality degradation.",
+    "type": "client",
+    "status": "free",
+    "icon": "Image",
+    "tags": [
+      "jpg to png",
+      "jpeg to png",
+      "image converter",
+      "png converter",
+      "lossless"
+    ],
+    "featured": true,
+    "popular": true,
+    "unlimited": true,
+    "anonymousLimit": 10,
+    "authenticatedLimit": 50,
+    "seoTitle": "Convert JPG to PNG Online – Free & Lossless Image Converter | TechTools",
+    "seoDescription": "Convert JPG to PNG format online for free. 100% private, fast, in-browser conversion with zero server uploads and lossless quality.",
+    "howToUse": [
+      "Upload or drag and drop your JPG/JPEG image into the upload box.",
+      "The image is automatically converted to lossless PNG using HTML5 Canvas.",
+      "Preview the converted PNG image and compare file sizes.",
+      "Click \"Download PNG\" to save the converted image to your device."
+    ],
+    "features": [
+      "Instant client-side JPG to PNG conversion",
+      "Preserves full pixel clarity without compression artifacts",
+      "Zero server uploads for 100% privacy and security",
+      "Free and unlimited usage with no watermark"
+    ],
+    "faqs": [
+      {
+        "question": "Why convert JPG to PNG?",
+        "answer": "PNG uses lossless compression, making it ideal for graphics, diagrams, logos, and screenshots where sharp edges and clean lines must be preserved without JPEG compression artifacts."
+      },
+      {
+        "question": "Are my images uploaded to any server?",
+        "answer": "No. The conversion is performed 100% locally in your browser using the HTML5 Canvas API."
+      }
+    ],
+    "relatedTools": [
+      "png-to-jpg",
+      "image-to-webp",
+      "image-compressor",
+      "image-resizer"
+    ],
+    "aliases": [
+      "jpg2png",
+      "jpeg-to-png",
+      "jpeg2png",
+      "jpg to png",
+      "image-converter"
+    ]
+  },
+  {
+    "id": "png-to-jpg",
+    "slug": "png-to-jpg",
+    "name": "PNG to JPG Converter",
+    "category": "image-tools",
+    "categoryName": "Image Tools",
+    "description": "Convert PNG images into lightweight JPG format with custom transparency background color and quality controls.",
+    "type": "client",
+    "status": "free",
+    "icon": "Image",
+    "tags": [
+      "png to jpg",
+      "png to jpeg",
+      "image converter",
+      "compress png",
+      "transparency"
+    ],
+    "featured": true,
+    "popular": true,
+    "unlimited": true,
+    "anonymousLimit": 10,
+    "authenticatedLimit": 50,
+    "seoTitle": "Convert PNG to JPG Online – Free Image Converter with Transparency Support | TechTools",
+    "seoDescription": "Convert PNG to JPG online for free. Adjust JPG compression quality and choose background color fill for transparent areas. 100% client-side privacy.",
+    "howToUse": [
+      "Upload or drag and drop a PNG image into the converter.",
+      "Choose a background color (white, black, or custom) to fill any transparent pixels.",
+      "Adjust the JPG quality slider (10% to 100%) to balance file size and visual fidelity.",
+      "Click \"Download JPG\" to save your optimized image."
+    ],
+    "features": [
+      "Client-side PNG to JPG conversion",
+      "Custom background fill color for transparent PNGs",
+      "Adjustable JPG compression quality slider",
+      "Instant file size savings display",
+      "Zero server storage or privacy risks"
+    ],
+    "faqs": [
+      {
+        "question": "What happens to transparent pixels when converting PNG to JPG?",
+        "answer": "Because JPG does not support alpha transparency channels, our tool fills transparent areas with your selected background color (white by default)."
+      },
+      {
+        "question": "Will converting PNG to JPG reduce file size?",
+        "answer": "Yes, JPG compression typically reduces photo and complex graphic file sizes by 50% to 80% compared to uncompressed PNG."
+      }
+    ],
+    "relatedTools": [
+      "jpg-to-png",
+      "image-to-webp",
+      "image-compressor",
+      "image-resizer"
+    ],
+    "aliases": [
+      "png2jpg",
+      "png-to-jpeg",
+      "png2jpeg",
+      "png to jpg"
+    ]
+  },
+  {
+    "id": "image-to-webp",
+    "slug": "image-to-webp",
+    "name": "Image to WebP Converter",
+    "category": "image-tools",
+    "categoryName": "Image Tools",
+    "description": "Convert JPG, PNG, and GIF images to next-generation WebP format for faster web page loads and superior Core Web Vitals.",
+    "type": "client",
+    "status": "free",
+    "icon": "Zap",
+    "tags": [
+      "image to webp",
+      "jpg to webp",
+      "png to webp",
+      "webp converter",
+      "core web vitals"
+    ],
+    "featured": true,
+    "popular": true,
+    "unlimited": true,
+    "anonymousLimit": 10,
+    "authenticatedLimit": 50,
+    "seoTitle": "Convert Image to WebP Online – Free Next-Gen WebP Converter | TechTools",
+    "seoDescription": "Convert JPG, PNG, and GIF to modern WebP format online. Reduce image file sizes by up to 80% while retaining crisp visual quality and transparency.",
+    "howToUse": [
+      "Upload your JPG, PNG, or GIF file by clicking or dragging into the upload zone.",
+      "Select your desired WebP quality percentage (default 80%).",
+      "Compare the original file size with the generated WebP size.",
+      "Click \"Download WebP\" to save the high-efficiency image."
+    ],
+    "features": [
+      "Modern WebP encoding directly in your browser",
+      "Preserves alpha transparency from PNG sources",
+      "Drastic file size savings up to 80%",
+      "Boosts Google PageSpeed and LCP metrics",
+      "100% private client-side execution"
+    ],
+    "faqs": [
+      {
+        "question": "Why should I convert images to WebP?",
+        "answer": "WebP provides 25-34% better compression than comparable JPEGs and up to 80% savings over PNGs, significantly speeding up website loading times."
+      },
+      {
+        "question": "Do all modern browsers support WebP?",
+        "answer": "Yes, WebP is universally supported in all modern web browsers including Chrome, Safari, Firefox, Edge, and Android/iOS."
+      }
+    ],
+    "relatedTools": [
+      "image-compressor",
+      "jpg-to-png",
+      "png-to-jpg",
+      "image-resizer"
+    ],
+    "aliases": [
+      "webp-converter",
+      "png-to-webp",
+      "jpg-to-webp",
+      "image to webp"
+    ]
+  },
+  {
+    "id": "character-counter",
+    "slug": "character-counter",
+    "name": "Character Counter & Letter Tracker",
+    "category": "text-tools",
+    "categoryName": "Text & Content",
+    "description": "Live character counter tracking characters with/without spaces, letters, digits, words, and real-time social media length limits.",
+    "type": "client",
+    "status": "free",
+    "icon": "AlignLeft",
+    "tags": [
+      "character counter",
+      "letter counter",
+      "character count",
+      "twitter limit",
+      "seo counter"
+    ],
+    "featured": true,
+    "popular": true,
+    "unlimited": true,
+    "anonymousLimit": 100,
+    "authenticatedLimit": 500,
+    "seoTitle": "Character Counter Online – Free Character & Letter Count Tool | TechTools",
+    "seoDescription": "Count characters, characters without spaces, letters, numbers, and words in real time. Track character limits for Twitter/X, SMS, and Google SEO tags.",
+    "howToUse": [
+      "Type or paste your text into the text box.",
+      "Review the live metric cards for total characters, non-space characters, letters, and numbers.",
+      "Check platform meters for X (Twitter 280), SMS (160), Google Title (60), and Meta Description (160).",
+      "Copy your text or clear the editor with one click."
+    ],
+    "features": [
+      "Instant character and letter count updates as you type",
+      "Characters without spaces metric",
+      "Built-in platform limits for Twitter, SMS, Google SEO, LinkedIn, and Instagram",
+      "Word, sentence, and paragraph counts",
+      "Byte size counter and sample text loader"
+    ],
+    "faqs": [
+      {
+        "question": "What is the difference between Character Counter and Word Counter?",
+        "answer": "While Word Counter focuses on reading time and total words, Character Counter is designed for strict character limits such as Twitter/X posts (280 chars), SMS text messages (160 chars), and Google SEO meta tags (60/160 chars)."
+      },
+      {
+        "question": "Does this count spaces as characters?",
+        "answer": "Yes, we provide both \"Total Characters\" (including spaces) and \"Without Spaces\" metrics side by side."
+      }
+    ],
+    "relatedTools": [
+      "word-counter",
+      "case-converter",
+      "text-diff",
+      "lorem-ipsum-generator"
+    ],
+    "aliases": [
+      "letter-counter",
+      "char-count",
+      "character-count",
+      "word-counter",
+      "char counter"
+    ]
+  },
+  {
+    "id": "json-validator",
+    "slug": "json-validator",
+    "name": "JSON Validator & Syntax Inspector",
+    "category": "developer-tools",
+    "categoryName": "Developer Tools",
+    "description": "Validate JSON syntax, pinpoint parse errors with line and column numbers, inspect schema structure, and format valid JSON.",
+    "type": "client",
+    "status": "free",
+    "icon": "CheckCircle2",
+    "tags": [
+      "json validator",
+      "validate json",
+      "json checker",
+      "json syntax",
+      "rfc 8259"
+    ],
+    "featured": true,
+    "popular": true,
+    "unlimited": true,
+    "anonymousLimit": 100,
+    "authenticatedLimit": 500,
+    "seoTitle": "JSON Validator Online – Free JSON Syntax Checker & Error Locator | TechTools",
+    "seoDescription": "Validate JSON strings online for RFC 8259 syntax compliance. Instant error pinpointing with line and column numbers, schema metrics, and formatting.",
+    "howToUse": [
+      "Paste your JSON string into the editor.",
+      "Click \"Validate JSON Syntax\" to run strict syntax parsing.",
+      "If invalid, review the exact error location (line and column) and diagnostic message.",
+      "If valid, view document stats (keys, depth, payload size) and copy the beautified JSON."
+    ],
+    "features": [
+      "RFC 8259 strict JSON syntax validation",
+      "Precise line number and column error locator",
+      "Document structure breakdown (root type, key count, nesting depth)",
+      "Beautified 2-space formatted preview on valid JSON",
+      "One-click copy and JSON download",
+      "100% client-side security"
+    ],
+    "faqs": [
+      {
+        "question": "How is JSON Validator different from JSON Formatter?",
+        "answer": "JSON Formatter focuses on beautifying indentation and minifying JSON. JSON Validator strictly inspects RFC 8259 validity, catches syntax defects, pinpoints line/column error positions, and verifies contract integrity."
+      },
+      {
+        "question": "Why does JSON.parse fail on trailing commas?",
+        "answer": "Standard JSON (RFC 8259) prohibits trailing commas after the last element of an array or object. JSON Validator flags these errors immediately."
+      }
+    ],
+    "relatedTools": [
+      "json-formatter",
+      "base64-encoder-decoder",
+      "jwt-decoder",
+      "uuid-generator"
+    ],
+    "aliases": [
+      "json-lint",
+      "json-inspector",
+      "json-check",
+      "json-verify",
+      "json validator"
+    ]
+  },
+  {
+    "id": "gst-calculator",
+    "slug": "gst-calculator",
+    "name": "GST Calculator (Exclusive & Inclusive)",
+    "category": "calculators",
+    "categoryName": "Calculators",
+    "description": "Calculate Goods and Services Tax (GST) easily. Supports Add GST (exclusive) and Remove GST (inclusive) with Pakistan FBR standard 18% and custom rates.",
+    "type": "client",
+    "status": "free",
+    "icon": "Calculator",
+    "tags": [
+      "gst calculator",
+      "gst pakistan",
+      "sales tax",
+      "add gst",
+      "remove gst",
+      "fbr tax"
+    ],
+    "featured": true,
+    "popular": true,
+    "unlimited": true,
+    "anonymousLimit": 100,
+    "authenticatedLimit": 500,
+    "seoTitle": "GST Calculator Online – Calculate Inclusive & Exclusive Sales Tax | TechTools",
+    "seoDescription": "Free online GST Calculator. Add or remove GST sales tax instantly. Supports Pakistan FBR 18% standard, provincial services (15%-16%), and custom tax rates.",
+    "howToUse": [
+      "Select calculation mode: \"Add GST (Exclusive)\" to add tax to a net price, or \"Remove GST (Inclusive)\" to extract tax from a gross price.",
+      "Enter your transaction amount.",
+      "Choose a preset GST rate (18% FBR standard, 15% Sindh SRB, 16% Punjab PRA, etc.) or enter a custom percentage.",
+      "View the detailed itemized breakdown of Net Amount, GST Tax Amount, and Gross Total."
+    ],
+    "features": [
+      "Dual calculation modes: Add GST (Exclusive) and Remove GST (Inclusive)",
+      "One-click presets for Pakistan standard GST (18%) and provincial service tax rates",
+      "Custom tax percentage input support",
+      "Itemized Net, Tax, and Gross breakdown with copyable summary",
+      "Formula display explaining the exact mathematical derivation"
+    ],
+    "faqs": [
+      {
+        "question": "What is the formula to Add GST (Exclusive)?",
+        "answer": "GST Amount = (Net Amount × Rate) / 100, and Gross Total = Net Amount + GST Amount."
+      },
+      {
+        "question": "What is the formula to Remove GST (Inclusive)?",
+        "answer": "Net Amount = Gross Total / (1 + (Rate / 100)), and GST Amount = Gross Total - Net Amount."
+      },
+      {
+        "question": "What is the standard GST rate in Pakistan?",
+        "answer": "Under the Federal Board of Revenue (FBR), the standard federal sales tax on goods is 18%. Provincial sales taxes on services typically vary between 15% (Sindh SRB) and 16% (Punjab PRA, Islamabad ICT)."
+      }
+    ],
+    "relatedTools": [
+      "percentage-calculator",
+      "profit-margin-calculator",
+      "invoice-generator",
+      "loan-emi-calculator"
+    ],
+    "aliases": [
+      "tax-calculator",
+      "sales-tax-calculator",
+      "gst-calc",
+      "tax",
+      "gst calculator"
+    ]
+  }
 ];
 
 export const INITIAL_BLOG_POSTS: BlogPost[] = [
   {
-    id: 'best-developer-tools-2026',
-    slug: 'best-developer-tools-2026',
-    title: '10 Essential Online Developer Tools Every Web Engineer Needs',
-    excerpt: 'From instant JSON formatters and JWT inspectors to regex testers, explore the browser-based utilities that save hours of debugging every week.',
-    content: `## Modern Web Engineering Demands Fast, Reliable Utilities
-
-In fast-paced software development, switching contexts to set up local command-line tools or writing scratchpad scripts for simple tasks creates unnecessary friction. Modern browser-based developer utilities have evolved from basic toys into indispensable, privacy-conscious tools that run entirely client-side.
-
-### 1. JSON Formatting & Validation
-Working with API payloads from REST or GraphQL endpoints often involves unformatted or minified JSON strings. A reliable JSON tool should not only beautify and indent code with custom spacing, but also highlight precise line-number syntax errors (such as trailing commas or unquoted keys) instantly.
-
-### 2. Base64 & Data URI Processing
-Transmitting binary assets or embedding inline SVG icons directly into CSS or HTML requires dependable Base64 encoding. Ensuring safe UTF-8 character encoding prevents corrupted unicode symbols when working with multi-language applications.
-
-### 3. In-Browser JWT Inspection
-Decoding JSON Web Tokens to verify claims, user roles, and expiration timestamps is an everyday task for full-stack developers. Doing this securely in the browser—without transmitting sensitive auth tokens across third-party networks—is critical for security compliance.
-
-### 4. Interactive Regular Expression Debugging
-Regular expressions can be notoriously difficult to construct. Real-time match visualizers with capture group tables provide immediate feedback, helping catch edge-case bugs before code is merged into production.
-
-### Summary
-By bookmarking high-performance, privacy-first tool suites like **TechTools by TechUsar**, engineers can streamline their daily workflows while keeping all sensitive code and payloads strictly within their local browser session.`,
-    category: 'Development',
-    author: {
-      name: 'TechUsar Engineering Team',
-      role: 'Core Platform Architecture',
+    "id": "best-developer-tools-2026",
+    "slug": "best-developer-tools-2026",
+    "title": "10 Essential Online Developer Tools Every Web Engineer Needs",
+    "excerpt": "From instant JSON formatters and JWT inspectors to regex testers, explore the browser-based utilities that save hours of debugging every week.",
+    "content": "## Modern Web Engineering Demands Fast, Reliable Utilities\n\nIn fast-paced software development, switching contexts to set up local command-line tools or writing scratchpad scripts for simple tasks creates unnecessary friction. Modern browser-based developer utilities have evolved from basic toys into indispensable, privacy-conscious tools that run entirely client-side.\n\n### 1. JSON Formatting & Validation\nWorking with API payloads from REST or GraphQL endpoints often involves unformatted or minified JSON strings. A reliable JSON tool should not only beautify and indent code with custom spacing, but also highlight precise line-number syntax errors (such as trailing commas or unquoted keys) instantly.\n\n### 2. Base64 & Data URI Processing\nTransmitting binary assets or embedding inline SVG icons directly into CSS or HTML requires dependable Base64 encoding. Ensuring safe UTF-8 character encoding prevents corrupted unicode symbols when working with multi-language applications.\n\n### 3. In-Browser JWT Inspection\nDecoding JSON Web Tokens to verify claims, user roles, and expiration timestamps is an everyday task for full-stack developers. Doing this securely in the browser—without transmitting sensitive auth tokens across third-party networks—is critical for security compliance.\n\n### 4. Interactive Regular Expression Debugging\nRegular expressions can be notoriously difficult to construct. Real-time match visualizers with capture group tables provide immediate feedback, helping catch edge-case bugs before code is merged into production.\n\n### Summary\nBy bookmarking high-performance, privacy-first tool suites like **TechTools by TechUsar**, engineers can streamline their daily workflows while keeping all sensitive code and payloads strictly within their local browser session.",
+    "category": "Development",
+    "author": {
+      "name": "TechUsar Engineering Team",
+      "role": "Core Platform Architecture"
     },
-    publishDate: '2026-09-10',
-    readingTime: '4 min read',
-    tags: ['Developer Tools', 'JSON', 'Productivity', 'JavaScript'],
-    relatedTools: ['json-formatter', 'jwt-decoder', 'base64-encoder-decoder', 'regex-tester'],
-    featured: true,
+    "publishDate": "2026-09-10",
+    "readingTime": "4 min read",
+    "tags": [
+      "Developer Tools",
+      "JSON",
+      "Productivity",
+      "JavaScript"
+    ],
+    "relatedTools": [
+      "json-formatter",
+      "jwt-decoder",
+      "base64-encoder-decoder",
+      "regex-tester"
+    ],
+    "featured": true
   },
   {
-    id: 'how-to-compress-images-without-losing-quality',
-    slug: 'how-to-compress-images-without-losing-quality',
-    title: 'How to Compress Images for the Web Without Losing Quality',
-    excerpt: 'Learn the principles of image optimization, WebP compression, and browser-side canvas processing for blazing-fast page loads.',
-    content: `## Why Image Optimization Matters for SEO and Core Web Vitals
-
-Large uncompressed images are the single biggest culprit behind slow website loading times, high bounce rates, and poor Google Core Web Vitals scores (specifically Largest Contentful Paint or LCP).
-
-### Lossless vs. Lossy Compression
-- **Lossy Compression**: Selectively eliminates imperceptible visual data to drastically reduce file sizes by 60% to 85%. When done properly with modern algorithms, the human eye cannot distinguish the compressed image from the original.
-- **Lossless Compression**: Optimizes metadata and pixel encoding without removing any visual data, resulting in smaller 10-30% savings.
-
-### Modern Image Formats: WebP & AVIF
-Converting traditional JPEG and PNG images into modern WebP format provides substantially better compression ratios while maintaining alpha transparency support.
-
-### In-Browser Privacy
-Using HTML5 Canvas API for compression ensures your photos and proprietary design mockups remain entirely on your local machine without being uploaded to remote cloud servers.`,
-    category: 'Design',
-    author: {
-      name: 'Sarah Chen',
-      role: 'Design Systems Lead',
+    "id": "how-to-compress-images-without-losing-quality",
+    "slug": "how-to-compress-images-without-losing-quality",
+    "title": "How to Compress Images for the Web Without Losing Quality",
+    "excerpt": "Learn the principles of image optimization, WebP compression, and browser-side canvas processing for blazing-fast page loads.",
+    "content": "## Why Image Optimization Matters for SEO and Core Web Vitals\n\nLarge uncompressed images are the single biggest culprit behind slow website loading times, high bounce rates, and poor Google Core Web Vitals scores (specifically Largest Contentful Paint or LCP).\n\n### Lossless vs. Lossy Compression\n- **Lossy Compression**: Selectively eliminates imperceptible visual data to drastically reduce file sizes by 60% to 85%. When done properly with modern algorithms, the human eye cannot distinguish the compressed image from the original.\n- **Lossless Compression**: Optimizes metadata and pixel encoding without removing any visual data, resulting in smaller 10-30% savings.\n\n### Modern Image Formats: WebP & AVIF\nConverting traditional JPEG and PNG images into modern WebP format provides substantially better compression ratios while maintaining alpha transparency support.\n\n### In-Browser Privacy\nUsing HTML5 Canvas API for compression ensures your photos and proprietary design mockups remain entirely on your local machine without being uploaded to remote cloud servers.\n\n### Recommended Free Image Tools\n- Convert uncompressed graphics to [PNG to JPG](/tools/png-to-jpg) for photos.\n- Convert high-resolution photos to lossless [JPG to PNG](/tools/jpg-to-png) for editing.\n- Adopt next-gen formats with [Image to WebP Converter](/tools/image-to-webp) for up to 80% file size savings.\n- Fine-tune resolution using [Image Resizer](/tools/image-resizer) and reduce payload weight with [Image Compressor](/tools/image-compressor).",
+    "category": "Design",
+    "author": {
+      "name": "Sarah Chen",
+      "role": "Design Systems Lead"
     },
-    publishDate: '2026-09-08',
-    readingTime: '5 min read',
-    tags: ['Image Optimization', 'Web Performance', 'SEO', 'WebP'],
-    relatedTools: ['image-compressor', 'image-resizer', 'image-to-base64', 'favicon-generator'],
-    featured: true,
+    "publishDate": "2026-09-08",
+    "readingTime": "5 min read",
+    "tags": [
+      "Image Optimization",
+      "Web Performance",
+      "SEO",
+      "WebP"
+    ],
+    "relatedTools": [
+      "image-compressor",
+      "image-resizer",
+      "image-to-base64",
+      "favicon-generator",
+      "image-to-webp",
+      "jpg-to-png",
+      "png-to-jpg"
+    ],
+    "featured": true
   },
   {
-    id: 'calculating-profit-margins-and-markups',
-    slug: 'calculating-profit-margins-and-markups',
-    title: 'Profit Margin vs. Markup: The Complete Business Guide',
-    excerpt: 'Understand the critical difference between gross profit margin and markup percentage to price your products and freelance services profitably.',
-    content: `## The Fundamental Difference
-
-Many new entrepreneurs and freelancers mistakenly treat **Profit Margin** and **Markup** as interchangeable terms. While both measure the profitability of a product or service, they calculate it against completely different baselines.
-
-### Profit Margin
-Profit Margin measures the percentage of the **Selling Price (Revenue)** that represents pure profit:
-$$\\text{Margin} = \\frac{\\text{Revenue} - \\text{Cost}}{\\text{Revenue}} \\times 100$$
-
-### Markup
-Markup measures the percentage added to the **Cost of Goods Sold (COGS)** to reach your selling price:
-$$\\text{Markup} = \\frac{\\text{Revenue} - \\text{Cost}}{\\text{Cost}} \\times 100$$
-
-### Example Calculation
-If a service costs \$50 to deliver and you charge \$100:
-- **Profit** = \$50
-- **Markup** = \$50 / \$50 = **100%**
-- **Margin** = \$50 / \$100 = **50%**
-
-Using a dedicated calculator eliminates pricing miscalculations and ensures healthy business cash flow.`,
-    category: 'Business',
-    author: {
-      name: 'Marcus Vance',
-      role: 'Financial Strategy',
+    "id": "calculating-profit-margins-and-markups",
+    "slug": "calculating-profit-margins-and-markups",
+    "title": "Profit Margin vs. Markup: The Complete Business Guide",
+    "excerpt": "Understand the critical difference between gross profit margin and markup percentage to price your products and freelance services profitably.",
+    "content": "## The Fundamental Difference\n\nMany new entrepreneurs and freelancers mistakenly treat **Profit Margin** and **Markup** as interchangeable terms. While both measure the profitability of a product or service, they calculate it against completely different baselines.\n\n### Profit Margin\nProfit Margin measures the percentage of the **Selling Price (Revenue)** that represents pure profit:\n$\\text{Margin} = \\frac{\\text{Revenue} - \\text{Cost}}{\\text{Revenue}} \\times 100$\n\n### Markup\nMarkup measures the percentage added to the **Cost of Goods Sold (COGS)** to reach your selling price:\n$\\text{Markup} = \\frac{\\text{Revenue} - \\text{Cost}}{\\text{Cost}} \\times 100$\n\n### Example Calculation\nIf a service costs $50 to deliver and you charge $100:\n- **Profit** = $50\n- **Markup** = $50 / $50 = **100%**\n- **Margin** = $50 / $100 = **50%**\n\nUsing a dedicated calculator eliminates pricing miscalculations and ensures healthy business cash flow.",
+    "category": "Business",
+    "author": {
+      "name": "Marcus Vance",
+      "role": "Financial Strategy"
     },
-    publishDate: '2026-09-05',
-    readingTime: '4 min read',
-    tags: ['Business', 'Finance', 'Pricing', 'Freelancing'],
-    relatedTools: ['profit-margin-calculator', 'invoice-generator', 'loan-emi-calculator'],
-    featured: false,
+    "publishDate": "2026-09-05",
+    "readingTime": "4 min read",
+    "tags": [
+      "Business",
+      "Finance",
+      "Pricing",
+      "Freelancing"
+    ],
+    "relatedTools": [
+      "profit-margin-calculator",
+      "invoice-generator",
+      "loan-emi-calculator"
+    ],
+    "featured": false
   },
+  {
+    "id": "image-format-guide-jpg-png-webp",
+    "slug": "image-format-guide-jpg-png-webp",
+    "title": "JPG vs. PNG vs. WebP: Which Image Format Should You Use?",
+    "excerpt": "A comprehensive guide comparing JPG, PNG, and WebP image formats, detailing when to convert images for maximum web performance, SEO, and visual fidelity.",
+    "content": "## Understanding Image Formats for the Modern Web\n\nChoosing the correct image format directly impacts your website page loading speeds, Core Web Vitals (Largest Contentful Paint), and visitor retention. Each format has distinct strengths:\n\n### 1. JPG / JPEG (Joint Photographic Experts Group)\n- **Best For**: Photographs, product shots, complex scenery, and full-color gradients.\n- **Compression**: Lossy compression selectively drops imperceptible color detail to achieve small file sizes.\n- **Limitations**: Does not support transparent backgrounds.\n- **Tool**: Convert transparency or uncompressed art into lightweight JPEGs using our free [PNG to JPG Converter](/tools/png-to-jpg).\n\n### 2. PNG (Portable Network Graphics)\n- **Best For**: Screenshots, logos, UI icons, diagrams, and graphics requiring crisp text edges.\n- **Compression**: Lossless compression preserves 100% of pixel fidelity.\n- **Key Feature**: Supports full 8-bit alpha channel transparency.\n- **Tool**: Convert photos or compressed graphics to pixel-perfect PNG format with our [JPG to PNG Converter](/tools/jpg-to-png).\n\n### 3. WebP (Google Next-Gen Format)\n- **Best For**: Modern production websites, e-commerce stores, and high-traffic blogs.\n- **Advantage**: Combines the best of JPG and PNG—supporting both lossy/lossless compression AND transparency, while delivering files 25% to 35% smaller than JPEG.\n- **Tool**: Modernize your media library with our in-browser [Image to WebP Converter](/tools/image-to-webp).\n\n### In-Browser Privacy & Speed\nAll image conversion utilities on **TechTools** execute 100% locally in your browser through HTML5 Canvas. Your images are never sent over the internet or stored on external servers.",
+    "category": "Design",
+    "author": {
+      "name": "TechUsar Media Lab",
+      "role": "Web Performance Specialists"
+    },
+    "publishDate": "2026-09-18",
+    "readingTime": "5 min read",
+    "tags": [
+      "WebP",
+      "JPG to PNG",
+      "PNG to JPG",
+      "Image Optimization",
+      "Core Web Vitals"
+    ],
+    "relatedTools": [
+      "jpg-to-png",
+      "png-to-jpg",
+      "image-to-webp",
+      "image-compressor",
+      "image-resizer"
+    ],
+    "featured": true
+  },
+  {
+    "id": "how-to-calculate-gst-sales-tax-guide",
+    "slug": "how-to-calculate-gst-sales-tax-guide",
+    "title": "How to Calculate GST: Adding and Removing Sales Tax Step-by-Step",
+    "excerpt": "Learn the exact formulas to add GST to net prices (exclusive) and remove GST from gross invoices (inclusive), with Pakistan FBR standard rates and real-world examples.",
+    "content": "## Demystifying Goods and Services Tax (GST) Calculations\n\nCalculating sales tax accurately is critical for small business owners, freelancers, ecommerce sellers, and accountants. Mistakes in GST calculations can lead to undercharging customers or inaccurate tax filings.\n\n### 1. Adding GST (Exclusive / Net to Gross)\nWhen pricing a product before tax (Net Amount), use this formula to find the tax and final gross payable total:\n\n\n\n\n**Example**: A service priced at PKR 10,000 with 18% standard GST:\n- GST Tax = (10,000 × 18) / 100 = PKR 1,800\n- Gross Total = PKR 11,800\n\n### 2. Removing GST (Inclusive / Gross to Net)\nWhen you have an invoice total that already includes GST and need to find the underlying pre-tax base cost:\n\n\n\n\n**Example**: An invoice total of PKR 11,800 inclusive of 18% GST:\n- Net Amount = 11,800 / 1.18 = PKR 10,000\n- GST Tax Component = 11,800 - 10,000 = PKR 1,800\n\n### Pakistan FBR GST Rates\nIn Pakistan, the standard federal sales tax on taxable goods administered by the Federal Board of Revenue (FBR) is 18%. Provincial services taxes typically range from 15% (Sindh SRB) to 16% (Punjab PRA, Islamabad ICT).\n\nUse our dedicated [GST Calculator](/tools/gst-calculator) to perform both operations with instant breakdowns, or estimate margins with our [Profit Margin Calculator](/tools/profit-margin-calculator) and generate invoices using [Invoice Generator](/tools/invoice-generator).",
+    "category": "Finance",
+    "author": {
+      "name": "TechUsar Financial Research",
+      "role": "Accounting & Compliance Desk"
+    },
+    "publishDate": "2026-09-19",
+    "readingTime": "6 min read",
+    "tags": [
+      "GST Calculator",
+      "Sales Tax",
+      "FBR Pakistan",
+      "Invoicing",
+      "Tax Planning"
+    ],
+    "relatedTools": [
+      "gst-calculator",
+      "percentage-calculator",
+      "profit-margin-calculator",
+      "invoice-generator"
+    ],
+    "featured": true
+  },
+  {
+    "id": "json-validation-and-character-counting-best-practices",
+    "slug": "json-validation-and-character-counting-best-practices",
+    "title": "Validating JSON & Tracking Character Limits: Essential Web Tools",
+    "excerpt": "Explore why strict RFC 8259 JSON syntax validation prevents production API outages and how live character tracking ensures compliance with Google SERP and social limits.",
+    "content": "## Precision in Development and Copywriting\n\nWhether writing API schemas or crafting marketing copy for Google search snippets and social media platforms, precision matters.\n\n### Why JSON Syntax Validation Is Critical\nJSON (JavaScript Object Notation) is the ubiquitous data exchange format of the modern web. However, subtle syntax errors—such as single quotes instead of double quotes, trailing commas, or missing brackets—can crash frontend applications and backend API parsers.\n\nOur [JSON Validator](/tools/json-validator) strictly parses your payload according to RFC 8259 specifications, pinpointing the exact line number and column where syntax errors occur. For beautifying indentation and minifying payloads, pair it with our [JSON Formatter](/tools/json-formatter).\n\n### Character Limits in Social Media & SEO\nPlatform limits are unforgiving:\n- **X / Twitter**: 280 characters max.\n- **SMS Text Messages**: 160 characters per standard PDU segment.\n- **Google Search Title**: ~60 characters (to avoid truncation in SERP).\n- **Google Meta Description**: ~155-160 characters.\n\nOur [Character Counter](/tools/character-counter) provides live meters for each platform, distinguishing between characters with spaces and without spaces. For longer essays and reading time metrics, check out our [Word Counter](/tools/word-counter).",
+    "category": "Development",
+    "author": {
+      "name": "TechUsar Content & Dev Team",
+      "role": "Developer Relations"
+    },
+    "publishDate": "2026-09-20",
+    "readingTime": "4 min read",
+    "tags": [
+      "JSON Validator",
+      "Character Counter",
+      "SEO Tools",
+      "Developer Tools"
+    ],
+    "relatedTools": [
+      "json-validator",
+      "json-formatter",
+      "character-counter",
+      "word-counter"
+    ],
+    "featured": true
+  }
 ];
 
 export const INITIAL_SETTINGS: PlatformSettings = {

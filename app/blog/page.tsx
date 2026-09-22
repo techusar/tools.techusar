@@ -3,6 +3,8 @@ import Link from 'next/link';
 import { Metadata } from 'next';
 import { BookOpen, Clock, Calendar, ArrowRight, Sparkles, Tag, Shield } from 'lucide-react';
 import { getAllBlogPosts } from '@/lib/data/blogData';
+import { AdWrapper } from '@/components/ads/AdWrapper';
+import { Breadcrumb } from '@/components/navigation/Breadcrumb';
 
 export const metadata: Metadata = {
   title: 'Engineering Guides & Articles - TechTools by TechUsar',
@@ -14,7 +16,15 @@ export default async function BlogIndexPage() {
   const posts = await getAllBlogPosts();
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-16 space-y-12">
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-16 space-y-8">
+      {/* Breadcrumb Navigation */}
+      <Breadcrumb
+        items={[
+          { label: 'Home', href: '/' },
+          { label: 'Blog & Guides', current: true },
+        ]}
+      />
+
       {/* Header */}
       <div className="bg-white dark:bg-[#111318] border border-slate-200 dark:border-slate-800 rounded-3xl p-6 sm:p-10 shadow-sm dark:shadow-xl space-y-4">
         <div className="inline-flex items-center gap-2 px-3 py-1 rounded-lg bg-cyan-50 dark:bg-cyan-500/10 border border-cyan-200 dark:border-cyan-500/20 text-cyan-700 dark:text-cyan-400 text-xs font-semibold">
@@ -90,6 +100,9 @@ export default async function BlogIndexPage() {
           </article>
         ))}
       </div>
+
+      {/* Ad Placement: Bottom of blog directory */}
+      <AdWrapper slot="blogArticleBottom" placement="blog-bottom" label="Sponsored Content" />
     </div>
   );
 }

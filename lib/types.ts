@@ -82,6 +82,7 @@ export interface ToolItem {
   faqs: ToolFAQ[];
   relatedTools?: string[];
   aiConfig?: AIConfig;
+  aliases?: string[];
   lastUpdated?: string;
 }
 

@@ -1,4 +1,5 @@
 import { ToolItem, ToolFAQ, ToolCategory } from '@/lib/types';
+import { SEO_CONFIG } from '@/lib/seo/config';
 
 export interface ToolEnrichedSEO {
   shortIntro: string; // 30-60 words
@@ -407,7 +408,7 @@ export function generateToolJsonLd(
   tool: ToolItem,
   category: ToolCategory | undefined,
   enriched: ToolEnrichedSEO,
-  appUrl: string = 'https://techtools.techusar.com'
+  appUrl: string = SEO_CONFIG.siteUrl
 ) {
   const toolUrl = `${appUrl}/tools/${tool.slug}`;
   const categoryUrl = `${appUrl}/categories/${tool.category}`;
