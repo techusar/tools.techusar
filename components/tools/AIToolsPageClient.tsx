@@ -85,7 +85,7 @@ export function AIToolsPageClient({ aiTools }: { aiTools: ToolItem[] }) {
             Showing <strong className="text-slate-900 dark:text-white">{filteredAITools.length}</strong> AI utilities
           </span>
           <Link href="/tools" className="text-cyan-600 dark:text-cyan-400 hover:underline font-semibold">
-            View all 60+ utilities →
+            View all utilities →
           </Link>
         </div>
 

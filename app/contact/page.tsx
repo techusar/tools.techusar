@@ -207,7 +207,7 @@ export default function ContactPage() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-xs sm:text-sm">
           <div className="space-y-1.5">
             <h4 className="font-bold text-slate-900 dark:text-slate-100">
-              Are all 60+ utilities truly free to use?
+              Are all online utilities truly free to use?
             </h4>
             <p className="text-slate-600 dark:text-slate-400 leading-relaxed">
               Yes. All browser-based utilities (JSON formatting, QR code creation, image compression, regex testing, loan calculations) are 100% free with unlimited local runs.

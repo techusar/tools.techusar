@@ -164,7 +164,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
         <meta property="og:image:type" content="image/png" />
-        <meta property="og:image:alt" content="TechTools by TechUsar - 40+ Free Online Developer & AI Utilities" />
+        <meta property="og:image:alt" content="TechTools by TechUsar - Free Online Developer & AI Utilities" />
 
         {/* Twitter Card Tags */}
         <meta name="twitter:card" content="summary_large_image" />
@@ -173,7 +173,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
         <meta name="twitter:title" content={SEO_CONFIG.defaultTitle} />
         <meta name="twitter:description" content={SEO_CONFIG.defaultDescription} />
         <meta name="twitter:image" content={SEO_CONFIG.ogImage} />
-        <meta name="twitter:image:alt" content="TechTools by TechUsar - 40+ Free Online Developer & AI Utilities" />
+        <meta name="twitter:image:alt" content="TechTools by TechUsar - Free Online Developer & AI Utilities" />
 
         {/* Mobile App & Color Meta */}
         <meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff" />

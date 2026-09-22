@@ -100,7 +100,7 @@ export async function GET(request: NextRequest) {
             <div style={{ display: 'flex', gap: '24px', color: '#64748B', fontSize: '16px' }}>
               <span>✓ 100% Client-Side Private</span>
               <span>✓ Instant Processing</span>
-              <span>✓ 60+ Developer Utilities</span>
+              <span>✓ Complete Utilities Suite</span>
             </div>
             <div style={{ color: '#22D3EE', fontSize: '18px', fontWeight: '700' }}>
               techtools.techusar.com

@@ -6,7 +6,7 @@ export const SEO_CONFIG = {
   parentCompanyUrl: 'https://www.techusar.com',
   author: 'TechUsar Editorial Team',
   twitterHandle: '@TechUsar',
-  defaultTitle: 'TechTools by TechUsar – 40+ Free Online Developer & AI Utilities',
+  defaultTitle: 'TechTools by TechUsar – Free Online Developer & AI Utilities',
   defaultDescription:
     'Free online developer tools, code formatters, image compressors, QR code generators, calculators, and Gemini AI utilities. Fast, privacy-focused in-browser processing.',
   defaultKeywords: [

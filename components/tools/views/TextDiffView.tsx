@@ -8,7 +8,7 @@ import { useUser } from '@/components/auth/UserContext';
 export function TextDiffView({ tool }: { tool: ToolItem }) {
   const { recordToolUse } = useUser();
   const [original, setOriginal] = useState('TechTools provides online utilities for developers.\nFast and secure.');
-  const [modified, setModified] = useState('TechTools provides 60+ online utilities for developers & AI.\nFast, modern and 100% secure.');
+  const [modified, setModified] = useState('TechTools provides online utilities for developers & AI.\nFast, modern and 100% secure.');
 
   const originalLines = original.split('\n');
   const modifiedLines = modified.split('\n');

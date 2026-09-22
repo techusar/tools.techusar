@@ -35,19 +35,9 @@ const AVAILABLE_CITIES: CityTimeZone[] = [
 ];
 
 export function TimeZoneConverterView({ tool }: { tool: ToolItem }) {
-  const { recordToolUse } = useUser();
   const [selectedCities, setSelectedCities] = useState<CityTimeZone[]>(DEFAULT_CITIES.slice(0, 5));
   const [baseDate, setBaseDate] = useState<Date>(new Date());
   const [sliderHour, setSliderHour] = useState<number>(new Date().getHours());
-
-  const hasRecorded = useRef(false);
-  useEffect(() => {
-    if (!hasRecorded.current) {
-      hasRecorded.current = true;
-      recordToolUse(tool);
-      trackClientEvent('tool_use', { toolSlug: tool.slug });
-    }
-  }, [recordToolUse, tool]);
 
   const getCityTime = (zone: string) => {
     try {

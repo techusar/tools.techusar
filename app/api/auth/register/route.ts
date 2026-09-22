@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { UserRepository } from '@/lib/data/user-repository';
+import { NeonUserRepository } from '@/lib/db/neon';
 import { AnalyticsRepository } from '@/lib/data/analytics-repository';
 
 export async function POST(req: NextRequest) {
@@ -11,7 +11,7 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: 'Name, email and password are required.' }, { status: 400 });
     }
 
-    const result = UserRepository.register(name, email, password);
+    const result = await NeonUserRepository.register(name, email, password);
     if (result.error) {
       return NextResponse.json({ error: result.error }, { status: 400 });
     }
@@ -27,10 +27,10 @@ export async function POST(req: NextRequest) {
       name: result.user!.name,
       email: result.user!.email,
       role: result.user!.role,
-      favorites: result.user!.favorites,
+      favorites: result.user!.favorites || [],
       createdAt: result.user!.createdAt,
-      toolsUsedCount: result.user!.toolsUsedCount,
-      aiGenerationsCount: result.user!.aiGenerationsCount,
+      toolsUsedCount: result.user!.toolsUsedCount || 0,
+      aiGenerationsCount: result.user!.aiGenerationsCount || 0,
     };
 
     return NextResponse.json({ success: true, user: safeUser });

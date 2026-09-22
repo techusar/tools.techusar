@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { UserRepository } from '@/lib/data/user-repository';
+import { NeonUserRepository } from '@/lib/db/neon';
 import { AnalyticsRepository } from '@/lib/data/analytics-repository';
 
 export async function POST(req: NextRequest) {
@@ -11,7 +11,7 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: 'userId and toolSlug required' }, { status: 400 });
     }
 
-    const favorites = UserRepository.toggleFavorite(userId, toolSlug);
+    const favorites = await NeonUserRepository.toggleFavorite(userId, toolSlug);
 
     AnalyticsRepository.logEvent({
       event: 'favorite',

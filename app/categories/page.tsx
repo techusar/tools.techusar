@@ -9,13 +9,13 @@ import { Breadcrumb } from '@/components/navigation/Breadcrumb';
 export const metadata: Metadata = {
   title: `All Tool Categories - ${SEO_CONFIG.shortName}`,
   description:
-    'Explore 40+ free online developer, AI, security, image, text, and business productivity utilities.',
+    'Explore free online developer, AI, security, image, text, and business productivity utilities categorized by specialty.',
   alternates: {
     canonical: getCanonicalUrl('/categories'),
   },
   openGraph: {
     title: `All Tool Categories - ${SEO_CONFIG.shortName}`,
-    description: 'Explore 40+ free online developer, AI, security, and productivity utilities.',
+    description: 'Explore free online developer, AI, security, and productivity utilities.',
     url: getCanonicalUrl('/categories'),
   },
 };

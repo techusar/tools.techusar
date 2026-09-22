@@ -1,0 +1,53 @@
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+enum Role {
+  user
+  admin
+}
+
+model User {
+  id           String            @id @default(cuid())
+  email        String            @unique
+  name         String
+  passwordHash String            @map("password_hash")
+  role         Role              @default(user)
+  tier         String            @default("free")
+  createdAt    DateTime          @default(now()) @map("created_at")
+  updatedAt    DateTime          @updatedAt @map("updated_at")
+  favorites    UserFavorite[]
+  history      UserToolHistory[]
+
+  @@map("users")
+}
+
+model UserFavorite {
+  id        Int      @id @default(autoincrement())
+  userId    String   @map("user_id")
+  toolId    String   @map("tool_id")
+  createdAt DateTime @default(now()) @map("created_at")
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, toolId])
+  @@map("user_favorites")
+}
+
+model UserToolHistory {
+  id       Int      @id @default(autoincrement())
+  userId   String   @map("user_id")
+  toolId   String   @map("tool_id")
+  toolName String?  @map("tool_name")
+  category String?  @map("category")
+  usedAt   DateTime @default(now()) @map("used_at")
+  user     User?    @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@index([toolId])
+  @@map("user_tool_history")
+}

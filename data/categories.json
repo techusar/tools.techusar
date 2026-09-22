@@ -1,0 +1,182 @@
+[
+  {
+    "id": "dev",
+    "name": "Developer Tools",
+    "slug": "developer-tools",
+    "icon": "Code2",
+    "description": "Formatters, minifiers, regex testers, encoders, JWT tools, and code utilities.",
+    "toolCount": 5,
+    "featured": true
+  },
+  {
+    "id": "ai",
+    "name": "AI Tools",
+    "slug": "ai-tools",
+    "icon": "Sparkles",
+    "description": "Gemini-powered text summarizers, rewriters, code explainers, and generators.",
+    "toolCount": 7,
+    "featured": true
+  },
+  {
+    "id": "img",
+    "name": "Image Tools",
+    "slug": "image-tools",
+    "icon": "Image",
+    "description": "Browser-based compressors, resizers, converters, and color extractors.",
+    "toolCount": 7,
+    "featured": true
+  },
+  {
+    "id": "pdf",
+    "name": "PDF & Docs",
+    "slug": "pdf-tools",
+    "icon": "FileText",
+    "description": "Fast PDF metadata viewers, document generators, and page counters.",
+    "toolCount": 2,
+    "featured": false
+  },
+  {
+    "id": "txt",
+    "name": "Text & Content",
+    "slug": "text-tools",
+    "icon": "AlignLeft",
+    "description": "Word counters, case converters, line sorters, diff checkers, and text cleaners.",
+    "toolCount": 6,
+    "featured": true
+  },
+  {
+    "id": "seo",
+    "name": "SEO Tools",
+    "slug": "seo-tools",
+    "icon": "Search",
+    "description": "Meta tag builders, SERP snippet previews, Schema.org generators, and UTM builders.",
+    "toolCount": 4,
+    "featured": true
+  },
+  {
+    "id": "biz",
+    "name": "Business Tools",
+    "slug": "business-tools",
+    "icon": "Briefcase",
+    "description": "Professional invoice generator, quotation maker, and hourly rate calculators.",
+    "toolCount": 1,
+    "featured": true
+  },
+  {
+    "id": "fin",
+    "name": "Finance Tools",
+    "slug": "finance-tools",
+    "icon": "DollarSign",
+    "description": "Loan EMI, profit margin, compound interest, and break-even calculators.",
+    "toolCount": 3,
+    "featured": true
+  },
+  {
+    "id": "calc",
+    "name": "Calculators",
+    "slug": "calculators",
+    "icon": "Calculator",
+    "description": "Percentage calculators, age finders, date difference, BMI, and calorie tools.",
+    "toolCount": 5,
+    "featured": true
+  },
+  {
+    "id": "conv",
+    "name": "Converters",
+    "slug": "converters",
+    "icon": "ArrowLeftRight",
+    "description": "Multi-unit converters for length, weight, temperature, data storage, and speed.",
+    "toolCount": 3,
+    "featured": false
+  },
+  {
+    "id": "gen",
+    "name": "Generators",
+    "slug": "generators",
+    "icon": "QrCode",
+    "description": "QR codes, strong passwords, UUIDs, dummy data, and placeholder text.",
+    "toolCount": 3,
+    "featured": true
+  },
+  {
+    "id": "enc",
+    "name": "Encoders & Decoders",
+    "slug": "encoders",
+    "icon": "Binary",
+    "description": "Base64, URL encoding, HTML entities, and binary-to-text converters.",
+    "toolCount": 5,
+    "featured": false
+  },
+  {
+    "id": "val",
+    "name": "Validators",
+    "slug": "validators",
+    "icon": "CheckCircle2",
+    "description": "JSON, XML, YAML, email, and password strength checkers.",
+    "toolCount": 2,
+    "featured": false
+  },
+  {
+    "id": "des",
+    "name": "Design & CSS",
+    "slug": "design-tools",
+    "icon": "Layers",
+    "description": "CSS box shadows, glassmorphism, border radius, and button generators.",
+    "toolCount": 3,
+    "featured": false
+  },
+  {
+    "id": "col",
+    "name": "Color Tools",
+    "slug": "color-tools",
+    "icon": "Palette",
+    "description": "HEX/RGB/HSL converters, WCAG contrast checkers, and palette generators.",
+    "toolCount": 2,
+    "featured": true
+  },
+  {
+    "id": "sec",
+    "name": "Security Tools",
+    "slug": "security-tools",
+    "icon": "ShieldCheck",
+    "description": "Cryptographic hash generators (SHA-256, MD5), password strength analyzers.",
+    "toolCount": 1,
+    "featured": false
+  },
+  {
+    "id": "date",
+    "name": "Date & Time",
+    "slug": "date-time-tools",
+    "icon": "Clock",
+    "description": "Time zone converters, stopwatch, countdown timer, and unix timestamps.",
+    "toolCount": 2,
+    "featured": false
+  },
+  {
+    "id": "edu",
+    "name": "Education Tools",
+    "slug": "education-tools",
+    "icon": "GraduationCap",
+    "description": "GPA calculator, percentage grade calculator, and study timer.",
+    "toolCount": 1,
+    "featured": false
+  },
+  {
+    "id": "prod",
+    "name": "Productivity",
+    "slug": "productivity-tools",
+    "icon": "Zap",
+    "description": "Pomodoro timer, checklist organizer, and quick text scratchpad.",
+    "toolCount": 1,
+    "featured": false
+  },
+  {
+    "id": "soc",
+    "name": "Social Media Tools",
+    "slug": "social-media-tools",
+    "icon": "Share2",
+    "description": "Social post preview, hashtag generator, and character limit trackers.",
+    "toolCount": 1,
+    "featured": false
+  }
+]

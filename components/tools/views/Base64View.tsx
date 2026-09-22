@@ -10,9 +10,13 @@ import { trackClientEvent } from '@/lib/analytics/tracker';
 
 export function Base64View({ tool }: { tool: ToolItem }) {
   const { recordToolUse } = useUser();
-  const [mode, setMode] = useState<'encode' | 'decode'>('encode');
-  const [input, setInput] = useState('TechTools by TechUsar');
-  const [output, setOutput] = useState(encodeBase64('TechTools by TechUsar'));
+  const isDecoder = tool.slug === 'base64-decoder' || tool.slug.includes('decode');
+  const [mode, setMode] = useState<'encode' | 'decode'>(isDecoder ? 'decode' : 'encode');
+  const initialSample = isDecoder ? 'VGVjaFRvb2xzIGJ5IFRlY2hVc2Fy' : 'TechTools by TechUsar';
+  const [input, setInput] = useState(initialSample);
+  const [output, setOutput] = useState(
+    isDecoder ? decodeBase64(initialSample).result : encodeBase64(initialSample)
+  );
   const [copied, setCopied] = useState(false);
   const [error, setError] = useState('');
 

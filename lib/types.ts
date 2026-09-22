@@ -90,7 +90,7 @@ export interface UserAccount {
   id: string;
   name: string;
   email: string;
-  passwordHash: string;
+  passwordHash?: string;
   role: 'user' | 'admin';
   tier?: 'free' | 'pro';
   createdAt: string;

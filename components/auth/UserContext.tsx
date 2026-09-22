@@ -1,6 +1,6 @@
 'use client';
 
-import React, { createContext, useContext, useState, useEffect } from 'react';
+import React, { createContext, useContext, useState, useEffect, useCallback, useMemo } from 'react';
 import { UserAccount, ToolItem } from '@/lib/types';
 import { getAnonymousId, trackClientEvent } from '@/lib/analytics/tracker';
 
@@ -24,7 +24,8 @@ interface UserContextType {
   toggleFavorite: (toolSlug: string) => Promise<void>;
   isFavorited: (toolSlug: string) => boolean;
   isFavorite: (toolSlug: string) => boolean;
-  recordRecentTool: (toolSlug: string) => void;
+  recordRecentTool: (toolSlug: string, toolName?: string, category?: string) => void;
+  clearRecentHistory: () => Promise<void>;
   recordToolUse: (tool: ToolItem) => Promise<{ canUse: boolean; remaining: number }>;
 }
 
@@ -79,7 +80,7 @@ export function UserProvider({ children }: { children: React.ReactNode }) {
     };
   }, []);
 
-  const login = async (email: string, password: string) => {
+  const login = useCallback(async (email: string, password: string) => {
     try {
       const anonId = getAnonymousId();
       const res = await fetch('/api/auth/login', {
@@ -102,9 +103,9 @@ export function UserProvider({ children }: { children: React.ReactNode }) {
     } catch (e: any) {
       return { success: false, error: e?.message || 'Network error' };
     }
-  };
+  }, []);
 
-  const register = async (name: string, email: string, password: string) => {
+  const register = useCallback(async (name: string, email: string, password: string) => {
     try {
       const anonId = getAnonymousId();
       const res = await fetch('/api/auth/register', {
@@ -124,55 +125,91 @@ export function UserProvider({ children }: { children: React.ReactNode }) {
     } catch (e: any) {
       return { success: false, error: e?.message || 'Network error' };
     }
-  };
+  }, []);
 
-  const logout = () => {
+  const logout = useCallback(() => {
     setUser(null);
     localStorage.removeItem(USER_STORAGE_KEY);
-  };
+  }, []);
 
-  const toggleFavorite = async (toolSlug: string) => {
-    let nextFavs: string[] = [];
-    if (favorites.includes(toolSlug)) {
-      nextFavs = favorites.filter((s) => s !== toolSlug);
-    } else {
-      nextFavs = [...favorites, toolSlug];
-    }
-    setFavorites(nextFavs);
+  const toggleFavorite = useCallback(async (toolSlug: string) => {
+    setFavorites((prevFavs) => {
+      const nextFavs = prevFavs.includes(toolSlug)
+        ? prevFavs.filter((s) => s !== toolSlug)
+        : [...prevFavs, toolSlug];
 
-    if (user) {
-      const updatedUser = { ...user, favorites: nextFavs };
-      setUser(updatedUser);
-      localStorage.setItem(USER_STORAGE_KEY, JSON.stringify(updatedUser));
+      setUser((currentUser) => {
+        if (currentUser) {
+          const updatedUser = { ...currentUser, favorites: nextFavs };
+          localStorage.setItem(USER_STORAGE_KEY, JSON.stringify(updatedUser));
+          fetch('/api/auth/favorites', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ userId: currentUser.id, toolSlug }),
+          }).catch(() => {});
+          return updatedUser;
+        } else {
+          localStorage.setItem(FAVORITES_STORAGE_KEY, JSON.stringify(nextFavs));
+          trackClientEvent('favorite', { toolSlug });
+          return currentUser;
+        }
+      });
 
-      try {
-        await fetch('/api/auth/favorites', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ userId: user.id, toolSlug }),
-        });
-      } catch {
-        // Handled
+      return nextFavs;
+    });
+  }, []);
+
+  const isFavorited = useCallback((toolSlug: string) => favorites.includes(toolSlug), [favorites]);
+
+  const userId = user?.id;
+
+  const recordRecentTool = useCallback((toolSlug: string, toolName?: string, category?: string) => {
+    if (!toolSlug) return;
+    setRecentTools((prev) => {
+      if (prev.length > 0 && prev[0] === toolSlug) {
+        return prev;
       }
-    } else {
-      localStorage.setItem(FAVORITES_STORAGE_KEY, JSON.stringify(nextFavs));
-      trackClientEvent('favorite', { toolSlug });
-    }
-  };
+      const updated = [toolSlug, ...prev.filter((s) => s !== toolSlug)].slice(0, 15);
+      try {
+        localStorage.setItem(RECENT_STORAGE_KEY, JSON.stringify(updated));
+      } catch {}
+      return updated;
+    });
 
-  const isFavorited = (toolSlug: string) => favorites.includes(toolSlug);
-
-  const recordRecentTool = (toolSlug: string) => {
-    const updated = [toolSlug, ...recentTools.filter((s) => s !== toolSlug)].slice(0, 12);
-    setRecentTools(updated);
+    // Fire and forget Neon DB sync
     try {
-      localStorage.setItem(RECENT_STORAGE_KEY, JSON.stringify(updated));
-    } catch {
-      // Handled
-    }
-  };
+      const anonId = getAnonymousId();
+      fetch('/api/auth/history', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          userId,
+          anonymousId: anonId,
+          toolId: toolSlug,
+          toolName: toolName || toolSlug,
+          category: category || 'general',
+        }),
+      }).catch(() => {});
+    } catch {}
+  }, [userId]);
 
-  const recordToolUse = async (tool: ToolItem): Promise<{ canUse: boolean; remaining: number }> => {
+  const clearRecentHistory = useCallback(async () => {
+    setRecentTools([]);
+    try {
+      localStorage.removeItem(RECENT_STORAGE_KEY);
+      const anonId = getAnonymousId();
+      await fetch('/api/auth/history', {
+        method: 'DELETE',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          userId,
+          anonymousId: anonId,
+        }),
+      });
+    } catch {}
+  }, [userId]);
+
+  const recordToolUse = useCallback(async (tool: ToolItem): Promise<{ canUse: boolean; remaining: number }> => {
     if (tool.unlimited) {
       return { canUse: true, remaining: Infinity };
     }
@@ -199,51 +236,80 @@ export function UserProvider({ children }: { children: React.ReactNode }) {
     } catch {
       return { canUse: true, remaining: 1 };
     }
-  };
+  }, [user]);
 
-  return (
-    <UserContext.Provider
-      value={{
-        user,
-        isAuthenticated: Boolean(user),
-        isLoading,
-        favorites,
-        recentTools,
-        isAuthModalOpen,
-        isLimitModalOpen,
-        limitModalTool,
-        openAuthModal: () => setIsAuthModalOpen(true),
-        closeAuthModal: () => setIsAuthModalOpen(false),
-        openLimitModal: (tool) => {
-          setLimitModalTool(tool);
-          setIsLimitModalOpen(true);
-        },
-        closeLimitModal: () => {
-          setIsLimitModalOpen(false);
-          setLimitModalTool(null);
-        },
-        upgradeToPro: () => {
-          if (user) {
-            const updated = { ...user, role: user.role === 'admin' ? 'admin' : ('pro' as any) };
-            setUser(updated);
-            try {
-              localStorage.setItem(USER_STORAGE_KEY, JSON.stringify(updated));
-            } catch {}
-          }
-        },
-        login,
-        register,
-        logout,
-        toggleFavorite,
-        isFavorited,
-        isFavorite: isFavorited,
-        recordRecentTool,
-        recordToolUse,
-      }}
-    >
-      {children}
-    </UserContext.Provider>
+  const openAuthModal = useCallback(() => setIsAuthModalOpen(true), []);
+  const closeAuthModal = useCallback(() => setIsAuthModalOpen(false), []);
+  const openLimitModal = useCallback((tool: ToolItem) => {
+    setLimitModalTool(tool);
+    setIsLimitModalOpen(true);
+  }, []);
+  const closeLimitModal = useCallback(() => {
+    setIsLimitModalOpen(false);
+    setLimitModalTool(null);
+  }, []);
+
+  const upgradeToPro = useCallback(() => {
+    setUser((curr) => {
+      if (!curr) return curr;
+      const updated = { ...curr, role: curr.role === 'admin' ? 'admin' : ('pro' as any) };
+      try {
+        localStorage.setItem(USER_STORAGE_KEY, JSON.stringify(updated));
+      } catch {}
+      return updated;
+    });
+  }, []);
+
+  const value = useMemo(
+    () => ({
+      user,
+      isAuthenticated: Boolean(user),
+      isLoading,
+      favorites,
+      recentTools,
+      isAuthModalOpen,
+      isLimitModalOpen,
+      limitModalTool,
+      openAuthModal,
+      closeAuthModal,
+      openLimitModal,
+      closeLimitModal,
+      upgradeToPro,
+      login,
+      register,
+      logout,
+      toggleFavorite,
+      isFavorited,
+      isFavorite: isFavorited,
+      recordRecentTool,
+      clearRecentHistory,
+      recordToolUse,
+    }),
+    [
+      user,
+      isLoading,
+      favorites,
+      recentTools,
+      isAuthModalOpen,
+      isLimitModalOpen,
+      limitModalTool,
+      openAuthModal,
+      closeAuthModal,
+      openLimitModal,
+      closeLimitModal,
+      upgradeToPro,
+      login,
+      register,
+      logout,
+      toggleFavorite,
+      isFavorited,
+      recordRecentTool,
+      clearRecentHistory,
+      recordToolUse,
+    ]
   );
+
+  return <UserContext.Provider value={value}>{children}</UserContext.Provider>;
 }
 
 export function useUser() {

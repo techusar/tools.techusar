@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import {
   Heart,
@@ -50,11 +50,19 @@ export function ToolShell({
   outputToCopy,
 }: ToolShellProps) {
   const actualRelatedTools = relatedTools || relatedToolsList;
-  const { isFavorited, toggleFavorite } = useUser();
+  const { isFavorited, toggleFavorite, recordRecentTool } = useUser();
   const favorited = isFavorited(tool.slug);
   const [copied, setCopied] = useState(false);
   const [isFullscreen, setIsFullscreen] = useState(false);
   const [shared, setShared] = useState(false);
+
+  // Record tool history into UserContext & Neon DB
+  useEffect(() => {
+    if (tool?.slug) {
+      recordRecentTool(tool.slug, tool.name, tool.categoryName);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [tool.slug]);
 
   // SEO Content enrichment matching the 600-1200 words structural SEO blueprint
   const seo = getEnrichedToolSEO(tool, category);

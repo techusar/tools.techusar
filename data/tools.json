@@ -58,8 +58,8 @@
     "id": "base64-encoder-decoder",
     "slug": "base64-encoder-decoder",
     "name": "Base64 Encoder & Decoder",
-    "category": "developer-tools",
-    "categoryName": "Developer Tools",
+    "category": "encoders",
+    "categoryName": "Encoders & Decoders",
     "description": "Encode text or binary data into Base64 format or decode Base64 strings with UTF-8 support.",
     "type": "client",
     "status": "free",
@@ -292,8 +292,8 @@
     "id": "url-encoder-decoder",
     "slug": "url-encoder-decoder",
     "name": "URL Encoder & Decoder",
-    "category": "developer-tools",
-    "categoryName": "Developer Tools",
+    "category": "encoders",
+    "categoryName": "Encoders & Decoders",
     "description": "Encode special characters into percent-encoded URL formats or decode encoded URI strings.",
     "type": "client",
     "status": "free",
@@ -338,8 +338,8 @@
     "id": "unix-timestamp-converter",
     "slug": "unix-timestamp-converter",
     "name": "Unix Timestamp Converter",
-    "category": "developer-tools",
-    "categoryName": "Developer Tools",
+    "category": "date-time-tools",
+    "categoryName": "Date & Time",
     "description": "Convert Unix epoch timestamps (seconds & milliseconds) to human-readable dates and vice versa.",
     "type": "client",
     "status": "free",
@@ -2244,8 +2244,8 @@
     "id": "json-validator",
     "slug": "json-validator",
     "name": "JSON Validator & Syntax Inspector",
-    "category": "developer-tools",
-    "categoryName": "Developer Tools",
+    "category": "validators",
+    "categoryName": "Validators",
     "description": "Validate JSON syntax, pinpoint parse errors with line and column numbers, inspect schema structure, and format valid JSON.",
     "type": "client",
     "status": "free",
@@ -2366,6 +2366,806 @@
       "gst-calc",
       "tax",
       "gst calculator"
+    ]
+  },
+  {
+    "id": "base64-encoder",
+    "slug": "base64-encoder",
+    "name": "Base64 Encoder",
+    "category": "encoders",
+    "categoryName": "Encoders & Decoders",
+    "description": "Encode plain text, UTF-8 strings, and code snippets into standard RFC 4648 Base64 strings instantly.",
+    "type": "client",
+    "status": "free",
+    "icon": "Binary",
+    "tags": [
+      "base64",
+      "encode",
+      "encoder",
+      "rfc4648",
+      "string-to-base64",
+      "developer"
+    ],
+    "featured": true,
+    "popular": true,
+    "trending": true,
+    "unlimited": true,
+    "anonymousLimit": 5,
+    "authenticatedLimit": 50,
+    "seoTitle": "Base64 Encoder Online - Convert Text to Base64 | TechTools",
+    "seoDescription": "Free, client-side Base64 encoder. Convert plain text and UTF-8 strings into standard Base64 format instantly in your browser with zero latency.",
+    "howToUse": [
+      "Type or paste your raw text into the input field.",
+      "The Base64 encoded string is generated instantly in real time.",
+      "Click Copy to copy the Base64 output directly to your clipboard."
+    ],
+    "features": [
+      "Instant real-time Base64 encoding as you type",
+      "Full UTF-8 Unicode character support",
+      "1-click copy to clipboard",
+      "100% private in-browser client execution with zero network transmission"
+    ],
+    "faqs": [
+      {
+        "question": "Is my encoded string sent to any server?",
+        "answer": "No. All encoding runs purely in your browser memory using standard Web APIs. No payload is sent over the network."
+      },
+      {
+        "question": "Does this encoder support UTF-8 multi-byte characters?",
+        "answer": "Yes, our encoder fully handles international UTF-8 characters, emojis, and symbols seamlessly."
+      }
+    ],
+    "relatedTools": [
+      "base64-decoder",
+      "base64-encoder-decoder",
+      "url-encoder-decoder",
+      "image-to-base64"
+    ]
+  },
+  {
+    "id": "base64-decoder",
+    "slug": "base64-decoder",
+    "name": "Base64 Decoder",
+    "category": "encoders",
+    "categoryName": "Encoders & Decoders",
+    "description": "Decode Base64 encoded strings back into clean, human-readable plain text and UTF-8 characters.",
+    "type": "client",
+    "status": "free",
+    "icon": "Binary",
+    "tags": [
+      "base64",
+      "decode",
+      "decoder",
+      "base64-to-text",
+      "utf8",
+      "developer"
+    ],
+    "featured": true,
+    "popular": true,
+    "trending": true,
+    "unlimited": true,
+    "anonymousLimit": 5,
+    "authenticatedLimit": 50,
+    "seoTitle": "Base64 Decoder Online - Convert Base64 to Text | TechTools",
+    "seoDescription": "Free online Base64 decoder. Convert Base64 strings back to clean plain text and UTF-8 with instant error checking and 100% in-browser privacy.",
+    "howToUse": [
+      "Paste your Base64 encoded string into the input area.",
+      "The decoded plain text is computed and displayed automatically.",
+      "Click Copy or swap inputs if you wish to encode again."
+    ],
+    "features": [
+      "Instant Base64 decoding with syntax validation",
+      "Proper UTF-8 multi-byte character restoration",
+      "Error detection for invalid or truncated Base64 strings",
+      "Zero server latency — 100% client-side memory processing"
+    ],
+    "faqs": [
+      {
+        "question": "What happens if my Base64 string is malformed?",
+        "answer": "The tool immediately flags syntax errors and alerts you to invalid padding or non-base64 characters."
+      },
+      {
+        "question": "Is decoding done securely on my device?",
+        "answer": "Yes, all decoding occurs entirely client-side without any server calls or telemetry of your input."
+      }
+    ],
+    "relatedTools": [
+      "base64-encoder",
+      "base64-encoder-decoder",
+      "jwt-decoder",
+      "url-encoder-decoder"
+    ]
+  },
+  {
+    "id": "html-entities-encoder",
+    "slug": "html-entities-encoder",
+    "name": "HTML Entities Encoder & Decoder",
+    "category": "encoders",
+    "categoryName": "Encoders & Decoders",
+    "description": "Escape special characters into HTML entities or decode named, numeric, and hex entities back to raw HTML.",
+    "type": "client",
+    "status": "free",
+    "icon": "Code",
+    "tags": [
+      "html",
+      "entities",
+      "encode",
+      "decode",
+      "escape",
+      "unescape",
+      "xss-prevention"
+    ],
+    "featured": false,
+    "popular": false,
+    "trending": false,
+    "unlimited": true,
+    "anonymousLimit": 5,
+    "authenticatedLimit": 50,
+    "seoTitle": "HTML Entities Encoder & Decoder Online | TechTools",
+    "seoDescription": "Encode and decode HTML entities instantly. Escape quotes, ampersands, angle brackets, and special characters for clean HTML rendering and XSS protection.",
+    "howToUse": [
+      "Paste your HTML or plain text snippet into the input box.",
+      "Select Encode to escape special characters, or Decode to convert entities back to raw characters.",
+      "Copy the converted output with one click."
+    ],
+    "features": [
+      "Supports named entities (&amp;, &lt;, &gt;, &quot;) and numeric entities",
+      "Live bi-directional encoding and decoding",
+      "Essential for web developers and technical writers",
+      "Runs entirely in your web browser"
+    ],
+    "faqs": [
+      {
+        "question": "Why should I encode HTML entities?",
+        "answer": "Encoding HTML entities prevents unintended HTML rendering and protects against Cross-Site Scripting (XSS) when displaying user input."
+      }
+    ],
+    "relatedTools": [
+      "url-encoder-decoder",
+      "base64-encoder",
+      "regex-tester"
+    ]
+  },
+  {
+    "id": "time-zone-converter",
+    "slug": "time-zone-converter",
+    "name": "World Time Zone Converter & Meeting Planner",
+    "category": "date-time-tools",
+    "categoryName": "Date & Time",
+    "description": "Compare and convert time across global cities with an interactive 24-hour timeline slider and meeting coordinator.",
+    "type": "client",
+    "status": "free",
+    "icon": "Clock",
+    "tags": [
+      "time-zone",
+      "world-clock",
+      "timezone",
+      "meeting-planner",
+      "utc",
+      "gmt",
+      "time-converter"
+    ],
+    "featured": true,
+    "popular": true,
+    "trending": false,
+    "unlimited": true,
+    "anonymousLimit": 5,
+    "authenticatedLimit": 50,
+    "seoTitle": "World Time Zone Converter & Meeting Planner Online | TechTools",
+    "seoDescription": "Convert time across global cities simultaneously. Interactive 24-hour slider, day/night indicators, and daylight saving time awareness for distributed teams.",
+    "howToUse": [
+      "Select or add target cities across different continents.",
+      "Drag the 24-hour timeline slider to adjust the reference time.",
+      "View converted local times across all selected time zones instantly."
+    ],
+    "features": [
+      "Interactive 24-hour multi-city time comparison",
+      "Day and night status visual indicators",
+      "Automatic Daylight Saving Time (DST) calculation",
+      "Customizable city list for distributed engineering and remote teams"
+    ],
+    "faqs": [
+      {
+        "question": "Does this handle daylight saving time transitions?",
+        "answer": "Yes, timezone offsets are resolved using the browser’s native Intl engine with the latest IANA timezone database."
+      }
+    ],
+    "relatedTools": [
+      "unix-timestamp-converter",
+      "pomodoro-timer",
+      "age-calculator"
+    ]
+  },
+  {
+    "id": "gpa-calculator",
+    "slug": "gpa-calculator",
+    "name": "GPA & College Grade Calculator",
+    "category": "education-tools",
+    "categoryName": "Education Tools",
+    "description": "Calculate cumulative high school or college GPA, semester averages, weighted credits, and letter grade breakdowns.",
+    "type": "client",
+    "status": "free",
+    "icon": "GraduationCap",
+    "tags": [
+      "gpa",
+      "grade-calculator",
+      "college-gpa",
+      "high-school-gpa",
+      "weighted-gpa",
+      "student"
+    ],
+    "featured": false,
+    "popular": true,
+    "trending": false,
+    "unlimited": true,
+    "anonymousLimit": 5,
+    "authenticatedLimit": 50,
+    "seoTitle": "GPA Calculator Online - Free College & High School GPA Calculator | TechTools",
+    "seoDescription": "Calculate 4.0 scale semester and cumulative GPA with credit hours and letter grade conversion. Fast, accurate, and easy to use.",
+    "howToUse": [
+      "Add your courses, credit hours, and earned letter grades.",
+      "Your semester GPA and total honor points update in real time.",
+      "Optionally enter prior cumulative credits to compute total cumulative GPA."
+    ],
+    "features": [
+      "Standard 4.0 GPA calculation scale",
+      "Support for plus/minus grading (A+, A, A-, B+, etc.)",
+      "Dynamic course row addition and credit weighting",
+      "Target GPA scenario planner"
+    ],
+    "faqs": [
+      {
+        "question": "What grading scale is used?",
+        "answer": "It uses the standard 4.0 college/university scale: A = 4.0, A- = 3.7, B+ = 3.3, B = 3.0, B- = 2.7, C+ = 2.3, C = 2.0, D = 1.0, F = 0.0."
+      }
+    ],
+    "relatedTools": [
+      "percentage-calculator",
+      "pomodoro-timer",
+      "bmi-calorie-calculator"
+    ]
+  },
+  {
+    "id": "pomodoro-timer",
+    "slug": "pomodoro-timer",
+    "name": "Pomodoro Focus Timer & Task Organizer",
+    "category": "productivity-tools",
+    "categoryName": "Productivity",
+    "description": "Boost productivity with scientific 25-minute Pomodoro intervals, customizable breaks, audio alerts, and task tracking.",
+    "type": "client",
+    "status": "free",
+    "icon": "Zap",
+    "tags": [
+      "pomodoro",
+      "timer",
+      "productivity",
+      "focus",
+      "time-management",
+      "study-timer"
+    ],
+    "featured": true,
+    "popular": true,
+    "trending": true,
+    "unlimited": true,
+    "anonymousLimit": 5,
+    "authenticatedLimit": 50,
+    "seoTitle": "Online Pomodoro Timer & Focus Tracker | TechTools",
+    "seoDescription": "Free online Pomodoro timer with work sessions, short breaks, long breaks, task checklist, and sound notifications. Stay focused and productive.",
+    "howToUse": [
+      "Add your tasks for the day in the task list.",
+      "Click Start to begin a 25-minute focused work interval.",
+      "Take a 5-minute break when the alarm sounds, repeating cycles as needed."
+    ],
+    "features": [
+      "Standard 25/5/15 Pomodoro intervals",
+      "Customizable task checklist with completion tracking",
+      "Audio notification chimes when intervals conclude",
+      "Session counter tracking completed Pomodoros"
+    ],
+    "faqs": [
+      {
+        "question": "What is the Pomodoro technique?",
+        "answer": "The Pomodoro Technique is a time management method that breaks work into 25-minute intervals separated by short 5-minute breaks to maximize cognitive focus."
+      }
+    ],
+    "relatedTools": [
+      "time-zone-converter",
+      "markdown-editor",
+      "word-counter"
+    ]
+  },
+  {
+    "id": "social-post-preview",
+    "slug": "social-post-preview",
+    "name": "Social Media Post Preview & Character Counter",
+    "category": "social-media-tools",
+    "categoryName": "Social Media Tools",
+    "description": "Preview how your posts and tweets will look on Twitter/X, LinkedIn, and Facebook with live character limits.",
+    "type": "client",
+    "status": "free",
+    "icon": "Share2",
+    "tags": [
+      "social-media",
+      "tweet-preview",
+      "linkedin-preview",
+      "facebook-preview",
+      "character-limit",
+      "social-post"
+    ],
+    "featured": false,
+    "popular": true,
+    "trending": false,
+    "unlimited": true,
+    "anonymousLimit": 5,
+    "authenticatedLimit": 50,
+    "seoTitle": "Social Media Post Preview Tool Online (X, LinkedIn, FB) | TechTools",
+    "seoDescription": "Preview your social media captions and posts in real time for Twitter/X, LinkedIn, and Facebook. Track exact character limits and hashtag counts.",
+    "howToUse": [
+      "Type or paste your post content in the editor.",
+      "Switch between X (Twitter), LinkedIn, and Facebook preview tabs.",
+      "Monitor character count limits and preview visual layout."
+    ],
+    "features": [
+      "Live preview for Twitter/X (280 chars), LinkedIn (3,000 chars), and Facebook (63,206 chars)",
+      "Real-time character limit progress bars",
+      "Hashtag and mention counter",
+      "1-click copy formatted text"
+    ],
+    "faqs": [
+      {
+        "question": "Does this tool post directly to my social accounts?",
+        "answer": "No. This tool allows you to safely draft, test, and preview formatting before copying to your social accounts."
+      }
+    ],
+    "relatedTools": [
+      "character-counter",
+      "word-counter",
+      "og-meta-generator",
+      "utm-builder"
+    ]
+  },
+  {
+    "id": "css-gradient-generator",
+    "slug": "css-gradient-generator",
+    "name": "CSS Gradient Generator & Color Palette",
+    "category": "design-tools",
+    "categoryName": "Design & CSS",
+    "description": "Create beautiful linear and radial CSS gradients with multi-color stops, angle controls, live preview, and 1-click CSS code export.",
+    "type": "client",
+    "status": "free",
+    "icon": "Layers",
+    "tags": [
+      "css",
+      "gradient",
+      "css-gradient",
+      "linear-gradient",
+      "radial-gradient",
+      "ui-design",
+      "generator"
+    ],
+    "featured": true,
+    "popular": true,
+    "trending": true,
+    "unlimited": true,
+    "anonymousLimit": 5,
+    "authenticatedLimit": 50,
+    "seoTitle": "CSS Gradient Generator Online - Linear & Radial Gradients | TechTools",
+    "seoDescription": "Design custom linear and radial CSS gradients with multiple color stops, angle controls, and one-click CSS code generation.",
+    "howToUse": [
+      "Select Linear or Radial gradient mode.",
+      "Add or adjust color stops and customize the gradient angle slider.",
+      "Copy the generated CSS background code directly into your stylesheet."
+    ],
+    "features": [
+      "Linear and radial gradient options with 360-degree angle control",
+      "Multi-stop color picker with opacity support",
+      "Curated library of designer gradient presets",
+      "Instant copy CSS cross-browser syntax"
+    ],
+    "faqs": [
+      {
+        "question": "Is the generated CSS compatible with all modern browsers?",
+        "answer": "Yes, standard CSS background-image syntax is supported across Chrome, Safari, Firefox, and Edge."
+      }
+    ],
+    "relatedTools": [
+      "css-box-shadow-generator",
+      "glassmorphism-generator",
+      "color-converter"
+    ]
+  },
+  {
+    "id": "glassmorphism-generator",
+    "slug": "glassmorphism-generator",
+    "name": "Glassmorphism CSS Generator",
+    "category": "design-tools",
+    "categoryName": "Design & CSS",
+    "description": "Generate modern frosted glass CSS effects with adjustable backdrop blur, opacity, border outlines, and shadow controls.",
+    "type": "client",
+    "status": "free",
+    "icon": "Layers",
+    "tags": [
+      "glassmorphism",
+      "css",
+      "frosted-glass",
+      "backdrop-filter",
+      "ui-design",
+      "css-generator"
+    ],
+    "featured": false,
+    "popular": false,
+    "trending": true,
+    "unlimited": true,
+    "anonymousLimit": 5,
+    "authenticatedLimit": 50,
+    "seoTitle": "Glassmorphism CSS Generator Online - Frosted Glass UI | TechTools",
+    "seoDescription": "Create modern frosted glass UI elements with customizable backdrop blur, transparency, border, and lighting effects. Copy CSS and Tailwind code instantly.",
+    "howToUse": [
+      "Adjust the blur radius, transparency level, and border outline sliders.",
+      "Preview the glassmorphic card against different background textures.",
+      "Copy the generated standard CSS or Tailwind CSS classes."
+    ],
+    "features": [
+      "Interactive sliders for blur (px), opacity (%), and border thickness",
+      "Live preview over light, dark, and geometric background patterns",
+      "Generates clean backdrop-filter CSS with cross-browser fallbacks",
+      "100% client-side rendering"
+    ],
+    "faqs": [
+      {
+        "question": "How does glassmorphism work in CSS?",
+        "answer": "Glassmorphism uses CSS backdrop-filter: blur() combined with semi-transparent rgba() backgrounds and subtle 1px translucent borders."
+      }
+    ],
+    "relatedTools": [
+      "css-box-shadow-generator",
+      "css-gradient-generator",
+      "color-converter"
+    ]
+  },
+  {
+    "id": "markdown-editor",
+    "slug": "markdown-editor",
+    "name": "Markdown Editor & Live HTML Preview",
+    "category": "text-tools",
+    "categoryName": "Text & Content",
+    "description": "Write and preview GitHub-flavored Markdown in real time with HTML export, word counts, and formatting shortcuts.",
+    "type": "client",
+    "status": "free",
+    "icon": "AlignLeft",
+    "tags": [
+      "markdown",
+      "editor",
+      "md-preview",
+      "gfm",
+      "html-converter",
+      "markdown-to-html"
+    ],
+    "featured": false,
+    "popular": true,
+    "trending": false,
+    "unlimited": true,
+    "anonymousLimit": 5,
+    "authenticatedLimit": 50,
+    "seoTitle": "Online Markdown Editor & Live HTML Preview | TechTools",
+    "seoDescription": "Free online Markdown editor with live side-by-side preview, GitHub Flavored Markdown support, HTML export, and formatting toolbar.",
+    "howToUse": [
+      "Write or paste your Markdown text in the left editor panel.",
+      "View the rendered HTML typography immediately in the right preview panel.",
+      "Export as raw Markdown (.md) or compiled HTML."
+    ],
+    "features": [
+      "Side-by-side split screen live preview",
+      "Full GitHub Flavored Markdown (GFM) tables, lists, and code blocks support",
+      "One-click HTML and Markdown copying",
+      "Word count, character count, and reading time tracker"
+    ],
+    "faqs": [
+      {
+        "question": "Does this support Markdown tables and task lists?",
+        "answer": "Yes, full GFM syntax including tables, strikethrough, and checkbox task lists is supported."
+      }
+    ],
+    "relatedTools": [
+      "word-counter",
+      "text-diff",
+      "case-converter"
+    ]
+  },
+  {
+    "id": "csv-json-converter",
+    "slug": "csv-json-converter",
+    "name": "CSV to JSON & JSON to CSV Converter",
+    "category": "converters",
+    "categoryName": "Converters",
+    "description": "Transform tabular CSV spreadsheets into structured JSON arrays and convert JSON records into clean CSV files.",
+    "type": "client",
+    "status": "free",
+    "icon": "ArrowLeftRight",
+    "tags": [
+      "csv-to-json",
+      "json-to-csv",
+      "converter",
+      "spreadsheet",
+      "tsv",
+      "data-converter"
+    ],
+    "featured": true,
+    "popular": true,
+    "trending": false,
+    "unlimited": true,
+    "anonymousLimit": 5,
+    "authenticatedLimit": 50,
+    "seoTitle": "CSV to JSON & JSON to CSV Converter Online | TechTools",
+    "seoDescription": "Free online bi-directional CSV and JSON converter. Parse spreadsheet data into JSON objects or export JSON records into downloadable CSV format.",
+    "howToUse": [
+      "Paste your CSV text or JSON array into the input editor.",
+      "Select your conversion direction (CSV to JSON or JSON to CSV).",
+      "View the formatted result and copy or download the converted file."
+    ],
+    "features": [
+      "Bi-directional CSV <-> JSON parsing",
+      "Custom delimiter support (comma, tab, semicolon, pipe)",
+      "Auto-detect headers and data types (numbers, booleans, strings)",
+      "Client-side memory conversion with no upload limits"
+    ],
+    "faqs": [
+      {
+        "question": "Is there any row limit for converting CSV to JSON?",
+        "answer": "Because processing is client-side in browser memory, you can convert datasets with tens of thousands of rows without server timeouts."
+      }
+    ],
+    "relatedTools": [
+      "json-formatter",
+      "json-validator",
+      "dummy-data-generator"
+    ]
+  },
+  {
+    "id": "number-base-converter",
+    "slug": "number-base-converter",
+    "name": "Number Base & Radix Converter",
+    "category": "converters",
+    "categoryName": "Converters",
+    "description": "Convert numbers seamlessly between Binary (base-2), Octal (base-8), Decimal (base-10), and Hexadecimal (base-16).",
+    "type": "client",
+    "status": "free",
+    "icon": "ArrowLeftRight",
+    "tags": [
+      "binary",
+      "hex",
+      "octal",
+      "decimal",
+      "radix",
+      "base-converter",
+      "bitwise"
+    ],
+    "featured": false,
+    "popular": false,
+    "trending": false,
+    "unlimited": true,
+    "anonymousLimit": 5,
+    "authenticatedLimit": 50,
+    "seoTitle": "Number Base Converter - Binary, Decimal, Hex, Octal | TechTools",
+    "seoDescription": "Convert numbers across Binary, Octal, Decimal, and Hexadecimal representations in real time with bit-length and ASCII character details.",
+    "howToUse": [
+      "Enter a value into any of the number base fields (Binary, Octal, Decimal, or Hex).",
+      "All other bases are calculated and updated simultaneously in real time.",
+      "Click copy next to any radix output to copy the result."
+    ],
+    "features": [
+      "Simultaneous real-time conversion across bases 2, 8, 10, and 16",
+      "Support for large integer values using BigInt precision",
+      "Bit-length, byte count, and ASCII equivalent preview",
+      "Input validation preventing illegal characters per radix"
+    ],
+    "faqs": [
+      {
+        "question": "How high can numbers be converted?",
+        "answer": "The tool uses JavaScript BigInt arithmetic, allowing arbitrary-precision integer conversions without 32-bit integer overflow."
+      }
+    ],
+    "relatedTools": [
+      "unix-timestamp-converter",
+      "hash-generator",
+      "unit-converter"
+    ]
+  },
+  {
+    "id": "dummy-data-generator",
+    "slug": "dummy-data-generator",
+    "name": "Dummy Data & Mock JSON Generator",
+    "category": "generators",
+    "categoryName": "Generators",
+    "description": "Generate realistic mock user profiles, random email addresses, phone numbers, fake UUIDs, and custom JSON schemas for development.",
+    "type": "client",
+    "status": "free",
+    "icon": "QrCode",
+    "tags": [
+      "dummy-data",
+      "mock-data",
+      "fake-data",
+      "json-generator",
+      "test-data",
+      "developer-tools"
+    ],
+    "featured": false,
+    "popular": true,
+    "trending": true,
+    "unlimited": true,
+    "anonymousLimit": 5,
+    "authenticatedLimit": 50,
+    "seoTitle": "Dummy Data & Mock JSON Generator Online | TechTools",
+    "seoDescription": "Generate realistic fake user profiles, names, addresses, emails, and custom JSON data structures for software testing and mock APIs.",
+    "howToUse": [
+      "Select the number of mock records to generate (e.g. 5, 10, 50).",
+      "Choose the fields you need (Name, Email, Address, Phone, UUID, Date).",
+      "Click Generate and copy the formatted JSON or CSV output."
+    ],
+    "features": [
+      "Pre-configured mock datasets: Users, Products, Transactions, and Companies",
+      "Customizable schema fields and record counts",
+      "Instant JSON, CSV, and SQL INSERT export options",
+      "Generates entirely in-browser without external API dependencies"
+    ],
+    "faqs": [
+      {
+        "question": "Can I use this generated data for commercial testing?",
+        "answer": "Yes, all data is synthetically generated and completely royalty-free for personal and commercial development."
+      }
+    ],
+    "relatedTools": [
+      "json-formatter",
+      "uuid-generator",
+      "lorem-ipsum-generator"
+    ]
+  },
+  {
+    "id": "aspect-ratio-calculator",
+    "slug": "aspect-ratio-calculator",
+    "name": "Aspect Ratio & Video Resolution Calculator",
+    "category": "calculators",
+    "categoryName": "Calculators",
+    "description": "Calculate dimensions, scale video and image sizes proportionally, and find standard 16:9, 4:3, 1:1, and 21:9 aspect ratios.",
+    "type": "client",
+    "status": "free",
+    "icon": "Calculator",
+    "tags": [
+      "aspect-ratio",
+      "resolution",
+      "16:9",
+      "4:3",
+      "image-dimensions",
+      "video-calculator"
+    ],
+    "featured": false,
+    "popular": false,
+    "trending": false,
+    "unlimited": true,
+    "anonymousLimit": 5,
+    "authenticatedLimit": 50,
+    "seoTitle": "Aspect Ratio Calculator Online - 16:9, 4:3, 21:9 Resolution Scaler | TechTools",
+    "seoDescription": "Calculate aspect ratios and proportional dimensions for images, screens, and video resolutions (1080p, 4K, 1440p).",
+    "howToUse": [
+      "Enter the original width and height of your image or video.",
+      "Enter a new width or height to calculate the matching proportional dimension.",
+      "Or pick from standard presets (16:9 widescreen, 4:3 standard, 9:16 reels/shorts, 1:1 square)."
+    ],
+    "features": [
+      "Automatic aspect ratio detection and fraction reduction",
+      "Proportional width and height recalculation with lock aspect ratio mode",
+      "Standard presets for YouTube, Instagram, TikTok, and cinema formats",
+      "Visual preview canvas showing calculated proportions"
+    ],
+    "faqs": [
+      {
+        "question": "What is the standard aspect ratio for HD video?",
+        "answer": "16:9 is the standard aspect ratio for high-definition video (1920x1080, 2560x1440, 3840x2160)."
+      }
+    ],
+    "relatedTools": [
+      "image-resizer",
+      "percentage-calculator",
+      "unit-converter"
+    ]
+  },
+  {
+    "id": "bmi-calorie-calculator",
+    "slug": "bmi-calorie-calculator",
+    "name": "BMI & Daily Calorie (TDEE) Calculator",
+    "category": "calculators",
+    "categoryName": "Calculators",
+    "description": "Calculate Body Mass Index (BMI), Basal Metabolic Rate (BMR), and Total Daily Energy Expenditure (TDEE) with metric and imperial units.",
+    "type": "client",
+    "status": "free",
+    "icon": "Calculator",
+    "tags": [
+      "bmi",
+      "calorie-calculator",
+      "bmr",
+      "tdee",
+      "health-calculator",
+      "fitness"
+    ],
+    "featured": false,
+    "popular": true,
+    "trending": false,
+    "unlimited": true,
+    "anonymousLimit": 5,
+    "authenticatedLimit": 50,
+    "seoTitle": "Free BMI & Daily Calorie (TDEE) Calculator Online | TechTools",
+    "seoDescription": "Calculate your Body Mass Index (BMI), Basal Metabolic Rate (BMR), and maintenance calorie needs with scientific health formulas.",
+    "howToUse": [
+      "Select Metric (kg/cm) or Imperial (lbs/ft/in) units.",
+      "Enter your age, gender, height, weight, and activity level.",
+      "View your BMI category, healthy weight range, and daily caloric breakdown."
+    ],
+    "features": [
+      "WHO standard BMI classification (Underweight, Normal, Overweight, Obese)",
+      "Mifflin-St Jeor formula for accurate BMR and TDEE estimation",
+      "Calorie targets for weight maintenance, mild loss, and active muscle gain",
+      "Supports both Metric and Imperial units"
+    ],
+    "faqs": [
+      {
+        "question": "What is a healthy BMI range for adults?",
+        "answer": "According to the World Health Organization (WHO), a BMI between 18.5 and 24.9 indicates normal healthy weight."
+      }
+    ],
+    "relatedTools": [
+      "percentage-calculator",
+      "age-calculator",
+      "unit-converter"
+    ]
+  },
+  {
+    "id": "xml-yaml-formatter",
+    "slug": "xml-yaml-formatter",
+    "name": "XML & YAML Formatter & Validator",
+    "category": "validators",
+    "categoryName": "Validators",
+    "description": "Format, validate, beautify, and inspect XML and YAML configurations with instant syntax error highlighting and conversion.",
+    "type": "client",
+    "status": "free",
+    "icon": "CheckCircle2",
+    "tags": [
+      "xml",
+      "yaml",
+      "formatter",
+      "validator",
+      "xml-beautifier",
+      "yaml-lint",
+      "developer-tools"
+    ],
+    "featured": false,
+    "popular": false,
+    "trending": false,
+    "unlimited": true,
+    "anonymousLimit": 5,
+    "authenticatedLimit": 50,
+    "seoTitle": "XML & YAML Formatter & Validator Online | TechTools",
+    "seoDescription": "Format, beautify, validate, and clean XML and YAML code online. Instant syntax highlighting and error diagnostics directly in your browser.",
+    "howToUse": [
+      "Paste your raw XML or YAML document in the code editor.",
+      "Click Format to indent and beautify the structure with clean spacing.",
+      "Review syntax validation errors or convert between XML and YAML."
+    ],
+    "features": [
+      "Syntax validation with line error reporting for XML and YAML",
+      "Configurable 2-space or 4-space tree indentation",
+      "Automatic XML closing tag correction and namespace handling",
+      "100% in-browser parsing without sending files to external servers"
+    ],
+    "faqs": [
+      {
+        "question": "Can I validate Kubernetes YAML manifests with this tool?",
+        "answer": "Yes, it inspects YAML structure, indentation levels, and key-value syntax for clean deployment configurations."
+      }
+    ],
+    "relatedTools": [
+      "json-formatter",
+      "json-validator",
+      "regex-tester"
     ]
   }
 ]

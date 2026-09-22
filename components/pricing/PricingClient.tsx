@@ -42,7 +42,7 @@ export function PricingClient() {
           Supercharge Your Workflow
         </h1>
         <p className="text-sm sm:text-base text-slate-600 dark:text-slate-300 leading-relaxed">
-          All 40+ standard utilities are 100% free forever. Upgrade to Pro for unlimited Gemini AI generations, high-volume batch operations, and cloud sync.
+          All standard utilities are free to use. Upgrade to Pro for unlimited Gemini AI generations, high-volume batch operations, and priority features.
         </p>
 
         {/* Billing Toggle */}
@@ -108,7 +108,7 @@ export function PricingClient() {
 
             <ul className="space-y-3 pt-4 border-t border-slate-100 dark:border-slate-800 text-xs text-slate-600 dark:text-slate-300">
               {[
-                'Full access to all 40+ browser utilities',
+                'Full access to all browser utilities',
                 '100% in-browser privacy & zero data retention',
                 '3 free AI queries/day (anon) or 10/day (registered)',
                 'Local favorites & history bookmarks',
@@ -202,7 +202,7 @@ export function PricingClient() {
             </thead>
             <tbody className="divide-y divide-slate-100 dark:divide-slate-800/80 text-slate-600 dark:text-slate-300">
               <tr>
-                <td className="py-3 px-4 font-medium text-slate-900 dark:text-slate-100">Standard Online Utilities (40+)</td>
+                <td className="py-3 px-4 font-medium text-slate-900 dark:text-slate-100">Standard Online Utilities</td>
                 <td className="py-3 px-4 font-semibold text-emerald-600 dark:text-emerald-400">Unlimited</td>
                 <td className="py-3 px-4 font-semibold text-emerald-600 dark:text-emerald-400">Unlimited</td>
               </tr>
@@ -258,7 +258,7 @@ export function PricingClient() {
               Do I need a credit card to use the standard tools?
             </h4>
             <p className="text-slate-600 dark:text-slate-400 leading-relaxed">
-              No. All 40+ utilities (JSON Formatter, Image Compressor, QR Codes, Calculators) require no sign-up or credit card whatsoever.
+              No. All standard utilities (JSON Formatter, Image Compressor, QR Codes, Calculators) require no sign-up or credit card whatsoever.
             </p>
           </div>
 

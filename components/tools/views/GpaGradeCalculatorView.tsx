@@ -29,22 +29,12 @@ const GRADE_POINTS: Record<string, number> = {
 };
 
 export function GpaGradeCalculatorView({ tool }: { tool: ToolItem }) {
-  const { recordToolUse } = useUser();
   const [courses, setCourses] = useState<Course[]>([
     { id: '1', name: 'Computer Science 101', credits: 4, grade: 'A' },
     { id: '2', name: 'Linear Algebra & Calculus', credits: 3, grade: 'A-' },
     { id: '3', name: 'Data Structures & Algorithms', credits: 4, grade: 'B+' },
     { id: '4', name: 'Technical Communication', credits: 2, grade: 'A' },
   ]);
-
-  const hasRecorded = useRef(false);
-  useEffect(() => {
-    if (!hasRecorded.current) {
-      hasRecorded.current = true;
-      recordToolUse(tool);
-      trackClientEvent('tool_use', { toolSlug: tool.slug });
-    }
-  }, [recordToolUse, tool]);
 
   const addCourse = () => {
     setCourses((prev) => [

@@ -155,6 +155,32 @@ export function AccountClient({ allTools }: { allTools: ToolItem[] }) {
           </div>
         </div>
       )}
+
+      {/* Recent Tool Usage History */}
+      {recentToolItems.length > 0 && (
+        <div className="space-y-4">
+          <div className="flex items-center justify-between">
+            <h3 className="text-lg font-bold text-slate-900 dark:text-white flex items-center gap-2">
+              <Clock className="w-4 h-4 text-cyan-600 dark:text-cyan-400" />
+              <span>Recent Tool Usage</span>
+            </h3>
+            <Link href="/account/history" className="text-xs font-semibold text-cyan-600 dark:text-cyan-400 hover:underline">
+              View full usage history ({recentToolItems.length}) →
+            </Link>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+            {recentToolItems.slice(0, 4).map((tool) => (
+              <ToolCard
+                key={tool.id}
+                tool={tool}
+                isBookmarked={favorites.includes(tool.id)}
+                onToggleBookmark={() => toggleFavorite(tool.id)}
+              />
+            ))}
+          </div>
+        </div>
+      )}
     </div>
   );
 }

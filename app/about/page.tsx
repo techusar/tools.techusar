@@ -1,6 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
 import { Metadata } from 'next';
+import { getAllTools } from '@/lib/data/toolsRepository';
 import {
   Sparkles,
   ShieldCheck,
@@ -22,7 +23,9 @@ export const metadata: Metadata = {
     'Learn about TechTools by TechUsar, our mission to build fast, private online developer and AI utilities with zero data retention.',
 };
 
-export default function AboutPage() {
+export default async function AboutPage() {
+  const tools = await getAllTools();
+  const toolCount = tools.length;
   return (
     <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-20 space-y-16">
       {/* Hero Section */}
@@ -129,7 +132,7 @@ export default function AboutPage() {
       {/* Platform Statistics */}
       <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-6">
         {[
-          { label: 'Interactive Utilities', value: '40+' },
+          { label: 'Interactive Utilities', value: `${toolCount}+` },
           { label: 'In-Browser Privacy', value: '100%' },
           { label: 'Client Execution', value: 'Instant' },
           { label: 'AI Intelligence', value: 'Gemini' },
@@ -159,7 +162,7 @@ export default function AboutPage() {
             href="/tools"
             className="px-6 py-3 rounded-xl bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold text-xs shadow-lg shadow-cyan-500/20 flex items-center gap-2"
           >
-            <span>Browse All 40+ Tools</span>
+            <span>Browse All Tools</span>
             <ArrowRight className="w-3.5 h-3.5" />
           </Link>
           <Link

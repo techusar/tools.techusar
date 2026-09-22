@@ -7,22 +7,12 @@ import { useUser } from '@/components/auth/UserContext';
 import { trackClientEvent } from '@/lib/analytics/tracker';
 
 export function BmiCalorieCalculatorView({ tool }: { tool: ToolItem }) {
-  const { recordToolUse } = useUser();
   const [unitSystem, setUnitSystem] = useState<'metric' | 'imperial'>('metric');
   const [gender, setGender] = useState<'male' | 'female'>('male');
   const [age, setAge] = useState<number>(28);
   const [weight, setWeight] = useState<number>(72); // kg or lbs
   const [height, setHeight] = useState<number>(175); // cm or inches
   const [activityLevel, setActivityLevel] = useState<number>(1.375); // light activity
-
-  const hasRecorded = useRef(false);
-  useEffect(() => {
-    if (!hasRecorded.current) {
-      hasRecorded.current = true;
-      recordToolUse(tool);
-      trackClientEvent('tool_use', { toolSlug: tool.slug });
-    }
-  }, [recordToolUse, tool]);
 
   // Calculate BMI
   let bmi = 0;

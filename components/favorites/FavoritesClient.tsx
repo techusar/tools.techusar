@@ -113,7 +113,7 @@ export function FavoritesClient({ allTools }: { allTools: ToolItem[] }) {
               href="/tools"
               className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-cyan-600 hover:bg-cyan-500 dark:bg-cyan-500 dark:hover:bg-cyan-400 text-white dark:text-slate-950 font-bold text-xs shadow-md shadow-cyan-600/20 transition-all"
             >
-              <span>Explore All 60+ Tools</span>
+              <span>Explore All Tools</span>
               <ArrowRight className="w-3.5 h-3.5" />
             </Link>
           </div>

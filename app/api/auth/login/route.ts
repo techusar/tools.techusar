@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { UserRepository } from '@/lib/data/user-repository';
+import { NeonUserRepository } from '@/lib/db/neon';
 import { AnalyticsRepository } from '@/lib/data/analytics-repository';
 
 export async function POST(req: NextRequest) {
@@ -11,7 +11,7 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: 'Email and password are required.' }, { status: 400 });
     }
 
-    const result = UserRepository.login(email, password);
+    const result = await NeonUserRepository.login(email, password);
     if (result.error || !result.user) {
       return NextResponse.json({ error: result.error || 'Invalid credentials' }, { status: 401 });
     }

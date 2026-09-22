@@ -9,7 +9,7 @@ import { useUser } from '@/components/auth/UserContext';
 export function OgMetaGeneratorView({ tool }: { tool: ToolItem }) {
   const { recordToolUse } = useUser();
   const [ogTitle, setOgTitle] = useState('TechTools: Free High-Speed Online Utilities & AI Suite');
-  const [ogDesc, setOgDesc] = useState('Comprehensive suite of 60+ online developer, design, SEO, and AI tools.');
+  const [ogDesc, setOgDesc] = useState('Comprehensive suite of online developer, design, SEO, and AI tools.');
   const [ogUrl, setOgUrl] = useState('https://tools.techusar.com');
   const [ogImage, setOgImage] = useState('https://tools.techusar.com/og-banner.png');
   const [siteName, setSiteName] = useState('TechTools by TechUsar');

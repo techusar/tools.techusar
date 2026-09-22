@@ -6,7 +6,7 @@ import { AllToolsDirectoryClient } from '@/components/tools/AllToolsDirectoryCli
 export const metadata: Metadata = {
   title: 'All Online Tools & Utilities Directory - TechTools by TechUsar',
   description:
-    'Browse our comprehensive catalog of 60+ online developer tools, Gemini AI assistants, formatters, image compressors, security utilities, and financial calculators.',
+    'Browse our comprehensive catalog of free online developer tools, Gemini AI assistants, formatters, image compressors, security utilities, and financial calculators.',
 };
 
 export default async function ToolsDirectoryPage() {

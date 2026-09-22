@@ -8,7 +8,7 @@ import { copyToClipboard } from '@/lib/utils';
 
 export function SerpPreviewView({ tool }: { tool: ToolItem }) {
   const { recordToolUse } = useUser();
-  const [title, setTitle] = useState('TechTools: 60+ Free Online Developer & AI Utilities');
+  const [title, setTitle] = useState('TechTools: Free Online Developer & AI Utilities');
   const [url, setUrl] = useState('https://tools.techusar.com');
   const [description, setDescription] = useState(
     'Free high-speed developer utilities, image compressors, QR generators, and Gemini-powered AI assistants with 100% in-browser privacy by TechUsar.'
