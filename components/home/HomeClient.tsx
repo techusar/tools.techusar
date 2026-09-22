@@ -22,6 +22,7 @@ import { ToolCard } from '@/components/tools/ToolCard';
 import { CategoryCard } from '@/components/tools/CategoryCard';
 import { useUser } from '@/components/auth/UserContext';
 import { AdWrapper } from '@/components/ads/AdWrapper';
+import { Hero3DTypography } from '@/components/home/Hero3DTypography';
 
 interface HomeClientProps {
   initialTools: ToolItem[];
@@ -57,63 +58,12 @@ export function HomeClient({ initialTools, categories, featuredTools }: HomeClie
 
   return (
     <div className="space-y-16 sm:space-y-24 pb-20">
-      {/* Hero Section */}
-      <section className="relative pt-12 sm:pt-20 pb-8 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto text-center overflow-hidden">
-        {/* Ambient subtle glow backdrop */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[350px] bg-gradient-to-tr from-cyan-500/15 via-blue-500/10 to-indigo-500/5 blur-3xl pointer-events-none -z-10" />
-
-        <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-cyan-50 dark:bg-[#14171F] border border-cyan-200 dark:border-cyan-500/30 text-cyan-700 dark:text-cyan-400 text-xs font-semibold mb-6 shadow-xs">
-          <Sparkles className="w-3.5 h-3.5 text-cyan-600 dark:text-cyan-400" />
-          <span>Next-Gen Online Utilities by TechUsar · Free Forever</span>
-        </div>
-
-        <h1 className="text-4xl sm:text-6xl lg:text-7xl font-black text-slate-900 dark:text-white tracking-tight leading-[1.1] max-w-4xl mx-auto">
-          Developer & AI Tools.{' '}
-          <span className="bg-gradient-to-r from-cyan-600 via-teal-600 to-blue-600 dark:from-cyan-400 dark:via-teal-300 dark:to-blue-500 bg-clip-text text-transparent">
-            Fast, Private, Instant.
-          </span>
-        </h1>
-
-        <p className="mt-5 text-base sm:text-lg text-slate-600 dark:text-slate-400 max-w-2xl mx-auto leading-relaxed">
-          Over {initialTools.length}+ free utilities for developers, creators, marketers, and businesses.
-          Everything runs client-side in your browser with zero data retention and instantaneous speed.
-        </p>
-
-        {/* Hero Search Bar */}
-        <div className="mt-8 max-w-2xl mx-auto relative">
-          <div className="relative flex items-center">
-            <Search className="w-5 h-5 text-slate-400 dark:text-slate-400 absolute left-4 pointer-events-none" />
-            <input
-              type="text"
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              placeholder={`Search ${initialTools.length}+ utilities (e.g. JSON, Password, QR Code, PDF, Base64, AI)...`}
-              className="w-full pl-12 pr-28 py-4 bg-white dark:bg-[#14171F]/90 border border-slate-300 dark:border-slate-700/80 hover:border-cyan-500/60 dark:hover:border-cyan-500/50 focus:border-cyan-600 dark:focus:border-cyan-500 rounded-2xl text-sm sm:text-base text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 shadow-lg dark:shadow-2xl backdrop-blur-md focus:outline-none transition-all"
-            />
-            <div className="absolute right-3 flex items-center gap-1.5">
-              <kbd className="hidden sm:inline-block px-2 py-1 rounded bg-slate-100 dark:bg-[#0D0F13] border border-slate-200 dark:border-slate-700 text-[10px] font-mono text-slate-500 dark:text-slate-400">
-                ⌘K
-              </kbd>
-            </div>
-          </div>
-        </div>
-
-        {/* Feature Badges */}
-        <div className="mt-10 flex flex-wrap items-center justify-center gap-6 sm:gap-10 text-xs text-slate-600 dark:text-slate-400">
-          <div className="flex items-center gap-2">
-            <ShieldCheck className="w-4 h-4 text-emerald-600 dark:text-emerald-400" />
-            <span className="font-semibold text-slate-700 dark:text-slate-300">100% In-Browser Privacy</span>
-          </div>
-          <div className="flex items-center gap-2">
-            <Zap className="w-4 h-4 text-amber-600 dark:text-amber-400" />
-            <span className="font-semibold text-slate-700 dark:text-slate-300">Zero Lag & Offline Support</span>
-          </div>
-          <div className="flex items-center gap-2">
-            <Cpu className="w-4 h-4 text-cyan-600 dark:text-cyan-400" />
-            <span className="font-semibold text-slate-700 dark:text-slate-300">Powered by Gemini 2.5 Flash</span>
-          </div>
-        </div>
-      </section>
+      {/* 3D Interactive Mouse-Parallax Hero Section */}
+      <Hero3DTypography
+        toolsCount={initialTools.length}
+        searchQuery={searchQuery}
+        onSearchChange={setSearchQuery}
+      />
 
       {/* Featured Tools Section */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

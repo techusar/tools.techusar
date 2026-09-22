@@ -1,5 +1,5 @@
 import React, { Suspense } from 'react';
-import type { Metadata } from 'next';
+import type { Metadata, Viewport } from 'next';
 import Script from 'next/script';
 import { Plus_Jakarta_Sans, JetBrains_Mono } from 'next/font/google';
 import './globals.css';
@@ -26,6 +26,17 @@ const jetbrainsMono = JetBrains_Mono({
   variable: '--font-mono',
 });
 
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 5,
+  userScalable: true,
+  themeColor: [
+    { media: '(prefers-color-scheme: light)', color: '#ffffff' },
+    { media: '(prefers-color-scheme: dark)', color: '#0B0D11' },
+  ],
+};
+
 export const metadata: Metadata = {
   metadataBase: new URL(SEO_CONFIG.siteUrl),
   title: {
@@ -45,22 +56,31 @@ export const metadata: Metadata = {
     description: SEO_CONFIG.defaultDescription,
     url: SEO_CONFIG.siteUrl,
     siteName: SEO_CONFIG.siteName,
+    locale: 'en_US',
     type: 'website',
     images: [
       {
         url: SEO_CONFIG.ogImage,
+        secureUrl: SEO_CONFIG.ogImage,
         width: 1200,
         height: 630,
-        alt: `${SEO_CONFIG.siteName} Suite`,
+        type: 'image/png',
+        alt: `${SEO_CONFIG.siteName} - 40+ Free Online Developer & AI Utilities`,
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
+    site: SEO_CONFIG.twitterHandle,
+    creator: SEO_CONFIG.twitterHandle,
     title: SEO_CONFIG.defaultTitle,
     description: SEO_CONFIG.defaultDescription,
-    creator: SEO_CONFIG.twitterHandle,
-    images: [SEO_CONFIG.ogImage],
+    images: [
+      {
+        url: SEO_CONFIG.ogImage,
+        alt: `${SEO_CONFIG.siteName} Suite`,
+      },
+    ],
   },
   robots: {
     index: true,
@@ -72,6 +92,14 @@ export const metadata: Metadata = {
       'max-image-preview': 'large',
       'max-snippet': -1,
     },
+  },
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: 'black-translucent',
+    title: SEO_CONFIG.shortName,
+  },
+  formatDetection: {
+    telephone: false,
   },
 };
 
@@ -121,6 +149,39 @@ export default async function RootLayout({ children }: { children: React.ReactNo
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
+        {/* Responsive Viewport */}
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5, viewport-fit=cover" />
+
+        {/* Primary Open Graph / Social Sharing Tags */}
+        <meta property="og:site_name" content={SEO_CONFIG.siteName} />
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content={SEO_CONFIG.defaultTitle} />
+        <meta property="og:description" content={SEO_CONFIG.defaultDescription} />
+        <meta property="og:url" content={SEO_CONFIG.siteUrl} />
+        <meta property="og:locale" content="en_US" />
+        <meta property="og:image" content={SEO_CONFIG.ogImage} />
+        <meta property="og:image:secure_url" content={SEO_CONFIG.ogImage} />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:alt" content="TechTools by TechUsar - 40+ Free Online Developer & AI Utilities" />
+
+        {/* Twitter Card Tags */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:site" content={SEO_CONFIG.twitterHandle} />
+        <meta name="twitter:creator" content={SEO_CONFIG.twitterHandle} />
+        <meta name="twitter:title" content={SEO_CONFIG.defaultTitle} />
+        <meta name="twitter:description" content={SEO_CONFIG.defaultDescription} />
+        <meta name="twitter:image" content={SEO_CONFIG.ogImage} />
+        <meta name="twitter:image:alt" content="TechTools by TechUsar - 40+ Free Online Developer & AI Utilities" />
+
+        {/* Mobile App & Color Meta */}
+        <meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff" />
+        <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#0B0D11" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+        <meta name="apple-mobile-web-app-title" content={SEO_CONFIG.shortName} />
+
         {/* Schema.org WebSite & Organization structured data */}
         <script
           type="application/ld+json"

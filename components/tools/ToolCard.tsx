@@ -145,7 +145,7 @@ export function ToolCard({ tool, variant = 'default', isBookmarked, onToggleBook
   };
 
   return (
-    <div className="group relative bg-white dark:bg-[#111318] hover:bg-slate-50/80 dark:hover:bg-[#171A21] border border-slate-200 dark:border-slate-800 hover:border-cyan-500/60 dark:hover:border-cyan-500/40 rounded-2xl p-5 transition-all duration-200 flex flex-col justify-between hover:shadow-lg dark:hover:shadow-xl hover:shadow-slate-200/60 dark:hover:shadow-cyan-950/20">
+    <div className="group relative bg-white dark:bg-[#111318] hover:bg-slate-50/80 dark:hover:bg-[#171A21] border border-slate-200/90 dark:border-slate-800 hover:border-cyan-500/60 dark:hover:border-cyan-500/40 rounded-2xl p-5 transition-all duration-200 flex flex-col justify-between shadow-[0_1px_3px_rgba(15,23,42,0.03),0_1px_2px_rgba(15,23,42,0.02)] hover:shadow-[0_8px_24px_-4px_rgba(15,23,42,0.08),0_2px_6px_-1px_rgba(15,23,42,0.04)] dark:shadow-none dark:hover:shadow-xl dark:hover:shadow-cyan-950/20">
       {/* Top Header */}
       <div>
         <div className="flex items-start justify-between gap-3 mb-3.5">
