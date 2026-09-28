@@ -2,7 +2,7 @@
 
 import React, { createContext, useContext, useState, useEffect, useCallback, useMemo } from 'react';
 import { UserAccount, ToolItem } from '@/lib/types';
-import { getAnonymousId, trackClientEvent } from '@/lib/analytics/tracker';
+import { getAnonymousId, trackClientEvent, trackSignUp, trackWhatsAppClick } from '@/lib/analytics/tracker';
 
 interface UserContextType {
   user: UserAccount | null;
@@ -80,6 +80,33 @@ export function UserProvider({ children }: { children: React.ReactNode }) {
     };
   }, []);
 
+  // Global WhatsApp click event listener
+  useEffect(() => {
+    const handleDocumentClick = (e: MouseEvent) => {
+      const target = (e.target as HTMLElement)?.closest?.('a, button');
+      if (target) {
+        const href = (target as HTMLAnchorElement).href?.toLowerCase() || '';
+        const dataAction = target.getAttribute('data-action') || '';
+        if (
+          href.includes('wa.me') ||
+          href.includes('whatsapp.com') ||
+          href.startsWith('whatsapp:') ||
+          dataAction === 'whatsapp'
+        ) {
+          trackWhatsAppClick({
+            link_url: (target as HTMLAnchorElement).href || 'whatsapp_action',
+            label: target.textContent?.trim() || target.getAttribute('aria-label') || 'WhatsApp',
+          });
+        }
+      }
+    };
+
+    document.addEventListener('click', handleDocumentClick, { capture: true });
+    return () => {
+      document.removeEventListener('click', handleDocumentClick, { capture: true });
+    };
+  }, []);
+
   const login = useCallback(async (email: string, password: string) => {
     try {
       const anonId = getAnonymousId();
@@ -121,6 +148,9 @@ export function UserProvider({ children }: { children: React.ReactNode }) {
       setUser(data.user);
       localStorage.setItem(USER_STORAGE_KEY, JSON.stringify(data.user));
       setIsAuthModalOpen(false);
+      trackSignUp('email_password', {
+        user_id: data.user.id,
+      });
       return { success: true };
     } catch (e: any) {
       return { success: false, error: e?.message || 'Network error' };

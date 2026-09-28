@@ -3,9 +3,9 @@
 import React, { useState, useMemo } from 'react';
 import { ArrowLeftRight, Copy, Check, Download, Table, FileSpreadsheet } from 'lucide-react';
 import { ToolItem } from '@/lib/types';
-import { copyToClipboard } from '@/lib/utils';
+import { copyToClipboard, downloadTextFile } from '@/lib/utils';
 import { useUser } from '@/components/auth/UserContext';
-import { trackClientEvent } from '@/lib/analytics/tracker';
+import { trackClientEvent, trackDownload } from '@/lib/analytics/tracker';
 
 const SAMPLE_CSV = `id,name,role,department,salary
 1,Sarah Connor,Lead Architect,Engineering,145000
@@ -116,13 +116,10 @@ export function CsvJsonConverterView({ tool }: { tool: ToolItem }) {
     recordToolUse(tool);
     const ext = direction === 'csv-to-json' ? 'json' : 'csv';
     const mime = direction === 'csv-to-json' ? 'application/json' : 'text/csv';
-    const blob = new Blob([outputVal], { type: mime });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement('a');
-    a.href = url;
-    a.download = `converted_data.${ext}`;
-    a.click();
-    URL.revokeObjectURL(url);
+    const filename = `converted_data.${ext}`;
+    downloadTextFile(filename, outputVal, mime);
+    trackDownload({ file_name: filename, file_extension: ext, tool_slug: tool.slug });
+    trackClientEvent('download', { toolSlug: tool.slug, metadata: { format: ext } });
   };
 
   return (

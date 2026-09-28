@@ -14,6 +14,7 @@ import {
   Lock,
 } from 'lucide-react';
 import { useUser } from '@/components/auth/UserContext';
+import { trackPurchase } from '@/lib/analytics/tracker';
 
 export function PricingClient() {
   const { user, openAuthModal, upgradeToPro } = useUser();
@@ -27,6 +28,24 @@ export function PricingClient() {
     }
     upgradeToPro();
     setUpgradedSuccess(true);
+
+    const price = billingCycle === 'yearly' ? 72 : 8;
+    const txId = `TT-PRO-${Date.now()}-${Math.random().toString(36).substring(2, 7).toUpperCase()}`;
+
+    trackPurchase({
+      transaction_id: txId,
+      value: price,
+      currency: 'USD',
+      items: [
+        {
+          item_id: `plan_pro_${billingCycle}`,
+          item_name: `TechTools Pro (${billingCycle === 'yearly' ? 'Annual' : 'Monthly'})`,
+          price: price,
+          quantity: 1,
+        },
+      ],
+    });
+
     setTimeout(() => setUpgradedSuccess(false), 5000);
   };
 

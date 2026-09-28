@@ -3,9 +3,9 @@
 import React, { useState } from 'react';
 import { CheckCircle2, AlertTriangle, Copy, Check, Trash2, Code2, Download, Sparkles, FileText } from 'lucide-react';
 import { ToolItem } from '@/lib/types';
-import { copyToClipboard } from '@/lib/utils';
+import { copyToClipboard, downloadTextFile } from '@/lib/utils';
 import { useUser } from '@/components/auth/UserContext';
-import { trackClientEvent } from '@/lib/analytics/tracker';
+import { trackClientEvent, trackDownload } from '@/lib/analytics/tracker';
 
 const VALID_SAMPLE = `{
   "status": "success",
@@ -157,13 +157,8 @@ export function JsonValidatorView({ tool }: { tool: ToolItem }) {
   const handleDownload = () => {
     const textToDownload = result?.formattedJson || jsonInput;
     if (!textToDownload) return;
-    const blob = new Blob([textToDownload], { type: 'application/json' });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement('a');
-    a.href = url;
-    a.download = 'validated.json';
-    a.click();
-    URL.revokeObjectURL(url);
+    downloadTextFile('validated.json', textToDownload, 'application/json');
+    trackDownload({ file_name: 'validated.json', file_extension: 'json', tool_slug: tool.slug });
     trackClientEvent('download', { toolSlug: tool.slug });
   };
 

@@ -3,9 +3,9 @@
 import React, { useState, useMemo } from 'react';
 import { Database, Copy, Check, Download, RefreshCw } from 'lucide-react';
 import { ToolItem } from '@/lib/types';
-import { copyToClipboard } from '@/lib/utils';
+import { copyToClipboard, downloadTextFile } from '@/lib/utils';
 import { useUser } from '@/components/auth/UserContext';
-import { trackClientEvent } from '@/lib/analytics/tracker';
+import { trackClientEvent, trackDownload } from '@/lib/analytics/tracker';
 
 const FIRST_NAMES = ['Alexander', 'Emma', 'Liam', 'Olivia', 'Noah', 'Sophia', 'James', 'Ava', 'Benjamin', 'Isabella', 'Zain', 'Fatima', 'Aria'];
 const LAST_NAMES = ['Smith', 'Johnson', 'Williams', 'Brown', 'Jones', 'Garcia', 'Miller', 'Davis', 'Rodriguez', 'Khan', 'Patel', 'Chen'];
@@ -90,13 +90,10 @@ export function DummyDataGeneratorView({ tool }: { tool: ToolItem }) {
 
   const handleDownload = () => {
     recordToolUse(tool);
-    const blob = new Blob([outputVal], { type: 'application/json' });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement('a');
-    a.href = url;
-    a.download = `mock_${dataType}_data.json`;
-    a.click();
-    URL.revokeObjectURL(url);
+    const filename = `mock_${dataType}_data.json`;
+    downloadTextFile(filename, outputVal, 'application/json');
+    trackDownload({ file_name: filename, file_extension: 'json', tool_slug: tool.slug });
+    trackClientEvent('download', { toolSlug: tool.slug, metadata: { dataType } });
   };
 
   return (

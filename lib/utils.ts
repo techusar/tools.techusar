@@ -1,5 +1,6 @@
 import { clsx, type ClassValue } from 'clsx';
 import { twMerge } from 'tailwind-merge';
+import { trackDownload } from './analytics/tracker';
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -52,6 +53,7 @@ export function downloadTextFile(filename: string, content: string, mimeType: st
   a.click();
   document.body.removeChild(a);
   URL.revokeObjectURL(url);
+  trackDownload({ file_name: filename, file_extension: filename.split('.').pop() });
 }
 
 export function downloadDataUrl(filename: string, dataUrl: string) {
@@ -61,6 +63,7 @@ export function downloadDataUrl(filename: string, dataUrl: string) {
   document.body.appendChild(a);
   a.click();
   document.body.removeChild(a);
+  trackDownload({ file_name: filename, file_extension: filename.split('.').pop() });
 }
 
 export function timeAgo(dateString: string): string {

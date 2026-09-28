@@ -3,9 +3,9 @@
 import React, { useState } from 'react';
 import { Copy, Check, Download, FileText, Eye, Code, Trash2 } from 'lucide-react';
 import { ToolItem } from '@/lib/types';
-import { copyToClipboard } from '@/lib/utils';
+import { copyToClipboard, downloadTextFile } from '@/lib/utils';
 import { useUser } from '@/components/auth/UserContext';
-import { trackClientEvent } from '@/lib/analytics/tracker';
+import { trackClientEvent, trackDownload } from '@/lib/analytics/tracker';
 
 const SAMPLE_MARKDOWN = `# Welcome to Markdown Live Editor & Previewer
 
@@ -97,13 +97,10 @@ export function MarkdownEditorView({ tool }: { tool: ToolItem }) {
   };
 
   const handleDownload = () => {
-    const blob = new Blob([markdown], { type: 'text/markdown' });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement('a');
-    a.href = url;
-    a.download = 'document.md';
-    a.click();
-    URL.revokeObjectURL(url);
+    recordToolUse(tool);
+    downloadTextFile('document.md', markdown, 'text/markdown');
+    trackDownload({ file_name: 'document.md', file_extension: 'md', tool_slug: tool.slug });
+    trackClientEvent('download', { toolSlug: tool.slug, metadata: { file: 'document.md' } });
   };
 
   return (

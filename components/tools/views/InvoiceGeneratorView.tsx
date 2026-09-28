@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import { Plus, Trash2, Printer, Download, Receipt, Sparkles } from 'lucide-react';
 import { ToolItem } from '@/lib/types';
 import { useUser } from '@/components/auth/UserContext';
-import { trackClientEvent } from '@/lib/analytics/tracker';
+import { trackClientEvent, trackDownload } from '@/lib/analytics/tracker';
 
 interface LineItem {
   description: string;
@@ -53,6 +53,7 @@ export function InvoiceGeneratorView({ tool }: { tool: ToolItem }) {
 
   const handlePrint = () => {
     recordToolUse(tool);
+    trackDownload({ file_name: `${invoiceNumber || 'invoice'}.pdf`, file_extension: 'pdf', tool_slug: tool.slug });
     trackClientEvent('tool_use', { toolSlug: tool.slug, metadata: { action: 'print' } });
     window.print();
   };
