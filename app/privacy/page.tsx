@@ -2,16 +2,93 @@ import React from 'react';
 import Link from 'next/link';
 import { Metadata } from 'next';
 import { ShieldCheck, Lock, EyeOff, CheckCircle2, Server, Database, Sparkles } from 'lucide-react';
+import { Breadcrumb } from '@/components/navigation/Breadcrumb';
+import { SEO_CONFIG, getCanonicalUrl } from '@/lib/seo/config';
 
 export const metadata: Metadata = {
-  title: 'Privacy Policy & Zero Data Retention - TechTools by TechUsar',
+  title: `Privacy Policy & Zero Data Retention Guarantee | ${SEO_CONFIG.shortName}`,
   description:
-    'Our rigorous commitment to zero data storage, browser-side client processing, and transparent telemetry policies.',
+    'Our strict commitment to zero data storage, in-browser client execution, and transparent privacy policies. No personal payloads or secrets are stored.',
+  keywords: [
+    'privacy policy',
+    'zero data retention',
+    'GDPR compliant developer tools',
+    'CCPA compliant utilities',
+    'client-side privacy',
+  ],
+  alternates: {
+    canonical: getCanonicalUrl('/privacy'),
+  },
+  openGraph: {
+    title: `Privacy Policy & Zero Data Retention | ${SEO_CONFIG.shortName}`,
+    description:
+      'Our rigorous commitment to zero data storage, browser-side client processing, and transparent telemetry policies.',
+    url: getCanonicalUrl('/privacy'),
+    type: 'website',
+    siteName: SEO_CONFIG.siteName,
+    images: [
+      {
+        url: '/api/og?title=Privacy%20Policy&cat=Trust%20%26%20Security',
+        width: 1200,
+        height: 630,
+        alt: 'TechTools Privacy Policy',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: `Privacy Policy & Zero Data Retention | ${SEO_CONFIG.shortName}`,
+    description:
+      'Our rigorous commitment to zero data storage and browser-side client processing.',
+    creator: SEO_CONFIG.twitterHandle,
+    images: ['/api/og?title=Privacy%20Policy'],
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
 };
 
 export default function PrivacyPage() {
+  const breadcrumbJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      {
+        '@type': 'ListItem',
+        position: 1,
+        name: 'Home',
+        item: SEO_CONFIG.siteUrl,
+      },
+      {
+        '@type': 'ListItem',
+        position: 2,
+        name: 'Privacy Policy',
+        item: getCanonicalUrl('/privacy'),
+      },
+    ],
+  };
+
   return (
-    <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-20 space-y-10">
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+      />
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-16 space-y-10">
+        <Breadcrumb
+          items={[
+            { label: 'Home', href: '/' },
+            { label: 'Privacy Policy', current: true },
+          ]}
+        />
       {/* Header */}
       <div className="space-y-3">
         <div className="inline-flex items-center gap-2 px-3 py-1 rounded-lg bg-emerald-50 dark:bg-emerald-500/10 border border-emerald-200 dark:border-emerald-500/30 text-emerald-700 dark:text-emerald-400 text-xs font-semibold">
@@ -122,5 +199,6 @@ export default function PrivacyPage() {
         </section>
       </div>
     </div>
+    </>
   );
 }

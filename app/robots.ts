@@ -9,5 +9,6 @@ export default function robots(): MetadataRoute.Robots {
       disallow: ['/admin/', '/api/', '/account/', '/favorites/'],
     },
     sitemap: `${SEO_CONFIG.siteUrl}/sitemap.xml`,
+    host: SEO_CONFIG.siteUrl,
   };
 }

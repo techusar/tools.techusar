@@ -28,19 +28,56 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   }
 
   const canonicalUrl = getCanonicalUrl(`/categories/${category.slug}`);
+  const title = `${category.name} – Free Online Utilities | ${SEO_CONFIG.shortName}`;
+  const description = `${category.description.replace(/\.$/, '')}. Free, fast, in-browser developer utilities with zero data retention.`;
+  const ogImageUrl = `/api/og?title=${encodeURIComponent(category.name)}&cat=Tool%20Category`;
 
   return {
-    title: `${category.name} - Free Online Utilities by TechUsar`,
-    description: category.description,
+    title,
+    description,
+    keywords: [
+      category.name.toLowerCase(),
+      `${category.name.toLowerCase()} online`,
+      `free ${category.name.toLowerCase()}`,
+      'developer utilities',
+      'browser tools',
+      'free online tools',
+    ],
     alternates: {
       canonical: canonicalUrl,
     },
     openGraph: {
-      title: `${category.name} Utilities | ${SEO_CONFIG.shortName}`,
-      description: category.description,
+      title,
+      description,
       url: canonicalUrl,
       type: 'website',
       siteName: SEO_CONFIG.siteName,
+      images: [
+        {
+          url: ogImageUrl,
+          width: 1200,
+          height: 630,
+          alt: `${category.name} - Free Online Utilities`,
+        },
+      ],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title,
+      description,
+      creator: SEO_CONFIG.twitterHandle,
+      images: [ogImageUrl],
+    },
+    robots: {
+      index: true,
+      follow: true,
+      googleBot: {
+        index: true,
+        follow: true,
+        'max-video-preview': -1,
+        'max-image-preview': 'large',
+        'max-snippet': -1,
+      },
     },
   };
 }
@@ -97,6 +134,37 @@ export default async function CategoryPage({ params }: PageProps) {
     },
   };
 
+  const categoryFaqJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: [
+      {
+        '@type': 'Question',
+        name: `Are all ${category.name} free to use on TechTools?`,
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: `Yes, all utilities in the ${category.name} collection are 100% free with unlimited local browser executions. No credit card or account registration is required for standard usage.`,
+        },
+      },
+      {
+        '@type': 'Question',
+        name: `Does my data remain private when using ${category.name}?`,
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: `Absolutely. All computations, conversions, calculations, and formatters execute client-side directly within your browser sandbox. Your data never touches our servers.`,
+        },
+      },
+      {
+        '@type': 'Question',
+        name: `Can I use these ${category.name.toLowerCase()} on mobile devices?`,
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: `Yes. Every tool in ${category.name} is fully responsive and optimized for smartphones, tablets, laptops, and desktop workstations.`,
+        },
+      },
+    ],
+  };
+
   return (
     <>
       <script
@@ -106,6 +174,10 @@ export default async function CategoryPage({ params }: PageProps) {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(collectionJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(categoryFaqJsonLd) }}
       />
       <CategoryToolsClient category={category} tools={tools} />
     </>

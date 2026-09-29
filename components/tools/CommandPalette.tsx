@@ -5,6 +5,7 @@ import { useRouter } from 'next/navigation';
 import { Search, X, Sparkles, ArrowRight, CornerDownLeft, Tag, Layers } from 'lucide-react';
 import { ToolItem } from '@/lib/types';
 import { trackClientEvent } from '@/lib/analytics/tracker';
+import { triggerNavigationLoading } from '@/components/navigation/NavigationProgressBar';
 
 interface CommandPaletteProps {
   isOpen: boolean;
@@ -67,6 +68,7 @@ export function CommandPalette({ isOpen, onClose, tools }: CommandPaletteProps) 
       metadata: { query },
     });
     onClose();
+    triggerNavigationLoading();
     router.push(`/tools/${tool.slug}`);
   };
 

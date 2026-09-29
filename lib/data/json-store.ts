@@ -134,6 +134,17 @@ export const DataStore = {
 
   getBlog(): BlogPost[] {
     const data = readJsonFile<BlogPost[]>('blog.json', memoryCache.blog);
+    const existingSlugs = new Set(data.map((p) => p.slug));
+    let hasNew = false;
+    for (const initPost of INITIAL_BLOG_POSTS) {
+      if (!existingSlugs.has(initPost.slug)) {
+        data.push(initPost);
+        hasNew = true;
+      }
+    }
+    if (hasNew) {
+      writeJsonFile('blog.json', data);
+    }
     memoryCache.blog = data;
     return data;
   },

@@ -22,6 +22,7 @@ import {
 import { ToolItem } from '@/lib/types';
 import { INITIAL_TOOLS } from '@/lib/data/initial-data';
 import { trackClientEvent } from '@/lib/analytics/tracker';
+import { triggerNavigationLoading } from '@/components/navigation/NavigationProgressBar';
 
 const CATEGORY_ICON_MAP: Record<string, any> = {
   'developer-tools': Code2,
@@ -177,6 +178,7 @@ export function NavbarSearchBar({
     if (onNavigate) {
       onNavigate();
     }
+    triggerNavigationLoading();
     router.push(`/tools/${tool.slug}`);
   };
 
@@ -394,6 +396,7 @@ export function NavbarSearchBar({
             <button
               onClick={() => {
                 setIsOpen(false);
+                triggerNavigationLoading();
                 router.push('/tools');
               }}
               className="text-cyan-600 dark:text-cyan-400 hover:underline font-sans font-medium"

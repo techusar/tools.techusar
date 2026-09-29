@@ -13,6 +13,7 @@ import { SEO_CONFIG } from '@/lib/seo/config';
 import { AD_CONFIG } from '@/lib/ad-config';
 import { getAllTools } from '@/lib/data/toolsRepository';
 import { BrandedLoading } from '@/components/ui/BrandedLoading';
+import { NavigationProgressBar } from '@/components/navigation/NavigationProgressBar';
 
 const plusJakarta = Plus_Jakarta_Sans({
   subsets: ['latin'],
@@ -232,6 +233,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
       <body
         className={`${plusJakarta.variable} ${jetbrainsMono.variable} font-sans bg-slate-50 text-slate-900 dark:bg-[#0B0D11] dark:text-slate-100 min-h-screen flex flex-col antialiased selection:bg-cyan-500 selection:text-slate-950 transition-colors duration-200`}
       >
+        <NavigationProgressBar />
         <ThemeProvider>
           <UserProvider>
             <Navbar tools={tools} />

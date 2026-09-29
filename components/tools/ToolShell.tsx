@@ -26,7 +26,7 @@ import { ToolItem, ToolCategory } from '@/lib/types';
 import { useUser } from '../auth/UserContext';
 import { ToolCard } from './ToolCard';
 import { copyToClipboard } from '@/lib/utils';
-import { getEnrichedToolSEO } from '@/lib/seo/toolSeoHelper';
+import { getEnrichedToolSEO, getToolRelevantArticle, RelevantArticle } from '@/lib/seo/toolSeoHelper';
 import { AdWrapper } from '@/components/ads/AdWrapper';
 import { Breadcrumb } from '@/components/navigation/Breadcrumb';
 
@@ -35,6 +35,7 @@ interface ToolShellProps {
   category?: ToolCategory;
   relatedTools?: ToolItem[];
   relatedToolsList?: ToolItem[];
+  relevantArticle?: RelevantArticle | null;
   children: React.ReactNode;
   onReset?: () => void;
   outputToCopy?: string;
@@ -45,11 +46,13 @@ export function ToolShell({
   category,
   relatedTools,
   relatedToolsList = [],
+  relevantArticle,
   children,
   onReset,
   outputToCopy,
 }: ToolShellProps) {
   const actualRelatedTools = relatedTools || relatedToolsList;
+  const actualArticle = relevantArticle !== undefined ? relevantArticle : getToolRelevantArticle(tool.slug, tool.category);
   const { isFavorited, toggleFavorite, recordRecentTool } = useUser();
   const favorited = isFavorited(tool.slug);
   const [copied, setCopied] = useState(false);
@@ -383,6 +386,31 @@ export function ToolShell({
                 <ToolCard key={rt.id} tool={rt} />
               ))}
             </div>
+
+            {/* Contextual Recommended Engineering Guide Spotlight */}
+            {actualArticle && (
+              <div className="mt-6 p-5 sm:p-6 rounded-2xl bg-white dark:bg-[#111318] border border-slate-200 dark:border-slate-800 shadow-xs flex flex-col md:flex-row md:items-center justify-between gap-4">
+                <div className="space-y-1.5 max-w-2xl">
+                  <div className="inline-flex items-center gap-1.5 text-[11px] font-semibold text-cyan-600 dark:text-cyan-400">
+                    <BookOpen className="w-3.5 h-3.5" />
+                    <span>Recommended Engineering Guide • {actualArticle.readTime}</span>
+                  </div>
+                  <h3 className="text-sm sm:text-base font-bold text-slate-900 dark:text-white">
+                    {actualArticle.title}
+                  </h3>
+                  <p className="text-xs text-slate-600 dark:text-slate-400 line-clamp-2">
+                    {actualArticle.excerpt}
+                  </p>
+                </div>
+                <Link
+                  href={`/blog/${actualArticle.slug}`}
+                  className="px-4 py-2.5 rounded-xl bg-slate-100 hover:bg-cyan-600 hover:text-white dark:bg-[#171A21] dark:hover:bg-cyan-500 dark:hover:text-slate-950 text-slate-800 dark:text-slate-200 text-xs font-bold transition-all shrink-0 flex items-center justify-center gap-1.5"
+                >
+                  <span>Read Guide</span>
+                  <ArrowRight className="w-3.5 h-3.5" />
+                </Link>
+              </div>
+            )}
 
             {/* Internal linking to Engineering & Productivity Guides */}
             <div className="mt-4 p-4 rounded-xl bg-slate-100/70 dark:bg-slate-800/40 border border-slate-200/80 dark:border-slate-800 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 text-xs">

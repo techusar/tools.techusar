@@ -7,16 +7,53 @@ import { SEO_CONFIG, getCanonicalUrl } from '@/lib/seo/config';
 import { Breadcrumb } from '@/components/navigation/Breadcrumb';
 
 export const metadata: Metadata = {
-  title: `All Tool Categories - ${SEO_CONFIG.shortName}`,
+  title: `All Tool Categories | ${SEO_CONFIG.shortName}`,
   description:
-    'Explore free online developer, AI, security, image, text, and business productivity utilities categorized by specialty.',
+    'Explore free online developer, AI, security, image, text, and business productivity utilities categorized by specialty. 100% in-browser processing.',
+  keywords: [
+    'tool categories',
+    'developer tool categories',
+    'free online tools',
+    'web utilities directory',
+    'online converters',
+    'calculators',
+    'generators',
+  ],
   alternates: {
     canonical: getCanonicalUrl('/categories'),
   },
   openGraph: {
-    title: `All Tool Categories - ${SEO_CONFIG.shortName}`,
-    description: 'Explore free online developer, AI, security, and productivity utilities.',
+    title: `All Tool Categories | ${SEO_CONFIG.shortName}`,
+    description: 'Explore free online developer, AI, security, and productivity utilities categorized by specialty.',
     url: getCanonicalUrl('/categories'),
+    type: 'website',
+    siteName: SEO_CONFIG.siteName,
+    images: [
+      {
+        url: '/api/og?title=All%20Tool%20Categories&cat=Directory',
+        width: 1200,
+        height: 630,
+        alt: 'All Tool Categories - TechTools',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: `All Tool Categories | ${SEO_CONFIG.shortName}`,
+    description: 'Explore free online developer, AI, security, and productivity utilities.',
+    creator: SEO_CONFIG.twitterHandle,
+    images: ['/api/og?title=All%20Tool%20Categories'],
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
   },
 };
 

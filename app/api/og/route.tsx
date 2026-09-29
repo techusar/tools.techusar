@@ -103,7 +103,7 @@ export async function GET(request: NextRequest) {
               <span>✓ Complete Utilities Suite</span>
             </div>
             <div style={{ color: '#22D3EE', fontSize: '18px', fontWeight: '700' }}>
-              techtools.techusar.com
+              tools.techusar.com
             </div>
           </div>
         </div>

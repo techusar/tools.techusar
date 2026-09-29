@@ -9,7 +9,7 @@ import {
 } from '@/lib/data/toolsRepository';
 import { ToolShell } from '@/components/tools/ToolShell';
 import { ToolViewResolver } from '@/components/tools/ToolViewResolver';
-import { getEnrichedToolSEO, generateToolJsonLd } from '@/lib/seo/toolSeoHelper';
+import { getEnrichedToolSEO, generateToolJsonLd, getToolRelevantArticle, getToolSeoMetadata } from '@/lib/seo/toolSeoHelper';
 import { SEO_CONFIG, getCanonicalUrl } from '@/lib/seo/config';
 
 interface PageProps {
@@ -35,14 +35,10 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   }
 
   const category = await getCategoryBySlug(tool.category);
-  const seo = getEnrichedToolSEO(tool, category);
-  const title = tool.metaTitle || tool.seoTitle || `${tool.name} - Free Online Tool by TechUsar`;
-  const description =
-    tool.metaDescription ||
-    tool.seoDescription ||
-    `${tool.name}: ${tool.description} Fast, secure, and 100% private in-browser utility with zero data retention.`;
+  const { title, description } = getToolSeoMetadata(tool);
 
   const canonicalUrl = getCanonicalUrl(`/tools/${tool.slug}`);
+  const ogImageUrl = `/api/og?title=${encodeURIComponent(tool.name)}&cat=${encodeURIComponent(tool.categoryName)}`;
 
   return {
     title,
@@ -61,14 +57,14 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       canonical: canonicalUrl,
     },
     openGraph: {
-      title: `${tool.name} - Free Online Tool | ${SEO_CONFIG.shortName}`,
+      title,
       description,
       url: canonicalUrl,
       type: 'website',
       siteName: SEO_CONFIG.siteName,
       images: [
         {
-          url: `/api/og?title=${encodeURIComponent(tool.name)}&cat=${encodeURIComponent(tool.categoryName)}`,
+          url: ogImageUrl,
           width: 1200,
           height: 630,
           alt: `${tool.name} - Free Online Tool`,
@@ -77,10 +73,10 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     },
     twitter: {
       card: 'summary_large_image',
-      title: `${tool.name} - Free Online Tool`,
+      title,
       description,
       creator: SEO_CONFIG.twitterHandle,
-      images: [`/api/og?title=${encodeURIComponent(tool.name)}`],
+      images: [ogImageUrl],
     },
     robots: {
       index: true,
@@ -111,6 +107,7 @@ export default async function ToolPage({ params }: PageProps) {
 
   const enrichedSEO = getEnrichedToolSEO(tool, category);
   const jsonLdSchemas = generateToolJsonLd(tool, category, enrichedSEO);
+  const relevantArticle = getToolRelevantArticle(tool.slug, tool.category);
 
   return (
     <>
@@ -120,7 +117,12 @@ export default async function ToolPage({ params }: PageProps) {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdSchemas) }}
       />
 
-      <ToolShell tool={tool} category={category} relatedTools={relatedTools}>
+      <ToolShell
+        tool={tool}
+        category={category}
+        relatedTools={relatedTools}
+        relevantArticle={relevantArticle}
+      >
         <ToolViewResolver tool={tool} />
       </ToolShell>
     </>
