@@ -286,7 +286,7 @@ export function PricingClient() {
               Do you offer student or non-profit discounts?
             </h4>
             <p className="text-slate-600 dark:text-slate-400 leading-relaxed">
-              Yes! Contact us at <a href="mailto:support@techusar.com" className="text-cyan-600 dark:text-cyan-400 hover:underline">support@techusar.com</a> with your educational credentials for a 50% discount code.
+              Yes! Contact us at <a href="mailto:techusar17@gmail.com" className="text-cyan-600 dark:text-cyan-400 hover:underline">techusar17@gmail.com</a> with your educational credentials for a 50% discount code.
             </p>
           </div>
 

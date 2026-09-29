@@ -21,6 +21,7 @@ import {
   ChevronDown,
   ArrowRight,
   FileCheck,
+  MessageSquare,
 } from 'lucide-react';
 import { ToolItem, ToolCategory } from '@/lib/types';
 import { useUser } from '../auth/UserContext';
@@ -29,6 +30,8 @@ import { copyToClipboard } from '@/lib/utils';
 import { getEnrichedToolSEO, getToolRelevantArticle, RelevantArticle } from '@/lib/seo/toolSeoHelper';
 import { AdWrapper } from '@/components/ads/AdWrapper';
 import { Breadcrumb } from '@/components/navigation/Breadcrumb';
+import { ToolFeedbackSection } from './ToolFeedbackSection';
+import { getAnonymousId } from '@/lib/analytics/tracker';
 
 interface ToolShellProps {
   tool: ToolItem;
@@ -53,7 +56,7 @@ export function ToolShell({
 }: ToolShellProps) {
   const actualRelatedTools = relatedTools || relatedToolsList;
   const actualArticle = relevantArticle !== undefined ? relevantArticle : getToolRelevantArticle(tool.slug, tool.category);
-  const { isFavorited, toggleFavorite, recordRecentTool } = useUser();
+  const { user, isFavorited, toggleFavorite, recordRecentTool } = useUser();
   const favorited = isFavorited(tool.slug);
   const [copied, setCopied] = useState(false);
   const [isFullscreen, setIsFullscreen] = useState(false);
@@ -72,6 +75,67 @@ export function ToolShell({
 
   // FAQ open/close state tracking
   const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(0);
+
+  // Global feedback state (Likes & Comments count)
+  const [globalLikes, setGlobalLikes] = useState<number | null>(null);
+  const [globalCommentsCount, setGlobalCommentsCount] = useState<number>(0);
+  const [userLikedGlobal, setUserLikedGlobal] = useState(false);
+  const [isLikingGlobal, setIsLikingGlobal] = useState(false);
+
+  useEffect(() => {
+    let active = true;
+    const anonId = getAnonymousId();
+    const currentUserId = user?.id || anonId;
+    fetch(`/api/feedback?toolSlug=${encodeURIComponent(tool.slug)}&userId=${encodeURIComponent(currentUserId)}`)
+      .then((res) => res.json())
+      .then((data) => {
+        if (active && data.success) {
+          setGlobalLikes(data.likes);
+          setUserLikedGlobal(data.userLiked);
+          setGlobalCommentsCount(data.totalComments || (data.comments?.length ?? 0));
+        }
+      })
+      .catch(() => {});
+    return () => {
+      active = false;
+    };
+  }, [tool.slug, user?.id]);
+
+  const handleGlobalLike = async () => {
+    if (isLikingGlobal) return;
+    setIsLikingGlobal(true);
+    const anonId = getAnonymousId();
+    const currentUserId = user?.id || anonId;
+
+    const nextLiked = !userLikedGlobal;
+    const nextLikes = nextLiked ? (globalLikes ?? 0) + 1 : Math.max(0, (globalLikes ?? 1) - 1);
+    setGlobalLikes(nextLikes);
+    setUserLikedGlobal(nextLiked);
+
+    try {
+      const res = await fetch('/api/feedback/like', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ toolSlug: tool.slug, userId: currentUserId }),
+      });
+      const data = await res.json();
+      if (data.success) {
+        setGlobalLikes(data.likes);
+        setUserLikedGlobal(data.userLiked);
+      }
+    } catch {
+      // Ignored
+    } finally {
+      setIsLikingGlobal(false);
+    }
+  };
+
+  const scrollToFeedback = () => {
+    const el = document.getElementById('tool-feedback');
+    if (el) {
+      el.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
 
   const toggleFaq = (index: number) => {
     setOpenFaqIndex(openFaqIndex === index ? null : index);
@@ -152,10 +216,47 @@ export function ToolShell({
             </div>
 
             {/* Action Bar */}
-            <div className="flex items-center gap-2 shrink-0 self-start pt-1 sm:pt-0">
+            <div className="flex flex-wrap items-center gap-2 shrink-0 self-start pt-1 sm:pt-0">
+              {/* Global Likes Counter & Action */}
+              <button
+                onClick={handleGlobalLike}
+                disabled={isLikingGlobal}
+                className={`min-h-[40px] px-3 sm:px-3.5 py-2 rounded-xl border transition-all flex items-center gap-1.5 text-xs font-semibold cursor-pointer ${
+                  userLikedGlobal
+                    ? 'bg-rose-50 dark:bg-rose-500/15 border-rose-300 dark:border-rose-500/40 text-rose-600 dark:text-rose-400 shadow-xs'
+                    : 'bg-slate-100 hover:bg-rose-50/70 dark:bg-[#171A21] border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 hover:text-rose-600 dark:hover:text-rose-400 dark:hover:bg-slate-800'
+                }`}
+                title={userLikedGlobal ? 'You liked this tool globally (Click to unlike)' : 'Like this tool globally'}
+                aria-label="Global Likes"
+              >
+                <Heart
+                  className={`w-4 h-4 transition-transform ${
+                    userLikedGlobal ? 'fill-rose-500 text-rose-500 scale-110' : 'text-slate-500 hover:text-rose-500'
+                  }`}
+                />
+                <span className="font-mono text-xs font-bold text-slate-900 dark:text-slate-100">
+                  {globalLikes !== null ? globalLikes.toLocaleString() : '...'}
+                </span>
+                <span className="hidden md:inline text-[11px] font-medium text-slate-500 dark:text-slate-400">Likes</span>
+              </button>
+
+              {/* Jump to Reviews / Comments */}
+              <button
+                onClick={scrollToFeedback}
+                className="min-h-[40px] px-3 sm:px-3.5 py-2 rounded-xl bg-slate-100 hover:bg-cyan-50/70 dark:bg-[#171A21] border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 hover:text-cyan-600 dark:hover:text-cyan-400 dark:hover:bg-slate-800 transition-colors text-xs font-medium flex items-center gap-1.5 cursor-pointer"
+                title="View reviews and discussions"
+                aria-label="View community reviews and comments"
+              >
+                <MessageSquare className="w-4 h-4 text-cyan-600 dark:text-cyan-400" />
+                <span className="font-mono text-xs font-bold text-slate-900 dark:text-slate-100">
+                  {globalCommentsCount}
+                </span>
+                <span className="hidden md:inline text-[11px] font-medium text-slate-500 dark:text-slate-400">Reviews</span>
+              </button>
+
               <button
                 onClick={() => toggleFavorite(tool.slug)}
-                className={`min-h-[40px] px-3.5 py-2 rounded-xl border transition-all flex items-center gap-1.5 text-xs font-medium ${
+                className={`min-h-[40px] px-3.5 py-2 rounded-xl border transition-all flex items-center gap-1.5 text-xs font-medium cursor-pointer ${
                   favorited
                     ? 'bg-rose-50 dark:bg-rose-500/10 border-rose-200 dark:border-rose-500/30 text-rose-500 dark:text-rose-400'
                     : 'bg-slate-100 hover:bg-slate-200 dark:bg-[#171A21] border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white dark:hover:bg-slate-800'
@@ -169,7 +270,7 @@ export function ToolShell({
 
               <button
                 onClick={handleShare}
-                className="min-h-[40px] px-3.5 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 dark:bg-[#171A21] border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white dark:hover:bg-slate-800 transition-colors text-xs font-medium flex items-center gap-1.5"
+                className="min-h-[40px] px-3.5 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 dark:bg-[#171A21] border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white dark:hover:bg-slate-800 transition-colors text-xs font-medium flex items-center gap-1.5 cursor-pointer"
                 title="Share tool"
                 aria-label="Share tool link"
               >
@@ -179,7 +280,7 @@ export function ToolShell({
 
               <button
                 onClick={() => setIsFullscreen(!isFullscreen)}
-                className="min-h-[40px] px-3.5 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 dark:bg-[#171A21] border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white dark:hover:bg-slate-800 transition-colors text-xs font-medium flex items-center gap-1.5"
+                className="min-h-[40px] px-3.5 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 dark:bg-[#171A21] border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white dark:hover:bg-slate-800 transition-colors text-xs font-medium flex items-center gap-1.5 cursor-pointer"
                 title={isFullscreen ? 'Exit Fullscreen' : 'Fullscreen Tool'}
                 aria-label="Toggle Fullscreen"
               >
@@ -358,6 +459,9 @@ export function ToolShell({
 
         {/* Ad Placement: Bottom of tool content */}
         <AdWrapper slot="toolBottom" placement="tool-content-bottom" />
+
+        {/* Section 7.5: Community Feedback, Reviews & Global Likes */}
+        <ToolFeedbackSection tool={tool} initialLikes={globalLikes || undefined} />
 
         {/* Section 8: Related Tools (with Short Descriptions & Links) */}
         {actualRelatedTools.length > 0 && (

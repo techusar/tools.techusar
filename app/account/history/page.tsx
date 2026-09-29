@@ -6,6 +6,10 @@ import { HistoryClient } from '@/components/account/HistoryClient';
 export const metadata: Metadata = {
   title: 'Tool Usage History & Recent Activity - TechTools by TechUsar',
   description: 'View and resume your recently used developer tools, formatters, and AI utilities.',
+  robots: {
+    index: false,
+    follow: false,
+  },
 };
 
 export default async function HistoryPage() {

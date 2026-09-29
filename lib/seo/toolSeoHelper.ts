@@ -1,5 +1,6 @@
 import { ToolItem, ToolFAQ, ToolCategory } from '@/lib/types';
 import { SEO_CONFIG } from '@/lib/seo/config';
+import { COMPREHENSIVE_TOOL_FAQS } from '@/lib/seo/toolFaqsData';
 
 export interface ToolEnrichedSEO {
   shortIntro: string; // 30-60 words
@@ -1468,15 +1469,35 @@ export function getEnrichedToolSEO(tool: ToolItem, category?: ToolCategory): Too
     ];
 
   // FAQs (4-8 questions, ~250-500 words)
-  const baseFaqs =
-    (tool.faqs && tool.faqs.length >= 2 ? tool.faqs : null) ||
-    curated?.faqs ||
-    tool.faqs ||
+  const baseFaqs: ToolFAQ[] =
+    (curated?.faqs && curated.faqs.length >= 3 ? [...curated.faqs] : null) ||
+    (COMPREHENSIVE_TOOL_FAQS[tool.slug] ? [...COMPREHENSIVE_TOOL_FAQS[tool.slug]] : null) ||
+    (curated?.faqs && curated.faqs.length > 0 ? [...curated.faqs] : null) ||
+    (tool.faqs && tool.faqs.length > 0 ? [...tool.faqs] : []) ||
     [];
+
+  // Include any valid custom tool FAQs from tool definition if not already present
+  if (tool.faqs && tool.faqs.length > 0) {
+    for (const tf of tool.faqs) {
+      if (
+        tf.question &&
+        tf.answer &&
+        tf.answer.trim().length >= 40 &&
+        !baseFaqs.some(
+          (bf) =>
+            bf.question.toLowerCase().trim() === tf.question.toLowerCase().trim() ||
+            bf.answer.toLowerCase().trim() === tf.answer.toLowerCase().trim()
+        )
+      ) {
+        baseFaqs.push(tf);
+      }
+    }
+  }
+
   const standardFaqs: ToolFAQ[] = [
     {
       question: `Is ${tool.name} completely free to use?`,
-      answer: `Yes, ${tool.name} is 100% free to use on TechTools. You can use it as often as you need with generous daily allowances and no hidden charges.`,
+      answer: `Yes, ${tool.name} is 100% free to use on TechTools with no subscription fees, credit card requirements, or hidden daily limits.`,
     },
     {
       question: `Is my data stored or logged when using ${tool.name}?`,
@@ -1498,17 +1519,19 @@ export function getEnrichedToolSEO(tool: ToolItem, category?: ToolCategory): Too
       question: `How does ${tool.name} ensure output accuracy?`,
       answer: `Our tools are built against strict industry standards (such as RFC specifications, IEEE standards, and standard cryptographic algorithms) to guarantee exact mathematical and syntactic accuracy.`,
     },
-    {
-      question: `Can I bookmark or save ${tool.name} for quick access?`,
-      answer: `Yes! Click the "Favorite" heart icon at the top of the tool page to pin it to your personal favorites dashboard for instant one-click access anytime.`,
-    },
   ];
 
-  // Combine unique FAQs up to 6-8 items
+  // Combine unique FAQs up to 6 items
   const combinedFaqs: ToolFAQ[] = [...baseFaqs];
   for (const sf of standardFaqs) {
     if (combinedFaqs.length >= 6) break;
-    if (!combinedFaqs.some((f) => f.question.toLowerCase() === sf.question.toLowerCase())) {
+    if (
+      !combinedFaqs.some(
+        (f) =>
+          f.question.toLowerCase().trim() === sf.question.toLowerCase().trim() ||
+          f.question.toLowerCase().includes('data stored') && sf.question.toLowerCase().includes('data stored')
+      )
+    ) {
       combinedFaqs.push(sf);
     }
   }

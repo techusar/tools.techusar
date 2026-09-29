@@ -24,9 +24,12 @@ export const SEO_CONFIG = {
     'TechUsar',
   ],
   ogImage: 'https://tools.techusar.com/api/og',
-  contactEmail: 'support@techusar.com',
-  privacyEmail: 'privacy@techusar.com',
-  legalEmail: 'legal@techusar.com',
+  contactEmail: 'techusar17@gmail.com',
+  whatsappNumber: '03318917330',
+  whatsappPhoneIntl: '+923318917330',
+  whatsappUrl: 'https://wa.me/923318917330',
+  privacyEmail: 'techusar17@gmail.com',
+  legalEmail: 'techusar17@gmail.com',
 } as const;
 
 export function getCanonicalUrl(path: string = ''): string {

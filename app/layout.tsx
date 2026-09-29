@@ -14,6 +14,7 @@ import { AD_CONFIG } from '@/lib/ad-config';
 import { getAllTools } from '@/lib/data/toolsRepository';
 import { BrandedLoading } from '@/components/ui/BrandedLoading';
 import { NavigationProgressBar } from '@/components/navigation/NavigationProgressBar';
+import { WhatsAppButton } from '@/components/layout/WhatsAppButton';
 
 const plusJakarta = Plus_Jakarta_Sans({
   subsets: ['latin'],
@@ -119,6 +120,7 @@ const siteJsonLd = {
       ],
       contactPoint: {
         '@type': 'ContactPoint',
+        telephone: '+923318917330',
         email: SEO_CONFIG.contactEmail,
         contactType: 'customer support',
       },
@@ -146,43 +148,31 @@ const siteJsonLd = {
 
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
   const tools = await getAllTools();
+  // Strip heavy SEO/FAQ content when passing tools to Navbar search to minimize RSC layout chunk size
+  const searchTools = tools.map((t) => ({
+    id: t.id,
+    name: t.name,
+    slug: t.slug,
+    category: t.category,
+    categoryName: t.categoryName,
+    description: t.description,
+    icon: t.icon,
+    type: t.type,
+    status: t.status,
+    tags: t.tags || [],
+    unlimited: t.unlimited,
+    anonymousLimit: t.anonymousLimit,
+    authenticatedLimit: t.authenticatedLimit,
+    seoTitle: t.seoTitle,
+    seoDescription: t.seoDescription,
+    howToUse: [],
+    features: [],
+    faqs: [],
+  }));
 
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
-        {/* Responsive Viewport */}
-        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5, viewport-fit=cover" />
-
-        {/* Primary Open Graph / Social Sharing Tags */}
-        <meta property="og:site_name" content={SEO_CONFIG.siteName} />
-        <meta property="og:type" content="website" />
-        <meta property="og:title" content={SEO_CONFIG.defaultTitle} />
-        <meta property="og:description" content={SEO_CONFIG.defaultDescription} />
-        <meta property="og:url" content={SEO_CONFIG.siteUrl} />
-        <meta property="og:locale" content="en_US" />
-        <meta property="og:image" content={SEO_CONFIG.ogImage} />
-        <meta property="og:image:secure_url" content={SEO_CONFIG.ogImage} />
-        <meta property="og:image:width" content="1200" />
-        <meta property="og:image:height" content="630" />
-        <meta property="og:image:type" content="image/png" />
-        <meta property="og:image:alt" content="TechTools by TechUsar - Free Online Developer & AI Utilities" />
-
-        {/* Twitter Card Tags */}
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:site" content={SEO_CONFIG.twitterHandle} />
-        <meta name="twitter:creator" content={SEO_CONFIG.twitterHandle} />
-        <meta name="twitter:title" content={SEO_CONFIG.defaultTitle} />
-        <meta name="twitter:description" content={SEO_CONFIG.defaultDescription} />
-        <meta name="twitter:image" content={SEO_CONFIG.ogImage} />
-        <meta name="twitter:image:alt" content="TechTools by TechUsar - Free Online Developer & AI Utilities" />
-
-        {/* Mobile App & Color Meta */}
-        <meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff" />
-        <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#0B0D11" />
-        <meta name="apple-mobile-web-app-capable" content="yes" />
-        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-        <meta name="apple-mobile-web-app-title" content={SEO_CONFIG.shortName} />
-
         {/* Schema.org WebSite & Organization structured data */}
         <script
           type="application/ld+json"
@@ -236,7 +226,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
         <NavigationProgressBar />
         <ThemeProvider>
           <UserProvider>
-            <Navbar tools={tools} />
+            <Navbar tools={searchTools} />
             <main className="flex-1 w-full">
               <Suspense
                 fallback={
@@ -253,6 +243,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
               </Suspense>
             </main>
             <Footer />
+            <WhatsAppButton />
             <AuthModal />
             <UsageLimitModal />
           </UserProvider>

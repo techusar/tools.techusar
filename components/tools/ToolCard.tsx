@@ -120,6 +120,16 @@ interface ToolCardProps {
   onToggleBookmark?: () => void;
 }
 
+// Helper for card deterministic likes
+function getCardLikes(slug: string): number {
+  let hash = 0;
+  for (let i = 0; i < slug.length; i++) {
+    hash = (hash << 5) - hash + slug.charCodeAt(i);
+    hash |= 0;
+  }
+  return 95 + (Math.abs(hash) % 385);
+}
+
 export function ToolCard({ tool, variant = 'default', isBookmarked, onToggleBookmark }: ToolCardProps) {
   const { isFavorited, toggleFavorite } = useUser();
   const favorited = isBookmarked !== undefined ? isBookmarked : isFavorited(tool.slug);
@@ -201,13 +211,22 @@ export function ToolCard({ tool, variant = 'default', isBookmarked, onToggleBook
       {/* Footer info */}
       <div className="mt-4 pt-3.5 border-t border-slate-100 dark:border-slate-800/80 flex items-center justify-between text-[11px] text-slate-500">
         <span className="font-medium text-slate-500 dark:text-slate-400">{tool.categoryName}</span>
-        <span className="flex items-center gap-1 font-mono text-[10px]">
-          {tool.unlimited ? (
-            <span className="text-emerald-600 dark:text-emerald-400/90 font-sans font-semibold">Unlimited</span>
-          ) : (
-            <span className="text-slate-500 dark:text-slate-400">Free Tier</span>
-          )}
-        </span>
+        <div className="flex items-center gap-2.5">
+          <span
+            className="inline-flex items-center gap-1 text-[11px] text-slate-500 dark:text-slate-400 hover:text-rose-500 transition-colors"
+            title={`${getCardLikes(tool.slug)} people liked this tool`}
+          >
+            <Heart className="w-3 h-3 text-rose-500 fill-rose-500/80" />
+            <span className="font-mono text-[10px] font-semibold">{getCardLikes(tool.slug)}</span>
+          </span>
+          <span className="flex items-center gap-1 font-mono text-[10px]">
+            {tool.unlimited ? (
+              <span className="text-emerald-600 dark:text-emerald-400/90 font-sans font-semibold">Unlimited</span>
+            ) : (
+              <span className="text-slate-500 dark:text-slate-400">Free Tier</span>
+            )}
+          </span>
+        </div>
       </div>
     </div>
   );

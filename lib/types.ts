@@ -177,3 +177,24 @@ export interface BackupPayload {
     settings: PlatformSettings;
   };
 }
+
+export interface ToolComment {
+  id: string;
+  toolSlug: string;
+  authorName: string;
+  text: string;
+  rating?: number; // 1 to 5 stars
+  createdAt: string;
+  likesCount?: number;
+  badge?: string;
+  verified?: boolean;
+}
+
+export interface ToolFeedbackData {
+  toolSlug: string;
+  likes: number;
+  userLiked: boolean;
+  comments: ToolComment[];
+  averageRating: number;
+  totalComments: number;
+}

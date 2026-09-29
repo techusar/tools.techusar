@@ -191,8 +191,8 @@ export default function PrivacyPage() {
           </h2>
           <p>
             For any inquiries or audit verifications regarding our technical privacy safeguards, please email our Data Protection Office at{' '}
-            <a href="mailto:privacy@techusar.com" className="text-cyan-600 dark:text-cyan-400 font-semibold hover:underline">
-              privacy@techusar.com
+            <a href="mailto:techusar17@gmail.com" className="text-cyan-600 dark:text-cyan-400 font-semibold hover:underline">
+              techusar17@gmail.com
             </a>
             .
           </p>

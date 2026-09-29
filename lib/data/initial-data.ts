@@ -3535,7 +3535,7 @@ export const INITIAL_SETTINGS: PlatformSettings = {
   maintenanceMode: false,
   aiProvider: 'gemini',
   aiModel: 'gemini-3.8-flash',
-  contactEmail: 'support@techusar.com',
+  contactEmail: 'techusar17@gmail.com',
   updatedAt: new Date().toISOString(),
 };
 

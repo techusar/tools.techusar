@@ -132,12 +132,15 @@ export default async function BlogPostPage({ params }: PageProps) {
   const canonicalUrl = getCanonicalUrl(`/blog/${post.slug}`);
 
   // Schema.org BlogPosting
+  const blogImageUrl = `${SEO_CONFIG.siteUrl}/api/og?title=${encodeURIComponent(post.title)}&cat=${encodeURIComponent(post.category)}`;
+
   const blogJsonLd = {
     '@context': 'https://schema.org',
     '@type': 'BlogPosting',
     '@id': `${canonicalUrl}#article`,
     headline: post.title,
     description: post.excerpt,
+    image: [blogImageUrl],
     datePublished: post.publishedAt || post.publishDate || new Date().toISOString(),
     dateModified: post.publishedAt || post.publishDate || new Date().toISOString(),
     author: {

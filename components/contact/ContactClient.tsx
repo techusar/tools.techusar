@@ -149,32 +149,32 @@ export function ContactClient() {
             <div>
               <span className="text-slate-500 dark:text-slate-400 block text-[11px]">General Inquiries</span>
               <a
-                href="mailto:support@techusar.com"
+                href="mailto:techusar17@gmail.com"
                 className="font-semibold text-slate-900 dark:text-white hover:text-cyan-600 dark:hover:text-cyan-400 transition-colors"
               >
-                support@techusar.com
+                techusar17@gmail.com
               </a>
             </div>
             <div>
               <span className="text-slate-500 dark:text-slate-400 block text-[11px]">Security & Privacy</span>
               <a
-                href="mailto:privacy@techusar.com"
+                href="mailto:techusar17@gmail.com"
                 className="font-semibold text-slate-900 dark:text-white hover:text-cyan-600 dark:hover:text-cyan-400 transition-colors"
               >
-                privacy@techusar.com
+                techusar17@gmail.com
               </a>
             </div>
             <div>
               <span className="text-slate-500 dark:text-slate-400 block text-[11px]">Instant WhatsApp Support</span>
               <a
-                href="https://wa.me/15551234567?text=Hi%20TechTools%20Support%2C%20I%20have%20a%20question"
+                href="https://wa.me/923318917330?text=Hi%20TechTools%20Support%2C%20I%20have%20a%20question"
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={handleWhatsAppClick}
                 className="font-semibold text-emerald-600 dark:text-emerald-400 hover:underline inline-flex items-center gap-1.5 mt-0.5"
               >
                 <MessageSquare className="w-3.5 h-3.5" />
-                <span>Chat on WhatsApp (+1 555-123-4567)</span>
+                <span>Chat on WhatsApp (03318917330)</span>
               </a>
             </div>
             <div>

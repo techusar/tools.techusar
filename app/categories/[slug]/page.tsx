@@ -140,26 +140,34 @@ export default async function CategoryPage({ params }: PageProps) {
     mainEntity: [
       {
         '@type': 'Question',
-        name: `Are all ${category.name} free to use on TechTools?`,
+        name: `Are all utilities in ${category.name} completely free?`,
         acceptedAnswer: {
           '@type': 'Answer',
-          text: `Yes, all utilities in the ${category.name} collection are 100% free with unlimited local browser executions. No credit card or account registration is required for standard usage.`,
+          text: `Yes, every utility in the ${category.name} collection is 100% free to use. There are no paywalls, mandatory credit card prompts, or hidden fees for standard browser usage.`,
         },
       },
       {
         '@type': 'Question',
-        name: `Does my data remain private when using ${category.name}?`,
+        name: `Is my data private and secure when using ${category.name}?`,
         acceptedAnswer: {
           '@type': 'Answer',
-          text: `Absolutely. All computations, conversions, calculations, and formatters execute client-side directly within your browser sandbox. Your data never touches our servers.`,
+          text: `Yes. TechTools is engineered with a strict zero-data-retention privacy architecture. All conversions, formatting, calculations, and data processing execute locally in your web browser sandbox using JavaScript and Web APIs. Your input payloads never leave your computer.`,
         },
       },
       {
         '@type': 'Question',
-        name: `Can I use these ${category.name.toLowerCase()} on mobile devices?`,
+        name: 'Can I use these tools offline?',
         acceptedAnswer: {
           '@type': 'Answer',
-          text: `Yes. Every tool in ${category.name} is fully responsive and optimized for smartphones, tablets, laptops, and desktop workstations.`,
+          text: `Most non-AI utilities in this category function completely offline once the page has loaded in your browser. You can bookmark your favorites for instant access even without an active internet connection.`,
+        },
+      },
+      {
+        '@type': 'Question',
+        name: `How frequently are tools in ${category.name} updated?`,
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: `Our engineering team continually maintains, benchmarks, and updates all algorithms against the latest web specifications, RFC standards, and modern browser engine performance updates.`,
         },
       },
     ],

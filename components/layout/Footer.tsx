@@ -1,6 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
-import { Wrench, Shield, Sparkles, ExternalLink, Heart } from 'lucide-react';
+import { Wrench, Shield, Sparkles, ExternalLink, Heart, MessageSquare, Mail } from 'lucide-react';
+import { SEO_CONFIG } from '@/lib/seo/config';
 
 export function Footer() {
   return (
@@ -36,16 +37,35 @@ export function Footer() {
               </div>
             </div>
 
-            <div className="pt-2">
+            <div className="pt-2 flex flex-col gap-2">
               <a
                 href="https://www.techusar.com/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-slate-100 dark:bg-[#14171F] border border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-300 hover:text-cyan-600 dark:hover:text-cyan-400 hover:border-slate-300 dark:hover:border-slate-700 transition-colors shadow-xs"
+                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-slate-100 dark:bg-[#14171F] border border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-300 hover:text-cyan-600 dark:hover:text-cyan-400 hover:border-slate-300 dark:hover:border-slate-700 transition-colors shadow-xs w-fit"
               >
                 <span>A Product of TechUsar Technologies</span>
                 <ExternalLink className="w-3.5 h-3.5" />
               </a>
+
+              <div className="flex flex-wrap items-center gap-3 pt-1 text-[11px]">
+                <a
+                  href={`mailto:${SEO_CONFIG.contactEmail}`}
+                  className="inline-flex items-center gap-1 text-slate-600 dark:text-slate-400 hover:text-cyan-600 dark:hover:text-cyan-400 transition-colors"
+                >
+                  <Mail className="w-3.5 h-3.5 text-cyan-600 dark:text-cyan-400" />
+                  <span>{SEO_CONFIG.contactEmail}</span>
+                </a>
+                <a
+                  href={`${SEO_CONFIG.whatsappUrl}?text=${encodeURIComponent('Hello TechTools Support')}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1 text-emerald-600 dark:text-emerald-400 hover:underline font-semibold"
+                >
+                  <MessageSquare className="w-3.5 h-3.5" />
+                  <span>WhatsApp: {SEO_CONFIG.whatsappNumber}</span>
+                </a>
+              </div>
             </div>
           </div>
 
