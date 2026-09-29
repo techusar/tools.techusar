@@ -24,13 +24,13 @@ interface ToolFeedbackSectionProps {
 }
 
 export function ToolFeedbackSection({ tool, initialLikes }: ToolFeedbackSectionProps) {
-  const { user } = useUser();
+  const { user, updateToolLikes } = useUser();
   const [feedback, setFeedback] = useState<ToolFeedbackData>({
     toolSlug: tool.slug,
-    likes: initialLikes || 120,
+    likes: initialLikes ?? 0,
     userLiked: false,
     comments: [],
-    averageRating: 5.0,
+    averageRating: 0,
     totalComments: 0,
   });
 
@@ -105,6 +105,7 @@ export function ToolFeedbackSection({ tool, initialLikes }: ToolFeedbackSectionP
       likes: nextLikes,
       userLiked: nextUserLiked,
     }));
+    updateToolLikes(tool.slug, nextLikes);
 
     setLikeAnim(true);
     setTimeout(() => setLikeAnim(false), 600);
@@ -124,6 +125,7 @@ export function ToolFeedbackSection({ tool, initialLikes }: ToolFeedbackSectionP
             likes: data.likes,
             userLiked: data.userLiked,
           }));
+          updateToolLikes(tool.slug, data.likes);
         }
       }
     } catch (e) {
@@ -289,10 +291,21 @@ export function ToolFeedbackSection({ tool, initialLikes }: ToolFeedbackSectionP
           </div>
           <div>
             <div className="text-sm font-bold text-slate-900 dark:text-white flex items-center gap-1.5">
-              <span>{feedback.averageRating} / 5.0</span>
-              <span className="text-[11px] text-amber-600 dark:text-amber-400 font-normal">Rating</span>
+              {feedback.totalComments > 0 ? (
+                <>
+                  <span>{feedback.averageRating} / 5.0</span>
+                  <span className="text-[11px] text-amber-600 dark:text-amber-400 font-normal">Rating</span>
+                </>
+              ) : (
+                <>
+                  <span>Unrated</span>
+                  <span className="text-[11px] text-slate-400 font-normal">(0 reviews)</span>
+                </>
+              )}
             </div>
-            <p className="text-[11px] text-slate-500 dark:text-slate-400">Based on user reviews</p>
+            <p className="text-[11px] text-slate-500 dark:text-slate-400">
+              {feedback.totalComments > 0 ? 'Based on user reviews' : 'Be the first to review!'}
+            </p>
           </div>
         </div>
 

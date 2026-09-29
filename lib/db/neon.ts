@@ -1,7 +1,7 @@
 import { neon } from '@neondatabase/serverless';
 import bcrypt from 'bcryptjs';
 import { UserAccount } from '../types';
-import { DataStore } from '../data/json-store';
+import { DataStore, readJsonFile, writeJsonFile } from '../data/json-store';
 
 const DEFAULT_NEON_URL =
   'postgresql://neondb_owner:npg_Ops3V7UrnqmM@ep-wispy-night-b4e2v0q8-pooler.c-6.us-east-2.aws.neon.tech/neondb?sslmode=require&channel_binding=require';
@@ -218,12 +218,32 @@ export const NeonUserRepository = {
     toolName?: string,
     category?: string
   ): Promise<void> {
+    const cleanId = (userId || '').trim();
+    if (!cleanId || !toolId) return;
+
+    // Always record to local persistent JSON file
+    try {
+      const historyStore = readJsonFile<Record<string, Array<{ tool_id: string; tool_name: string; category: string; used_at: string }>>>('history.json', {});
+      const userList = historyStore[cleanId] || [];
+      const newItem = {
+        tool_id: toolId,
+        tool_name: toolName || toolId,
+        category: category || 'general',
+        used_at: new Date().toISOString(),
+      };
+      // Prepend without immediate duplicates
+      const filtered = userList.filter((item) => item.tool_id !== toolId);
+      filtered.unshift(newItem);
+      historyStore[cleanId] = filtered.slice(0, 100);
+      writeJsonFile('history.json', historyStore);
+    } catch {}
+
     try {
       await initNeonDatabase();
       const sql = getDb();
       await sql`
         INSERT INTO user_tool_history (user_id, tool_id, tool_name, category, used_at)
-        VALUES (${userId}, ${toolId}, ${toolName || ''}, ${category || ''}, CURRENT_TIMESTAMP);
+        VALUES (${cleanId}, ${toolId}, ${toolName || ''}, ${category || ''}, CURRENT_TIMESTAMP);
       `;
     } catch (err) {
       console.error('Neon recordHistory error:', err);
@@ -231,35 +251,62 @@ export const NeonUserRepository = {
   },
 
   async getHistory(userId: string, limit = 20) {
+    const cleanId = (userId || '').trim();
+    if (!cleanId) return [];
+
+    let dbRows: any[] = [];
     try {
       await initNeonDatabase();
       const sql = getDb();
       const rows = await sql`
         SELECT tool_id, tool_name, category, used_at
         FROM user_tool_history
-        WHERE user_id = ${userId}
+        WHERE user_id = ${cleanId}
         ORDER BY used_at DESC
         LIMIT ${limit};
       `;
-      return rows;
+      if (rows && rows.length > 0) {
+        dbRows = rows;
+      }
     } catch (err) {
       console.error('Neon getHistory error:', err);
+    }
+
+    if (dbRows.length > 0) {
+      return dbRows;
+    }
+
+    // Fallback to local history file
+    try {
+      const historyStore = readJsonFile<Record<string, Array<{ tool_id: string; tool_name: string; category: string; used_at: string }>>>('history.json', {});
+      const localList = historyStore[cleanId] || [];
+      return localList.slice(0, limit);
+    } catch {
       return [];
     }
   },
 
   async clearHistory(userId: string): Promise<boolean> {
+    const cleanId = (userId || '').trim();
+    if (!cleanId) return true;
+
+    try {
+      const historyStore = readJsonFile<Record<string, any>>('history.json', {});
+      delete historyStore[cleanId];
+      writeJsonFile('history.json', historyStore);
+    } catch {}
+
     try {
       await initNeonDatabase();
       const sql = getDb();
       await sql`
         DELETE FROM user_tool_history
-        WHERE user_id = ${userId};
+        WHERE user_id = ${cleanId};
       `;
       return true;
     } catch (err) {
       console.error('Neon clearHistory error:', err);
-      return false;
+      return true; // Local was cleared
     }
   },
 

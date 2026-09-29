@@ -22,8 +22,8 @@ export function AccountClient({ allTools }: { allTools: ToolItem[] }) {
   const { user, isAuthenticated, openAuthModal, logout, favorites, recentTools, toggleFavorite } =
     useUser();
 
-  const favoriteTools = allTools.filter((t) => favorites.includes(t.id));
-  const recentToolItems = allTools.filter((t) => recentTools.includes(t.id));
+  const favoriteTools = allTools.filter((t) => favorites.includes(t.id) || favorites.includes(t.slug));
+  const recentToolItems = allTools.filter((t) => recentTools.includes(t.id) || recentTools.includes(t.slug));
 
   if (!isAuthenticated || !user) {
     return (

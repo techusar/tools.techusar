@@ -21,11 +21,11 @@ export function FavoritesClient({ allTools }: { allTools: ToolItem[] }) {
   const [searchQuery, setSearchQuery] = useState('');
 
   const favoriteTools = useMemo(() => {
-    return allTools.filter((t) => favorites.includes(t.id));
+    return allTools.filter((t) => favorites.includes(t.id) || favorites.includes(t.slug));
   }, [allTools, favorites]);
 
   const recentToolItems = useMemo(() => {
-    return allTools.filter((t) => recentTools.includes(t.id));
+    return allTools.filter((t) => recentTools.includes(t.id) || recentTools.includes(t.slug));
   }, [allTools, recentTools]);
 
   const filteredFavorites = useMemo(() => {

@@ -246,7 +246,57 @@ export function HomeClient({ initialTools, categories, featuredTools }: HomeClie
               </div>
               <h3 className="text-base font-bold text-slate-900 dark:text-white">Next-Gen AI Capabilities</h3>
               <p className="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
-                State-of-the-art Gemini 2.5 Flash models integrated for SQL query generation, grammar fixing, copy generation, and prompt optimization.
+                State-of-the-art Gemini AI models integrated for intelligent text summarization, SQL query generation, grammar fixing, copy generation, and prompt optimization.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Comprehensive Platform Overview & Semantic Internal Links */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="p-8 sm:p-12 rounded-3xl bg-white dark:bg-[#0D0F13] border border-slate-200 dark:border-slate-800 space-y-8 shadow-xs">
+          <div className="max-w-3xl space-y-3">
+            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg text-xs font-semibold bg-cyan-50 dark:bg-cyan-500/10 text-cyan-700 dark:text-cyan-400 border border-cyan-200 dark:border-cyan-500/20">
+              <Sparkles className="w-3.5 h-3.5" />
+              <span>About TechTools by TechUsar</span>
+            </div>
+            <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white tracking-tight">
+              The Modern, Privacy-First Online Utilities Suite
+            </h2>
+            <p className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+              TechTools is an all-in-one suite of over 40+ precision browser-based utilities built by TechUsar for software developers, UI/UX designers, accountants, students, and digital creators. Traditional utility websites are cluttered with deceptive ads, forced registrations, and suspicious backend logging. TechTools eliminates that friction with instant client-side execution, clean typography, keyboard shortcuts, and zero-data retention.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 pt-2">
+            <div className="space-y-3 p-5 rounded-2xl bg-slate-50/80 dark:bg-[#14171F]/80 border border-slate-200/80 dark:border-slate-800">
+              <h3 className="text-sm font-bold text-slate-900 dark:text-white flex items-center gap-2">
+                <Code2 className="w-4 h-4 text-cyan-600 dark:text-cyan-400" />
+                <span>Developer &amp; Code Tools</span>
+              </h3>
+              <p className="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
+                Parse, format, and debug payloads with our <Link href="/tools/json-formatter" className="text-cyan-600 dark:text-cyan-400 font-semibold hover:underline">JSON Formatter</Link> and strict <Link href="/tools/json-validator" className="text-cyan-600 dark:text-cyan-400 font-semibold hover:underline">JSON Validator</Link>. Test regular expressions with the <Link href="/tools/regex-tester" className="text-cyan-600 dark:text-cyan-400 font-semibold hover:underline">RegEx Tester</Link>, inspect tokens with the <Link href="/tools/jwt-decoder" className="text-cyan-600 dark:text-cyan-400 font-semibold hover:underline">JWT Decoder</Link>, or explore our full <Link href="/categories/developer-tools" className="text-cyan-600 dark:text-cyan-400 font-semibold hover:underline">Developer Tools category</Link>.
+              </p>
+            </div>
+
+            <div className="space-y-3 p-5 rounded-2xl bg-slate-50/80 dark:bg-[#14171F]/80 border border-slate-200/80 dark:border-slate-800">
+              <h3 className="text-sm font-bold text-slate-900 dark:text-white flex items-center gap-2">
+                <Sparkles className="w-4 h-4 text-emerald-600 dark:text-emerald-400" />
+                <span>Image &amp; Media Converters</span>
+              </h3>
+              <p className="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
+                Compress photographs and assets in-browser with the <Link href="/tools/image-compressor" className="text-cyan-600 dark:text-cyan-400 font-semibold hover:underline">Image Compressor</Link>. Convert graphics losslessly using <Link href="/tools/jpg-to-png" className="text-cyan-600 dark:text-cyan-400 font-semibold hover:underline">JPG to PNG</Link>, <Link href="/tools/png-to-jpg" className="text-cyan-600 dark:text-cyan-400 font-semibold hover:underline">PNG to JPG</Link>, and next-gen <Link href="/tools/image-to-webp" className="text-cyan-600 dark:text-cyan-400 font-semibold hover:underline">Image to WebP</Link>, or browse all <Link href="/categories/image-tools" className="text-cyan-600 dark:text-cyan-400 font-semibold hover:underline">Image Tools</Link>.
+              </p>
+            </div>
+
+            <div className="space-y-3 p-5 rounded-2xl bg-slate-50/80 dark:bg-[#14171F]/80 border border-slate-200/80 dark:border-slate-800">
+              <h3 className="text-sm font-bold text-slate-900 dark:text-white flex items-center gap-2">
+                <ShieldCheck className="w-4 h-4 text-indigo-600 dark:text-indigo-400" />
+                <span>Finance, Security &amp; AI</span>
+              </h3>
+              <p className="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
+                Calculate sales taxes with our <Link href="/tools/gst-calculator" className="text-cyan-600 dark:text-cyan-400 font-semibold hover:underline">GST Calculator</Link> and generate commercial bills with the <Link href="/tools/invoice-generator" className="text-cyan-600 dark:text-cyan-400 font-semibold hover:underline">Invoice Generator</Link>. Compute loan schedules with the <Link href="/tools/loan-emi-calculator" className="text-cyan-600 dark:text-cyan-400 font-semibold hover:underline">Loan EMI Calculator</Link>, or explore <Link href="/categories/ai-tools" className="text-cyan-600 dark:text-cyan-400 font-semibold hover:underline">AI Tools</Link>.
               </p>
             </div>
           </div>

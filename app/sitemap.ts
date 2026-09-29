@@ -3,6 +3,13 @@ import { getAllTools, getCategories } from '@/lib/data/toolsRepository';
 import { getAllBlogPosts } from '@/lib/data/blogData';
 import { SEO_CONFIG } from '@/lib/seo/config';
 
+function safeDate(dateVal?: string | Date): Date {
+  if (!dateVal) return new Date();
+  if (dateVal instanceof Date) return isNaN(dateVal.getTime()) ? new Date() : dateVal;
+  const parsed = new Date(dateVal);
+  return isNaN(parsed.getTime()) ? new Date() : parsed;
+}
+
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = SEO_CONFIG.siteUrl;
 
@@ -84,14 +91,14 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   const toolPages: MetadataRoute.Sitemap = tools.map((tool) => ({
     url: `${baseUrl}/tools/${tool.slug}`,
-    lastModified: tool.lastUpdated ? new Date(tool.lastUpdated) : new Date(),
+    lastModified: safeDate(tool.lastUpdated),
     changeFrequency: 'weekly',
     priority: 0.9,
   }));
 
   const blogPages: MetadataRoute.Sitemap = blogPosts.map((post) => ({
     url: `${baseUrl}/blog/${post.slug}`,
-    lastModified: post.publishDate || post.publishedAt ? new Date(post.publishDate || post.publishedAt || '') : new Date(),
+    lastModified: safeDate(post.publishDate || post.publishedAt),
     changeFrequency: 'monthly',
     priority: 0.75,
   }));

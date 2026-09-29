@@ -1,219 +1,16 @@
 import { readJsonFile, writeJsonFile } from './json-store';
 import { ToolComment, ToolFeedbackData } from '../types';
-import { INITIAL_TOOLS } from './initial-data';
 import { getDb, initNeonDatabase } from '../db/neon';
-
-// Deterministic seed likes generator based on slug string
-function getDeterministicSeedLikes(slug: string): number {
-  let hash = 0;
-  for (let i = 0; i < slug.length; i++) {
-    hash = (hash << 5) - hash + slug.charCodeAt(i);
-    hash |= 0;
-  }
-  const positiveHash = Math.abs(hash);
-  // Base between 95 and 480 likes
-  return 95 + (positiveHash % 385);
-}
-
-// Initial realistic comments for key tools across categories
-const INITIAL_SEED_COMMENTS: Record<string, ToolComment[]> = {
-  'json-formatter': [
-    {
-      id: 'comm-jf-1',
-      toolSlug: 'json-formatter',
-      authorName: 'Alex Mercer',
-      text: 'Formatted a massive 12MB nested payload in under 50ms without freezing the tab. The tree view and error highlighting saved me hours today!',
-      rating: 5,
-      createdAt: '2026-09-27T10:15:00Z',
-      likesCount: 14,
-      badge: 'Senior Dev',
-      verified: true,
-    },
-    {
-      id: 'comm-jf-2',
-      toolSlug: 'json-formatter',
-      authorName: 'Sophia Lin',
-      text: 'Love that this works 100% locally in the browser with zero data leakage. Very clean UI and keyboard shortcuts.',
-      rating: 5,
-      createdAt: '2026-09-28T14:30:00Z',
-      likesCount: 8,
-      badge: 'Full Stack',
-      verified: true,
-    },
-    {
-      id: 'comm-jf-3',
-      toolSlug: 'json-formatter',
-      authorName: 'David K.',
-      text: 'Great tool! The minify and 2-space / 4-space formatting options are super convenient.',
-      rating: 5,
-      createdAt: '2026-09-29T08:12:00Z',
-      likesCount: 3,
-      verified: false,
-    },
-  ],
-  'qr-code-generator': [
-    {
-      id: 'comm-qr-1',
-      toolSlug: 'qr-code-generator',
-      authorName: 'Marcus Vance',
-      text: 'High resolution SVG and PNG downloads work seamlessly. Generated custom WiFi and contact cards for our office setup in minutes.',
-      rating: 5,
-      createdAt: '2026-09-26T16:40:00Z',
-      likesCount: 12,
-      badge: 'IT Admin',
-      verified: true,
-    },
-    {
-      id: 'comm-qr-2',
-      toolSlug: 'qr-code-generator',
-      authorName: 'Elena Rostova',
-      text: 'Instant live preview as you type URL or vCard details. No watermarks, no forced signups, just works.',
-      rating: 5,
-      createdAt: '2026-09-28T11:20:00Z',
-      likesCount: 6,
-      verified: true,
-    },
-  ],
-  'regex-tester': [
-    {
-      id: 'comm-rx-1',
-      toolSlug: 'regex-tester',
-      authorName: 'Tariq Mahmood',
-      text: 'The colorized match groups and syntax breakdown make tricky lookaheads and email validation formulas crystal clear to troubleshoot.',
-      rating: 5,
-      createdAt: '2026-09-27T09:05:00Z',
-      likesCount: 19,
-      badge: 'Backend Eng',
-      verified: true,
-    },
-    {
-      id: 'comm-rx-2',
-      toolSlug: 'regex-tester',
-      authorName: 'Claire B.',
-      text: 'Super responsive engine with live replacement testing. Exactly what every developer needs bookmarked.',
-      rating: 5,
-      createdAt: '2026-09-28T18:45:00Z',
-      likesCount: 7,
-      verified: false,
-    },
-  ],
-  'password-generator': [
-    {
-      id: 'comm-pw-1',
-      toolSlug: 'password-generator',
-      authorName: 'Zubair Khan',
-      text: 'Cryptographically secure random values with entropy calculations and custom symbol exclusion. Excellent security implementation.',
-      rating: 5,
-      createdAt: '2026-09-28T07:22:00Z',
-      likesCount: 15,
-      badge: 'SecOps',
-      verified: true,
-    },
-    {
-      id: 'comm-pw-2',
-      toolSlug: 'password-generator',
-      authorName: 'Anita Roy',
-      text: 'One-click copy and customizable length makes this my go-to password generator.',
-      rating: 5,
-      createdAt: '2026-09-29T04:10:00Z',
-      likesCount: 5,
-      verified: true,
-    },
-  ],
-  'word-counter': [
-    {
-      id: 'comm-wc-1',
-      toolSlug: 'word-counter',
-      authorName: 'Hannah Davies',
-      text: 'Accurate character counts, reading time estimates, and speaking time calculations. Perfect for blog copywriting and SEO meta tags.',
-      rating: 5,
-      createdAt: '2026-09-27T12:00:00Z',
-      likesCount: 11,
-      badge: 'Content Lead',
-      verified: true,
-    },
-    {
-      id: 'comm-wc-2',
-      toolSlug: 'word-counter',
-      authorName: 'Farhan Ali',
-      text: 'Very fast and clean interface with no lag even with long 10,000-word essays.',
-      rating: 5,
-      createdAt: '2026-09-28T21:15:00Z',
-      likesCount: 4,
-      verified: false,
-    },
-  ],
-  'ai-text-summarizer': [
-    {
-      id: 'comm-ai-1',
-      toolSlug: 'ai-text-summarizer',
-      authorName: 'Dr. Neil Patterson',
-      text: 'Gemini AI integration generates razor-sharp bullet summaries from complex research publications. High accuracy and coherence.',
-      rating: 5,
-      createdAt: '2026-09-28T13:40:00Z',
-      likesCount: 18,
-      badge: 'Researcher',
-      verified: true,
-    },
-  ],
-  'base64-encoder-decoder': [
-    {
-      id: 'comm-b64-1',
-      toolSlug: 'base64-encoder-decoder',
-      authorName: 'Kenji Sato',
-      text: 'Proper UTF-8 unicode handling without character corruptions, plus direct binary/data-uri conversion. Top notch utility.',
-      rating: 5,
-      createdAt: '2026-09-27T15:10:00Z',
-      likesCount: 9,
-      verified: true,
-    },
-  ],
-  'image-compressor': [
-    {
-      id: 'comm-ic-1',
-      toolSlug: 'image-compressor',
-      authorName: 'Liam O’Connor',
-      text: 'Compressed multiple PNGs and JPEGs down by over 75% with zero visible fidelity loss, all done locally in the canvas.',
-      rating: 5,
-      createdAt: '2026-09-28T10:05:00Z',
-      likesCount: 16,
-      badge: 'UI Designer',
-      verified: true,
-    },
-  ],
-  'loan-emi-calculator': [
-    {
-      id: 'comm-emi-1',
-      toolSlug: 'loan-emi-calculator',
-      authorName: 'Ayesha Siddiqui',
-      text: 'The amortization schedule breakdown by month and year helped me plan my mortgage prepayment effortlessly.',
-      rating: 5,
-      createdAt: '2026-09-27T17:50:00Z',
-      likesCount: 10,
-      verified: true,
-    },
-  ],
-};
 
 // In-memory feedback state cache
 let cachedLikes: Record<string, number> | null = null;
 let cachedUserLikes: Record<string, string[]> | null = null; // userId/anonId -> toolSlug[]
 let cachedComments: Record<string, ToolComment[]> | null = null; // toolSlug -> ToolComment[]
 
-// Initialize likes map
+// Initialize likes map (clean empty state by default, 0 likes for all tools)
 function getLikesMap(): Record<string, number> {
   if (cachedLikes) return cachedLikes;
-  const initialMap: Record<string, number> = {};
-  for (const t of INITIAL_TOOLS) {
-    initialMap[t.slug] = getDeterministicSeedLikes(t.slug);
-  }
-  const fileData = readJsonFile<Record<string, number>>('tool-likes.json', initialMap);
-  // Ensure all current tools have an entry
-  for (const t of INITIAL_TOOLS) {
-    if (fileData[t.slug] === undefined) {
-      fileData[t.slug] = getDeterministicSeedLikes(t.slug);
-    }
-  }
+  const fileData = readJsonFile<Record<string, number>>('tool-likes.json', {});
   cachedLikes = fileData;
   return fileData;
 }
@@ -227,18 +24,21 @@ function getUserLikesMap(): Record<string, string[]> {
 
 function getCommentsMap(): Record<string, ToolComment[]> {
   if (cachedComments) return cachedComments;
-  const fileData = readJsonFile<Record<string, ToolComment[]>>('tool-comments.json', INITIAL_SEED_COMMENTS);
-  // Ensure initial seed comments are preserved
-  for (const [slug, seedList] of Object.entries(INITIAL_SEED_COMMENTS)) {
-    if (!fileData[slug] || fileData[slug].length === 0) {
-      fileData[slug] = [...seedList];
-    }
-  }
+  const fileData = readJsonFile<Record<string, ToolComment[]>>('tool-comments.json', {});
   cachedComments = fileData;
   return fileData;
 }
 
 export const FeedbackRepository = {
+  /**
+   * Reset in-memory cache
+   */
+  resetCache() {
+    cachedLikes = null;
+    cachedUserLikes = null;
+    cachedComments = null;
+  },
+
   /**
    * Get all tool likes as a map: { [toolSlug]: likesCount }
    */
@@ -247,7 +47,7 @@ export const FeedbackRepository = {
   },
 
   /**
-   * Get feedback details for a single tool
+   * Get feedback details for a single tool (real data only, 0 by default)
    */
   getToolFeedback(toolSlug: string, userOrAnonId?: string): ToolFeedbackData {
     const cleanSlug = (toolSlug || '').trim().toLowerCase();
@@ -255,7 +55,7 @@ export const FeedbackRepository = {
     const userLikesMap = getUserLikesMap();
     const commentsMap = getCommentsMap();
 
-    const likes = likesMap[cleanSlug] ?? getDeterministicSeedLikes(cleanSlug);
+    const likes = likesMap[cleanSlug] ?? 0;
     const userLiked = userOrAnonId ? (userLikesMap[userOrAnonId] || []).includes(cleanSlug) : false;
     const comments = commentsMap[cleanSlug] ? [...commentsMap[cleanSlug]] : [];
 
@@ -267,7 +67,7 @@ export const FeedbackRepository = {
     const averageRating =
       rated.length > 0
         ? Number((rated.reduce((acc, c) => acc + (c.rating || 5), 0) / rated.length).toFixed(1))
-        : 5.0;
+        : 0;
 
     return {
       toolSlug: cleanSlug,
@@ -280,7 +80,7 @@ export const FeedbackRepository = {
   },
 
   /**
-   * Toggle global like for a tool
+   * Toggle global like for a tool (real-time increment/decrement and persistence)
    */
   toggleLike(toolSlug: string, userOrAnonId: string): { likes: number; userLiked: boolean } {
     const cleanSlug = (toolSlug || '').trim().toLowerCase();
@@ -292,7 +92,7 @@ export const FeedbackRepository = {
     const userList = userLikesMap[id] || [];
     const isAlreadyLiked = userList.includes(cleanSlug);
 
-    let currentLikes = likesMap[cleanSlug] ?? getDeterministicSeedLikes(cleanSlug);
+    let currentLikes = likesMap[cleanSlug] ?? 0;
 
     if (isAlreadyLiked) {
       // User is unliking
@@ -311,7 +111,7 @@ export const FeedbackRepository = {
     writeJsonFile('tool-likes.json', likesMap);
     writeJsonFile('user-likes.json', userLikesMap);
 
-    // Asynchronously try updating Neon if configured
+    // Asynchronously update Neon database if available
     this.syncNeonLike(cleanSlug, currentLikes).catch(() => {});
 
     return {
@@ -321,7 +121,7 @@ export const FeedbackRepository = {
   },
 
   /**
-   * Add a new comment to a tool
+   * Add a real user comment to a tool
    */
   addComment(
     toolSlug: string,
@@ -339,7 +139,7 @@ export const FeedbackRepository = {
     averageRating: number;
   } {
     const cleanSlug = (toolSlug || '').trim().toLowerCase();
-    const cleanAuthor = (data.authorName || 'Guest Developer').trim().substring(0, 50);
+    const cleanAuthor = (data.authorName || 'Guest User').trim().substring(0, 50);
     const cleanText = (data.text || '').trim().substring(0, 1000);
     const cleanRating = Math.max(1, Math.min(5, Number(data.rating) || 5));
 
@@ -368,15 +168,15 @@ export const FeedbackRepository = {
 
     writeJsonFile('tool-comments.json', commentsMap);
 
-    // Asynchronously try sync with Neon
+    // Asynchronously try sync with Neon database
     this.syncNeonComment(newComment).catch(() => {});
 
-    // Recalculate rating
+    // Recalculate average rating
     const rated = toolComments.filter((c) => typeof c.rating === 'number' && c.rating > 0);
     const averageRating =
       rated.length > 0
         ? Number((rated.reduce((acc, c) => acc + (c.rating || 5), 0) / rated.length).toFixed(1))
-        : 5.0;
+        : 0;
 
     return {
       success: true,

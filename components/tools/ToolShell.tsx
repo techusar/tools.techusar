@@ -56,7 +56,7 @@ export function ToolShell({
 }: ToolShellProps) {
   const actualRelatedTools = relatedTools || relatedToolsList;
   const actualArticle = relevantArticle !== undefined ? relevantArticle : getToolRelevantArticle(tool.slug, tool.category);
-  const { user, isFavorited, toggleFavorite, recordRecentTool } = useUser();
+  const { user, isFavorited, toggleFavorite, recordRecentTool, updateToolLikes } = useUser();
   const favorited = isFavorited(tool.slug);
   const [copied, setCopied] = useState(false);
   const [isFullscreen, setIsFullscreen] = useState(false);
@@ -93,13 +93,14 @@ export function ToolShell({
           setGlobalLikes(data.likes);
           setUserLikedGlobal(data.userLiked);
           setGlobalCommentsCount(data.totalComments || (data.comments?.length ?? 0));
+          updateToolLikes(tool.slug, data.likes);
         }
       })
       .catch(() => {});
     return () => {
       active = false;
     };
-  }, [tool.slug, user?.id]);
+  }, [tool.slug, user?.id, updateToolLikes]);
 
   const handleGlobalLike = async () => {
     if (isLikingGlobal) return;
@@ -111,6 +112,7 @@ export function ToolShell({
     const nextLikes = nextLiked ? (globalLikes ?? 0) + 1 : Math.max(0, (globalLikes ?? 1) - 1);
     setGlobalLikes(nextLikes);
     setUserLikedGlobal(nextLiked);
+    updateToolLikes(tool.slug, nextLikes);
 
     try {
       const res = await fetch('/api/feedback/like', {
@@ -122,6 +124,7 @@ export function ToolShell({
       if (data.success) {
         setGlobalLikes(data.likes);
         setUserLikedGlobal(data.userLiked);
+        updateToolLikes(tool.slug, data.likes);
       }
     } catch {
       // Ignored

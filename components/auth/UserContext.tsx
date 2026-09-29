@@ -27,6 +27,10 @@ interface UserContextType {
   recordRecentTool: (toolSlug: string, toolName?: string, category?: string) => void;
   clearRecentHistory: () => Promise<void>;
   recordToolUse: (tool: ToolItem) => Promise<{ canUse: boolean; remaining: number }>;
+  toolLikes: Record<string, number>;
+  getToolLikes: (slug: string) => number;
+  updateToolLikes: (slug: string, newCount: number) => void;
+  refreshLikes: () => Promise<void>;
 }
 
 const UserContext = createContext<UserContextType | undefined>(undefined);
@@ -40,9 +44,57 @@ export function UserProvider({ children }: { children: React.ReactNode }) {
   const [isLoading, setIsLoading] = useState(true);
   const [favorites, setFavorites] = useState<string[]>([]);
   const [recentTools, setRecentTools] = useState<string[]>([]);
+  const [toolLikes, setToolLikes] = useState<Record<string, number>>({});
   const [isAuthModalOpen, setIsAuthModalOpen] = useState(false);
   const [isLimitModalOpen, setIsLimitModalOpen] = useState(false);
   const [limitModalTool, setLimitModalTool] = useState<ToolItem | null>(null);
+
+  // Fetch real-time likes map on load/reload
+  useEffect(() => {
+    let isMounted = true;
+    fetch('/api/feedback')
+      .then((res) => res.json())
+      .then((data) => {
+        if (isMounted && data.success && data.likesMap) {
+          setToolLikes(data.likesMap);
+        }
+      })
+      .catch(() => {});
+
+    return () => {
+      isMounted = false;
+    };
+  }, []);
+
+  const refreshLikes = useCallback(async () => {
+    try {
+      const res = await fetch('/api/feedback');
+      if (res.ok) {
+        const data = await res.json();
+        if (data.success && data.likesMap) {
+          setToolLikes(data.likesMap);
+        }
+      }
+    } catch {
+      // Ignored
+    }
+  }, []);
+
+  const getToolLikes = useCallback(
+    (slug: string): number => {
+      if (!slug) return 0;
+      return toolLikes[slug.toLowerCase()] ?? 0;
+    },
+    [toolLikes]
+  );
+
+  const updateToolLikes = useCallback((slug: string, newCount: number) => {
+    if (!slug) return;
+    setToolLikes((prev) => ({
+      ...prev,
+      [slug.toLowerCase()]: Math.max(0, newCount),
+    }));
+  }, []);
 
   // Load session from storage on mount
   useEffect(() => {
@@ -314,6 +366,10 @@ export function UserProvider({ children }: { children: React.ReactNode }) {
       recordRecentTool,
       clearRecentHistory,
       recordToolUse,
+      toolLikes,
+      getToolLikes,
+      updateToolLikes,
+      refreshLikes,
     }),
     [
       user,
@@ -336,6 +392,10 @@ export function UserProvider({ children }: { children: React.ReactNode }) {
       recordRecentTool,
       clearRecentHistory,
       recordToolUse,
+      toolLikes,
+      getToolLikes,
+      updateToolLikes,
+      refreshLikes,
     ]
   );
 

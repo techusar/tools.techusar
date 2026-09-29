@@ -120,19 +120,10 @@ interface ToolCardProps {
   onToggleBookmark?: () => void;
 }
 
-// Helper for card deterministic likes
-function getCardLikes(slug: string): number {
-  let hash = 0;
-  for (let i = 0; i < slug.length; i++) {
-    hash = (hash << 5) - hash + slug.charCodeAt(i);
-    hash |= 0;
-  }
-  return 95 + (Math.abs(hash) % 385);
-}
-
 export function ToolCard({ tool, variant = 'default', isBookmarked, onToggleBookmark }: ToolCardProps) {
-  const { isFavorited, toggleFavorite } = useUser();
+  const { isFavorited, toggleFavorite, getToolLikes } = useUser();
   const favorited = isBookmarked !== undefined ? isBookmarked : isFavorited(tool.slug);
+  const realLikes = getToolLikes(tool.slug);
 
   const IconComponent = ICON_MAP[tool.icon] || (tool.type === 'ai' ? Sparkles : Code2);
 
@@ -214,10 +205,10 @@ export function ToolCard({ tool, variant = 'default', isBookmarked, onToggleBook
         <div className="flex items-center gap-2.5">
           <span
             className="inline-flex items-center gap-1 text-[11px] text-slate-500 dark:text-slate-400 hover:text-rose-500 transition-colors"
-            title={`${getCardLikes(tool.slug)} people liked this tool`}
+            title={`${realLikes} ${realLikes === 1 ? 'person' : 'people'} liked this tool`}
           >
-            <Heart className="w-3 h-3 text-rose-500 fill-rose-500/80" />
-            <span className="font-mono text-[10px] font-semibold">{getCardLikes(tool.slug)}</span>
+            <Heart className={`w-3 h-3 ${realLikes > 0 ? 'text-rose-500 fill-rose-500/80' : 'text-slate-400 dark:text-slate-600'}`} />
+            <span className="font-mono text-[10px] font-semibold">{realLikes}</span>
           </span>
           <span className="flex items-center gap-1 font-mono text-[10px]">
             {tool.unlimited ? (

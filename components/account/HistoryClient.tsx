@@ -94,21 +94,21 @@ export function HistoryClient({ allTools }: { allTools: ToolItem[] }) {
       });
       seenSlugs.add(item.tool_id);
     });
-  } else {
-    recentTools.forEach((slug) => {
-      if (!seenSlugs.has(slug)) {
-        const tool = toolMap.get(slug);
-        historyList.push({
-          tool,
-          slug,
-          name: tool?.name || slug,
-          category: tool?.categoryName || 'General',
-          usedAt: new Date().toISOString(),
-        });
-        seenSlugs.add(slug);
-      }
-    });
   }
+
+  recentTools.forEach((slug) => {
+    if (!seenSlugs.has(slug)) {
+      const tool = toolMap.get(slug);
+      historyList.push({
+        tool,
+        slug,
+        name: tool?.name || slug,
+        category: tool?.categoryName || 'General',
+        usedAt: new Date().toISOString(),
+      });
+      seenSlugs.add(slug);
+    }
+  });
 
   // Categories list
   const categories = Array.from(new Set(historyList.map((h) => h.category).filter(Boolean)));
