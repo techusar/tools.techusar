@@ -20,6 +20,7 @@ import { ToolCard } from '@/components/tools/ToolCard';
 import { useUser } from '@/components/auth/UserContext';
 import { AdWrapper } from '@/components/ads/AdWrapper';
 import { Breadcrumb } from '@/components/navigation/Breadcrumb';
+import { SEO_CONFIG } from '@/lib/seo/config';
 
 interface CategoryToolsClientProps {
   category: ToolCategory;
@@ -117,7 +118,7 @@ export function CategoryToolsClient({ category, tools }: CategoryToolsClientProp
               Showing <strong>{filteredTools.length}</strong> utilities in this collection
             </span>
             <Link href="/tools" className="text-cyan-600 dark:text-cyan-400 font-semibold hover:underline">
-              View all 70+ utilities →
+              View all {SEO_CONFIG.totalToolsLabel} utilities →
             </Link>
           </div>
 

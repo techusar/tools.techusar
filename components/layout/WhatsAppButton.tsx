@@ -31,7 +31,7 @@ export function WhatsAppButton() {
         target="_blank"
         rel="noopener noreferrer"
         aria-label={`Chat on WhatsApp at ${SEO_CONFIG.whatsappNumber}`}
-        className="relative flex items-center justify-center w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-[#25D366] hover:bg-[#20ba59] active:scale-95 text-white shadow-lg shadow-emerald-600/30 transition-all duration-200 focus:outline-hidden focus:ring-4 focus:ring-emerald-400/40"
+        className="relative flex items-center justify-center w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-[#25D366] hover:bg-[#20ba59] hover:scale-110 active:scale-95 text-white shadow-lg shadow-emerald-600/30 hover:shadow-xl hover:shadow-emerald-500/40 cursor-pointer transition-all duration-200 focus:outline-hidden focus:ring-4 focus:ring-emerald-400/40"
       >
         {/* Subtle Ambient Pulse Ring */}
         <span className="absolute inset-0 rounded-full bg-[#25D366] opacity-30 animate-ping -z-10" />

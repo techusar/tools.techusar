@@ -591,9 +591,9 @@ const CURATED_TOOL_SEO: Record<string, Partial<ToolEnrichedSEO>> = {
   },
   'invoice-generator': {
     shortIntro:
-      'Create professional, legally compliant commercial invoices, tax receipts, and billing statements with custom logos, automated line-item mathematics, multiple currency formats, and instant print-ready PDF export directly in your browser with 100% data confidentiality.',
+      'Create professional invoices, commercial receipts, and billing statements with custom logos, automated line-item mathematics, multiple currency formats, and instant print-ready PDF export directly in your browser with 100% data privacy.',
     whatIsThis:
-      'A commercial invoice is an essential accounting and legal instrument establishing a binding payment obligation between a seller and client. Creating invoices manually in word processors frequently introduces calculation errors, missing statutory tax IDs, inconsistent numbering, and layout misalignments. The TechTools Free Invoice Generator provides an interactive, client-side billing workspace engineered for freelance developers, independent contractors, creative agencies, and small businesses. Add client billing addresses, itemize billable hours or products, specify local VAT/GST tax rates, apply discounts, and configure payment instructions. Your financial records, client names, hourly rates, and banking details are processed strictly in browser memory and never uploaded to any remote database.',
+      'A commercial invoice is an essential billing and recordkeeping document establishing a clear transaction record between a seller and client. Creating invoices manually in word processors frequently introduces calculation errors, missing line items, inconsistent numbering, and layout misalignments. The TechTools Free Invoice Generator provides an interactive, client-side billing workspace engineered for freelance developers, independent contractors, creative agencies, and small businesses. Add client billing addresses, itemize billable hours or products, specify local VAT/GST tax rates, apply discounts, and configure payment instructions. (Note: Specific commercial invoice, tax identification, and format requirements vary depending on country and regional tax authorities). Your financial records, client names, hourly rates, and banking details are processed strictly in browser memory and never uploaded to any remote database.',
     howToUseSteps: [
       'Enter your Business Information (company name, address, email, tax/VAT/GST registration number, and optional logo).',
       'Specify Client Billing Details including business entity name, accounts payable contact, and physical billing address.',
@@ -647,7 +647,7 @@ const CURATED_TOOL_SEO: Record<string, Partial<ToolEnrichedSEO>> = {
       {
         question: 'Can I download the invoice as a PDF without watermarks?',
         answer:
-          'Yes. All invoices generated on TechTools are 100% free, unwatermarked, and suitable for commercial, corporate, and statutory tax filing purposes.',
+          'Yes. All invoices generated on TechTools are 100% free, unwatermarked, and suitable for commercial billing and recordkeeping purposes.',
       },
       {
         question: 'Does the invoice generator support sales taxes like VAT and GST?',
@@ -661,7 +661,7 @@ const CURATED_TOOL_SEO: Record<string, Partial<ToolEnrichedSEO>> = {
       },
     ],
   },
-  'csv-to-json-converter': {
+  'csv-json-converter': {
     shortIntro:
       'Convert CSV spreadsheets to JSON arrays and JSON objects to clean CSV files in milliseconds. Full RFC 4180 delimiter support, automatic type casting, nested object handling, and 100% in-browser privacy with zero server uploads.',
     whatIsThis:
@@ -980,14 +980,15 @@ const CURATED_TOOL_SEO: Record<string, Partial<ToolEnrichedSEO>> = {
   },
   'gst-calculator': {
     shortIntro:
-      'Calculate Goods and Services Tax (GST) online. Add or remove GST from gross amounts, calculate CGST/SGST/IGST splits, and determine tax-inclusive and tax-exclusive prices with instant precision.',
+      'Calculate Goods and Services Tax (GST) and sales tax online with bidirectional accuracy. Add or remove GST from prices, calculate 18% Pakistan FBR sales tax, provincial service tax rates (15% Sindh SRB, 16% Punjab PRA), and determine tax-inclusive and tax-exclusive amounts in PKR or international currencies with zero data retention.',
     whatIsThis:
-      'Goods and Services Tax (GST) is a unified value-added consumption tax applied across jurisdictions such as India, Australia, Canada, New Zealand, and Singapore. Freelancers, contractors, retailers, and accountants regularly need to calculate both GST-exclusive amounts (adding statutory tax to base prices) and GST-inclusive amounts (extracting embedded tax from gross totals). The TechTools GST Calculator computes base prices, total GST amounts, and final billing totals instantaneously. It eliminates manual percentage errors and helps you prepare compliant tax invoices and accounting records with zero friction.',
+      'Goods and Services Tax (GST) and value-added sales tax are standard consumption taxes levied on supplies of goods and services worldwide, prominently including Pakistan (governed federally by the Federal Board of Revenue - FBR at standard 18% on taxable goods, and provincially by authorities such as Sindh Revenue Board - SRB at 15%, Punjab Revenue Authority - PRA at 16%, Khyber Pakhtunkhwa - KPRA at 15%, and Balochistan - BRA at 15%), alongside international GST/VAT regimes. Freelancers, retailers, contractors, and corporate accountants need to calculate both GST-exclusive amounts (adding tax to base costs) and GST-inclusive amounts (extracting embedded tax from gross receipts). The TechTools GST Calculator computes base prices, exact sales tax amounts, and gross totals instantaneously. (Note: Statutory tax slabs and exemptions are subject to fiscal budget updates by respective revenue authorities; always verify current regulatory classifications for your specific commercial sector).',
     howToUseSteps: [
-      'Enter the initial Amount in your preferred currency.',
-      'Specify the applicable GST Rate percentage (e.g. 5%, 12%, 18%, 28%, or custom rate).',
-      'Select whether you want to "Add GST" (exclusive to inclusive) or "Remove GST" (inclusive to exclusive).',
-      'Inspect the itemized breakdown showing Original Amount, GST Tax Amount, and Final Total.',
+      'Select your calculation mode: choose "Add GST (Exclusive)" to add tax to a net base price, or "Remove GST (Inclusive)" to extract embedded tax from a gross receipt.',
+      'Enter your financial amount in PKR or your preferred local currency (e.g. 10,000).',
+      'Select a quick preset (such as Pakistan standard 18% FBR, 15% Sindh SRB, 16% Punjab PRA/ICT, or standard 17%/5%) or toggle "Custom Rate" to enter any specific tax percentage.',
+      'Inspect the real-time calculated breakdown: Net Base Price, GST Tax Amount, and Final Gross Total.',
+      'Click "Copy Summary" to copy the formatted financial breakdown ready for commercial proposals, client billing, or accounting ledgers.',
     ],
     featuresBenefits: [
       {
@@ -995,34 +996,61 @@ const CURATED_TOOL_SEO: Record<string, Partial<ToolEnrichedSEO>> = {
         desc: 'Easily switch between adding sales tax to net base prices or extracting embedded tax from gross commercial totals.',
       },
       {
-        title: 'Jurisdiction Presets & Custom Rates',
-        desc: 'One-click standard tax rate slabs alongside full support for any arbitrary custom tax percentage.',
+        title: 'Pakistan FBR & Provincial Presets',
+        desc: 'One-click rate presets for Pakistan Federal 18%, Sindh SRB 15%, Punjab PRA 16%, alongside custom percentage inputs.',
+      },
+      {
+        title: 'Exact PKR Mathematical Precision',
+        desc: 'Calculates tax down to 2 decimal places with zero rounding discrepancies across arbitrary price tiers.',
       },
       {
         title: 'Commercial Invoice Compatibility',
         desc: 'Itemized totals ready for direct entry into professional invoices and commercial bookkeeping records.',
       },
+      {
+        title: '100% Client-Side Privacy Guarantee',
+        desc: 'All financial numbers, transaction amounts, and tax figures remain strictly inside your browser sandbox.',
+      },
     ],
     useCases: [
       {
-        title: 'Commercial Invoicing & Client Billing',
-        scenario: 'Calculate exact tax line items before issuing professional client invoices with our free Invoice Generator.',
+        title: 'Pakistan Commercial Billing & Freelancing',
+        scenario: 'Accurately compute 18% sales tax on invoices issued to corporate clients in Pakistan, or apply 15%/16% provincial service taxes for consulting contracts.',
       },
       {
-        title: 'Tax Filing & Expense Reconciliation',
-        scenario: 'Extract embedded GST from purchase receipts to determine input tax credit (ITC) eligibility for quarterly filings.',
+        title: 'Extracting Tax from Gross Receipts',
+        scenario: 'Reverse-calculate the net pre-tax expense and sales tax paid on commercial purchases from gross receipts in PKR.',
+      },
+      {
+        title: 'E-Commerce & Retail Pricing',
+        scenario: 'Determine consumer retail shelf prices (inclusive of GST) from wholesale supplier costs to preserve target gross margins.',
       },
     ],
     faqs: [
       {
-        question: 'How do I remove GST from a total price?',
+        question: 'How do I calculate 18% GST on a price in Pakistan?',
         answer:
-          'To extract embedded GST: Base Price = Total / (1 + (Rate / 100)). The GST Amount is Total minus Base Price. Our calculator computes this reverse formula automatically.',
+          'To add 18% GST (exclusive): Multiply your base amount by 0.18 to determine the tax, then add it to the base. Example in PKR: For a base price of PKR 10,000, GST = 10,000 × 0.18 = PKR 1,800. Gross Total = PKR 10,000 + PKR 1,800 = PKR 11,800.',
       },
       {
-        question: 'What is the formula to add GST to a base amount?',
+        question: 'How do I remove 18% GST from a tax-inclusive price?',
         answer:
-          'GST Amount = (Base Price × Rate) / 100. The Gross Total is Base Price plus GST Amount.',
+          'To extract embedded 18% GST (inclusive): Divide the total gross amount by 1.18 to find the Net Base Price, then subtract Net from Total to find GST. Example: If gross total is PKR 11,800: Net = 11,800 / 1.18 = PKR 10,000. GST = 11,800 - 10,000 = PKR 1,800.',
+      },
+      {
+        question: 'What are the standard sales tax rates in Pakistan?',
+        answer:
+          'Under the Federal Board of Revenue (FBR) Sales Tax Act, the standard sales tax on taxable goods in Pakistan is 18%. For services, provincial authorities set statutory rates: Sindh Revenue Board (SRB) is typically 15%, Punjab Revenue Authority (PRA) is typically 16%, and Islamabad Capital Territory (ICT) is 16%. Specific reduced rates or exemptions apply to certain sectors under current finance acts.',
+      },
+      {
+        question: 'What is the difference between GST inclusive and GST exclusive?',
+        answer:
+          'GST Exclusive means the advertised price does not include tax; tax must be added on top before final settlement. GST Inclusive means the advertised price already includes sales tax, and the merchant remits the embedded tax portion to the revenue authority.',
+      },
+      {
+        question: 'Can I use this calculator for other countries (India, Australia, Canada, UK VAT)?',
+        answer:
+          'Yes! You can toggle "Custom Rate" to enter any standard VAT or GST percentage (e.g. 5%, 10%, 12%, 20%) to calculate tax-inclusive or tax-exclusive amounts for any jurisdiction worldwide.',
       },
     ],
   },
@@ -1414,11 +1442,11 @@ export function getToolRelevantArticle(toolSlug: string, category?: string): Rel
     'invoice-generator': {
       slug: 'how-to-create-free-commercial-invoices-pdf-guide',
       title: 'How to Create Professional PDF Invoices: Free Commercial Invoicing Guide',
-      excerpt: 'A complete breakdown of legal invoice requirements, VAT/GST tax compliance, payment terms, and PDF client invoices.',
+      excerpt: 'A complete breakdown of commercial invoice requirements, VAT/GST tax compliance, payment terms, and PDF client invoices.',
       category: 'Business Accounting',
       readTime: '6 min read',
     },
-    'csv-to-json-converter': {
+    'csv-json-converter': {
       slug: 'csv-json-data-transformation-engineering-guide',
       title: 'Mastering CSV and JSON Transformations: Schema Mapping & Parsing',
       excerpt: 'How to convert between CSV tabular spreadsheets and nested JSON objects, handle delimiter escaping, and validate contracts.',
@@ -1607,6 +1635,94 @@ export function getEnrichedToolSEO(tool: ToolItem, category?: ToolCategory): Too
           },
         ]);
 
+function getContextualUseCases(tool: ToolItem): { title: string; scenario: string }[] {
+  const cat = (tool.category || '').toLowerCase();
+
+  if (cat.includes('finance') || cat.includes('calc') || cat.includes('biz') || cat === 'business-tools') {
+    return [
+      {
+        title: 'Commercial Invoicing & Pricing Strategy',
+        scenario: `Accurately compute tax line items, cost markups, and final customer prices before issuing proposals or finalizing client contracts.`,
+      },
+      {
+        title: 'Personal Budgeting & Financial Planning',
+        scenario: `Model repayment horizons, interest schedules, and financial scenarios with immediate mathematical precision and zero calculation discrepancies.`,
+      },
+      {
+        title: 'Fast Ledger & Expense Auditing',
+        scenario: `Verify calculations against receipts, invoices, and accounting journals with instant in-browser arithmetic.`,
+      },
+    ];
+  }
+
+  if (cat.includes('img') || cat.includes('design') || cat.includes('col')) {
+    return [
+      {
+        title: 'Web & Mobile Performance Optimization',
+        scenario: `Compress, resize, and convert visual assets to improve Google Core Web Vitals and reduce page loading latency.`,
+      },
+      {
+        title: 'Design Systems & UI Engineering',
+        scenario: `Extract palettes, verify WCAG contrast ratios, and generate CSS box shadows or gradients for modern frontend components.`,
+      },
+      {
+        title: 'Multi-Platform Asset Formatting',
+        scenario: `Format images and icons for social media cards, responsive websites, and app store listings with zero loss in visual clarity.`,
+      },
+    ];
+  }
+
+  if (cat.includes('text') || cat.includes('pdf') || cat.includes('soc')) {
+    return [
+      {
+        title: 'Publishing & Editorial Preparation',
+        scenario: `Verify word counts, character limits, and text formatting before publishing blog articles, newsletters, or marketing updates.`,
+      },
+      {
+        title: 'Confidential Document Inspection',
+        scenario: `Inspect text differences, live Markdown previews, or PDF metadata safely in local memory without uploading files to third-party servers.`,
+      },
+      {
+        title: 'Multi-Channel Social Copywriting',
+        scenario: `Validate character constraints and preview visual cards for Twitter/X, LinkedIn, Meta, and messaging platforms before posting.`,
+      },
+    ];
+  }
+
+  if (cat.includes('ai')) {
+    return [
+      {
+        title: 'Content Drafting & Summarization',
+        scenario: `Condense long reports, rewrite paragraphs for specific audiences, and draft professional communications with AI reasoning.`,
+      },
+      {
+        title: 'Code Review & Syntax Explanation',
+        scenario: `Explain complex code snippets, construct regular expressions, and optimize technical queries using Gemini inference.`,
+      },
+      {
+        title: 'Private In-Browser AI Assistance',
+        scenario: `Generate high-quality copy and structured technical outputs with strict enterprise privacy guarantees and zero data retention.`,
+      },
+    ];
+  }
+
+  // Developer, converters, encoders, validators, date-time, security
+  return [
+    {
+      title: 'API Payload & Schema Validation',
+      scenario: `Format, validate, and verify ${tool.tags?.slice(0, 2).join(' and ') || 'data'} payloads before sending requests to staging or production environments.`,
+    },
+    {
+      title: 'Zero-Knowledge Secret Manipulation',
+      scenario: `Safely decode tokens, generate passwords, and compute hashes locally in browser memory with zero network interception.`,
+    },
+    {
+      title: 'Workflow Automation & Format Conversion',
+      scenario: `Quickly convert between encodings, timestamps, and data structures without installing local CLI packages or dependencies.`,
+    },
+  ];
+}
+
   // Examples / Use Cases (100-200 words)
   const useCases =
     (tool.useCases && tool.useCases.length > 0 ? tool.useCases : null) ||
@@ -1616,24 +1732,8 @@ export function getEnrichedToolSEO(tool: ToolItem, category?: ToolCategory): Too
           scenario: ex.description,
         }))
       : null) ||
-    curated?.useCases || [
-      {
-        title: `Accelerating ${tool.categoryName || 'Productivity'} Tasks`,
-        scenario: `Eliminate repetitive manual tasks and eliminate human errors when working with ${tool.tags?.slice(0, 3).join(', ') || 'data'} in daily projects.`,
-      },
-      {
-        title: 'Production Debugging & QA Testing',
-        scenario: `Quickly verify, clean, and validate inputs before deploying them to production environments or sharing with team members.`,
-      },
-      {
-        title: 'Cross-Platform Compatibility',
-        scenario: `Standardize workflows across Mac, Windows, Linux, and mobile devices without environment setup issues.`,
-      },
-      {
-        title: 'Secure Sensitive Data Handling',
-        scenario: `Safely manipulate proprietary tokens, customer data, and internal schemas knowing no logs or telemetry are stored.`,
-      },
-    ];
+    curated?.useCases ||
+    getContextualUseCases(tool);
 
   // FAQs (4-8 questions, ~250-500 words)
   const baseFaqs: ToolFAQ[] =
@@ -1826,52 +1926,125 @@ export function generateToolJsonLd(
     ],
   };
 
-  return [webAppSchema, faqSchema, howToSchema, breadcrumbSchema];
+  const schemas: any[] = [webAppSchema, howToSchema, breadcrumbSchema];
+  if (enriched.faqs && enriched.faqs.length > 0) {
+    schemas.push(faqSchema);
+  }
+  return schemas;
 }
 
-// Curated high-CTR titles strictly formatted as: Primary Search Intent – Benefit/Qualifier | TechTools
+// Curated high-CTR titles strictly formatted as: Primary Search Intent – Useful Modifier | TechTools
+// All 64 tools mapped with zero duplicate branding and strictly adhering to SERP length (40-60 characters)
 const CURATED_TOOL_TITLES: Record<string, string> = {
-  'json-validator': `JSON Validator Online – Free & Private | ${SEO_CONFIG.shortName}`,
+  // Developer Tools
   'json-formatter': `JSON Formatter Online – Beautify & Minify | ${SEO_CONFIG.shortName}`,
-  'jpg-to-png': `JPG to PNG Converter – Free Online | ${SEO_CONFIG.shortName}`,
-  'png-to-jpg': `PNG to JPG Converter – Fast & Free | ${SEO_CONFIG.shortName}`,
-  'image-compressor': `Image Compressor – Compress JPG & PNG Online | ${SEO_CONFIG.shortName}`,
-  'image-resizer': `Image Resizer – Resize Photos Online Free | ${SEO_CONFIG.shortName}`,
-  'image-to-webp': `Image to WebP Converter – Fast & Free | ${SEO_CONFIG.shortName}`,
-  'gst-calculator': `GST Calculator – Inclusive & Exclusive Tax | ${SEO_CONFIG.shortName}`,
-  'loan-emi-calculator': `Loan EMI Calculator – Free Loan Payoff Tool | ${SEO_CONFIG.shortName}`,
-  'percentage-calculator': `Percentage Calculator – Fast & Accurate | ${SEO_CONFIG.shortName}`,
-  'profit-margin-calculator': `Profit Margin Calculator – Markup & Profit | ${SEO_CONFIG.shortName}`,
-  'regex-tester': `RegEx Tester – Test Regular Expressions | ${SEO_CONFIG.shortName}`,
-  'jwt-decoder': `JWT Decoder Online – Inspect JSON Web Tokens | ${SEO_CONFIG.shortName}`,
   'base64-encoder-decoder': `Base64 Encoder & Decoder – Fast & Private | ${SEO_CONFIG.shortName}`,
+  'jwt-decoder': `JWT Decoder Online – Inspect JSON Web Tokens | ${SEO_CONFIG.shortName}`,
   'uuid-generator': `UUID Generator – Bulk UUID v4 Online | ${SEO_CONFIG.shortName}`,
-  'qr-code-generator': `QR Code Generator – Custom Free QR Codes | ${SEO_CONFIG.shortName}`,
-  'password-generator': `Password Generator – Secure Random Passwords | ${SEO_CONFIG.shortName}`,
+  'regex-tester': `RegEx Tester – Test Regular Expressions | ${SEO_CONFIG.shortName}`,
   'hash-generator': `Hash Generator – SHA-256, SHA-512 & MD5 | ${SEO_CONFIG.shortName}`,
-  'meta-tag-generator': `Meta Tag Generator – SEO & Social Tags | ${SEO_CONFIG.shortName}`,
-  'og-meta-generator': `Open Graph Generator – Social Meta Tags | ${SEO_CONFIG.shortName}`,
-  'word-counter': `Word Counter – Count Words & Characters | ${SEO_CONFIG.shortName}`,
-  'character-counter': `Character Counter – Live Text Counter | ${SEO_CONFIG.shortName}`,
-  'case-converter': `Case Converter – Upper, Lower, Title & Camel | ${SEO_CONFIG.shortName}`,
-  'diff-checker': `Text Diff Checker – Compare Code & Text | ${SEO_CONFIG.shortName}`,
-  'invoice-generator': `Invoice Generator – Free PDF Invoice Maker | ${SEO_CONFIG.shortName}`,
-  'discount-calculator': `Discount Calculator – Sale & Savings Finder | ${SEO_CONFIG.shortName}`,
-  'age-calculator': `Age Calculator – Exact Age & Birthday Tool | ${SEO_CONFIG.shortName}`,
+  'url-encoder-decoder': `URL Encoder & Decoder – Safe URI Tool | ${SEO_CONFIG.shortName}`,
+
+  // AI Tools
   'ai-text-summarizer': `AI Text Summarizer – Fast Summary Tool | ${SEO_CONFIG.shortName}`,
   'ai-rewriter': `AI Content Rewriter – Paraphrase & Rewrite | ${SEO_CONFIG.shortName}`,
+  'ai-grammar-fixer': `AI Grammar & Style Fixer – Fast & Private | ${SEO_CONFIG.shortName}`,
   'ai-code-explainer': `AI Code Explainer – Explain Code & Syntax | ${SEO_CONFIG.shortName}`,
-  'ai-sql-writer': `AI SQL Query Writer – Generate SQL Queries | ${SEO_CONFIG.shortName}`,
-  'csv-to-json-converter': `CSV to JSON Converter – Fast Table Parser | ${SEO_CONFIG.shortName}`,
-  'json-to-csv-converter': `JSON to CSV Converter – Export Spreadsheets | ${SEO_CONFIG.shortName}`,
-  'timestamp-converter': `Unix Timestamp Converter – Epoch Time Tool | ${SEO_CONFIG.shortName}`,
-  'url-encoder-decoder': `URL Encoder & Decoder – Safe URI Tool | ${SEO_CONFIG.shortName}`,
-  'html-entity-encoder': `HTML Entity Encoder – Encode & Decode HTML | ${SEO_CONFIG.shortName}`,
+  'ai-regex-generator': `AI Regex Generator – Build Regular Expressions | ${SEO_CONFIG.shortName}`,
+  'ai-seo-meta-generator': `AI SEO Meta Generator – Titles & Descriptions | ${SEO_CONFIG.shortName}`,
+  'ai-email-writer': `AI Email Writer – Professional Email Generator | ${SEO_CONFIG.shortName}`,
+
+  // Image Tools
+  'image-compressor': `Image Compressor – Compress JPG, PNG & WebP | ${SEO_CONFIG.shortName}`,
+  'image-resizer': `Image Resizer – Resize Photos Online Free | ${SEO_CONFIG.shortName}`,
+  'image-to-base64': `Image to Base64 – Convert Photos to Data URI | ${SEO_CONFIG.shortName}`,
+  'favicon-generator': `Favicon Generator – App Icons & Favicons | ${SEO_CONFIG.shortName}`,
+  'jpg-to-png': `JPG to PNG Converter – Free Online | ${SEO_CONFIG.shortName}`,
+  'png-to-jpg': `PNG to JPG Converter – Fast & Free | ${SEO_CONFIG.shortName}`,
+  'image-to-webp': `Image to WebP Converter – Fast & Free | ${SEO_CONFIG.shortName}`,
+
+  // PDF & Docs
+  'pdf-viewer': `PDF Viewer Online – View & Inspect PDF Files | ${SEO_CONFIG.shortName}`,
+  'pdf-metadata-viewer': `PDF Metadata Viewer – Inspect Document Details | ${SEO_CONFIG.shortName}`,
+
+  // Text & Content
+  'word-counter': `Word Counter – Live Words & Characters Count | ${SEO_CONFIG.shortName}`,
+  'case-converter': `Case Converter – Upper, Lower, Title & Camel | ${SEO_CONFIG.shortName}`,
+  'text-diff': `Text Diff Tool – Compare Text Differences | ${SEO_CONFIG.shortName}`,
   'lorem-ipsum-generator': `Lorem Ipsum Generator – Dummy Text Tool | ${SEO_CONFIG.shortName}`,
-  'dummy-data-generator': `Dummy Data Generator – Mock JSON Fixtures | ${SEO_CONFIG.shortName}`,
+  'character-counter': `Character Counter – Live Text Count Tool | ${SEO_CONFIG.shortName}`,
+  'markdown-editor': `Markdown Editor – Live HTML Preview Online | ${SEO_CONFIG.shortName}`,
+
+  // SEO Tools
+  'serp-snippet-preview': `SERP Snippet Preview – Google Search Preview | ${SEO_CONFIG.shortName}`,
+  'og-meta-generator': `Open Graph Generator – Social Meta Tags | ${SEO_CONFIG.shortName}`,
+  'schema-markup-generator': `Schema Markup Generator – JSON-LD Schema | ${SEO_CONFIG.shortName}`,
+  'utm-builder': `UTM Campaign Builder – Tracking URL Maker | ${SEO_CONFIG.shortName}`,
+
+  // Business & Finance
+  'invoice-generator': `Invoice Generator – Create Free PDF Invoices | ${SEO_CONFIG.shortName}`,
+  'profit-margin-calculator': `Profit Margin Calculator – Markup & Margin | ${SEO_CONFIG.shortName}`,
+  'loan-emi-calculator': `Loan EMI Calculator – Mortgage & Loan Payments | ${SEO_CONFIG.shortName}`,
+  'compound-interest-calculator': `Compound Interest Calculator – Investment Growth | ${SEO_CONFIG.shortName}`,
+
+  // Calculators
+  'percentage-calculator': `Percentage Calculator – Fast & Accurate | ${SEO_CONFIG.shortName}`,
+  'age-calculator': `Age Calculator – Exact Age & Birthday Tool | ${SEO_CONFIG.shortName}`,
+  'gst-calculator': `GST Calculator – Inclusive & Exclusive Tax | ${SEO_CONFIG.shortName}`,
+  'aspect-ratio-calculator': `Aspect Ratio Calculator – Video & Image Ratios | ${SEO_CONFIG.shortName}`,
+  'bmi-calorie-calculator': `BMI & Calorie Calculator – Daily TDEE Tool | ${SEO_CONFIG.shortName}`,
+
+  // Converters
+  'unit-converter': `Unit Converter – Length, Weight, Temp & Data | ${SEO_CONFIG.shortName}`,
+  'csv-json-converter': `CSV to JSON Converter – Tabular Data Tool | ${SEO_CONFIG.shortName}`,
+  'number-base-converter': `Number Base Converter – Binary, Hex & Decimal | ${SEO_CONFIG.shortName}`,
+
+  // Generators
+  'qr-code-generator': `QR Code Generator – Free Online QR Maker | ${SEO_CONFIG.shortName}`,
+  'slug-generator': `URL Slug Generator – SEO Friendly Permalinks | ${SEO_CONFIG.shortName}`,
+  'dummy-data-generator': `Dummy Data Generator – Mock JSON Datasets | ${SEO_CONFIG.shortName}`,
+
+  // Encoders & Decoders
+  'base64-encoder': `Base64 Encoder – Encode Text Online | ${SEO_CONFIG.shortName}`,
+  'base64-decoder': `Base64 Decoder – Decode Base64 to Text | ${SEO_CONFIG.shortName}`,
+  'html-entities-encoder': `HTML Entities Encoder – Character Codes | ${SEO_CONFIG.shortName}`,
+
+  // Validators
+  'json-validator': `JSON Validator Online – Syntax Checker | ${SEO_CONFIG.shortName}`,
+  'xml-yaml-formatter': `XML & YAML Formatter – Validator & Beautifier | ${SEO_CONFIG.shortName}`,
+
+  // Design & CSS
+  'css-box-shadow-generator': `CSS Box Shadow Generator – Visual Shadow Maker | ${SEO_CONFIG.shortName}`,
+  'css-gradient-generator': `CSS Gradient Generator – Color Palettes | ${SEO_CONFIG.shortName}`,
+  'glassmorphism-generator': `Glassmorphism Generator – Modern CSS Blur | ${SEO_CONFIG.shortName}`,
+
+  // Color Tools
   'color-converter': `Color Converter – HEX, RGB, HSL & CMYK | ${SEO_CONFIG.shortName}`,
-  'box-shadow-generator': `CSS Box Shadow Generator – Live Preview | ${SEO_CONFIG.shortName}`,
+  'wcag-contrast-checker': `WCAG Contrast Checker – Color Accessibility | ${SEO_CONFIG.shortName}`,
+
+  // Security Tools
+  'password-generator': `Password Generator – Strong Random Passwords | ${SEO_CONFIG.shortName}`,
+
+  // Date & Time
+  'unix-timestamp-converter': `Unix Timestamp Converter – Epoch to Date | ${SEO_CONFIG.shortName}`,
+  'time-zone-converter': `Time Zone Converter – Global World Clock | ${SEO_CONFIG.shortName}`,
+
+  // Education
+  'gpa-calculator': `GPA Calculator – College & High School Grades | ${SEO_CONFIG.shortName}`,
+
+  // Productivity
+  'pomodoro-timer': `Pomodoro Timer – Focus & Break Intervals | ${SEO_CONFIG.shortName}`,
+
+  // Social Media
+  'social-post-preview': `Social Post Preview – Character Limits & Cards | ${SEO_CONFIG.shortName}`,
 };
+
+function truncateAtWordBoundary(text: string, maxLen: number): string {
+  if (text.length <= maxLen) return text;
+  const cut = text.slice(0, maxLen);
+  const lastSpace = cut.lastIndexOf(' ');
+  return lastSpace > 15 ? cut.slice(0, lastSpace) : cut;
+}
 
 /**
  * Standardizes SEO Title and Meta Description for tools to ensure Google snippet compliance.
@@ -1888,23 +2061,27 @@ export function getToolSeoMetadata(tool: ToolItem): { title: string; description
   }
 
   let title = tool.seoTitle || '';
-  // Strip any accidental duplicate branding in raw data
-  title = title.replace(/\s*\|\s*TechTools(\s*\|\s*TechTools)*/gi, '').trim();
+  // Strip any accidental duplicate branding in raw data (hyphen, en-dash, em-dash, or pipe)
+  title = title.replace(/\s*[-–—|]\s*TechTools.*/gi, '').trim();
 
-  if (!title || title.length > 45 || title.length < 15) {
-    const candidates = [
-      `${tool.name} Online – Free & Private`,
-      `${tool.name} – Free Online Tool`,
-      `${tool.name} Online Tool`,
-    ];
-    const candidate = candidates.find((c) => (c + ` | ${SEO_CONFIG.shortName}`).length <= 60 && (c + ` | ${SEO_CONFIG.shortName}`).length >= 30);
-    title = candidate ? `${candidate} | ${SEO_CONFIG.shortName}` : `${tool.name.slice(0, 40)} | ${SEO_CONFIG.shortName}`;
+  const brandSuffix = ` | ${SEO_CONFIG.shortName}`;
+  const maxBaseLen = 60 - brandSuffix.length; // ~48 chars
+
+  if (!title || title.length > maxBaseLen || title.length < 15) {
+    const candidate = `${tool.name} Online – Free & Private`;
+    if ((candidate + brandSuffix).length <= 60 && (candidate + brandSuffix).length >= 30) {
+      title = `${candidate}${brandSuffix}`;
+    } else {
+      const cleanName = truncateAtWordBoundary(tool.name, maxBaseLen);
+      title = `${cleanName}${brandSuffix}`;
+    }
   } else {
-    title = `${title} | ${SEO_CONFIG.shortName}`;
+    title = `${title}${brandSuffix}`;
   }
 
   if (title.length > 60) {
-    title = `${tool.name.slice(0, 45)} | ${SEO_CONFIG.shortName}`;
+    const cleanName = truncateAtWordBoundary(tool.name, maxBaseLen);
+    title = `${cleanName}${brandSuffix}`;
   }
 
   return { title, description: formatToolDescription(tool) };

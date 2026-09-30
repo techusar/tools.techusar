@@ -136,10 +136,10 @@ export function HomeClient({ initialTools, categories, featuredTools }: HomeClie
                 <button
                   key={tag.id}
                   onClick={() => setFilterTag(tag.id)}
-                  className={`px-3 py-1.5 rounded-xl text-xs font-semibold transition-all ${
+                  className={`px-3 py-1.5 rounded-xl text-xs font-semibold cursor-pointer transition-all duration-150 active:scale-95 ${
                     filterTag === tag.id
-                      ? 'bg-cyan-600 dark:bg-cyan-500 text-white dark:text-slate-950 font-bold shadow-md shadow-cyan-500/20'
-                      : 'bg-slate-100 hover:bg-slate-200 dark:bg-[#171A21] dark:hover:bg-[#1E232E] text-slate-700 dark:text-slate-400 hover:text-slate-950 dark:hover:text-white border border-slate-200 dark:border-slate-800'
+                      ? 'bg-cyan-600 dark:bg-cyan-500 text-white dark:text-slate-950 font-bold shadow-md shadow-cyan-500/25 scale-[1.02]'
+                      : 'bg-slate-100 hover:bg-slate-200 dark:bg-[#171A21] dark:hover:bg-[#1E232E] text-slate-700 dark:text-slate-400 hover:text-slate-950 dark:hover:text-white border border-slate-200 dark:border-slate-800 hover:shadow-xs'
                   }`}
                 >
                   {tag.label}
@@ -152,10 +152,10 @@ export function HomeClient({ initialTools, categories, featuredTools }: HomeClie
           <div className="flex items-center gap-2 overflow-x-auto pb-2 scrollbar-none">
             <button
               onClick={() => setSelectedCategory('all')}
-              className={`px-3.5 py-1.5 rounded-xl text-xs whitespace-nowrap font-semibold transition-all ${
+              className={`px-3.5 py-1.5 rounded-xl text-xs whitespace-nowrap font-semibold cursor-pointer transition-all duration-150 active:scale-95 ${
                 selectedCategory === 'all'
-                  ? 'bg-slate-900 text-white dark:bg-slate-700 dark:text-white'
-                  : 'bg-slate-100 hover:bg-slate-200 dark:bg-[#14171F] dark:hover:bg-[#1A1E27] text-slate-700 dark:text-slate-400 hover:text-slate-950 dark:hover:text-white border border-slate-200 dark:border-slate-800'
+                  ? 'bg-slate-900 text-white dark:bg-slate-700 dark:text-white shadow-sm'
+                  : 'bg-slate-100 hover:bg-slate-200 dark:bg-[#14171F] dark:hover:bg-[#1A1E27] text-slate-700 dark:text-slate-400 hover:text-slate-950 dark:hover:text-white border border-slate-200 dark:border-slate-800 hover:shadow-xs'
               }`}
             >
               All Categories ({initialTools.length})
@@ -164,10 +164,10 @@ export function HomeClient({ initialTools, categories, featuredTools }: HomeClie
               <button
                 key={cat.id}
                 onClick={() => setSelectedCategory(cat.slug)}
-                className={`px-3.5 py-1.5 rounded-xl text-xs whitespace-nowrap font-semibold transition-all ${
+                className={`px-3.5 py-1.5 rounded-xl text-xs whitespace-nowrap font-semibold cursor-pointer transition-all duration-150 active:scale-95 ${
                   selectedCategory === cat.slug
-                    ? 'bg-slate-900 text-white dark:bg-slate-700 dark:text-white'
-                    : 'bg-slate-100 hover:bg-slate-200 dark:bg-[#14171F] dark:hover:bg-[#1A1E27] text-slate-700 dark:text-slate-400 hover:text-slate-950 dark:hover:text-white border border-slate-200 dark:border-slate-800'
+                    ? 'bg-slate-900 text-white dark:bg-slate-700 dark:text-white shadow-sm'
+                    : 'bg-slate-100 hover:bg-slate-200 dark:bg-[#14171F] dark:hover:bg-[#1A1E27] text-slate-700 dark:text-slate-400 hover:text-slate-950 dark:hover:text-white border border-slate-200 dark:border-slate-800 hover:shadow-xs'
                 }`}
               >
                 {cat.name} ({cat.toolCount})
