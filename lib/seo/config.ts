@@ -8,7 +8,9 @@ export const SEO_CONFIG = {
   twitterHandle: '@TechUsar',
   defaultTitle: 'TechTools by TechUsar – Free Online Developer & AI Utilities',
   defaultDescription:
-    'Free online developer tools, code formatters, image compressors, QR code generators, calculators, and Gemini AI utilities. Fast, privacy-focused in-browser processing.',
+    'Free online tools for developers, SEO, images, AI, calculators, productivity, business and everyday tasks. Fast, 100% private in-browser processing with zero data retention.',
+  totalToolsCount: 70,
+  totalToolsLabel: '70+',
   defaultKeywords: [
     'developer tools',
     'free online tools',

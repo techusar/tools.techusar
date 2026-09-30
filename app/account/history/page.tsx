@@ -4,7 +4,9 @@ import { getAllTools } from '@/lib/data/toolsRepository';
 import { HistoryClient } from '@/components/account/HistoryClient';
 
 export const metadata: Metadata = {
-  title: 'Tool Usage History & Recent Activity - TechTools by TechUsar',
+  title: {
+    absolute: 'Tool Usage History & Recent Activity | TechTools',
+  },
   description: 'View and resume your recently used developer tools, formatters, and AI utilities.',
   robots: {
     index: false,

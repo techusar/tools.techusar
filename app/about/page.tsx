@@ -14,7 +14,9 @@ import { Breadcrumb } from '@/components/navigation/Breadcrumb';
 import { SEO_CONFIG, getCanonicalUrl } from '@/lib/seo/config';
 
 export const metadata: Metadata = {
-  title: `About Us & Zero-Retention Philosophy | ${SEO_CONFIG.shortName}`,
+  title: {
+    absolute: `About Us & Zero-Retention Philosophy | ${SEO_CONFIG.shortName}`,
+  },
   description:
     'Learn about TechTools by TechUsar: our mission to provide high-speed, 100% private in-browser developer utilities and Gemini AI assistants without storing user data.',
   keywords: [
@@ -74,7 +76,7 @@ export default async function AboutPage() {
     '@type': 'AboutPage',
     name: 'About TechTools by TechUsar',
     description:
-      'TechTools is a suite of 60+ free in-browser developer, security, text, and financial utilities engineered with zero data retention.',
+      `TechTools is a suite of ${toolCount}+ free in-browser developer, security, text, and financial utilities engineered with zero data retention.`,
     url: getCanonicalUrl('/about'),
     publisher: {
       '@type': 'Organization',

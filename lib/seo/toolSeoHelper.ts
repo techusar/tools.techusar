@@ -1829,29 +1829,97 @@ export function generateToolJsonLd(
   return [webAppSchema, faqSchema, howToSchema, breadcrumbSchema];
 }
 
+// Curated high-CTR titles strictly formatted as: Primary Search Intent – Benefit/Qualifier | TechTools
+const CURATED_TOOL_TITLES: Record<string, string> = {
+  'json-validator': `JSON Validator Online – Free & Private | ${SEO_CONFIG.shortName}`,
+  'json-formatter': `JSON Formatter Online – Beautify & Minify | ${SEO_CONFIG.shortName}`,
+  'jpg-to-png': `JPG to PNG Converter – Free Online | ${SEO_CONFIG.shortName}`,
+  'png-to-jpg': `PNG to JPG Converter – Fast & Free | ${SEO_CONFIG.shortName}`,
+  'image-compressor': `Image Compressor – Compress JPG & PNG Online | ${SEO_CONFIG.shortName}`,
+  'image-resizer': `Image Resizer – Resize Photos Online Free | ${SEO_CONFIG.shortName}`,
+  'image-to-webp': `Image to WebP Converter – Fast & Free | ${SEO_CONFIG.shortName}`,
+  'gst-calculator': `GST Calculator – Inclusive & Exclusive Tax | ${SEO_CONFIG.shortName}`,
+  'loan-emi-calculator': `Loan EMI Calculator – Free Loan Payoff Tool | ${SEO_CONFIG.shortName}`,
+  'percentage-calculator': `Percentage Calculator – Fast & Accurate | ${SEO_CONFIG.shortName}`,
+  'profit-margin-calculator': `Profit Margin Calculator – Markup & Profit | ${SEO_CONFIG.shortName}`,
+  'regex-tester': `RegEx Tester – Test Regular Expressions | ${SEO_CONFIG.shortName}`,
+  'jwt-decoder': `JWT Decoder Online – Inspect JSON Web Tokens | ${SEO_CONFIG.shortName}`,
+  'base64-encoder-decoder': `Base64 Encoder & Decoder – Fast & Private | ${SEO_CONFIG.shortName}`,
+  'uuid-generator': `UUID Generator – Bulk UUID v4 Online | ${SEO_CONFIG.shortName}`,
+  'qr-code-generator': `QR Code Generator – Custom Free QR Codes | ${SEO_CONFIG.shortName}`,
+  'password-generator': `Password Generator – Secure Random Passwords | ${SEO_CONFIG.shortName}`,
+  'hash-generator': `Hash Generator – SHA-256, SHA-512 & MD5 | ${SEO_CONFIG.shortName}`,
+  'meta-tag-generator': `Meta Tag Generator – SEO & Social Tags | ${SEO_CONFIG.shortName}`,
+  'og-meta-generator': `Open Graph Generator – Social Meta Tags | ${SEO_CONFIG.shortName}`,
+  'word-counter': `Word Counter – Count Words & Characters | ${SEO_CONFIG.shortName}`,
+  'character-counter': `Character Counter – Live Text Counter | ${SEO_CONFIG.shortName}`,
+  'case-converter': `Case Converter – Upper, Lower, Title & Camel | ${SEO_CONFIG.shortName}`,
+  'diff-checker': `Text Diff Checker – Compare Code & Text | ${SEO_CONFIG.shortName}`,
+  'invoice-generator': `Invoice Generator – Free PDF Invoice Maker | ${SEO_CONFIG.shortName}`,
+  'discount-calculator': `Discount Calculator – Sale & Savings Finder | ${SEO_CONFIG.shortName}`,
+  'age-calculator': `Age Calculator – Exact Age & Birthday Tool | ${SEO_CONFIG.shortName}`,
+  'ai-text-summarizer': `AI Text Summarizer – Fast Summary Tool | ${SEO_CONFIG.shortName}`,
+  'ai-rewriter': `AI Content Rewriter – Paraphrase & Rewrite | ${SEO_CONFIG.shortName}`,
+  'ai-code-explainer': `AI Code Explainer – Explain Code & Syntax | ${SEO_CONFIG.shortName}`,
+  'ai-sql-writer': `AI SQL Query Writer – Generate SQL Queries | ${SEO_CONFIG.shortName}`,
+  'csv-to-json-converter': `CSV to JSON Converter – Fast Table Parser | ${SEO_CONFIG.shortName}`,
+  'json-to-csv-converter': `JSON to CSV Converter – Export Spreadsheets | ${SEO_CONFIG.shortName}`,
+  'timestamp-converter': `Unix Timestamp Converter – Epoch Time Tool | ${SEO_CONFIG.shortName}`,
+  'url-encoder-decoder': `URL Encoder & Decoder – Safe URI Tool | ${SEO_CONFIG.shortName}`,
+  'html-entity-encoder': `HTML Entity Encoder – Encode & Decode HTML | ${SEO_CONFIG.shortName}`,
+  'lorem-ipsum-generator': `Lorem Ipsum Generator – Dummy Text Tool | ${SEO_CONFIG.shortName}`,
+  'dummy-data-generator': `Dummy Data Generator – Mock JSON Fixtures | ${SEO_CONFIG.shortName}`,
+  'color-converter': `Color Converter – HEX, RGB, HSL & CMYK | ${SEO_CONFIG.shortName}`,
+  'box-shadow-generator': `CSS Box Shadow Generator – Live Preview | ${SEO_CONFIG.shortName}`,
+};
+
 /**
  * Standardizes SEO Title and Meta Description for tools to ensure Google snippet compliance.
  * Title: 30-60 characters
  * Description: 120-160 characters
  */
 export function getToolSeoMetadata(tool: ToolItem): { title: string; description: string } {
-  let title = tool.seoTitle || '';
-  if (!title || title.length > 60 || title.length < 30) {
-    const candidates = [
-      `${tool.name} – Free Online Tool | ${SEO_CONFIG.shortName}`,
-      `${tool.name} Online | ${SEO_CONFIG.shortName}`,
-      `${tool.name} | ${SEO_CONFIG.shortName} Online`,
-    ];
-    title = candidates.find((c) => c.length <= 60 && c.length >= 30) || `${tool.name.slice(0, 45)} | ${SEO_CONFIG.shortName}`;
+  // Check curated title map first
+  if (CURATED_TOOL_TITLES[tool.slug]) {
+    return {
+      title: CURATED_TOOL_TITLES[tool.slug],
+      description: formatToolDescription(tool),
+    };
   }
 
+  let title = tool.seoTitle || '';
+  // Strip any accidental duplicate branding in raw data
+  title = title.replace(/\s*\|\s*TechTools(\s*\|\s*TechTools)*/gi, '').trim();
+
+  if (!title || title.length > 45 || title.length < 15) {
+    const candidates = [
+      `${tool.name} Online – Free & Private`,
+      `${tool.name} – Free Online Tool`,
+      `${tool.name} Online Tool`,
+    ];
+    const candidate = candidates.find((c) => (c + ` | ${SEO_CONFIG.shortName}`).length <= 60 && (c + ` | ${SEO_CONFIG.shortName}`).length >= 30);
+    title = candidate ? `${candidate} | ${SEO_CONFIG.shortName}` : `${tool.name.slice(0, 40)} | ${SEO_CONFIG.shortName}`;
+  } else {
+    title = `${title} | ${SEO_CONFIG.shortName}`;
+  }
+
+  if (title.length > 60) {
+    title = `${tool.name.slice(0, 45)} | ${SEO_CONFIG.shortName}`;
+  }
+
+  return { title, description: formatToolDescription(tool) };
+}
+
+function formatToolDescription(tool: ToolItem): string {
   let description = tool.seoDescription || tool.description || '';
+  description = description.replace(/\s*100%\s*in-browser\s*processing\s*with\s*zero\s*server\s*retention\.?/gi, '').trim();
+  
   if (description.length < 120) {
     const cleanDesc = description.replace(/\.$/, '');
     const additions = [
-      '. Fast, secure, and 100% private in-browser utility.',
-      '. 100% private in-browser utility with zero data retention.',
-      '. Free, fast, and 100% in-browser processing with zero server retention.',
+      '. Free, fast, and 100% in-browser processing with zero server data retention.',
+      '. Fast, secure, and 100% private in-browser utility with zero logs.',
+      '. Free and 100% private in-browser processing.',
     ];
     for (const add of additions) {
       if ((cleanDesc + add).length >= 120 && (cleanDesc + add).length <= 160) {
@@ -1860,13 +1928,12 @@ export function getToolSeoMetadata(tool: ToolItem): { title: string; description
       }
     }
     if (description.length < 120) {
-      description = cleanDesc + '. Free, fast, and 100% in-browser processing with zero server retention.';
+      description = (cleanDesc + '. Free, fast, and 100% in-browser processing with zero server data retention.').slice(0, 160);
     }
   }
   if (description.length > 160) {
-    description = description.slice(0, 157) + '...';
+    description = description.slice(0, 157).trim() + '...';
   }
-
-  return { title, description };
+  return description;
 }
 

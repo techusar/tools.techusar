@@ -6,7 +6,9 @@ import { Breadcrumb } from '@/components/navigation/Breadcrumb';
 import { SEO_CONFIG, getCanonicalUrl } from '@/lib/seo/config';
 
 export const metadata: Metadata = {
-  title: `Privacy Policy & Zero Data Retention Guarantee | ${SEO_CONFIG.shortName}`,
+  title: {
+    absolute: `Privacy Policy & Zero Data Retention Guarantee | ${SEO_CONFIG.shortName}`,
+  },
   description:
     'Our strict commitment to zero data storage, in-browser client execution, and transparent privacy policies. No personal payloads or secrets are stored.',
   keywords: [

@@ -519,6 +519,25 @@ export function ToolShell({
               </div>
             )}
 
+            {/* Subtle Lead Generation Banner */}
+            <div className="mt-4 p-5 sm:p-6 rounded-2xl bg-gradient-to-r from-slate-50 to-cyan-50/40 dark:from-[#111318] dark:to-cyan-950/20 border border-slate-200 dark:border-slate-800 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 text-xs">
+              <div className="space-y-1">
+                <h4 className="text-xs sm:text-sm font-bold text-slate-900 dark:text-white">
+                  Need a custom tool, web application, automation, or enterprise software?
+                </h4>
+                <p className="text-[11px] sm:text-xs text-slate-600 dark:text-slate-400">
+                  TechUsar engineers production software, AI pipelines, and high-performance digital products for modern companies.
+                </p>
+              </div>
+              <Link
+                href="/contact"
+                className="px-4 py-2 rounded-xl bg-cyan-600 hover:bg-cyan-700 text-white font-semibold text-xs transition-colors shrink-0 shadow-xs flex items-center gap-1.5"
+              >
+                <span>Contact TechUsar</span>
+                <ArrowRight className="w-3.5 h-3.5" />
+              </Link>
+            </div>
+
             {/* Internal linking to Engineering & Productivity Guides */}
             <div className="mt-4 p-4 rounded-xl bg-slate-100/70 dark:bg-slate-800/40 border border-slate-200/80 dark:border-slate-800 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 text-xs">
               <div className="flex items-center gap-2 text-slate-700 dark:text-slate-300">

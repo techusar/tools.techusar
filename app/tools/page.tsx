@@ -5,9 +5,11 @@ import { AllToolsDirectoryClient } from '@/components/tools/AllToolsDirectoryCli
 import { SEO_CONFIG, getCanonicalUrl } from '@/lib/seo/config';
 
 export const metadata: Metadata = {
-  title: `All Online Tools & Utilities Directory | ${SEO_CONFIG.shortName}`,
+  title: {
+    absolute: `All Online Tools & Utilities Directory | ${SEO_CONFIG.shortName}`,
+  },
   description:
-    'Browse our comprehensive catalog of 60+ free online developer tools, Gemini AI assistants, code formatters, image compressors, security utilities, and financial calculators.',
+    'Browse our comprehensive catalog of 70+ free online developer tools, Gemini AI assistants, code formatters, image compressors, security utilities, and financial calculators.',
   keywords: [
     'online tools directory',
     'free developer utilities',

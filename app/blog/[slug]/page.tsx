@@ -41,16 +41,21 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
   if (!post) {
     return {
-      title: 'Article Not Found - TechTools Blog',
+      title: {
+        absolute: `Article Not Found | ${SEO_CONFIG.shortName} Guides`,
+      },
       description: 'The requested technical guide could not be found.',
     };
   }
 
   const canonicalUrl = getCanonicalUrl(`/blog/${post.slug}`);
   const ogImageUrl = `/api/og?title=${encodeURIComponent(post.title)}&cat=${encodeURIComponent(post.category)}`;
+  const fullTitle = `${post.title} | ${SEO_CONFIG.shortName} Guides`;
 
   return {
-    title: `${post.title} | ${SEO_CONFIG.shortName} Guides`,
+    title: {
+      absolute: fullTitle,
+    },
     description: post.excerpt,
     keywords: [
       ...(post.tags || []),
@@ -402,6 +407,24 @@ export default async function BlogPostPage({ params }: PageProps) {
             <AdWrapper slot="blogArticleBottom" placement="blog-bottom" />
           </div>
         )}
+
+        {/* Subtle Lead Generation & Custom Software Box */}
+        <div className="p-6 sm:p-8 rounded-3xl bg-slate-50 dark:bg-[#111318] border border-slate-200 dark:border-slate-800 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-5 text-slate-800 dark:text-slate-200">
+          <div className="space-y-1">
+            <h4 className="text-sm sm:text-base font-bold text-slate-900 dark:text-white">
+              Need a custom tool, web app, automation, or enterprise software?
+            </h4>
+            <p className="text-xs text-slate-600 dark:text-slate-400">
+              TechUsar builds production-grade software, AI integrations, and high-performance digital products for modern companies.
+            </p>
+          </div>
+          <Link
+            href="/contact"
+            className="px-5 py-2.5 rounded-xl bg-cyan-600 hover:bg-cyan-700 text-white font-semibold text-xs transition-colors shrink-0 shadow-sm"
+          >
+            Contact TechUsar →
+          </Link>
+        </div>
 
         {/* Related Reading */}
         {relatedPosts.length > 0 && (

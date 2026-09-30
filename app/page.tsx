@@ -7,7 +7,9 @@ import { SEO_CONFIG, getCanonicalUrl } from '@/lib/seo/config';
 export const revalidate = 3600; // Revalidate every hour
 
 export const metadata: Metadata = {
-  title: SEO_CONFIG.defaultTitle,
+  title: {
+    absolute: SEO_CONFIG.defaultTitle,
+  },
   description: SEO_CONFIG.defaultDescription,
   keywords: [...SEO_CONFIG.defaultKeywords],
   alternates: {

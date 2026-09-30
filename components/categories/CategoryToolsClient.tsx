@@ -117,7 +117,7 @@ export function CategoryToolsClient({ category, tools }: CategoryToolsClientProp
               Showing <strong>{filteredTools.length}</strong> utilities in this collection
             </span>
             <Link href="/tools" className="text-cyan-600 dark:text-cyan-400 font-semibold hover:underline">
-              View all 60+ utilities →
+              View all 70+ utilities →
             </Link>
           </div>
 

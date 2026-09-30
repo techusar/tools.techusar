@@ -67,7 +67,7 @@ export const metadata: Metadata = {
         width: 1200,
         height: 630,
         type: 'image/png',
-        alt: `${SEO_CONFIG.siteName} - 40+ Free Online Developer & AI Utilities`,
+        alt: `${SEO_CONFIG.siteName} - 70+ Free Online Developer & AI Utilities`,
       },
     ],
   },

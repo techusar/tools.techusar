@@ -8,7 +8,9 @@ import { Breadcrumb } from '@/components/navigation/Breadcrumb';
 import { SEO_CONFIG, getCanonicalUrl } from '@/lib/seo/config';
 
 export const metadata: Metadata = {
-  title: `Engineering Guides, Tutorials & Articles | ${SEO_CONFIG.shortName}`,
+  title: {
+    absolute: `Engineering Guides, Tutorials & Articles | ${SEO_CONFIG.shortName}`,
+  },
   description:
     'In-depth technical guides on client-side cryptography, regular expressions, image optimization for Core Web Vitals, JSON contracts, and financial calculations.',
   keywords: [

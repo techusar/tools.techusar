@@ -265,7 +265,7 @@ export function HomeClient({ initialTools, categories, featuredTools }: HomeClie
               The Modern, Privacy-First Online Utilities Suite
             </h2>
             <p className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
-              TechTools is an all-in-one suite of over 40+ precision browser-based utilities built by TechUsar for software developers, UI/UX designers, accountants, students, and digital creators. Traditional utility websites are cluttered with deceptive ads, forced registrations, and suspicious backend logging. TechTools eliminates that friction with instant client-side execution, clean typography, keyboard shortcuts, and zero-data retention.
+              TechTools is an all-in-one suite of {initialTools.length}+ free online tools for developers, SEO, images, AI, calculators, productivity, business and everyday tasks built by TechUsar. Traditional utility websites are cluttered with deceptive ads, forced registrations, and suspicious backend logging. TechTools eliminates that friction with instant client-side execution, clean typography, keyboard shortcuts, and zero-data retention.
             </p>
           </div>
 

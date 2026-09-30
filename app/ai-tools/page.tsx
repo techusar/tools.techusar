@@ -5,7 +5,9 @@ import { AIToolsPageClient } from '@/components/tools/AIToolsPageClient';
 import { SEO_CONFIG, getCanonicalUrl } from '@/lib/seo/config';
 
 export const metadata: Metadata = {
-  title: `AI-Powered Developer & Content Tools | ${SEO_CONFIG.shortName}`,
+  title: {
+    absolute: `AI-Powered Developer & Content Tools | ${SEO_CONFIG.shortName}`,
+  },
   description:
     'Instant SQL generation, text summarization, content rewriting, regex creation, and code debugging powered by Google Gemini 2.5 Flash with strict data privacy.',
   keywords: [

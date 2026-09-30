@@ -4,7 +4,9 @@ import { getAllTools } from '@/lib/data/toolsRepository';
 import { AccountClient } from '@/components/account/AccountClient';
 
 export const metadata: Metadata = {
-  title: 'My Account & Preferences - TechTools by TechUsar',
+  title: {
+    absolute: 'My Account & Preferences | TechTools',
+  },
   description: 'Manage your TechTools profile, view AI generation limits, and customize preferences.',
   robots: {
     index: false,

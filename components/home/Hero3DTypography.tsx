@@ -109,8 +109,7 @@ export function Hero3DTypography({
           variants={itemVariants}
           className="mt-6 text-base sm:text-lg text-slate-600 dark:text-slate-300 max-w-2xl mx-auto leading-relaxed font-normal"
         >
-          Over <span className="font-semibold text-slate-900 dark:text-white">{toolsCount}+ precision utilities</span> for developers, engineers, creators, and analysts.
-          Everything runs in-browser with complete zero-data retention and instantaneous speed.
+          Over <span className="font-semibold text-slate-900 dark:text-white">{toolsCount}+ free online tools</span> for developers, SEO, images, AI, calculators, productivity, business and everyday tasks. Everything runs in-browser with zero data retention.
         </motion.p>
 
         {/* Interactive Search Command Bar */}

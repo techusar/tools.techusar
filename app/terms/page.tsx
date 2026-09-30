@@ -6,7 +6,9 @@ import { Breadcrumb } from '@/components/navigation/Breadcrumb';
 import { SEO_CONFIG, getCanonicalUrl } from '@/lib/seo/config';
 
 export const metadata: Metadata = {
-  title: `Terms of Service & Usage Guidelines | ${SEO_CONFIG.shortName}`,
+  title: {
+    absolute: `Terms of Service & Usage Guidelines | ${SEO_CONFIG.shortName}`,
+  },
   description:
     'Terms, conditions, and fair use guidelines for utilizing TechTools web utilities, client-side tools, and Gemini AI assistant services.',
   keywords: [

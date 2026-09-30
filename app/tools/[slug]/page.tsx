@@ -41,7 +41,9 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const ogImageUrl = `/api/og?title=${encodeURIComponent(tool.name)}&cat=${encodeURIComponent(tool.categoryName)}`;
 
   return {
-    title,
+    title: {
+      absolute: title,
+    },
     description,
     keywords: [
       ...tool.tags,

@@ -4,7 +4,9 @@ import { PricingClient } from '@/components/pricing/PricingClient';
 import { SEO_CONFIG, getCanonicalUrl } from '@/lib/seo/config';
 
 export const metadata: Metadata = {
-  title: `Transparent Pricing & Pro Developer Plans | ${SEO_CONFIG.shortName}`,
+  title: {
+    absolute: `Transparent Pricing & Pro Developer Plans | ${SEO_CONFIG.shortName}`,
+  },
   description:
     'Simple, transparent developer pricing. 100% free forever for all browser utilities with an optional Pro tier for unlimited Gemini AI generations and priority execution.',
   keywords: [

@@ -4,7 +4,9 @@ import { getAllTools } from '@/lib/data/toolsRepository';
 import { AdminClient } from '@/components/admin/AdminClient';
 
 export const metadata: Metadata = {
-  title: 'Admin Console - TechTools by TechUsar',
+  title: {
+    absolute: 'Admin Console | TechTools',
+  },
   description: 'Manage tool catalog, view real-time execution analytics, and download database backups.',
   robots: {
     index: false,

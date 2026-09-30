@@ -6,7 +6,9 @@ import { Breadcrumb } from '@/components/navigation/Breadcrumb';
 import { SEO_CONFIG, getCanonicalUrl } from '@/lib/seo/config';
 
 export const metadata: Metadata = {
-  title: `Contact TechTools Support & Developer Team | ${SEO_CONFIG.shortName}`,
+  title: {
+    absolute: `Contact TechTools Support & Developer Team | ${SEO_CONFIG.shortName}`,
+  },
   description:
     'Have a feature request, bug report, or API inquiry? Contact the TechTools engineering team. Dedicated developer support with a 24-hour response guarantee.',
   keywords: [
