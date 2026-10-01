@@ -208,7 +208,7 @@ export function Navbar({ tools = INITIAL_TOOLS }: NavbarProps) {
               ) : (
                 <button
                   onClick={openAuthModal}
-                  className="px-3.5 py-1.5 rounded-xl bg-cyan-600 hover:bg-cyan-500 dark:bg-cyan-500 dark:hover:bg-cyan-400 text-white dark:text-slate-950 font-semibold text-xs cursor-pointer transition-all duration-150 flex items-center gap-1.5 shadow-md shadow-cyan-600/20 dark:shadow-cyan-500/25 hover:shadow-lg hover:shadow-cyan-500/30 hover:-translate-y-0.5 active:scale-95"
+                  className="px-3.5 py-1.5 rounded-xl bg-cyan-600 hover:bg-cyan-500 dark:bg-cyan-500 dark:hover:bg-cyan-400 text-white dark:text-slate-950 font-semibold text-xs transition-all flex items-center gap-1.5 shadow-md shadow-cyan-600/15 dark:shadow-cyan-500/15"
                 >
                   <User className="w-3.5 h-3.5" />
                   <span>Sign In</span>

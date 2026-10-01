@@ -1,8 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
-import { ArrowLeft, Compass } from 'lucide-react';
-
-export const dynamic = 'force-static';
+import { ArrowLeft, Search, Layers, Compass } from 'lucide-react';
 
 export default function NotFound() {
   return (

@@ -57,7 +57,7 @@ export function AuthModal() {
 
         <button
           onClick={closeAuthModal}
-          className="absolute top-4 right-4 sm:top-5 sm:right-5 p-2 rounded-xl text-slate-400 hover:text-slate-700 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800 cursor-pointer transition-colors"
+          className="absolute top-4 right-4 sm:top-5 sm:right-5 p-2 rounded-xl text-slate-400 hover:text-slate-700 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
           aria-label="Close"
         >
           <X className="w-5 h-5" />
@@ -153,7 +153,7 @@ export function AuthModal() {
           <button
             type="submit"
             disabled={loading}
-            className="w-full mt-2 py-3 px-4 rounded-xl bg-cyan-600 hover:bg-cyan-500 dark:bg-cyan-500 dark:hover:bg-cyan-400 text-white dark:text-slate-950 font-semibold text-sm cursor-pointer transition-all duration-150 flex items-center justify-center gap-2 shadow-md shadow-cyan-600/20 hover:shadow-lg hover:shadow-cyan-500/30 hover:-translate-y-0.5 active:scale-95 disabled:opacity-50 min-h-[44px]"
+            className="w-full mt-2 py-3 px-4 rounded-xl bg-cyan-600 hover:bg-cyan-500 dark:bg-cyan-500 dark:hover:bg-cyan-400 text-white dark:text-slate-950 font-semibold text-sm transition-all flex items-center justify-center gap-2 shadow-md shadow-cyan-600/20 disabled:opacity-50 min-h-[44px]"
           >
             {loading ? (
               <span className="inline-block w-4 h-4 border-2 border-white dark:border-slate-950 border-t-transparent rounded-full animate-spin" />

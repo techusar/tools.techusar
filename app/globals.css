@@ -1,12 +1,10 @@
 @import "tailwindcss";
-@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300..800;1,300..800&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
 
 @custom-variant dark (&:where(.dark, .dark *));
 
 @theme {
-  --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  --font-display: 'Space Grotesk', 'Plus Jakarta Sans', sans-serif;
-  --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  --font-sans: var(--font-sans), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-mono: var(--font-mono), ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
   --shadow-xs: 0 1px 2px rgba(15, 23, 42, 0.04);
   --shadow-sm: 0 1px 3px rgba(15, 23, 42, 0.04), 0 1px 2px rgba(15, 23, 42, 0.02);
   --shadow-md: 0 4px 12px -2px rgba(15, 23, 42, 0.06), 0 2px 6px -1px rgba(15, 23, 42, 0.03);
@@ -17,94 +15,10 @@
 
 html {
   scroll-behavior: smooth;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-rendering: optimizeLegibility;
 }
 
 body {
   font-family: var(--font-sans);
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-/* Sharp geometric display typography for headings, hero, branding, cards */
-h1, h2, h3, h4, h5, h6, .font-display, .font-heading {
-  font-family: var(--font-display);
-  letter-spacing: -0.02em;
-}
-
-/* Strict cursor pointer on ALL clickable and interactive elements */
-button,
-a,
-[role="button"],
-[role="tab"],
-[role="menuitem"],
-input[type="button"],
-input[type="submit"],
-input[type="reset"],
-input[type="checkbox"],
-input[type="radio"],
-select,
-summary,
-.cursor-pointer,
-.clickable,
-.tool-card,
-.category-card {
-  cursor: pointer !important;
-}
-
-/* Global button & link micro-interactions */
-button,
-a,
-[role="button"] {
-  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter;
-  transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
-  transition-duration: 180ms;
-}
-
-/* Button active press feedback */
-button:not(:disabled):active,
-[role="button"]:not([aria-disabled="true"]):active,
-a:not([aria-disabled="true"]):active {
-  transform: scale(0.98);
-}
-
-/* Primary Cyan CTA button hover glow & subtle elevation */
-button[class*="bg-cyan-500"]:not(:disabled):hover,
-button[class*="bg-cyan-600"]:not(:disabled):hover,
-a[class*="bg-cyan-500"]:hover,
-a[class*="bg-cyan-600"]:hover {
-  box-shadow: 0 8px 20px -4px rgba(6, 182, 212, 0.35), 0 2px 6px -1px rgba(6, 182, 212, 0.2);
-  transform: translateY(-1px);
-}
-
-/* Dark mode and Secondary button hover shadow */
-button[class*="bg-slate-900"]:not(:disabled):hover,
-button[class*="bg-slate-800"]:not(:disabled):hover,
-a[class*="bg-slate-900"]:hover,
-a[class*="bg-slate-800"]:hover {
-  box-shadow: 0 6px 16px -2px rgba(15, 23, 42, 0.2);
-  transform: translateY(-1px);
-}
-
-/* Indigo AI button hover glow */
-button[class*="bg-indigo-600"]:not(:disabled):hover,
-button[class*="bg-indigo-500"]:not(:disabled):hover,
-a[class*="bg-indigo-600"]:hover,
-a[class*="bg-indigo-500"]:hover {
-  box-shadow: 0 8px 20px -4px rgba(99, 102, 241, 0.35), 0 2px 6px -1px rgba(99, 102, 241, 0.2);
-  transform: translateY(-1px);
-}
-
-/* Focus rings with high contrast & sharpness */
-button:focus-visible,
-a:focus-visible,
-input:focus-visible,
-textarea:focus-visible,
-select:focus-visible {
-  outline: 2px solid #06b6d4;
-  outline-offset: 2px;
 }
 
 /* Custom crisp scrollbar */

@@ -29,10 +29,10 @@ export function ThemeToggle({ className = '' }: { className?: string }) {
     <button
       onClick={toggleTheme}
       type="button"
-      className={`relative p-2 rounded-xl border cursor-pointer transition-all duration-200 flex items-center justify-center hover:scale-105 active:scale-95 focus:outline-none focus:ring-2 focus:ring-cyan-500/50 ${
+      className={`relative p-2 rounded-xl border transition-all duration-200 flex items-center justify-center focus:outline-none focus:ring-2 focus:ring-cyan-500/50 ${
         isDark
-          ? 'bg-[#14171F] border-slate-800 text-amber-400 hover:text-amber-300 hover:bg-[#1C212B] hover:shadow-md hover:shadow-amber-500/10'
-          : 'bg-white border-slate-200 text-slate-700 hover:text-cyan-600 hover:bg-slate-50 shadow-xs hover:shadow-md'
+          ? 'bg-[#14171F] border-slate-800 text-amber-400 hover:text-amber-300 hover:bg-[#1C212B]'
+          : 'bg-white border-slate-200 text-slate-700 hover:text-cyan-600 hover:bg-slate-50 shadow-xs'
       } ${className}`}
       title={isDark ? 'Switch to Light Mode' : 'Switch to Dark Mode'}
       aria-label={isDark ? 'Switch to Light Mode' : 'Switch to Dark Mode'}

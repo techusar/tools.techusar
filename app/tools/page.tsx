@@ -9,7 +9,7 @@ export const metadata: Metadata = {
     absolute: `All Online Tools & Utilities Directory | ${SEO_CONFIG.shortName}`,
   },
   description:
-    `Browse our comprehensive catalog of ${SEO_CONFIG.totalToolsString}, Gemini AI assistants, code formatters, image compressors, security utilities, and financial calculators.`,
+    'Browse our comprehensive catalog of 70+ free online developer tools, Gemini AI assistants, code formatters, image compressors, security utilities, and financial calculators.',
   keywords: [
     'online tools directory',
     'free developer utilities',
@@ -25,7 +25,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: `All Online Tools Directory | ${SEO_CONFIG.shortName}`,
     description:
-      `Browse our catalog of ${SEO_CONFIG.totalToolsString}, formatters, compressors, and AI utilities.`,
+      'Browse our catalog of 60+ free online developer tools, formatters, compressors, and AI utilities.',
     url: getCanonicalUrl('/tools'),
     type: 'website',
     siteName: SEO_CONFIG.siteName,
@@ -42,7 +42,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: `All Online Tools Directory | ${SEO_CONFIG.shortName}`,
     description:
-      `Browse our catalog of ${SEO_CONFIG.totalToolsString}, formatters, compressors, and AI utilities.`,
+      'Browse our catalog of 60+ free online developer tools, formatters, compressors, and AI utilities.',
     creator: SEO_CONFIG.twitterHandle,
     images: ['/api/og?title=Tools%20Catalog'],
   },

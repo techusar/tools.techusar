@@ -6,8 +6,8 @@ export const INITIAL_CATEGORIES: ToolCategory[] = [
     "name": "Developer Tools",
     "slug": "developer-tools",
     "icon": "Code2",
-    "description": "Formatters, regex testers, hash generators, UUID creators, and code utilities.",
-    "toolCount": 7,
+    "description": "Formatters, minifiers, regex testers, encoders, JWT tools, and code utilities.",
+    "toolCount": 5,
     "featured": true
   },
   {
@@ -15,7 +15,7 @@ export const INITIAL_CATEGORIES: ToolCategory[] = [
     "name": "AI Tools",
     "slug": "ai-tools",
     "icon": "Sparkles",
-    "description": "AI-powered text summarizers, rewriters, code explainers, and content generators.",
+    "description": "Gemini-powered text summarizers, rewriters, code explainers, and generators.",
     "toolCount": 7,
     "featured": true
   },
@@ -24,7 +24,7 @@ export const INITIAL_CATEGORIES: ToolCategory[] = [
     "name": "Image Tools",
     "slug": "image-tools",
     "icon": "Image",
-    "description": "In-browser image compressors, resizers, favicon makers, and format converters.",
+    "description": "Browser-based compressors, resizers, converters, and color extractors.",
     "toolCount": 7,
     "featured": true
   },
@@ -33,7 +33,7 @@ export const INITIAL_CATEGORIES: ToolCategory[] = [
     "name": "PDF & Docs",
     "slug": "pdf-tools",
     "icon": "FileText",
-    "description": "Fast PDF viewer and document metadata inspector with zero server uploads.",
+    "description": "Fast PDF metadata viewers, document generators, and page counters.",
     "toolCount": 2,
     "featured": false
   },
@@ -42,7 +42,7 @@ export const INITIAL_CATEGORIES: ToolCategory[] = [
     "name": "Text & Content",
     "slug": "text-tools",
     "icon": "AlignLeft",
-    "description": "Word counters, text case converters, diff comparisons, and live Markdown editor.",
+    "description": "Word counters, case converters, line sorters, diff checkers, and text cleaners.",
     "toolCount": 6,
     "featured": true
   },
@@ -51,7 +51,7 @@ export const INITIAL_CATEGORIES: ToolCategory[] = [
     "name": "SEO Tools",
     "slug": "seo-tools",
     "icon": "Search",
-    "description": "Google SERP previews, Open Graph builders, Schema.org generators, and UTM builders.",
+    "description": "Meta tag builders, SERP snippet previews, Schema.org generators, and UTM builders.",
     "toolCount": 4,
     "featured": true
   },
@@ -60,7 +60,7 @@ export const INITIAL_CATEGORIES: ToolCategory[] = [
     "name": "Business Tools",
     "slug": "business-tools",
     "icon": "Briefcase",
-    "description": "Create professional invoices and receipts with itemized pricing and printable PDF export.",
+    "description": "Professional invoice generator, quotation maker, and hourly rate calculators.",
     "toolCount": 1,
     "featured": true
   },
@@ -69,7 +69,7 @@ export const INITIAL_CATEGORIES: ToolCategory[] = [
     "name": "Finance Tools",
     "slug": "finance-tools",
     "icon": "DollarSign",
-    "description": "Loan EMI, profit margin, markup, and compound interest growth calculators.",
+    "description": "Loan EMI, profit margin, compound interest, and break-even calculators.",
     "toolCount": 3,
     "featured": true
   },
@@ -78,7 +78,7 @@ export const INITIAL_CATEGORIES: ToolCategory[] = [
     "name": "Calculators",
     "slug": "calculators",
     "icon": "Calculator",
-    "description": "Percentage calculators, exact age finders, GST tax, video aspect ratio, and BMI/TDEE tools.",
+    "description": "Percentage calculators, age finders, date difference, BMI, and calorie tools.",
     "toolCount": 5,
     "featured": true
   },
@@ -87,7 +87,7 @@ export const INITIAL_CATEGORIES: ToolCategory[] = [
     "name": "Converters",
     "slug": "converters",
     "icon": "ArrowLeftRight",
-    "description": "Universal unit converter, CSV/JSON data transformer, and number base converter.",
+    "description": "Multi-unit converters for length, weight, temperature, data storage, and speed.",
     "toolCount": 3,
     "featured": false
   },
@@ -96,7 +96,7 @@ export const INITIAL_CATEGORIES: ToolCategory[] = [
     "name": "Generators",
     "slug": "generators",
     "icon": "QrCode",
-    "description": "Custom QR codes, clean SEO URL slugs, and realistic mock JSON datasets.",
+    "description": "QR codes, strong passwords, UUIDs, dummy data, and placeholder text.",
     "toolCount": 3,
     "featured": true
   },
@@ -105,7 +105,7 @@ export const INITIAL_CATEGORIES: ToolCategory[] = [
     "name": "Encoders & Decoders",
     "slug": "encoders",
     "icon": "Binary",
-    "description": "Base64 encoders/decoders, URL encoding, and HTML character entity tools.",
+    "description": "Base64, URL encoding, HTML entities, and binary-to-text converters.",
     "toolCount": 5,
     "featured": false
   },
@@ -114,7 +114,7 @@ export const INITIAL_CATEGORIES: ToolCategory[] = [
     "name": "Validators",
     "slug": "validators",
     "icon": "CheckCircle2",
-    "description": "Validate and syntax-check JSON, XML, and YAML data structures with error pointers.",
+    "description": "JSON, XML, YAML, email, and password strength checkers.",
     "toolCount": 2,
     "featured": false
   },
@@ -123,7 +123,7 @@ export const INITIAL_CATEGORIES: ToolCategory[] = [
     "name": "Design & CSS",
     "slug": "design-tools",
     "icon": "Layers",
-    "description": "CSS box shadows, multi-color gradient palettes, and glassmorphism UI styles.",
+    "description": "CSS box shadows, glassmorphism, border radius, and button generators.",
     "toolCount": 3,
     "featured": false
   },
@@ -132,7 +132,7 @@ export const INITIAL_CATEGORIES: ToolCategory[] = [
     "name": "Color Tools",
     "slug": "color-tools",
     "icon": "Palette",
-    "description": "HEX, RGB, HSL converters, color pickers, and WCAG accessibility contrast checkers.",
+    "description": "HEX/RGB/HSL converters, WCAG contrast checkers, and palette generators.",
     "toolCount": 2,
     "featured": true
   },
@@ -141,7 +141,7 @@ export const INITIAL_CATEGORIES: ToolCategory[] = [
     "name": "Security Tools",
     "slug": "security-tools",
     "icon": "ShieldCheck",
-    "description": "Generate strong, high-entropy passwords with security strength analysis.",
+    "description": "Cryptographic hash generators (SHA-256, MD5), password strength analyzers.",
     "toolCount": 1,
     "featured": false
   },
@@ -150,7 +150,7 @@ export const INITIAL_CATEGORIES: ToolCategory[] = [
     "name": "Date & Time",
     "slug": "date-time-tools",
     "icon": "Clock",
-    "description": "Unix epoch timestamp converter and world time zone meeting planner.",
+    "description": "Time zone converters, stopwatch, countdown timer, and unix timestamps.",
     "toolCount": 2,
     "featured": false
   },
@@ -159,7 +159,7 @@ export const INITIAL_CATEGORIES: ToolCategory[] = [
     "name": "Education Tools",
     "slug": "education-tools",
     "icon": "GraduationCap",
-    "description": "Calculate high school and college GPA with custom credit hours and grade scales.",
+    "description": "GPA calculator, percentage grade calculator, and study timer.",
     "toolCount": 1,
     "featured": false
   },
@@ -168,7 +168,7 @@ export const INITIAL_CATEGORIES: ToolCategory[] = [
     "name": "Productivity",
     "slug": "productivity-tools",
     "icon": "Zap",
-    "description": "Interactive Pomodoro focus timer with customizable work and break intervals.",
+    "description": "Pomodoro timer, checklist organizer, and quick text scratchpad.",
     "toolCount": 1,
     "featured": false
   },
@@ -177,7 +177,7 @@ export const INITIAL_CATEGORIES: ToolCategory[] = [
     "name": "Social Media Tools",
     "slug": "social-media-tools",
     "icon": "Share2",
-    "description": "Preview social media posts and character count limits across major platforms.",
+    "description": "Social post preview, hashtag generator, and character limit trackers.",
     "toolCount": 1,
     "featured": false
   }

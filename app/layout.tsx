@@ -1,6 +1,7 @@
 import React, { Suspense } from 'react';
 import type { Metadata, Viewport } from 'next';
 import Script from 'next/script';
+import { Plus_Jakarta_Sans, JetBrains_Mono } from 'next/font/google';
 import './globals.css';
 import { ThemeProvider } from '@/components/theme/ThemeContext';
 import { UserProvider } from '@/components/auth/UserContext';
@@ -14,6 +15,18 @@ import { getAllTools } from '@/lib/data/toolsRepository';
 import { BrandedLoading } from '@/components/ui/BrandedLoading';
 import { NavigationProgressBar } from '@/components/navigation/NavigationProgressBar';
 import { WhatsAppButton } from '@/components/layout/WhatsAppButton';
+
+const plusJakarta = Plus_Jakarta_Sans({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-sans',
+});
+
+const jetbrainsMono = JetBrains_Mono({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-mono',
+});
 
 export const viewport: Viewport = {
   width: 'device-width',
@@ -54,7 +67,7 @@ export const metadata: Metadata = {
         width: 1200,
         height: 630,
         type: 'image/png',
-        alt: `${SEO_CONFIG.siteName} - ${SEO_CONFIG.totalToolsLabel} Free Online Developer & AI Utilities`,
+        alt: `${SEO_CONFIG.siteName} - 70+ Free Online Developer & AI Utilities`,
       },
     ],
   },
@@ -159,28 +172,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
 
   return (
     <html lang="en" suppressHydrationWarning>
-      <head />
-      <body
-        className="font-sans bg-slate-50 text-slate-900 dark:bg-[#0B0D11] dark:text-slate-100 min-h-screen flex flex-col antialiased selection:bg-cyan-500 selection:text-slate-950 transition-colors duration-200"
-      >
-        {/* Theme initialization inline script to prevent light/dark flicker */}
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              (function() {
-                try {
-                  var t = localStorage.getItem('techtools_theme');
-                  if (t === 'dark') {
-                    document.documentElement.classList.add('dark');
-                  } else {
-                    document.documentElement.classList.remove('dark');
-                  }
-                } catch (e) {}
-              })();
-            `,
-          }}
-        />
-
+      <head>
         {/* Schema.org WebSite & Organization structured data */}
         <script
           type="application/ld+json"
@@ -189,9 +181,9 @@ export default async function RootLayout({ children }: { children: React.ReactNo
 
         {/* Optional Google AdSense client script if configured */}
         {AD_CONFIG.client && (
-          <Script
+          <script
+            async
             src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${AD_CONFIG.client}`}
-            strategy="afterInteractive"
             crossOrigin="anonymous"
           />
         )}
@@ -211,6 +203,26 @@ export default async function RootLayout({ children }: { children: React.ReactNo
           `}
         </Script>
 
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function() {
+                try {
+                  var t = localStorage.getItem('techtools_theme');
+                  if (t === 'dark') {
+                    document.documentElement.classList.add('dark');
+                  } else {
+                    document.documentElement.classList.remove('dark');
+                  }
+                } catch (e) {}
+              })();
+            `,
+          }}
+        />
+      </head>
+      <body
+        className={`${plusJakarta.variable} ${jetbrainsMono.variable} font-sans bg-slate-50 text-slate-900 dark:bg-[#0B0D11] dark:text-slate-100 min-h-screen flex flex-col antialiased selection:bg-cyan-500 selection:text-slate-950 transition-colors duration-200`}
+      >
         <NavigationProgressBar />
         <ThemeProvider>
           <UserProvider>

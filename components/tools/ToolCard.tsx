@@ -146,12 +146,12 @@ export function ToolCard({ tool, variant = 'default', isBookmarked, onToggleBook
   };
 
   return (
-    <div className="group relative bg-white dark:bg-[#111318] hover:bg-slate-50/90 dark:hover:bg-[#171A21] border border-slate-200/90 dark:border-slate-800 hover:border-cyan-500/60 dark:hover:border-cyan-500/50 rounded-2xl p-5 transition-all duration-200 flex flex-col justify-between cursor-pointer hover:-translate-y-1 shadow-[0_1px_3px_rgba(15,23,42,0.03),0_1px_2px_rgba(15,23,42,0.02)] hover:shadow-xl hover:shadow-cyan-500/10 dark:shadow-none dark:hover:shadow-2xl dark:hover:shadow-cyan-950/30">
+    <div className="group relative bg-white dark:bg-[#111318] hover:bg-slate-50/80 dark:hover:bg-[#171A21] border border-slate-200/90 dark:border-slate-800 hover:border-cyan-500/60 dark:hover:border-cyan-500/40 rounded-2xl p-5 transition-all duration-200 flex flex-col justify-between shadow-[0_1px_3px_rgba(15,23,42,0.03),0_1px_2px_rgba(15,23,42,0.02)] hover:shadow-[0_8px_24px_-4px_rgba(15,23,42,0.08),0_2px_6px_-1px_rgba(15,23,42,0.04)] dark:shadow-none dark:hover:shadow-xl dark:hover:shadow-cyan-950/20">
       {/* Top Header */}
       <div>
         <div className="flex items-start justify-between gap-3 mb-3.5">
           <div
-            className={`w-11 h-11 rounded-xl flex items-center justify-center shrink-0 transition-transform duration-200 group-hover:scale-105 ${
+            className={`w-11 h-11 rounded-xl flex items-center justify-center shrink-0 transition-colors ${
               tool.type === 'ai'
                 ? 'bg-indigo-50 text-indigo-600 border border-indigo-200 group-hover:bg-indigo-100 dark:bg-indigo-500/10 dark:text-indigo-400 dark:border-indigo-500/20 dark:group-hover:bg-indigo-500/20'
                 : 'bg-cyan-50 text-cyan-600 border border-cyan-200 group-hover:bg-cyan-100 dark:bg-cyan-500/10 dark:text-cyan-400 dark:border-cyan-500/20 dark:group-hover:bg-cyan-500/20'
@@ -174,9 +174,9 @@ export function ToolCard({ tool, variant = 'default', isBookmarked, onToggleBook
             )}
             <button
               onClick={handleFavoriteClick}
-              className={`p-1.5 rounded-lg transition-all duration-150 cursor-pointer hover:scale-110 active:scale-90 ${
+              className={`p-1.5 rounded-lg transition-colors ${
                 favorited
-                  ? 'text-rose-500 bg-rose-50 dark:bg-rose-500/10 border border-rose-200 dark:border-rose-500/20 shadow-xs'
+                  ? 'text-rose-500 bg-rose-50 dark:bg-rose-500/10 border border-rose-200 dark:border-rose-500/20'
                   : 'text-slate-400 hover:text-slate-600 hover:bg-slate-100 dark:text-slate-500 dark:hover:text-slate-300 dark:hover:bg-slate-800'
               }`}
               title={favorited ? 'Remove from favorites' : 'Add to favorites'}
@@ -188,7 +188,7 @@ export function ToolCard({ tool, variant = 'default', isBookmarked, onToggleBook
         </div>
 
         {/* Title & Description */}
-        <Link href={`/tools/${tool.slug}`} onClick={handleCardClick} className="block cursor-pointer">
+        <Link href={`/tools/${tool.slug}`} onClick={handleCardClick} className="block">
           <h3 className="text-base font-semibold text-slate-900 dark:text-white group-hover:text-cyan-600 dark:group-hover:text-cyan-400 transition-colors flex items-center gap-1">
             <span className="line-clamp-1">{tool.name}</span>
             <ArrowUpRight className="w-3.5 h-3.5 opacity-0 group-hover:opacity-100 transition-opacity text-cyan-600 dark:text-cyan-400 shrink-0" />

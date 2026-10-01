@@ -60,7 +60,7 @@ export function CategoryCard({ category }: CategoryCardProps) {
   return (
     <Link
       href={`/categories/${category.slug}`}
-      className="group relative bg-white dark:bg-[#111318] hover:bg-slate-50/90 dark:hover:bg-[#171A21] border border-slate-200/90 dark:border-slate-800 hover:border-cyan-500/60 dark:hover:border-cyan-500/50 rounded-2xl p-5 transition-all duration-200 flex flex-col justify-between cursor-pointer hover:-translate-y-1 shadow-[0_1px_3px_rgba(15,23,42,0.03),0_1px_2px_rgba(15,23,42,0.02)] hover:shadow-xl hover:shadow-cyan-500/10 dark:shadow-none dark:hover:shadow-2xl dark:hover:shadow-cyan-950/30"
+      className="group relative bg-white dark:bg-[#111318] hover:bg-slate-50/80 dark:hover:bg-[#171A21] border border-slate-200/90 dark:border-slate-800 hover:border-cyan-500/60 dark:hover:border-cyan-500/40 rounded-2xl p-5 transition-all duration-200 flex flex-col justify-between shadow-[0_1px_3px_rgba(15,23,42,0.03),0_1px_2px_rgba(15,23,42,0.02)] hover:shadow-[0_8px_24px_-4px_rgba(15,23,42,0.08),0_2px_6px_-1px_rgba(15,23,42,0.04)] dark:shadow-none dark:hover:shadow-xl dark:hover:shadow-cyan-950/20"
     >
       <div>
         <div className="flex items-center justify-between mb-3.5">

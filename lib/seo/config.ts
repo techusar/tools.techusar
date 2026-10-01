@@ -1,8 +1,3 @@
-import { INITIAL_TOOLS } from '@/lib/data/initial-data';
-
-const computedToolsCount = INITIAL_TOOLS?.length || 64;
-const computedToolsLabel = `${computedToolsCount}+`;
-
 export const SEO_CONFIG = {
   siteName: 'TechTools by TechUsar',
   shortName: 'TechTools',
@@ -14,9 +9,8 @@ export const SEO_CONFIG = {
   defaultTitle: 'TechTools by TechUsar – Free Online Developer & AI Utilities',
   defaultDescription:
     'Free online tools for developers, SEO, images, AI, calculators, productivity, business and everyday tasks. Fast, 100% private in-browser processing with zero data retention.',
-  totalToolsCount: computedToolsCount,
-  totalToolsLabel: computedToolsLabel,
-  totalToolsString: `${computedToolsLabel} free online tools`,
+  totalToolsCount: 70,
+  totalToolsLabel: '70+',
   defaultKeywords: [
     'developer tools',
     'free online tools',

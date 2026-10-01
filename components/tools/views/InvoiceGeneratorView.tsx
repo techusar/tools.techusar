@@ -70,13 +70,11 @@ export function InvoiceGeneratorView({ tool }: { tool: ToolItem }) {
             className="bg-[#171A21] border border-slate-700 rounded-lg px-2.5 py-1 text-slate-200 text-xs focus:outline-none"
           >
             <option value="$">USD ($)</option>
-            <option value="₨">PKR (₨)</option>
             <option value="€">EUR (€)</option>
             <option value="£">GBP (£)</option>
             <option value="₹">INR (₹)</option>
             <option value="¥">JPY (¥)</option>
             <option value="C$">CAD (C$)</option>
-            <option value="A$">AUD (A$)</option>
           </select>
         </div>
 
@@ -276,14 +274,6 @@ export function InvoiceGeneratorView({ tool }: { tool: ToolItem }) {
             </div>
           </div>
         </div>
-      </div>
-
-      {/* Helpful Commercial Notice (hidden during print) */}
-      <div className="p-4 rounded-xl bg-[#0D0F13] border border-slate-800 text-[11px] text-slate-400 space-y-1 print:hidden">
-        <span className="font-semibold text-slate-300">Commercial Billing Guidance:</span>
-        <p>
-          This invoice generator creates clean, standardized billing documents formatted for business transactions. Depending on your tax jurisdiction (e.g., FBR in Pakistan, IRS in the US, HMRC in the UK), ensure your invoice includes all statutory identifiers such as your registered Business Name, Tax ID / NTN / VAT number, and payment routing details before sending to clients.
-        </p>
       </div>
     </div>
   );
