@@ -120,34 +120,45 @@ export function Hero3DTypography({
           {/* Glowing halo behind search input on hover/focus */}
           <div className="absolute -inset-1 bg-gradient-to-r from-cyan-500/15 via-teal-500/15 to-blue-600/15 dark:from-cyan-500/25 dark:via-teal-500/25 dark:to-blue-600/25 rounded-3xl blur-md opacity-0 group-hover:opacity-100 group-focus-within:opacity-100 transition duration-500 pointer-events-none" />
 
-          <div className="relative flex items-center bg-white/95 dark:bg-[#12151E]/95 border border-slate-200/90 dark:border-slate-700/80 hover:border-cyan-500/70 dark:hover:border-cyan-500/60 focus-within:border-cyan-600 dark:focus-within:border-cyan-400 rounded-2xl shadow-[0_4px_24px_-4px_rgba(15,23,42,0.07),0_1px_2px_rgba(15,23,42,0.03)] dark:shadow-[0_16px_40px_-8px_rgba(0,0,0,0.7)] backdrop-blur-xl transition-all duration-200">
-            <Search className="w-5 h-5 text-slate-400 dark:text-slate-400 ml-4 pointer-events-none" />
+          <div
+            onClick={() => {
+              window.dispatchEvent(new CustomEvent('techtools:open-search'));
+            }}
+            className="relative flex items-center bg-white/95 dark:bg-[#12151E]/95 border border-slate-200/90 dark:border-slate-700/80 hover:border-cyan-500/70 dark:hover:border-cyan-500/60 focus-within:border-cyan-600 dark:focus-within:border-cyan-400 rounded-2xl shadow-[0_4px_24px_-4px_rgba(15,23,42,0.07),0_1px_2px_rgba(15,23,42,0.03)] dark:shadow-[0_16px_40px_-8px_rgba(0,0,0,0.7)] backdrop-blur-xl transition-all duration-200 cursor-pointer"
+          >
+            <Search className="w-5 h-5 text-cyan-600 dark:text-cyan-400 ml-4 pointer-events-none shrink-0" />
             <input
               id="hero-search-input"
               type="text"
               value={searchQuery}
-              onChange={(e) => onSearchChange(e.target.value)}
+              onClick={(e) => {
+                e.stopPropagation();
+                window.dispatchEvent(new CustomEvent('techtools:open-search'));
+              }}
+              onChange={(e) => {
+                onSearchChange(e.target.value);
+                window.dispatchEvent(new CustomEvent('techtools:open-search'));
+              }}
               placeholder={`Search ${toolsCount}+ utilities (e.g. JSON, Password, QR, PDF, Base64, AI)...`}
-              className="w-full pl-3.5 pr-24 py-4 bg-transparent text-sm sm:text-base text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none"
+              className="w-full pl-3.5 pr-28 py-4 bg-transparent text-sm sm:text-base text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none cursor-pointer"
+              readOnly
             />
             
-            {/* Clear Button if Query Active */}
-            {searchQuery && (
+            {/* Quick Action Search Button */}
+            <div className="mr-3 flex items-center gap-1.5 shrink-0">
               <button
                 type="button"
-                onClick={() => onSearchChange('')}
-                className="p-1.5 mr-1 rounded-lg text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 transition-colors"
-                aria-label="Clear search input"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  window.dispatchEvent(new CustomEvent('techtools:open-search'));
+                }}
+                className="px-3 py-1.5 rounded-xl bg-cyan-600 hover:bg-cyan-500 dark:bg-cyan-500 dark:hover:bg-cyan-400 text-white dark:text-slate-950 text-xs font-bold shadow-xs flex items-center gap-1 cursor-pointer transition-all hover:scale-105 active:scale-95"
               >
-                <X className="w-4 h-4" />
+                <span>Search</span>
+                <kbd className="hidden sm:inline-block px-1 py-0.2 rounded bg-cyan-700 dark:bg-cyan-600 text-white text-[10px] font-mono">
+                  ⌘K
+                </kbd>
               </button>
-            )}
-
-            {/* Keyboard Command Badge */}
-            <div className="mr-3 flex items-center gap-1.5 pointer-events-none select-none">
-              <kbd className="hidden sm:inline-flex items-center px-2.5 py-1 rounded-lg bg-slate-100 dark:bg-[#0B0D12] border border-slate-200/80 dark:border-slate-700/80 text-[11px] font-mono font-medium text-slate-500 dark:text-slate-400 shadow-[0_1px_2px_rgba(0,0,0,0.04)] dark:shadow-none">
-                ⌘K
-              </kbd>
             </div>
           </div>
 
@@ -161,7 +172,10 @@ export function Hero3DTypography({
               <button
                 key={tag.slug}
                 type="button"
-                onClick={() => onSearchChange(tag.label)}
+                onClick={() => {
+                  onSearchChange(tag.label);
+                  window.dispatchEvent(new CustomEvent('techtools:open-search'));
+                }}
                 className="px-2.5 py-1 rounded-lg text-[11px] font-medium bg-white/90 dark:bg-slate-800/60 hover:bg-cyan-50 dark:hover:bg-cyan-950/40 text-slate-600 dark:text-slate-300 hover:text-cyan-700 dark:hover:text-cyan-300 border border-slate-200/80 dark:border-slate-700/60 hover:border-cyan-300 dark:hover:border-cyan-700/60 shadow-[0_1px_2px_rgba(15,23,42,0.03)] dark:shadow-none transition-all duration-150 cursor-pointer active:scale-95"
               >
                 {tag.label}

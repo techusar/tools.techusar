@@ -45,7 +45,7 @@ export function UsageLimitModal() {
                   closeLimitModal();
                   openAuthModal();
                 }}
-                className="w-full py-3 px-4 rounded-xl bg-cyan-600 hover:bg-cyan-500 dark:bg-cyan-500 dark:hover:bg-cyan-400 text-white dark:text-slate-950 font-semibold text-xs sm:text-sm transition-all flex items-center justify-center gap-2 shadow-md shadow-cyan-600/20 min-h-[44px]"
+                className="w-full py-3 px-4 rounded-xl bg-cyan-600 hover:bg-cyan-500 dark:bg-cyan-500 dark:hover:bg-cyan-400 text-white dark:text-slate-950 font-semibold text-xs sm:text-sm cursor-pointer transition-all duration-150 flex items-center justify-center gap-2 shadow-md shadow-cyan-600/20 hover:shadow-lg hover:shadow-cyan-500/30 hover:-translate-y-0.5 active:scale-95 min-h-[44px]"
               >
                 <Sparkles className="w-4 h-4 shrink-0" />
                 <span>Sign Up Free to Unlock More Uses</span>
@@ -56,7 +56,7 @@ export function UsageLimitModal() {
                   closeLimitModal();
                   openAuthModal();
                 }}
-                className="w-full py-3 px-4 rounded-xl bg-slate-100 hover:bg-slate-200 dark:bg-[#171A21] dark:hover:bg-[#20242C] border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-200 text-xs sm:text-sm font-medium transition-all min-h-[44px]"
+                className="w-full py-3 px-4 rounded-xl bg-slate-100 hover:bg-slate-200 dark:bg-[#171A21] dark:hover:bg-[#20242C] border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-200 text-xs sm:text-sm font-medium cursor-pointer transition-all duration-150 hover:shadow-xs active:scale-95 min-h-[44px]"
               >
                 Log In with Existing Account
               </button>
@@ -64,7 +64,7 @@ export function UsageLimitModal() {
           ) : (
             <button
               onClick={closeLimitModal}
-              className="w-full py-3 px-4 rounded-xl bg-cyan-600 hover:bg-cyan-500 dark:bg-cyan-500 dark:hover:bg-cyan-400 text-white dark:text-slate-950 font-semibold text-xs sm:text-sm transition-all min-h-[44px]"
+              className="w-full py-3 px-4 rounded-xl bg-cyan-600 hover:bg-cyan-500 dark:bg-cyan-500 dark:hover:bg-cyan-400 text-white dark:text-slate-950 font-semibold text-xs sm:text-sm cursor-pointer transition-all duration-150 shadow-md shadow-cyan-600/20 hover:shadow-lg hover:shadow-cyan-500/30 hover:-translate-y-0.5 active:scale-95 min-h-[44px]"
             >
               Got it, continue exploring other tools
             </button>

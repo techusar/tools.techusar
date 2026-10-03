@@ -205,11 +205,6 @@ export function Footer() {
                   Contact Support
                 </Link>
               </li>
-              <li>
-                <Link href="/admin" className="hover:text-cyan-600 dark:hover:text-cyan-400 transition-colors">
-                  Admin Console
-                </Link>
-              </li>
             </ul>
           </div>
         </div>

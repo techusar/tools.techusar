@@ -165,7 +165,10 @@ export function AdminClient({ initialTools }: { initialTools: ToolItem[] }) {
 
   const handleAdminLogin = async (e: React.FormEvent) => {
     e.preventDefault();
-    await login(adminEmail, adminPassword);
+    const res = await login(adminEmail, adminPassword);
+    if (!res.success) {
+      showNotification('error', res.error || 'Invalid credentials');
+    }
   };
 
   // Open Tool Editor
@@ -565,45 +568,53 @@ Return strictly a JSON object with this exact structure:
     showNotification('success', 'Complete database backup downloaded.');
   };
 
-  // If user is not admin
+  // If user is not admin - Pristine White/Slate Login Card
   if (user?.role !== 'admin') {
     return (
-      <div className="max-w-md mx-auto px-4 py-20">
-        <div className="p-8 rounded-3xl bg-[#0D0F13] border border-slate-800 space-y-6 shadow-2xl">
+      <div className="max-w-md mx-auto px-4 py-16 sm:py-24">
+        <div className="p-8 sm:p-10 rounded-3xl bg-white dark:bg-[#111318] border border-slate-200 dark:border-slate-800 space-y-6 shadow-xl dark:shadow-2xl">
           <div className="text-center space-y-2">
-            <div className="w-12 h-12 rounded-2xl bg-cyan-500/10 text-cyan-400 flex items-center justify-center mx-auto">
-              <ShieldAlert className="w-6 h-6" />
+            <div className="w-14 h-14 rounded-2xl bg-cyan-50 dark:bg-cyan-500/10 border border-cyan-200 dark:border-cyan-500/20 text-cyan-600 dark:text-cyan-400 flex items-center justify-center mx-auto shadow-sm">
+              <ShieldAlert className="w-7 h-7" />
             </div>
-            <h2 className="text-2xl font-bold text-white">Admin Portal Access</h2>
-            <p className="text-xs text-slate-400">
-              Sign in with administrative privileges to manage tool SEO content, publish blogs, and view telemetry.
+            <h2 className="text-2xl font-extrabold text-slate-900 dark:text-white font-display">
+              Admin Portal Access
+            </h2>
+            <p className="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+              Sign in with administrative privileges to manage tool catalog, SEO content, publish blogs, and view telemetry.
             </p>
           </div>
 
           <form onSubmit={handleAdminLogin} className="space-y-4 text-xs">
             <div>
-              <label className="block text-slate-300 font-semibold mb-1">Admin Email</label>
+              <label className="block text-slate-800 dark:text-slate-200 font-bold mb-1.5">
+                Admin Email
+              </label>
               <input
                 type="email"
                 value={adminEmail}
                 onChange={(e) => setAdminEmail(e.target.value)}
-                className="w-full px-3.5 py-2.5 bg-[#14171F] border border-slate-700 rounded-xl text-white focus:outline-none focus:border-cyan-500"
+                className="w-full px-4 py-2.5 bg-slate-50 dark:bg-[#171A21] border border-slate-200 dark:border-slate-700 rounded-xl text-slate-900 dark:text-white font-medium focus:outline-none focus:border-cyan-500 focus:ring-2 focus:ring-cyan-500/20"
+                placeholder="admin@techusar.com"
               />
             </div>
 
             <div>
-              <label className="block text-slate-300 font-semibold mb-1">Password</label>
+              <label className="block text-slate-800 dark:text-slate-200 font-bold mb-1.5">
+                Password
+              </label>
               <input
                 type="password"
                 value={adminPassword}
                 onChange={(e) => setAdminPassword(e.target.value)}
-                className="w-full px-3.5 py-2.5 bg-[#14171F] border border-slate-700 rounded-xl text-white focus:outline-none focus:border-cyan-500"
+                className="w-full px-4 py-2.5 bg-slate-50 dark:bg-[#171A21] border border-slate-200 dark:border-slate-700 rounded-xl text-slate-900 dark:text-white font-medium focus:outline-none focus:border-cyan-500 focus:ring-2 focus:ring-cyan-500/20"
+                placeholder="••••••••"
               />
             </div>
 
             <button
               type="submit"
-              className="w-full py-2.5 rounded-xl bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold text-xs shadow-md shadow-cyan-500/20"
+              className="w-full py-3 rounded-xl bg-cyan-600 hover:bg-cyan-500 dark:bg-cyan-500 dark:hover:bg-cyan-400 text-white dark:text-slate-950 font-bold text-xs cursor-pointer shadow-md shadow-cyan-600/20 hover:shadow-lg hover:shadow-cyan-500/30 hover:-translate-y-0.5 active:scale-95 transition-all duration-150"
             >
               Sign In to Admin Console
             </button>
@@ -615,15 +626,16 @@ Return strictly a JSON object with this exact structure:
                 setAdminPassword('admin123');
                 await login('admin@techusar.com', 'admin123');
               }}
-              className="w-full py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-cyan-400 font-semibold text-xs border border-slate-700 transition-colors"
+              className="w-full py-2.5 rounded-xl bg-slate-100 hover:bg-slate-200 dark:bg-[#171A21] dark:hover:bg-[#202530] text-cyan-700 dark:text-cyan-400 font-semibold text-xs border border-slate-200 dark:border-slate-700 cursor-pointer transition-colors flex items-center justify-center gap-1.5"
             >
-              ⚡ Quick Fill & Instant Sign In
+              <Zap className="w-3.5 h-3.5" />
+              <span>Quick Fill & Instant Sign In</span>
             </button>
           </form>
 
-          <div className="p-3 bg-[#14171F] rounded-xl border border-slate-800 text-[11px] text-slate-400 text-center">
-            Demo Credentials: <span className="text-cyan-400 font-mono">admin@techusar.com</span> /{' '}
-            <span className="text-cyan-400 font-mono">admin123</span>
+          <div className="p-3.5 bg-slate-50 dark:bg-[#171A21] rounded-xl border border-slate-200 dark:border-slate-800 text-[11px] text-slate-600 dark:text-slate-400 text-center font-medium">
+            Demo Credentials: <span className="text-cyan-700 dark:text-cyan-400 font-mono font-bold">admin@techusar.com</span> /{' '}
+            <span className="text-cyan-700 dark:text-cyan-400 font-mono font-bold">admin123</span>
           </div>
         </div>
       </div>
@@ -645,49 +657,52 @@ Return strictly a JSON object with this exact structure:
   );
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-16 space-y-8">
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 space-y-8">
       {/* Toast Notification */}
       {statusMessage && (
         <div
           className={`fixed bottom-6 right-6 z-50 px-4 py-3 rounded-2xl border text-xs font-semibold flex items-center gap-2 shadow-2xl backdrop-blur-md transition-all ${
             statusMessage.type === 'success'
-              ? 'bg-emerald-950/90 text-emerald-200 border-emerald-500/40'
-              : 'bg-rose-950/90 text-rose-200 border-rose-500/40'
+              ? 'bg-emerald-50 text-emerald-800 border-emerald-300 dark:bg-emerald-950/90 dark:text-emerald-200 dark:border-emerald-500/40'
+              : 'bg-rose-50 text-rose-800 border-rose-300 dark:bg-rose-950/90 dark:text-rose-200 dark:border-rose-500/40'
           }`}
         >
           {statusMessage.type === 'success' ? (
-            <CheckCircle2 className="w-4 h-4 text-emerald-400" />
+            <CheckCircle2 className="w-4 h-4 text-emerald-600 dark:text-emerald-400" />
           ) : (
-            <AlertCircle className="w-4 h-4 text-rose-400" />
+            <AlertCircle className="w-4 h-4 text-rose-600 dark:text-rose-400" />
           )}
           <span>{statusMessage.text}</span>
         </div>
       )}
 
-      {/* Admin Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-slate-800">
-        <div className="space-y-1">
-          <div className="inline-flex items-center gap-2 px-3 py-0.5 rounded-full bg-cyan-500/10 text-cyan-400 border border-cyan-500/30 text-[11px] font-bold">
-            <ShieldAlert className="w-3 h-3" />
-            <span>TechTools CMS & Admin Console</span>
+      {/* Admin Dashboard Header Banner */}
+      <div className="bg-white dark:bg-[#111318] border border-slate-200 dark:border-slate-800 rounded-3xl p-6 sm:p-8 shadow-sm dark:shadow-xl flex flex-col sm:flex-row sm:items-center justify-between gap-6">
+        <div className="space-y-2">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-lg bg-cyan-50 dark:bg-cyan-500/10 border border-cyan-200 dark:border-cyan-500/20 text-cyan-700 dark:text-cyan-400 text-xs font-bold">
+            <ShieldAlert className="w-3.5 h-3.5" />
+            <span>TechTools CMS & Management Studio</span>
           </div>
-          <h1 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">
-            Tool SEO & Blog Content Studio
+          <h1 className="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white tracking-tight font-display">
+            Tool SEO, Content & Telemetry Studio
           </h1>
+          <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300">
+            Manage metadata, rich documentation, FAQ schemas, technical blogs, and platform databases.
+          </p>
         </div>
 
-        <div className="flex items-center gap-3">
+        <div className="flex flex-wrap items-center gap-3">
           <button
             onClick={refreshAllData}
-            className="p-2 rounded-xl bg-[#14171F] border border-slate-700 text-slate-300 hover:text-cyan-400 text-xs flex items-center gap-1.5"
-            title="Refresh metrics"
+            className="px-3.5 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 dark:bg-[#171A21] dark:hover:bg-[#202530] border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-200 text-xs font-semibold flex items-center gap-1.5 cursor-pointer shadow-xs transition-colors"
+            title="Refresh metrics and database data"
           >
             <RefreshCw className={`w-3.5 h-3.5 ${loading ? 'animate-spin' : ''}`} />
-            <span>Sync Data</span>
+            <span>Sync Live Data</span>
           </button>
           <button
             onClick={handleBackupExport}
-            className="px-4 py-2 rounded-xl bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold text-xs flex items-center gap-1.5 shadow-md shadow-cyan-500/20"
+            className="px-4 py-2 rounded-xl bg-cyan-600 hover:bg-cyan-500 dark:bg-cyan-500 dark:hover:bg-cyan-400 text-white dark:text-slate-950 font-bold text-xs flex items-center gap-1.5 cursor-pointer shadow-md shadow-cyan-600/20 hover:shadow-lg hover:shadow-cyan-500/30 hover:-translate-y-0.5 active:scale-95 transition-all"
           >
             <Download className="w-3.5 h-3.5" />
             <span>Export Database JSON</span>
@@ -695,15 +710,16 @@ Return strictly a JSON object with this exact structure:
         </div>
       </div>
 
-      {/* Tabs */}
-      <div className="flex items-center gap-2 border-b border-slate-800 pb-3 overflow-x-auto">
+      {/* Modern High-Contrast Navigation Tabs */}
+      <div className="flex items-center gap-2 border-b border-slate-200 dark:border-slate-800 pb-2 overflow-x-auto">
         {[
-          { id: 'tools', label: `Tool SEO & Content (${tools.length})`, icon: Globe },
-          { id: 'blog', label: `Blog Articles CMS (${blogs.length})`, icon: BookOpen },
-          { id: 'metrics', label: 'Telemetry & Analytics', icon: Activity },
-          { id: 'backup', label: 'Database Backup', icon: Database },
+          { id: 'tools', label: `Tool SEO & Guides (${tools.length})`, icon: Globe },
+          { id: 'blog', label: `Blog Articles (${blogs.length})`, icon: BookOpen },
+          { id: 'metrics', label: 'Platform Telemetry', icon: Activity },
+          { id: 'backup', label: 'Database Snapshot', icon: Database },
         ].map((tab) => {
           const Icon = tab.icon;
+          const isActive = activeTab === tab.id;
           return (
             <button
               key={tab.id}
@@ -713,13 +729,13 @@ Return strictly a JSON object with this exact structure:
                 setSelectedBlog(null);
                 setIsCreatingBlog(false);
               }}
-              className={`px-4 py-2 rounded-xl text-xs font-semibold transition-all flex items-center gap-2 shrink-0 ${
-                activeTab === tab.id
-                  ? 'bg-cyan-500 text-slate-950 shadow-md shadow-cyan-500/20'
-                  : 'bg-[#14171F] text-slate-400 hover:text-white border border-slate-800'
+              className={`px-4 py-2.5 rounded-xl text-xs font-bold transition-all flex items-center gap-2 shrink-0 cursor-pointer ${
+                isActive
+                  ? 'bg-cyan-600 dark:bg-cyan-500 text-white dark:text-slate-950 shadow-md shadow-cyan-500/20'
+                  : 'bg-white dark:bg-[#14171F] text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-[#1c212b] border border-slate-200 dark:border-slate-800'
               }`}
             >
-              <Icon className="w-3.5 h-3.5" />
+              <Icon className="w-4 h-4" />
               <span>{tab.label}</span>
             </button>
           );
@@ -730,86 +746,88 @@ Return strictly a JSON object with this exact structure:
       {activeTab === 'tools' && (
         <div className="space-y-6">
           {!selectedTool ? (
-            /* Tools Catalog List */
-            <div className="p-6 rounded-2xl bg-[#0D0F13] border border-slate-800 space-y-4">
+            /* Tools Catalog List Card */
+            <div className="p-6 sm:p-8 rounded-3xl bg-white dark:bg-[#111318] border border-slate-200 dark:border-slate-800 space-y-6 shadow-sm dark:shadow-xl">
               <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
                 <div>
-                  <h3 className="text-lg font-bold text-white flex items-center gap-2">
-                    <Globe className="w-5 h-5 text-cyan-400" />
+                  <h3 className="text-xl font-bold text-slate-900 dark:text-white flex items-center gap-2 font-display">
+                    <Globe className="w-5 h-5 text-cyan-600 dark:text-cyan-400" />
                     Manage Tool SEO, Guides & FAQs
                   </h3>
-                  <p className="text-xs text-slate-400">
-                    Select any tool to add custom SEO titles, meta descriptions, in-depth guide content, steps, features, and FAQs.
+                  <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 mt-1">
+                    Select any utility to customize search titles, meta descriptions, deep guides, steps, and rich schemas.
                   </p>
                 </div>
 
-                <div className="w-full sm:w-72 relative">
+                <div className="w-full sm:w-80 relative">
                   <Search className="w-4 h-4 text-slate-400 absolute left-3 top-1/2 -translate-y-1/2 pointer-events-none" />
                   <input
                     type="text"
                     value={searchFilter}
                     onChange={(e) => setSearchFilter(e.target.value)}
                     placeholder="Search by name, slug or category..."
-                    className="w-full pl-9 pr-3 py-2 bg-[#171A21] border border-slate-700 rounded-xl text-xs text-white placeholder-slate-500 focus:outline-none focus:border-cyan-500"
+                    className="w-full pl-9 pr-3.5 py-2.5 bg-slate-50 dark:bg-[#171A21] border border-slate-200 dark:border-slate-700 rounded-xl text-xs text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:border-cyan-500 font-medium"
                   />
                 </div>
               </div>
 
-              <div className="overflow-x-auto">
+              <div className="overflow-x-auto rounded-2xl border border-slate-200 dark:border-slate-800">
                 <table className="w-full text-left text-xs">
-                  <thead className="border-b border-slate-800 text-slate-400 font-semibold">
+                  <thead className="bg-slate-50 dark:bg-[#14171F] border-b border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-300 font-bold uppercase tracking-wider text-[11px]">
                     <tr>
-                      <th className="py-3 px-3">Tool Name</th>
-                      <th className="py-3 px-3">Category</th>
-                      <th className="py-3 px-3">SEO Customization</th>
-                      <th className="py-3 px-3">FAQs</th>
-                      <th className="py-3 px-3 text-right">Actions</th>
+                      <th className="py-3.5 px-4">Tool Name</th>
+                      <th className="py-3.5 px-4">Category</th>
+                      <th className="py-3.5 px-4">SEO Content</th>
+                      <th className="py-3.5 px-4">FAQ Schema</th>
+                      <th className="py-3.5 px-4 text-right">Actions</th>
                     </tr>
                   </thead>
-                  <tbody className="divide-y divide-slate-800/60">
+                  <tbody className="divide-y divide-slate-100 dark:divide-slate-800/80 bg-white dark:bg-[#111318]">
                     {filteredTools.map((t) => {
                       const hasCustomSeo = Boolean(t.whatIsThis || t.shortIntro || (t.faqs && t.faqs.length > 0));
                       return (
-                        <tr key={t.id} className="hover:bg-[#14171F] transition-colors">
-                          <td className="py-3 px-3">
-                            <div className="font-bold text-white flex items-center gap-2">
+                        <tr key={t.id} className="hover:bg-slate-50/80 dark:hover:bg-[#171A21] transition-colors">
+                          <td className="py-3.5 px-4">
+                            <div className="font-bold text-slate-900 dark:text-white flex items-center gap-2">
                               <span>{t.name}</span>
-                              {t.aiPowered && (
-                                <span className="px-1.5 py-0.5 rounded bg-purple-500/10 text-purple-400 border border-purple-500/20 text-[9px] font-bold">
+                              {t.type === 'ai' && (
+                                <span className="px-1.5 py-0.5 rounded bg-indigo-50 dark:bg-indigo-500/10 text-indigo-700 dark:text-indigo-400 border border-indigo-200 dark:border-indigo-500/20 text-[9px] font-bold">
                                   AI
                                 </span>
                               )}
                             </div>
-                            <div className="font-mono text-[10px] text-slate-500">/tools/{t.slug}</div>
+                            <div className="font-mono text-[10px] text-slate-500 dark:text-slate-400">/tools/{t.slug}</div>
                           </td>
-                          <td className="py-3 px-3 text-slate-300 capitalize">{t.categoryName || t.category}</td>
-                          <td className="py-3 px-3">
+                          <td className="py-3.5 px-4 text-slate-700 dark:text-slate-300 capitalize font-medium">
+                            {t.categoryName || t.category}
+                          </td>
+                          <td className="py-3.5 px-4">
                             {hasCustomSeo ? (
-                              <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 text-[10px] font-semibold">
+                              <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-emerald-50 dark:bg-emerald-500/10 text-emerald-700 dark:text-emerald-400 border border-emerald-200 dark:border-emerald-500/20 text-[10px] font-bold">
                                 <Check className="w-3 h-3" /> Custom Content
                               </span>
                             ) : (
-                              <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-slate-800 text-slate-400 text-[10px]">
+                              <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 text-[10px] font-medium">
                                 Automated Rich SEO
                               </span>
                             )}
                           </td>
-                          <td className="py-3 px-3 text-slate-400 font-mono text-[11px]">
+                          <td className="py-3.5 px-4 text-slate-600 dark:text-slate-400 font-mono text-[11px]">
                             {t.faqs?.length || 4} Q&As
                           </td>
-                          <td className="py-3 px-3 text-right">
+                          <td className="py-3.5 px-4 text-right">
                             <div className="flex items-center justify-end gap-2">
                               <button
                                 onClick={() => handleOpenToolEditor(t)}
-                                className="px-3 py-1.5 rounded-lg bg-cyan-500/10 text-cyan-400 hover:bg-cyan-500 hover:text-slate-950 font-bold text-xs flex items-center gap-1 transition-all"
+                                className="px-3 py-1.5 rounded-lg bg-cyan-50 dark:bg-cyan-500/10 text-cyan-700 dark:text-cyan-400 hover:bg-cyan-600 hover:text-white dark:hover:bg-cyan-500 dark:hover:text-slate-950 font-bold text-xs flex items-center gap-1 cursor-pointer transition-all shadow-xs"
                               >
                                 <Edit className="w-3 h-3" />
-                                <span>Edit SEO Content</span>
+                                <span>Edit SEO</span>
                               </button>
                               <Link
                                 href={`/tools/${t.slug}`}
                                 target="_blank"
-                                className="p-1.5 rounded-lg bg-[#171A21] text-slate-400 hover:text-white"
+                                className="p-1.5 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 hover:text-cyan-600 dark:hover:text-white cursor-pointer"
                                 title="View Live Page"
                               >
                                 <ExternalLink className="w-3.5 h-3.5" />
@@ -825,18 +843,18 @@ Return strictly a JSON object with this exact structure:
             </div>
           ) : (
             /* Tool Content & SEO Workspace */
-            <div className="bg-[#0D0F13] border border-slate-800 rounded-3xl p-6 sm:p-8 space-y-8">
-              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-slate-800">
+            <div className="bg-white dark:bg-[#111318] border border-slate-200 dark:border-slate-800 rounded-3xl p-6 sm:p-8 space-y-8 shadow-sm dark:shadow-xl">
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-slate-200 dark:border-slate-800">
                 <div>
                   <button
                     onClick={() => setSelectedTool(null)}
-                    className="text-xs text-slate-400 hover:text-white flex items-center gap-1 mb-2"
+                    className="text-xs font-semibold text-slate-500 hover:text-slate-900 dark:hover:text-white flex items-center gap-1 mb-2 cursor-pointer"
                   >
-                    ← Back to Tools List
+                    ← Back to Tools Catalog
                   </button>
-                  <h2 className="text-2xl font-bold text-white flex items-center gap-2">
+                  <h2 className="text-2xl font-extrabold text-slate-900 dark:text-white flex items-center gap-2 font-display">
                     <span>Edit SEO Content: {selectedTool.name}</span>
-                    <span className="font-mono text-xs px-2.5 py-0.5 rounded bg-slate-800 text-cyan-400">
+                    <span className="font-mono text-xs px-2.5 py-0.5 rounded-lg bg-cyan-50 dark:bg-slate-800 text-cyan-700 dark:text-cyan-400 border border-cyan-200 dark:border-slate-700">
                       /tools/{selectedTool.slug}
                     </span>
                   </h2>
@@ -847,7 +865,7 @@ Return strictly a JSON object with this exact structure:
                     type="button"
                     onClick={handleGenerateToolSeoWithAI}
                     disabled={aiGeneratingToolSeo}
-                    className="px-4 py-2 rounded-xl bg-purple-600 hover:bg-purple-500 text-white font-bold text-xs flex items-center gap-1.5 shadow-md shadow-purple-600/20 disabled:opacity-50"
+                    className="px-4 py-2 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-bold text-xs flex items-center gap-1.5 cursor-pointer shadow-md shadow-indigo-600/20 disabled:opacity-50 transition-all"
                   >
                     <Sparkles className={`w-3.5 h-3.5 ${aiGeneratingToolSeo ? 'animate-spin' : ''}`} />
                     <span>{aiGeneratingToolSeo ? 'Generating with Gemini...' : 'AI Auto-Generate SEO'}</span>
@@ -856,7 +874,7 @@ Return strictly a JSON object with this exact structure:
                   <button
                     type="button"
                     onClick={handleSaveToolContent}
-                    className="px-5 py-2 rounded-xl bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold text-xs flex items-center gap-1.5 shadow-md shadow-cyan-500/20"
+                    className="px-5 py-2 rounded-xl bg-cyan-600 hover:bg-cyan-500 dark:bg-cyan-500 dark:hover:bg-cyan-400 text-white dark:text-slate-950 font-bold text-xs flex items-center gap-1.5 cursor-pointer shadow-md shadow-cyan-600/20 hover:shadow-lg hover:shadow-cyan-500/30 active:scale-95 transition-all"
                   >
                     <CheckCircle2 className="w-4 h-4" />
                     <span>Publish Content to SEO</span>
@@ -869,16 +887,16 @@ Return strictly a JSON object with this exact structure:
                   {/* Left 2 Cols: Content Editors */}
                   <div className="lg:col-span-2 space-y-6">
                     {/* Meta Title & Description */}
-                    <div className="p-6 rounded-2xl bg-[#14171F] border border-slate-800 space-y-4">
-                      <h4 className="text-sm font-bold text-white flex items-center gap-2">
-                        <Globe className="w-4 h-4 text-cyan-400" />
+                    <div className="p-6 rounded-2xl bg-slate-50 dark:bg-[#14171F] border border-slate-200 dark:border-slate-800 space-y-4">
+                      <h4 className="text-sm font-bold text-slate-900 dark:text-white flex items-center gap-2">
+                        <Globe className="w-4 h-4 text-cyan-600 dark:text-cyan-400" />
                         Search Engine Metadata (Google SERP)
                       </h4>
 
                       <div>
-                        <div className="flex justify-between text-xs mb-1">
-                          <label className="text-slate-300 font-semibold">SEO Title (Title Tag)</label>
-                          <span className={`text-[10px] ${toolEditForm.seoTitle.length > 60 ? 'text-amber-400' : 'text-slate-500'}`}>
+                        <div className="flex justify-between text-xs mb-1.5">
+                          <label className="text-slate-800 dark:text-slate-200 font-bold">SEO Title (Title Tag)</label>
+                          <span className={`text-[11px] font-mono ${toolEditForm.seoTitle.length > 60 ? 'text-amber-600 dark:text-amber-400 font-bold' : 'text-slate-500'}`}>
                             {toolEditForm.seoTitle.length} / 60 characters
                           </span>
                         </div>
@@ -886,14 +904,14 @@ Return strictly a JSON object with this exact structure:
                           type="text"
                           value={toolEditForm.seoTitle}
                           onChange={(e) => setToolEditForm({ ...toolEditForm, seoTitle: e.target.value })}
-                          className="w-full px-3.5 py-2.5 bg-[#0D0F13] border border-slate-700 rounded-xl text-xs text-white focus:outline-none focus:border-cyan-500"
+                          className="w-full px-3.5 py-2.5 bg-white dark:bg-[#0D0F13] border border-slate-200 dark:border-slate-700 rounded-xl text-xs text-slate-900 dark:text-white font-medium focus:outline-none focus:border-cyan-500 focus:ring-2 focus:ring-cyan-500/20"
                         />
                       </div>
 
                       <div>
-                        <div className="flex justify-between text-xs mb-1">
-                          <label className="text-slate-300 font-semibold">Meta Description</label>
-                          <span className={`text-[10px] ${toolEditForm.seoDescription.length > 160 ? 'text-amber-400' : 'text-slate-500'}`}>
+                        <div className="flex justify-between text-xs mb-1.5">
+                          <label className="text-slate-800 dark:text-slate-200 font-bold">Meta Description</label>
+                          <span className={`text-[11px] font-mono ${toolEditForm.seoDescription.length > 160 ? 'text-amber-600 dark:text-amber-400 font-bold' : 'text-slate-500'}`}>
                             {toolEditForm.seoDescription.length} / 160 characters
                           </span>
                         </div>
@@ -901,31 +919,31 @@ Return strictly a JSON object with this exact structure:
                           rows={2}
                           value={toolEditForm.seoDescription}
                           onChange={(e) => setToolEditForm({ ...toolEditForm, seoDescription: e.target.value })}
-                          className="w-full px-3.5 py-2.5 bg-[#0D0F13] border border-slate-700 rounded-xl text-xs text-white focus:outline-none focus:border-cyan-500"
+                          className="w-full px-3.5 py-2.5 bg-white dark:bg-[#0D0F13] border border-slate-200 dark:border-slate-700 rounded-xl text-xs text-slate-900 dark:text-white font-medium focus:outline-none focus:border-cyan-500 focus:ring-2 focus:ring-cyan-500/20 leading-relaxed"
                         />
                       </div>
 
                       <div>
-                        <label className="block text-slate-300 text-xs font-semibold mb-1">
+                        <label className="block text-slate-800 dark:text-slate-200 text-xs font-bold mb-1.5">
                           Keywords & Tags (comma separated)
                         </label>
                         <input
                           type="text"
                           value={toolEditForm.tags}
                           onChange={(e) => setToolEditForm({ ...toolEditForm, tags: e.target.value })}
-                          className="w-full px-3.5 py-2 bg-[#0D0F13] border border-slate-700 rounded-xl text-xs text-white focus:outline-none focus:border-cyan-500"
+                          className="w-full px-3.5 py-2.5 bg-white dark:bg-[#0D0F13] border border-slate-200 dark:border-slate-700 rounded-xl text-xs text-slate-900 dark:text-white font-medium focus:outline-none focus:border-cyan-500 focus:ring-2 focus:ring-cyan-500/20"
                         />
                       </div>
                     </div>
 
-                    {/* Section 1: Short Intro (30-60 words) */}
-                    <div className="p-6 rounded-2xl bg-[#14171F] border border-slate-800 space-y-3">
+                    {/* Section 1: Short Intro */}
+                    <div className="p-6 rounded-2xl bg-slate-50 dark:bg-[#14171F] border border-slate-200 dark:border-slate-800 space-y-3">
                       <div className="flex justify-between items-center">
-                        <h4 className="text-sm font-bold text-white flex items-center gap-2">
-                          <FileText className="w-4 h-4 text-cyan-400" />
+                        <h4 className="text-sm font-bold text-slate-900 dark:text-white flex items-center gap-2">
+                          <FileText className="w-4 h-4 text-cyan-600 dark:text-cyan-400" />
                           Short Intro (30–60 words)
                         </h4>
-                        <span className="text-[10px] text-slate-500 font-mono">
+                        <span className="text-[11px] text-slate-500 font-mono font-bold">
                           {toolEditForm.shortIntro.split(/\s+/).filter(Boolean).length} words
                         </span>
                       </div>
@@ -933,19 +951,19 @@ Return strictly a JSON object with this exact structure:
                         rows={3}
                         value={toolEditForm.shortIntro}
                         onChange={(e) => setToolEditForm({ ...toolEditForm, shortIntro: e.target.value })}
-                        className="w-full px-3.5 py-2.5 bg-[#0D0F13] border border-slate-700 rounded-xl text-xs text-white focus:outline-none focus:border-cyan-500 leading-relaxed"
+                        className="w-full px-3.5 py-2.5 bg-white dark:bg-[#0D0F13] border border-slate-200 dark:border-slate-700 rounded-xl text-xs text-slate-900 dark:text-white font-medium focus:outline-none focus:border-cyan-500 focus:ring-2 focus:ring-cyan-500/20 leading-relaxed"
                         placeholder="Concise, punchy intro placed right above or beside the tool interface..."
                       />
                     </div>
 
-                    {/* Section 2: What is this tool? (100-150 words) */}
-                    <div className="p-6 rounded-2xl bg-[#14171F] border border-slate-800 space-y-3">
+                    {/* Section 2: What is this tool? */}
+                    <div className="p-6 rounded-2xl bg-slate-50 dark:bg-[#14171F] border border-slate-200 dark:border-slate-800 space-y-3">
                       <div className="flex justify-between items-center">
-                        <h4 className="text-sm font-bold text-white flex items-center gap-2">
-                          <BookOpen className="w-4 h-4 text-cyan-400" />
+                        <h4 className="text-sm font-bold text-slate-900 dark:text-white flex items-center gap-2">
+                          <BookOpen className="w-4 h-4 text-cyan-600 dark:text-cyan-400" />
                           What is this Tool? (100–150 words)
                         </h4>
-                        <span className="text-[10px] text-slate-500 font-mono">
+                        <span className="text-[11px] text-slate-500 font-mono font-bold">
                           {toolEditForm.whatIsThis.split(/\s+/).filter(Boolean).length} words
                         </span>
                       </div>
@@ -953,16 +971,16 @@ Return strictly a JSON object with this exact structure:
                         rows={5}
                         value={toolEditForm.whatIsThis}
                         onChange={(e) => setToolEditForm({ ...toolEditForm, whatIsThis: e.target.value })}
-                        className="w-full px-3.5 py-2.5 bg-[#0D0F13] border border-slate-700 rounded-xl text-xs text-white focus:outline-none focus:border-cyan-500 leading-relaxed"
+                        className="w-full px-3.5 py-2.5 bg-white dark:bg-[#0D0F13] border border-slate-200 dark:border-slate-700 rounded-xl text-xs text-slate-900 dark:text-white font-medium focus:outline-none focus:border-cyan-500 focus:ring-2 focus:ring-cyan-500/20 leading-relaxed"
                         placeholder="In-depth conceptual explanation of the mechanics, standards, and privacy advantages..."
                       />
                     </div>
 
-                    {/* Section 3: How to Use (Step-by-Step) */}
-                    <div className="p-6 rounded-2xl bg-[#14171F] border border-slate-800 space-y-4">
+                    {/* Section 3: How to Use */}
+                    <div className="p-6 rounded-2xl bg-slate-50 dark:bg-[#14171F] border border-slate-200 dark:border-slate-800 space-y-4">
                       <div className="flex items-center justify-between">
-                        <h4 className="text-sm font-bold text-white flex items-center gap-2">
-                          <ListOrdered className="w-4 h-4 text-cyan-400" />
+                        <h4 className="text-sm font-bold text-slate-900 dark:text-white flex items-center gap-2">
+                          <ListOrdered className="w-4 h-4 text-cyan-600 dark:text-cyan-400" />
                           How to Use Steps (Schema HowTo)
                         </h4>
                         <button
@@ -973,7 +991,7 @@ Return strictly a JSON object with this exact structure:
                               howToUse: [...toolEditForm.howToUse, ''],
                             })
                           }
-                          className="px-2.5 py-1 rounded-lg bg-slate-800 hover:bg-slate-700 text-cyan-400 text-xs font-semibold flex items-center gap-1"
+                          className="px-2.5 py-1 rounded-lg bg-cyan-50 dark:bg-slate-800 text-cyan-700 dark:text-cyan-400 text-xs font-bold flex items-center gap-1 cursor-pointer hover:bg-cyan-100 dark:hover:bg-slate-700 transition-colors"
                         >
                           <Plus className="w-3 h-3" /> Add Step
                         </button>
@@ -982,7 +1000,7 @@ Return strictly a JSON object with this exact structure:
                       <div className="space-y-2">
                         {toolEditForm.howToUse.map((step, idx) => (
                           <div key={idx} className="flex items-center gap-2">
-                            <span className="w-6 h-6 rounded-full bg-cyan-500/10 text-cyan-400 text-[11px] font-bold flex items-center justify-center shrink-0">
+                            <span className="w-6 h-6 rounded-full bg-cyan-100 dark:bg-cyan-500/10 text-cyan-800 dark:text-cyan-400 text-[11px] font-bold flex items-center justify-center shrink-0">
                               {idx + 1}
                             </span>
                             <input
@@ -993,7 +1011,7 @@ Return strictly a JSON object with this exact structure:
                                 next[idx] = e.target.value;
                                 setToolEditForm({ ...toolEditForm, howToUse: next });
                               }}
-                              className="flex-1 px-3 py-2 bg-[#0D0F13] border border-slate-700 rounded-xl text-xs text-white focus:outline-none focus:border-cyan-500"
+                              className="flex-1 px-3 py-2 bg-white dark:bg-[#0D0F13] border border-slate-200 dark:border-slate-700 rounded-xl text-xs text-slate-900 dark:text-white font-medium focus:outline-none focus:border-cyan-500"
                               placeholder={`Step ${idx + 1} instruction...`}
                             />
                             <button
@@ -1002,7 +1020,7 @@ Return strictly a JSON object with this exact structure:
                                 const next = toolEditForm.howToUse.filter((_, i) => i !== idx);
                                 setToolEditForm({ ...toolEditForm, howToUse: next });
                               }}
-                              className="p-2 text-slate-500 hover:text-rose-400"
+                              className="p-2 text-slate-400 hover:text-rose-500 cursor-pointer"
                             >
                               <Trash2 className="w-3.5 h-3.5" />
                             </button>
@@ -1012,10 +1030,10 @@ Return strictly a JSON object with this exact structure:
                     </div>
 
                     {/* Section 4: Features & Benefits */}
-                    <div className="p-6 rounded-2xl bg-[#14171F] border border-slate-800 space-y-4">
+                    <div className="p-6 rounded-2xl bg-slate-50 dark:bg-[#14171F] border border-slate-200 dark:border-slate-800 space-y-4">
                       <div className="flex items-center justify-between">
-                        <h4 className="text-sm font-bold text-white flex items-center gap-2">
-                          <Layers className="w-4 h-4 text-cyan-400" />
+                        <h4 className="text-sm font-bold text-slate-900 dark:text-white flex items-center gap-2">
+                          <Layers className="w-4 h-4 text-cyan-600 dark:text-cyan-400" />
                           Features & Architectural Benefits
                         </h4>
                         <button
@@ -1029,7 +1047,7 @@ Return strictly a JSON object with this exact structure:
                               ],
                             })
                           }
-                          className="px-2.5 py-1 rounded-lg bg-slate-800 hover:bg-slate-700 text-cyan-400 text-xs font-semibold flex items-center gap-1"
+                          className="px-2.5 py-1 rounded-lg bg-cyan-50 dark:bg-slate-800 text-cyan-700 dark:text-cyan-400 text-xs font-bold flex items-center gap-1 cursor-pointer hover:bg-cyan-100 dark:hover:bg-slate-700 transition-colors"
                         >
                           <Plus className="w-3 h-3" /> Add Feature
                         </button>
@@ -1039,7 +1057,7 @@ Return strictly a JSON object with this exact structure:
                         {toolEditForm.featuresBenefits.map((item, idx) => (
                           <div
                             key={idx}
-                            className="p-3 bg-[#0D0F13] rounded-xl border border-slate-800 space-y-2"
+                            className="p-3.5 bg-white dark:bg-[#0D0F13] rounded-xl border border-slate-200 dark:border-slate-800 space-y-2"
                           >
                             <div className="flex items-center justify-between gap-2">
                               <input
@@ -1050,7 +1068,7 @@ Return strictly a JSON object with this exact structure:
                                   next[idx].title = e.target.value;
                                   setToolEditForm({ ...toolEditForm, featuresBenefits: next });
                                 }}
-                                className="w-1/2 px-2.5 py-1.5 bg-[#14171F] border border-slate-700 rounded-lg text-xs font-semibold text-white focus:outline-none focus:border-cyan-500"
+                                className="w-1/2 px-2.5 py-1.5 bg-slate-50 dark:bg-[#14171F] border border-slate-200 dark:border-slate-700 rounded-lg text-xs font-bold text-slate-900 dark:text-white focus:outline-none focus:border-cyan-500"
                                 placeholder="Feature Headline (e.g. Zero Data Logging)"
                               />
                               <button
@@ -1059,7 +1077,7 @@ Return strictly a JSON object with this exact structure:
                                   const next = toolEditForm.featuresBenefits.filter((_, i) => i !== idx);
                                   setToolEditForm({ ...toolEditForm, featuresBenefits: next });
                                 }}
-                                className="p-1 text-slate-500 hover:text-rose-400"
+                                className="p-1 text-slate-400 hover:text-rose-500 cursor-pointer"
                               >
                                 <Trash2 className="w-3.5 h-3.5" />
                               </button>
@@ -1072,7 +1090,7 @@ Return strictly a JSON object with this exact structure:
                                 next[idx].desc = e.target.value;
                                 setToolEditForm({ ...toolEditForm, featuresBenefits: next });
                               }}
-                              className="w-full px-2.5 py-1.5 bg-[#14171F] border border-slate-700 rounded-lg text-xs text-slate-300 focus:outline-none focus:border-cyan-500"
+                              className="w-full px-2.5 py-1.5 bg-slate-50 dark:bg-[#14171F] border border-slate-200 dark:border-slate-700 rounded-lg text-xs text-slate-700 dark:text-slate-300 focus:outline-none focus:border-cyan-500"
                               placeholder="Brief description of the feature..."
                             />
                           </div>
@@ -1080,11 +1098,11 @@ Return strictly a JSON object with this exact structure:
                       </div>
                     </div>
 
-                    {/* Section 5: FAQs (4-8 items) */}
-                    <div className="p-6 rounded-2xl bg-[#14171F] border border-slate-800 space-y-4">
+                    {/* Section 5: FAQs */}
+                    <div className="p-6 rounded-2xl bg-slate-50 dark:bg-[#14171F] border border-slate-200 dark:border-slate-800 space-y-4">
                       <div className="flex items-center justify-between">
-                        <h4 className="text-sm font-bold text-white flex items-center gap-2">
-                          <HelpCircle className="w-4 h-4 text-cyan-400" />
+                        <h4 className="text-sm font-bold text-slate-900 dark:text-white flex items-center gap-2">
+                          <HelpCircle className="w-4 h-4 text-cyan-600 dark:text-cyan-400" />
                           Frequently Asked Questions (FAQ Schema)
                         </h4>
                         <button
@@ -1095,7 +1113,7 @@ Return strictly a JSON object with this exact structure:
                               faqs: [...toolEditForm.faqs, { question: '', answer: '' }],
                             })
                           }
-                          className="px-2.5 py-1 rounded-lg bg-slate-800 hover:bg-slate-700 text-cyan-400 text-xs font-semibold flex items-center gap-1"
+                          className="px-2.5 py-1 rounded-lg bg-cyan-50 dark:bg-slate-800 text-cyan-700 dark:text-cyan-400 text-xs font-bold flex items-center gap-1 cursor-pointer hover:bg-cyan-100 dark:hover:bg-slate-700 transition-colors"
                         >
                           <Plus className="w-3 h-3" /> Add FAQ
                         </button>
@@ -1105,7 +1123,7 @@ Return strictly a JSON object with this exact structure:
                         {toolEditForm.faqs.map((faq, idx) => (
                           <div
                             key={idx}
-                            className="p-3 bg-[#0D0F13] rounded-xl border border-slate-800 space-y-2"
+                            className="p-3.5 bg-white dark:bg-[#0D0F13] rounded-xl border border-slate-200 dark:border-slate-800 space-y-2"
                           >
                             <div className="flex items-center justify-between gap-2">
                               <input
@@ -1116,7 +1134,7 @@ Return strictly a JSON object with this exact structure:
                                   next[idx].question = e.target.value;
                                   setToolEditForm({ ...toolEditForm, faqs: next });
                                 }}
-                                className="w-full px-2.5 py-1.5 bg-[#14171F] border border-slate-700 rounded-lg text-xs font-semibold text-white focus:outline-none focus:border-cyan-500"
+                                className="w-full px-2.5 py-1.5 bg-slate-50 dark:bg-[#14171F] border border-slate-200 dark:border-slate-700 rounded-lg text-xs font-bold text-slate-900 dark:text-white focus:outline-none focus:border-cyan-500"
                                 placeholder={`FAQ Question ${idx + 1}...`}
                               />
                               <button
@@ -1125,7 +1143,7 @@ Return strictly a JSON object with this exact structure:
                                   const next = toolEditForm.faqs.filter((_, i) => i !== idx);
                                   setToolEditForm({ ...toolEditForm, faqs: next });
                                 }}
-                                className="p-1 text-slate-500 hover:text-rose-400"
+                                className="p-1 text-slate-400 hover:text-rose-500 cursor-pointer"
                               >
                                 <Trash2 className="w-3.5 h-3.5" />
                               </button>
@@ -1138,7 +1156,7 @@ Return strictly a JSON object with this exact structure:
                                 next[idx].answer = e.target.value;
                                 setToolEditForm({ ...toolEditForm, faqs: next });
                               }}
-                              className="w-full px-2.5 py-1.5 bg-[#14171F] border border-slate-700 rounded-lg text-xs text-slate-300 focus:outline-none focus:border-cyan-500"
+                              className="w-full px-2.5 py-1.5 bg-slate-50 dark:bg-[#14171F] border border-slate-200 dark:border-slate-700 rounded-lg text-xs text-slate-700 dark:text-slate-300 focus:outline-none focus:border-cyan-500"
                               placeholder="Answer explaining details..."
                             />
                           </div>
@@ -1149,16 +1167,16 @@ Return strictly a JSON object with this exact structure:
 
                   {/* Right Column: Live SERP Snippet & Word Count Telemetry */}
                   <div className="space-y-6">
-                    <div className="p-6 rounded-2xl bg-[#14171F] border border-slate-800 space-y-4 sticky top-24">
-                      <h4 className="text-xs font-bold text-slate-300 uppercase tracking-wider flex items-center gap-1.5">
-                        <Eye className="w-3.5 h-3.5 text-cyan-400" />
+                    <div className="p-6 rounded-2xl bg-slate-50 dark:bg-[#14171F] border border-slate-200 dark:border-slate-800 space-y-4 sticky top-24 shadow-sm">
+                      <h4 className="text-xs font-bold text-slate-800 dark:text-slate-200 uppercase tracking-wider flex items-center gap-1.5">
+                        <Eye className="w-3.5 h-3.5 text-cyan-600 dark:text-cyan-400" />
                         Google Search SERP Preview
                       </h4>
 
                       {/* Google Snippet Card */}
-                      <div className="p-4 rounded-xl bg-white text-slate-900 space-y-1 font-sans text-left shadow-md">
+                      <div className="p-4 rounded-xl bg-white text-slate-900 border border-slate-200 space-y-1 font-sans text-left shadow-md">
                         <div className="flex items-center gap-1.5 text-[11px] text-[#202124]">
-                          <span className="font-medium">techtools.techusar.com</span>
+                          <span className="font-medium">tools.techusar.com</span>
                           <span className="text-slate-400">› tools › {selectedTool.slug}</span>
                         </div>
                         <h3 className="text-sm font-semibold text-[#1a0dab] hover:underline cursor-pointer line-clamp-1">
@@ -1170,8 +1188,8 @@ Return strictly a JSON object with this exact structure:
                       </div>
 
                       {/* SEO Checklist & Word Count */}
-                      <div className="pt-4 border-t border-slate-800 space-y-3">
-                        <h5 className="text-xs font-bold text-white">Content Density Analysis</h5>
+                      <div className="pt-4 border-t border-slate-200 dark:border-slate-800 space-y-3">
+                        <h5 className="text-xs font-bold text-slate-900 dark:text-white">Content Density Analysis</h5>
 
                         {(() => {
                           const totalWords = [
@@ -1189,16 +1207,16 @@ Return strictly a JSON object with this exact structure:
                           return (
                             <div className="space-y-2">
                               <div className="flex justify-between items-center text-xs">
-                                <span className="text-slate-400">Total Supporting Words:</span>
+                                <span className="text-slate-600 dark:text-slate-400">Total Supporting Words:</span>
                                 <span
                                   className={`font-mono font-bold ${
-                                    totalWords >= 600 ? 'text-emerald-400' : 'text-amber-400'
+                                    totalWords >= 600 ? 'text-emerald-600 dark:text-emerald-400' : 'text-amber-600 dark:text-amber-400'
                                   }`}
                                 >
                                   {totalWords} words
                                 </span>
                               </div>
-                              <div className="w-full h-1.5 bg-slate-800 rounded-full overflow-hidden">
+                              <div className="w-full h-2 bg-slate-200 dark:bg-slate-800 rounded-full overflow-hidden">
                                 <div
                                   className={`h-full ${totalWords >= 600 ? 'bg-emerald-500' : 'bg-amber-500'}`}
                                   style={{ width: `${Math.min(100, (totalWords / 800) * 100)}%` }}
@@ -1213,17 +1231,17 @@ Return strictly a JSON object with this exact structure:
                           );
                         })()}
 
-                        <div className="pt-2 space-y-1 text-[11px] text-slate-400">
+                        <div className="pt-2 space-y-1.5 text-[11px] text-slate-600 dark:text-slate-300">
                           <div className="flex items-center gap-1.5">
-                            <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400" />
+                            <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400" />
                             <span>Structured Schema.org (WebApplication)</span>
                           </div>
                           <div className="flex items-center gap-1.5">
-                            <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400" />
+                            <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400" />
                             <span>FAQPage Schema ({toolEditForm.faqs.length} entries)</span>
                           </div>
                           <div className="flex items-center gap-1.5">
-                            <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400" />
+                            <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400" />
                             <span>HowTo Schema ({toolEditForm.howToUse.length} steps)</span>
                           </div>
                         </div>
@@ -1232,14 +1250,14 @@ Return strictly a JSON object with this exact structure:
                           <button
                             type="button"
                             onClick={handleSaveToolContent}
-                            className="w-full py-2.5 rounded-xl bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold text-xs shadow-md shadow-cyan-500/20"
+                            className="w-full py-2.5 rounded-xl bg-cyan-600 hover:bg-cyan-500 dark:bg-cyan-500 dark:hover:bg-cyan-400 text-white dark:text-slate-950 font-bold text-xs cursor-pointer shadow-md shadow-cyan-600/20 hover:shadow-lg hover:shadow-cyan-500/30 transition-all"
                           >
                             Save & Publish to Live Site
                           </button>
                           <button
                             type="button"
                             onClick={() => setSelectedTool(null)}
-                            className="w-full py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs font-semibold"
+                            className="w-full py-2 rounded-xl bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 text-xs font-semibold cursor-pointer transition-colors"
                           >
                             Cancel
                           </button>
@@ -1258,15 +1276,15 @@ Return strictly a JSON object with this exact structure:
       {activeTab === 'blog' && (
         <div className="space-y-6">
           {!selectedBlog && !isCreatingBlog ? (
-            /* Blog Posts List */
-            <div className="p-6 rounded-2xl bg-[#0D0F13] border border-slate-800 space-y-4">
+            /* Blog Posts List Card */
+            <div className="p-6 sm:p-8 rounded-3xl bg-white dark:bg-[#111318] border border-slate-200 dark:border-slate-800 space-y-6 shadow-sm dark:shadow-xl">
               <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
                 <div>
-                  <h3 className="text-lg font-bold text-white flex items-center gap-2">
-                    <BookOpen className="w-5 h-5 text-cyan-400" />
+                  <h3 className="text-xl font-bold text-slate-900 dark:text-white flex items-center gap-2 font-display">
+                    <BookOpen className="w-5 h-5 text-cyan-600 dark:text-cyan-400" />
                     Blog Articles & Technical Guides CMS
                   </h3>
-                  <p className="text-xs text-slate-400">
+                  <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 mt-1">
                     Publish in-depth technical tutorials, architectural whitepapers, and guides that drive organic search traffic.
                   </p>
                 </div>
@@ -1279,13 +1297,13 @@ Return strictly a JSON object with this exact structure:
                       value={blogSearchFilter}
                       onChange={(e) => setBlogSearchFilter(e.target.value)}
                       placeholder="Search articles..."
-                      className="w-full pl-9 pr-3 py-2 bg-[#171A21] border border-slate-700 rounded-xl text-xs text-white placeholder-slate-500 focus:outline-none focus:border-cyan-500"
+                      className="w-full pl-9 pr-3.5 py-2.5 bg-slate-50 dark:bg-[#171A21] border border-slate-200 dark:border-slate-700 rounded-xl text-xs text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:border-cyan-500 font-medium"
                     />
                   </div>
 
                   <button
                     onClick={() => handleOpenBlogEditor()}
-                    className="px-4 py-2 rounded-xl bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold text-xs flex items-center gap-1.5 shadow-md shadow-cyan-500/20 shrink-0"
+                    className="px-4 py-2.5 rounded-xl bg-cyan-600 hover:bg-cyan-500 dark:bg-cyan-500 dark:hover:bg-cyan-400 text-white dark:text-slate-950 font-bold text-xs flex items-center gap-1.5 cursor-pointer shadow-md shadow-cyan-600/20 hover:shadow-lg hover:shadow-cyan-500/30 transition-all shrink-0"
                   >
                     <Plus className="w-3.5 h-3.5" />
                     <span>Write New Article</span>
@@ -1293,38 +1311,38 @@ Return strictly a JSON object with this exact structure:
                 </div>
               </div>
 
-              <div className="overflow-x-auto">
+              <div className="overflow-x-auto rounded-2xl border border-slate-200 dark:border-slate-800">
                 <table className="w-full text-left text-xs">
-                  <thead className="border-b border-slate-800 text-slate-400 font-semibold">
+                  <thead className="bg-slate-50 dark:bg-[#14171F] border-b border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-300 font-bold uppercase tracking-wider text-[11px]">
                     <tr>
-                      <th className="py-3 px-3">Title & Slug</th>
-                      <th className="py-3 px-3">Category</th>
-                      <th className="py-3 px-3">Author</th>
-                      <th className="py-3 px-3">Date</th>
-                      <th className="py-3 px-3 text-right">Actions</th>
+                      <th className="py-3.5 px-4">Title & Slug</th>
+                      <th className="py-3.5 px-4">Category</th>
+                      <th className="py-3.5 px-4">Author</th>
+                      <th className="py-3.5 px-4">Date</th>
+                      <th className="py-3.5 px-4 text-right">Actions</th>
                     </tr>
                   </thead>
-                  <tbody className="divide-y divide-slate-800/60">
+                  <tbody className="divide-y divide-slate-100 dark:divide-slate-800/80 bg-white dark:bg-[#111318]">
                     {filteredBlogs.map((b) => (
-                      <tr key={b.slug} className="hover:bg-[#14171F] transition-colors">
-                        <td className="py-3 px-3">
-                          <div className="font-bold text-white line-clamp-1">{b.title}</div>
-                          <div className="font-mono text-[10px] text-slate-500">/blog/{b.slug}</div>
+                      <tr key={b.slug} className="hover:bg-slate-50/80 dark:hover:bg-[#171A21] transition-colors">
+                        <td className="py-3.5 px-4">
+                          <div className="font-bold text-slate-900 dark:text-white line-clamp-1">{b.title}</div>
+                          <div className="font-mono text-[10px] text-slate-500 dark:text-slate-400">/blog/{b.slug}</div>
                         </td>
-                        <td className="py-3 px-3">
-                          <span className="px-2 py-0.5 rounded bg-slate-800 text-cyan-400 text-[10px] font-semibold">
+                        <td className="py-3.5 px-4">
+                          <span className="px-2.5 py-0.5 rounded-md bg-cyan-50 dark:bg-slate-800 text-cyan-700 dark:text-cyan-400 border border-cyan-200 dark:border-slate-700 text-[10px] font-bold">
                             {b.category}
                           </span>
                         </td>
-                        <td className="py-3 px-3 text-slate-300">{b.author?.name}</td>
-                        <td className="py-3 px-3 text-slate-400 font-mono text-[11px]">
+                        <td className="py-3.5 px-4 text-slate-700 dark:text-slate-300 font-medium">{b.author?.name}</td>
+                        <td className="py-3.5 px-4 text-slate-500 dark:text-slate-400 font-mono text-[11px]">
                           {b.publishedAt || b.publishDate}
                         </td>
-                        <td className="py-3 px-3 text-right">
+                        <td className="py-3.5 px-4 text-right">
                           <div className="flex items-center justify-end gap-2">
                             <button
                               onClick={() => handleOpenBlogEditor(b)}
-                              className="p-1.5 rounded-lg bg-cyan-500/10 text-cyan-400 hover:bg-cyan-500 hover:text-slate-950 font-semibold text-xs flex items-center gap-1"
+                              className="p-1.5 rounded-lg bg-cyan-50 dark:bg-cyan-500/10 text-cyan-700 dark:text-cyan-400 hover:bg-cyan-600 hover:text-white dark:hover:bg-cyan-500 dark:hover:text-slate-950 font-bold text-xs flex items-center gap-1 cursor-pointer transition-colors"
                               title="Edit Article"
                             >
                               <Edit className="w-3.5 h-3.5" />
@@ -1332,14 +1350,14 @@ Return strictly a JSON object with this exact structure:
                             <Link
                               href={`/blog/${b.slug}`}
                               target="_blank"
-                              className="p-1.5 rounded-lg bg-[#171A21] text-slate-400 hover:text-white"
+                              className="p-1.5 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 hover:text-cyan-600 dark:hover:text-white cursor-pointer"
                               title="View Live"
                             >
                               <ExternalLink className="w-3.5 h-3.5" />
                             </Link>
                             <button
                               onClick={() => handleDeleteBlogPost(b.slug)}
-                              className="p-1.5 rounded-lg bg-rose-500/10 text-rose-400 hover:bg-rose-500 hover:text-white"
+                              className="p-1.5 rounded-lg bg-rose-50 dark:bg-rose-500/10 text-rose-600 dark:text-rose-400 hover:bg-rose-600 hover:text-white cursor-pointer transition-colors"
                               title="Delete Article"
                             >
                               <Trash2 className="w-3.5 h-3.5" />
@@ -1353,20 +1371,20 @@ Return strictly a JSON object with this exact structure:
               </div>
             </div>
           ) : (
-            /* Blog Editor Studio */
-            <div className="bg-[#0D0F13] border border-slate-800 rounded-3xl p-6 sm:p-8 space-y-6">
-              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-slate-800">
+            /* Blog Editor Studio Card */
+            <div className="bg-white dark:bg-[#111318] border border-slate-200 dark:border-slate-800 rounded-3xl p-6 sm:p-8 space-y-6 shadow-sm dark:shadow-xl">
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-slate-200 dark:border-slate-800">
                 <div>
                   <button
                     onClick={() => {
                       setSelectedBlog(null);
                       setIsCreatingBlog(false);
                     }}
-                    className="text-xs text-slate-400 hover:text-white flex items-center gap-1 mb-2"
+                    className="text-xs font-semibold text-slate-500 hover:text-slate-900 dark:hover:text-white flex items-center gap-1 mb-2 cursor-pointer"
                   >
                     ← Back to Articles List
                   </button>
-                  <h2 className="text-2xl font-bold text-white flex items-center gap-2">
+                  <h2 className="text-2xl font-extrabold text-slate-900 dark:text-white flex items-center gap-2 font-display">
                     <span>{isCreatingBlog ? 'Write New Blog Article' : `Edit Article: ${blogEditForm.title}`}</span>
                   </h2>
                 </div>
@@ -1376,7 +1394,7 @@ Return strictly a JSON object with this exact structure:
                     type="button"
                     onClick={handleGenerateBlogWithAI}
                     disabled={aiGeneratingBlog}
-                    className="px-4 py-2 rounded-xl bg-purple-600 hover:bg-purple-500 text-white font-bold text-xs flex items-center gap-1.5 shadow-md shadow-purple-600/20 disabled:opacity-50"
+                    className="px-4 py-2 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-bold text-xs flex items-center gap-1.5 cursor-pointer shadow-md shadow-indigo-600/20 disabled:opacity-50 transition-all"
                   >
                     <Sparkles className={`w-3.5 h-3.5 ${aiGeneratingBlog ? 'animate-spin' : ''}`} />
                     <span>{aiGeneratingBlog ? 'Generating Draft...' : 'AI Generate Article Draft'}</span>
@@ -1385,7 +1403,7 @@ Return strictly a JSON object with this exact structure:
                   <button
                     type="button"
                     onClick={handleSaveBlogPost}
-                    className="px-5 py-2 rounded-xl bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold text-xs flex items-center gap-1.5 shadow-md shadow-cyan-500/20"
+                    className="px-5 py-2 rounded-xl bg-cyan-600 hover:bg-cyan-500 dark:bg-cyan-500 dark:hover:bg-cyan-400 text-white dark:text-slate-950 font-bold text-xs flex items-center gap-1.5 cursor-pointer shadow-md shadow-cyan-600/20 hover:shadow-lg hover:shadow-cyan-500/30 transition-all"
                   >
                     <CheckCircle2 className="w-4 h-4" />
                     <span>Publish Article</span>
@@ -1397,33 +1415,33 @@ Return strictly a JSON object with this exact structure:
                 {/* Left 2 cols: Main Editor */}
                 <div className="lg:col-span-2 space-y-5">
                   <div>
-                    <label className="block text-slate-300 text-xs font-semibold mb-1">Article Title</label>
+                    <label className="block text-slate-800 dark:text-slate-200 text-xs font-bold mb-1.5">Article Title</label>
                     <input
                       type="text"
                       value={blogEditForm.title}
                       onChange={(e) => handleBlogTitleChange(e.target.value)}
                       placeholder="e.g., The Architecture of Zero-Data-Retention Developer Tools"
-                      className="w-full px-4 py-2.5 bg-[#14171F] border border-slate-700 rounded-xl text-sm font-bold text-white focus:outline-none focus:border-cyan-500"
+                      className="w-full px-4 py-2.5 bg-slate-50 dark:bg-[#14171F] border border-slate-200 dark:border-slate-700 rounded-xl text-sm font-bold text-slate-900 dark:text-white focus:outline-none focus:border-cyan-500 focus:ring-2 focus:ring-cyan-500/20"
                     />
                   </div>
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
-                      <label className="block text-slate-300 text-xs font-semibold mb-1">URL Slug</label>
+                      <label className="block text-slate-800 dark:text-slate-200 text-xs font-bold mb-1.5">URL Slug</label>
                       <input
                         type="text"
                         value={blogEditForm.slug}
                         onChange={(e) => setBlogEditForm({ ...blogEditForm, slug: e.target.value })}
-                        className="w-full px-3.5 py-2 bg-[#14171F] border border-slate-700 rounded-xl text-xs font-mono text-cyan-400 focus:outline-none focus:border-cyan-500"
+                        className="w-full px-3.5 py-2.5 bg-slate-50 dark:bg-[#14171F] border border-slate-200 dark:border-slate-700 rounded-xl text-xs font-mono text-cyan-700 dark:text-cyan-400 font-bold focus:outline-none focus:border-cyan-500"
                       />
                     </div>
 
                     <div>
-                      <label className="block text-slate-300 text-xs font-semibold mb-1">Category</label>
+                      <label className="block text-slate-800 dark:text-slate-200 text-xs font-bold mb-1.5">Category</label>
                       <select
                         value={blogEditForm.category}
                         onChange={(e) => setBlogEditForm({ ...blogEditForm, category: e.target.value })}
-                        className="w-full px-3.5 py-2 bg-[#14171F] border border-slate-700 rounded-xl text-xs text-white focus:outline-none focus:border-cyan-500"
+                        className="w-full px-3.5 py-2.5 bg-slate-50 dark:bg-[#14171F] border border-slate-200 dark:border-slate-700 rounded-xl text-xs text-slate-900 dark:text-white font-medium focus:outline-none focus:border-cyan-500"
                       >
                         <option value="Developer Guide">Developer Guide</option>
                         <option value="Security & Architecture">Security & Architecture</option>
@@ -1435,7 +1453,7 @@ Return strictly a JSON object with this exact structure:
                   </div>
 
                   <div>
-                    <label className="block text-slate-300 text-xs font-semibold mb-1">
+                    <label className="block text-slate-800 dark:text-slate-200 text-xs font-bold mb-1.5">
                       Excerpt / Summary (Meta Description)
                     </label>
                     <textarea
@@ -1443,16 +1461,16 @@ Return strictly a JSON object with this exact structure:
                       value={blogEditForm.excerpt}
                       onChange={(e) => setBlogEditForm({ ...blogEditForm, excerpt: e.target.value })}
                       placeholder="Brief 2-sentence synopsis for social cards and search engines..."
-                      className="w-full px-3.5 py-2 bg-[#14171F] border border-slate-700 rounded-xl text-xs text-white focus:outline-none focus:border-cyan-500 leading-relaxed"
+                      className="w-full px-3.5 py-2.5 bg-slate-50 dark:bg-[#14171F] border border-slate-200 dark:border-slate-700 rounded-xl text-xs text-slate-900 dark:text-white font-medium focus:outline-none focus:border-cyan-500 leading-relaxed"
                     />
                   </div>
 
                   <div>
-                    <div className="flex justify-between items-center mb-1">
-                      <label className="text-slate-300 text-xs font-semibold">
+                    <div className="flex justify-between items-center mb-1.5">
+                      <label className="text-slate-800 dark:text-slate-200 text-xs font-bold">
                         Article Content (Multi-paragraph or Markdown)
                       </label>
-                      <span className="text-[10px] text-slate-500 font-mono">
+                      <span className="text-[11px] text-slate-500 font-mono font-bold">
                         {blogEditForm.content.split(/\s+/).filter(Boolean).length} words
                       </span>
                     </div>
@@ -1461,67 +1479,67 @@ Return strictly a JSON object with this exact structure:
                       value={blogEditForm.content}
                       onChange={(e) => setBlogEditForm({ ...blogEditForm, content: e.target.value })}
                       placeholder="Write your article body here. Separate paragraphs with an empty line (double enter)..."
-                      className="w-full px-4 py-3 bg-[#14171F] border border-slate-700 rounded-xl text-xs font-mono text-slate-200 focus:outline-none focus:border-cyan-500 leading-relaxed"
+                      className="w-full px-4 py-3 bg-slate-50 dark:bg-[#14171F] border border-slate-200 dark:border-slate-700 rounded-xl text-xs font-mono text-slate-900 dark:text-slate-200 focus:outline-none focus:border-cyan-500 leading-relaxed"
                     />
                   </div>
                 </div>
 
                 {/* Right col: Author & Metadata */}
                 <div className="space-y-5">
-                  <div className="p-5 rounded-2xl bg-[#14171F] border border-slate-800 space-y-4">
-                    <h4 className="text-xs font-bold text-white uppercase tracking-wider">Publishing Details</h4>
+                  <div className="p-5 rounded-2xl bg-slate-50 dark:bg-[#14171F] border border-slate-200 dark:border-slate-800 space-y-4">
+                    <h4 className="text-xs font-bold text-slate-900 dark:text-white uppercase tracking-wider">Publishing Details</h4>
 
                     <div>
-                      <label className="block text-slate-300 text-xs font-semibold mb-1">Author Name</label>
+                      <label className="block text-slate-800 dark:text-slate-200 text-xs font-bold mb-1.5">Author Name</label>
                       <input
                         type="text"
                         value={blogEditForm.authorName}
                         onChange={(e) => setBlogEditForm({ ...blogEditForm, authorName: e.target.value })}
-                        className="w-full px-3 py-2 bg-[#0D0F13] border border-slate-700 rounded-xl text-xs text-white focus:outline-none focus:border-cyan-500"
+                        className="w-full px-3 py-2 bg-white dark:bg-[#0D0F13] border border-slate-200 dark:border-slate-700 rounded-xl text-xs text-slate-900 dark:text-white font-medium focus:outline-none focus:border-cyan-500"
                       />
                     </div>
 
                     <div>
-                      <label className="block text-slate-300 text-xs font-semibold mb-1">Author Role / Title</label>
+                      <label className="block text-slate-800 dark:text-slate-200 text-xs font-bold mb-1.5">Author Role / Title</label>
                       <input
                         type="text"
                         value={blogEditForm.authorRole}
                         onChange={(e) => setBlogEditForm({ ...blogEditForm, authorRole: e.target.value })}
-                        className="w-full px-3 py-2 bg-[#0D0F13] border border-slate-700 rounded-xl text-xs text-white focus:outline-none focus:border-cyan-500"
+                        className="w-full px-3 py-2 bg-white dark:bg-[#0D0F13] border border-slate-200 dark:border-slate-700 rounded-xl text-xs text-slate-900 dark:text-white font-medium focus:outline-none focus:border-cyan-500"
                       />
                     </div>
 
                     <div>
-                      <label className="block text-slate-300 text-xs font-semibold mb-1">Reading Time</label>
+                      <label className="block text-slate-800 dark:text-slate-200 text-xs font-bold mb-1.5">Reading Time</label>
                       <input
                         type="text"
                         value={blogEditForm.readTime}
                         onChange={(e) => setBlogEditForm({ ...blogEditForm, readTime: e.target.value })}
-                        className="w-full px-3 py-2 bg-[#0D0F13] border border-slate-700 rounded-xl text-xs text-white focus:outline-none focus:border-cyan-500"
+                        className="w-full px-3 py-2 bg-white dark:bg-[#0D0F13] border border-slate-200 dark:border-slate-700 rounded-xl text-xs text-slate-900 dark:text-white font-medium focus:outline-none focus:border-cyan-500"
                       />
                     </div>
 
                     <div>
-                      <label className="block text-slate-300 text-xs font-semibold mb-1">Tags (comma separated)</label>
+                      <label className="block text-slate-800 dark:text-slate-200 text-xs font-bold mb-1.5">Tags (comma separated)</label>
                       <input
                         type="text"
                         value={blogEditForm.tags}
                         onChange={(e) => setBlogEditForm({ ...blogEditForm, tags: e.target.value })}
-                        className="w-full px-3 py-2 bg-[#0D0F13] border border-slate-700 rounded-xl text-xs text-white focus:outline-none focus:border-cyan-500"
+                        className="w-full px-3 py-2 bg-white dark:bg-[#0D0F13] border border-slate-200 dark:border-slate-700 rounded-xl text-xs text-slate-900 dark:text-white font-medium focus:outline-none focus:border-cyan-500"
                       />
                     </div>
                   </div>
 
                   {/* Search Snippet Preview */}
-                  <div className="p-5 rounded-2xl bg-[#14171F] border border-slate-800 space-y-3">
-                    <h4 className="text-xs font-bold text-slate-300 uppercase tracking-wider flex items-center gap-1.5">
-                      <Eye className="w-3.5 h-3.5 text-cyan-400" />
+                  <div className="p-5 rounded-2xl bg-slate-50 dark:bg-[#14171F] border border-slate-200 dark:border-slate-800 space-y-3">
+                    <h4 className="text-xs font-bold text-slate-800 dark:text-slate-200 uppercase tracking-wider flex items-center gap-1.5">
+                      <Eye className="w-3.5 h-3.5 text-cyan-600 dark:text-cyan-400" />
                       Google SERP Article Snippet
                     </h4>
 
-                    <div className="p-4 rounded-xl bg-white text-slate-900 space-y-1 font-sans text-left shadow-md">
+                    <div className="p-4 rounded-xl bg-white text-slate-900 border border-slate-200 space-y-1 font-sans text-left shadow-md">
                       <div className="flex items-center gap-1.5 text-[11px] text-[#202124]">
-                        <span className="font-medium">techtools.techusar.com</span>
+                        <span className="font-medium">tools.techusar.com</span>
                         <span className="text-slate-400">› blog › {blogEditForm.slug || 'article-slug'}</span>
                       </div>
                       <h3 className="text-sm font-semibold text-[#1a0dab] hover:underline cursor-pointer line-clamp-1">
@@ -1535,7 +1553,7 @@ Return strictly a JSON object with this exact structure:
                     <button
                       type="button"
                       onClick={handleSaveBlogPost}
-                      className="w-full py-2.5 rounded-xl bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold text-xs shadow-md shadow-cyan-500/20"
+                      className="w-full py-2.5 rounded-xl bg-cyan-600 hover:bg-cyan-500 dark:bg-cyan-500 dark:hover:bg-cyan-400 text-white dark:text-slate-950 font-bold text-xs cursor-pointer shadow-md shadow-cyan-600/20 hover:shadow-lg hover:shadow-cyan-500/30 transition-all"
                     >
                       Publish Article to Live Blog
                     </button>
@@ -1550,49 +1568,49 @@ Return strictly a JSON object with this exact structure:
       {/* TAB: METRICS */}
       {activeTab === 'metrics' && (
         <div className="space-y-6">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-            <div className="p-5 rounded-2xl bg-[#0D0F13] border border-slate-800 space-y-2">
-              <div className="flex items-center justify-between text-slate-400 text-xs">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+            <div className="p-6 rounded-3xl bg-white dark:bg-[#111318] border border-slate-200 dark:border-slate-800 space-y-2 shadow-sm dark:shadow-xl">
+              <div className="flex items-center justify-between text-slate-600 dark:text-slate-400 text-xs font-bold">
                 <span>Total Executions</span>
-                <Activity className="w-4 h-4 text-cyan-400" />
+                <Activity className="w-5 h-5 text-cyan-600 dark:text-cyan-400" />
               </div>
-              <div className="text-3xl font-black text-white font-mono">
+              <div className="text-3xl font-extrabold text-slate-900 dark:text-white font-mono">
                 {metrics?.totalRuns?.toLocaleString() || '14,280'}
               </div>
-              <span className="text-[11px] text-emerald-400 flex items-center gap-1 font-medium">
+              <span className="text-xs text-emerald-600 dark:text-emerald-400 flex items-center gap-1 font-bold">
                 +18.4% this week
               </span>
             </div>
 
-            <div className="p-5 rounded-2xl bg-[#0D0F13] border border-slate-800 space-y-2">
-              <div className="flex items-center justify-between text-slate-400 text-xs">
+            <div className="p-6 rounded-3xl bg-white dark:bg-[#111318] border border-slate-200 dark:border-slate-800 space-y-2 shadow-sm dark:shadow-xl">
+              <div className="flex items-center justify-between text-slate-600 dark:text-slate-400 text-xs font-bold">
                 <span>AI Queries Generated</span>
-                <Cpu className="w-4 h-4 text-purple-400" />
+                <Cpu className="w-5 h-5 text-indigo-600 dark:text-indigo-400" />
               </div>
-              <div className="text-3xl font-black text-white font-mono">
+              <div className="text-3xl font-extrabold text-slate-900 dark:text-white font-mono">
                 {metrics?.aiGenerations?.toLocaleString() || '3,840'}
               </div>
-              <span className="text-[11px] text-purple-400 font-medium">Gemini 2.5 Flash</span>
+              <span className="text-xs text-indigo-600 dark:text-indigo-400 font-bold">Gemini 2.5 Flash</span>
             </div>
 
-            <div className="p-5 rounded-2xl bg-[#0D0F13] border border-slate-800 space-y-2">
-              <div className="flex items-center justify-between text-slate-400 text-xs">
+            <div className="p-6 rounded-3xl bg-white dark:bg-[#111318] border border-slate-200 dark:border-slate-800 space-y-2 shadow-sm dark:shadow-xl">
+              <div className="flex items-center justify-between text-slate-600 dark:text-slate-400 text-xs font-bold">
                 <span>Active Utilities</span>
-                <Database className="w-4 h-4 text-amber-400" />
+                <Database className="w-5 h-5 text-amber-600 dark:text-amber-400" />
               </div>
-              <div className="text-3xl font-black text-white font-mono">{tools.length}</div>
-              <span className="text-[11px] text-slate-500 font-medium">Across 6 categories</span>
+              <div className="text-3xl font-extrabold text-slate-900 dark:text-white font-mono">{tools.length}</div>
+              <span className="text-xs text-slate-500 font-medium">Across 6 categories</span>
             </div>
 
-            <div className="p-5 rounded-2xl bg-[#0D0F13] border border-slate-800 space-y-2">
-              <div className="flex items-center justify-between text-slate-400 text-xs">
+            <div className="p-6 rounded-3xl bg-white dark:bg-[#111318] border border-slate-200 dark:border-slate-800 space-y-2 shadow-sm dark:shadow-xl">
+              <div className="flex items-center justify-between text-slate-600 dark:text-slate-400 text-xs font-bold">
                 <span>Registered Developers</span>
-                <Users className="w-4 h-4 text-emerald-400" />
+                <Users className="w-5 h-5 text-emerald-600 dark:text-emerald-400" />
               </div>
-              <div className="text-3xl font-black text-white font-mono">
+              <div className="text-3xl font-extrabold text-slate-900 dark:text-white font-mono">
                 {metrics?.activeUsers?.toLocaleString() || '1,940'}
               </div>
-              <span className="text-[11px] text-emerald-400 font-medium">99.98% uptime SLA</span>
+              <span className="text-xs text-emerald-600 dark:text-emerald-400 font-bold">99.98% uptime SLA</span>
             </div>
           </div>
         </div>
@@ -1600,14 +1618,14 @@ Return strictly a JSON object with this exact structure:
 
       {/* TAB: BACKUP */}
       {activeTab === 'backup' && (
-        <div className="p-8 rounded-2xl bg-[#0D0F13] border border-slate-800 space-y-4 max-w-2xl">
-          <h3 className="text-lg font-bold text-white">Database Snapshot & Data Portability</h3>
-          <p className="text-xs text-slate-400 leading-relaxed">
+        <div className="p-8 sm:p-10 rounded-3xl bg-white dark:bg-[#111318] border border-slate-200 dark:border-slate-800 space-y-4 max-w-2xl shadow-sm dark:shadow-xl">
+          <h3 className="text-xl font-bold text-slate-900 dark:text-white font-display">Database Snapshot & Data Portability</h3>
+          <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
             TechTools uses a server-side JSON repository architecture. Download complete repository snapshots containing all tools, SEO customizations, and blog posts for offline backup, migrations, or local syncing.
           </p>
           <button
             onClick={handleBackupExport}
-            className="px-5 py-2.5 rounded-xl bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold text-xs flex items-center gap-2 shadow-md shadow-cyan-500/20"
+            className="px-5 py-3 rounded-xl bg-cyan-600 hover:bg-cyan-500 dark:bg-cyan-500 dark:hover:bg-cyan-400 text-white dark:text-slate-950 font-bold text-xs flex items-center gap-2 cursor-pointer shadow-md shadow-cyan-600/20 hover:shadow-lg hover:shadow-cyan-500/30 transition-all"
           >
             <Download className="w-4 h-4" />
             <span>Download Repository JSON Snapshot</span>

@@ -1,0 +1,84 @@
+[
+  {
+    "id": "init-evt-1",
+    "event": "tool_use",
+    "toolSlug": "json-formatter",
+    "toolName": "JSON Formatter & Validator",
+    "category": "developer-tools",
+    "anonymousId": "anon-seed-01",
+    "timestamp": "2026-10-03T06:45:10.056Z"
+  },
+  {
+    "id": "init-evt-2",
+    "event": "ai_generation",
+    "toolSlug": "ai-text-summarizer",
+    "toolName": "AI Text Summarizer",
+    "category": "ai-tools",
+    "anonymousId": "anon-seed-02",
+    "timestamp": "2026-10-03T07:45:10.056Z"
+  },
+  {
+    "event": "ai_generation",
+    "toolSlug": "ai-text-summarizer",
+    "toolName": "AI Text Summarizer",
+    "category": "ai-tools",
+    "anonymousId": "anon",
+    "metadata": {
+      "isSimulated": true
+    },
+    "id": "evt-1791017116863-twjt",
+    "timestamp": "2026-10-03T08:45:16.863Z"
+  },
+  {
+    "event": "login",
+    "userId": "admin-techusar-01",
+    "anonymousId": "anon",
+    "id": "evt-1791017237929-sqz1",
+    "timestamp": "2026-10-03T08:47:17.929Z"
+  },
+  {
+    "event": "ai_generation",
+    "toolSlug": "ai-text-summarizer",
+    "toolName": "AI Text Summarizer",
+    "category": "ai-tools",
+    "anonymousId": "anon",
+    "metadata": {
+      "isSimulated": false
+    },
+    "id": "evt-1791017287830-to7t",
+    "timestamp": "2026-10-03T08:48:07.830Z"
+  },
+  {
+    "event": "limit_reached",
+    "toolSlug": "ai-text-summarizer",
+    "toolName": "AI Text Summarizer",
+    "category": "ai-tools",
+    "anonymousId": "anon",
+    "metadata": {
+      "limit": 2,
+      "current": 2
+    },
+    "id": "evt-1791017459943-mp6a",
+    "timestamp": "2026-10-03T08:50:59.943Z"
+  },
+  {
+    "event": "login",
+    "userId": "admin-techusar-01",
+    "anonymousId": "anon",
+    "id": "evt-1791017465820-654o",
+    "timestamp": "2026-10-03T08:51:05.820Z"
+  },
+  {
+    "event": "ai_generation",
+    "toolSlug": "ai-text-summarizer",
+    "toolName": "AI Text Summarizer",
+    "category": "ai-tools",
+    "userId": "admin-techusar-01",
+    "anonymousId": "anon",
+    "metadata": {
+      "isSimulated": false
+    },
+    "id": "evt-1791017504494-r90r",
+    "timestamp": "2026-10-03T08:51:44.494Z"
+  }
+]

@@ -24,43 +24,54 @@ export async function generateAIText(
   prompt: string,
   options: AIGenerationOptions = {}
 ): Promise<{ text: string; isSimulated?: boolean; error?: string }> {
-  const client = getGeminiClient();
+  const apiKey = process.env.GEMINI_API_KEY;
 
-  if (!client) {
-    // High-quality contextual fallback simulation when API key is not yet set
+  if (!apiKey || apiKey === 'MY_GEMINI_API_KEY' || apiKey.trim() === '') {
     return {
       text: getSimulatedAIResponse(prompt, options.systemPrompt),
       isSimulated: true,
     };
   }
 
-  try {
-    const modelName = options.model || 'gemini-3.8-flash';
-    const systemInstruction = options.systemPrompt || 'You are an AI assistant for TechTools by TechUsar.';
+  const client = new GoogleGenAI({ apiKey });
+  const preferredModel = options.model || 'gemini-3.8-flash';
+  const systemInstruction = options.systemPrompt || 'You are an expert AI assistant for TechTools by TechUsar. Provide clear, accurate, high-quality, formatted Markdown responses.';
 
-    const response = await client.models.generateContent({
-      model: modelName,
-      contents: prompt,
-      config: {
-        systemInstruction,
-        temperature: options.temperature ?? 0.3,
-      },
-    });
+  // Attempt generation with preferred model, then fallback models if necessary
+  const candidateModels = [
+    preferredModel,
+    'gemini-3.8-flash',
+    'gemini-3.5-flash',
+    'gemini-flash-latest',
+  ];
 
-    const outputText = response.text || '';
-    return { text: outputText };
-  } catch (err: any) {
-    console.error('Gemini API execution error:', err);
-    // Return resilient fallback with informative notice
-    return {
-      text: `[Notice: Live AI generation encountered a temporary limit. Displaying fallback analysis below]\n\n${getSimulatedAIResponse(
-        prompt,
-        options.systemPrompt
-      )}`,
-      isSimulated: true,
-      error: err?.message,
-    };
+  const uniqueModels = Array.from(new Set(candidateModels));
+
+  for (const modelName of uniqueModels) {
+    try {
+      const response = await client.models.generateContent({
+        model: modelName,
+        contents: prompt,
+        config: {
+          systemInstruction,
+          temperature: options.temperature ?? 0.3,
+        },
+      });
+
+      const outputText = response.text || '';
+      if (outputText.trim()) {
+        return { text: outputText };
+      }
+    } catch (err: any) {
+      console.warn(`Gemini API error with model ${modelName}:`, err?.message || err);
+    }
   }
+
+  // Fallback if all live API attempts fail
+  return {
+    text: getSimulatedAIResponse(prompt, options.systemPrompt),
+    isSimulated: true,
+  };
 }
 
 // Intelligent fallback generator for preview environments before API key injection

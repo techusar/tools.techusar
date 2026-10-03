@@ -1,0 +1,13 @@
+{
+  "siteName": "TechTools",
+  "tagline": "Powerful tools. Zero complexity.",
+  "anonymousDefaultLimit": 2,
+  "authenticatedDefaultLimit": 4,
+  "analyticsEnabled": true,
+  "retentionDays": 90,
+  "maintenanceMode": false,
+  "aiProvider": "gemini",
+  "aiModel": "gemini-3.8-flash",
+  "contactEmail": "techusar17@gmail.com",
+  "updatedAt": "2026-10-03T08:45:10.056Z"
+}
