@@ -1,63 +1,76 @@
 'use client';
 
 import React from 'react';
+import dynamic from 'next/dynamic';
 import { ToolItem } from '@/lib/types';
-import { JsonFormatterView } from './views/JsonFormatterView';
-import { AITextToolView } from './views/AITextToolView';
-import { ImageCompressorView } from './views/ImageCompressorView';
-import { PasswordGeneratorView } from './views/PasswordGeneratorView';
-import { QrCodeGeneratorView } from './views/QrCodeGeneratorView';
-import { WordCounterView } from './views/WordCounterView';
-import { Base64View } from './views/Base64View';
-import { JwtDecoderView } from './views/JwtDecoderView';
-import { HashGeneratorView } from './views/HashGeneratorView';
-import { RegexTesterView } from './views/RegexTesterView';
-import { InvoiceGeneratorView } from './views/InvoiceGeneratorView';
-import { LoanEmiView } from './views/LoanEmiView';
-import { PercentageCalculatorView } from './views/PercentageCalculatorView';
-import { ProfitMarginView } from './views/ProfitMarginView';
-import { CompoundInterestView } from './views/CompoundInterestView';
-import { SerpPreviewView } from './views/SerpPreviewView';
-import { OgMetaGeneratorView } from './views/OgMetaGeneratorView';
-import { SchemaGeneratorView } from './views/SchemaGeneratorView';
-import { UtmBuilderView } from './views/UtmBuilderView';
-import { ColorConverterView } from './views/ColorConverterView';
-import { AgeCalculatorView } from './views/AgeCalculatorView';
-import { UnitConverterView } from './views/UnitConverterView';
-import { CaseConverterView } from './views/CaseConverterView';
-import { TextDiffView } from './views/TextDiffView';
-import { LoremIpsumView } from './views/LoremIpsumView';
-import { UuidGeneratorView } from './views/UuidGeneratorView';
-import { UnixTimestampView } from './views/UnixTimestampView';
-import { UrlEncoderView } from './views/UrlEncoderView';
-import { SlugGeneratorView } from './views/SlugGeneratorView';
-import { WcagContrastView } from './views/WcagContrastView';
-import { CssBoxShadowView } from './views/CssBoxShadowView';
-import { ImageResizerView } from './views/ImageResizerView';
-import { ImageToBase64View } from './views/ImageToBase64View';
-import { FaviconGeneratorView } from './views/FaviconGeneratorView';
-import { MarkdownEditorView } from './views/MarkdownEditorView';
-import { CsvJsonConverterView } from './views/CsvJsonConverterView';
-import { HtmlEntitiesView } from './views/HtmlEntitiesView';
-import { PomodoroTimerView } from './views/PomodoroTimerView';
-import { TimeZoneConverterView } from './views/TimeZoneConverterView';
-import { AspectRatioCalculatorView } from './views/AspectRatioCalculatorView';
-import { CssGradientGeneratorView } from './views/CssGradientGeneratorView';
-import { GlassmorphismView } from './views/GlassmorphismView';
-import { XmlYamlFormatterView } from './views/XmlYamlFormatterView';
-import { GpaGradeCalculatorView } from './views/GpaGradeCalculatorView';
-import { BmiCalorieCalculatorView } from './views/BmiCalorieCalculatorView';
-import { SocialPostPreviewView } from './views/SocialPostPreviewView';
-import { DummyDataGeneratorView } from './views/DummyDataGeneratorView';
-import { NumberBaseConverterView } from './views/NumberBaseConverterView';
-import { PdfViewerToolView } from './views/PdfViewerToolView';
-import { GenericToolFallbackView } from './views/GenericToolFallbackView';
-import { JpgToPngView } from './views/JpgToPngView';
-import { PngToJpgView } from './views/PngToJpgView';
-import { ImageToWebpView } from './views/ImageToWebpView';
-import { CharacterCounterView } from './views/CharacterCounterView';
-import { JsonValidatorView } from './views/JsonValidatorView';
-import { GstCalculatorView } from './views/GstCalculatorView';
+
+// Lightweight unified placeholder skeleton while individual tool chunk loads
+const ToolLoadingSkeleton = () => (
+  <div className="w-full min-h-[340px] flex items-center justify-center p-8 bg-white dark:bg-[#111318] rounded-3xl border border-slate-200 dark:border-slate-800 shadow-sm animate-pulse">
+    <div className="flex flex-col items-center gap-3">
+      <div className="w-8 h-8 rounded-full border-2 border-cyan-500 border-t-transparent animate-spin" />
+      <span className="text-xs font-semibold text-slate-500 dark:text-slate-400">Loading interactive tool...</span>
+    </div>
+  </div>
+);
+
+// Dynamic lazy imports for all 55+ tool view components to isolate client bundle size per tool
+const JsonFormatterView = dynamic(() => import('./views/JsonFormatterView').then((m) => m.JsonFormatterView), { loading: ToolLoadingSkeleton });
+const JsonValidatorView = dynamic(() => import('./views/JsonValidatorView').then((m) => m.JsonValidatorView), { loading: ToolLoadingSkeleton });
+const AITextToolView = dynamic(() => import('./views/AITextToolView').then((m) => m.AITextToolView), { loading: ToolLoadingSkeleton });
+const ImageCompressorView = dynamic(() => import('./views/ImageCompressorView').then((m) => m.ImageCompressorView), { loading: ToolLoadingSkeleton });
+const PasswordGeneratorView = dynamic(() => import('./views/PasswordGeneratorView').then((m) => m.PasswordGeneratorView), { loading: ToolLoadingSkeleton });
+const QrCodeGeneratorView = dynamic(() => import('./views/QrCodeGeneratorView').then((m) => m.QrCodeGeneratorView), { loading: ToolLoadingSkeleton });
+const WordCounterView = dynamic(() => import('./views/WordCounterView').then((m) => m.WordCounterView), { loading: ToolLoadingSkeleton });
+const Base64View = dynamic(() => import('./views/Base64View').then((m) => m.Base64View), { loading: ToolLoadingSkeleton });
+const JwtDecoderView = dynamic(() => import('./views/JwtDecoderView').then((m) => m.JwtDecoderView), { loading: ToolLoadingSkeleton });
+const HashGeneratorView = dynamic(() => import('./views/HashGeneratorView').then((m) => m.HashGeneratorView), { loading: ToolLoadingSkeleton });
+const RegexTesterView = dynamic(() => import('./views/RegexTesterView').then((m) => m.RegexTesterView), { loading: ToolLoadingSkeleton });
+const InvoiceGeneratorView = dynamic(() => import('./views/InvoiceGeneratorView').then((m) => m.InvoiceGeneratorView), { loading: ToolLoadingSkeleton });
+const LoanEmiView = dynamic(() => import('./views/LoanEmiView').then((m) => m.LoanEmiView), { loading: ToolLoadingSkeleton });
+const PercentageCalculatorView = dynamic(() => import('./views/PercentageCalculatorView').then((m) => m.PercentageCalculatorView), { loading: ToolLoadingSkeleton });
+const ProfitMarginView = dynamic(() => import('./views/ProfitMarginView').then((m) => m.ProfitMarginView), { loading: ToolLoadingSkeleton });
+const CompoundInterestView = dynamic(() => import('./views/CompoundInterestView').then((m) => m.CompoundInterestView), { loading: ToolLoadingSkeleton });
+const SerpPreviewView = dynamic(() => import('./views/SerpPreviewView').then((m) => m.SerpPreviewView), { loading: ToolLoadingSkeleton });
+const OgMetaGeneratorView = dynamic(() => import('./views/OgMetaGeneratorView').then((m) => m.OgMetaGeneratorView), { loading: ToolLoadingSkeleton });
+const SchemaGeneratorView = dynamic(() => import('./views/SchemaGeneratorView').then((m) => m.SchemaGeneratorView), { loading: ToolLoadingSkeleton });
+const UtmBuilderView = dynamic(() => import('./views/UtmBuilderView').then((m) => m.UtmBuilderView), { loading: ToolLoadingSkeleton });
+const ColorConverterView = dynamic(() => import('./views/ColorConverterView').then((m) => m.ColorConverterView), { loading: ToolLoadingSkeleton });
+const AgeCalculatorView = dynamic(() => import('./views/AgeCalculatorView').then((m) => m.AgeCalculatorView), { loading: ToolLoadingSkeleton });
+const UnitConverterView = dynamic(() => import('./views/UnitConverterView').then((m) => m.UnitConverterView), { loading: ToolLoadingSkeleton });
+const CaseConverterView = dynamic(() => import('./views/CaseConverterView').then((m) => m.CaseConverterView), { loading: ToolLoadingSkeleton });
+const TextDiffView = dynamic(() => import('./views/TextDiffView').then((m) => m.TextDiffView), { loading: ToolLoadingSkeleton });
+const LoremIpsumView = dynamic(() => import('./views/LoremIpsumView').then((m) => m.LoremIpsumView), { loading: ToolLoadingSkeleton });
+const UuidGeneratorView = dynamic(() => import('./views/UuidGeneratorView').then((m) => m.UuidGeneratorView), { loading: ToolLoadingSkeleton });
+const UnixTimestampView = dynamic(() => import('./views/UnixTimestampView').then((m) => m.UnixTimestampView), { loading: ToolLoadingSkeleton });
+const UrlEncoderView = dynamic(() => import('./views/UrlEncoderView').then((m) => m.UrlEncoderView), { loading: ToolLoadingSkeleton });
+const SlugGeneratorView = dynamic(() => import('./views/SlugGeneratorView').then((m) => m.SlugGeneratorView), { loading: ToolLoadingSkeleton });
+const WcagContrastView = dynamic(() => import('./views/WcagContrastView').then((m) => m.WcagContrastView), { loading: ToolLoadingSkeleton });
+const CssBoxShadowView = dynamic(() => import('./views/CssBoxShadowView').then((m) => m.CssBoxShadowView), { loading: ToolLoadingSkeleton });
+const ImageResizerView = dynamic(() => import('./views/ImageResizerView').then((m) => m.ImageResizerView), { loading: ToolLoadingSkeleton });
+const ImageToBase64View = dynamic(() => import('./views/ImageToBase64View').then((m) => m.ImageToBase64View), { loading: ToolLoadingSkeleton });
+const FaviconGeneratorView = dynamic(() => import('./views/FaviconGeneratorView').then((m) => m.FaviconGeneratorView), { loading: ToolLoadingSkeleton });
+const MarkdownEditorView = dynamic(() => import('./views/MarkdownEditorView').then((m) => m.MarkdownEditorView), { loading: ToolLoadingSkeleton });
+const CsvJsonConverterView = dynamic(() => import('./views/CsvJsonConverterView').then((m) => m.CsvJsonConverterView), { loading: ToolLoadingSkeleton });
+const HtmlEntitiesView = dynamic(() => import('./views/HtmlEntitiesView').then((m) => m.HtmlEntitiesView), { loading: ToolLoadingSkeleton });
+const PomodoroTimerView = dynamic(() => import('./views/PomodoroTimerView').then((m) => m.PomodoroTimerView), { loading: ToolLoadingSkeleton });
+const TimeZoneConverterView = dynamic(() => import('./views/TimeZoneConverterView').then((m) => m.TimeZoneConverterView), { loading: ToolLoadingSkeleton });
+const AspectRatioCalculatorView = dynamic(() => import('./views/AspectRatioCalculatorView').then((m) => m.AspectRatioCalculatorView), { loading: ToolLoadingSkeleton });
+const CssGradientGeneratorView = dynamic(() => import('./views/CssGradientGeneratorView').then((m) => m.CssGradientGeneratorView), { loading: ToolLoadingSkeleton });
+const GlassmorphismView = dynamic(() => import('./views/GlassmorphismView').then((m) => m.GlassmorphismView), { loading: ToolLoadingSkeleton });
+const XmlYamlFormatterView = dynamic(() => import('./views/XmlYamlFormatterView').then((m) => m.XmlYamlFormatterView), { loading: ToolLoadingSkeleton });
+const GpaGradeCalculatorView = dynamic(() => import('./views/GpaGradeCalculatorView').then((m) => m.GpaGradeCalculatorView), { loading: ToolLoadingSkeleton });
+const BmiCalorieCalculatorView = dynamic(() => import('./views/BmiCalorieCalculatorView').then((m) => m.BmiCalorieCalculatorView), { loading: ToolLoadingSkeleton });
+const SocialPostPreviewView = dynamic(() => import('./views/SocialPostPreviewView').then((m) => m.SocialPostPreviewView), { loading: ToolLoadingSkeleton });
+const DummyDataGeneratorView = dynamic(() => import('./views/DummyDataGeneratorView').then((m) => m.DummyDataGeneratorView), { loading: ToolLoadingSkeleton });
+const NumberBaseConverterView = dynamic(() => import('./views/NumberBaseConverterView').then((m) => m.NumberBaseConverterView), { loading: ToolLoadingSkeleton });
+const PdfViewerToolView = dynamic(() => import('./views/PdfViewerToolView').then((m) => m.PdfViewerToolView), { loading: ToolLoadingSkeleton });
+const GenericToolFallbackView = dynamic(() => import('./views/GenericToolFallbackView').then((m) => m.GenericToolFallbackView), { loading: ToolLoadingSkeleton });
+const JpgToPngView = dynamic(() => import('./views/JpgToPngView').then((m) => m.JpgToPngView), { loading: ToolLoadingSkeleton });
+const PngToJpgView = dynamic(() => import('./views/PngToJpgView').then((m) => m.PngToJpgView), { loading: ToolLoadingSkeleton });
+const ImageToWebpView = dynamic(() => import('./views/ImageToWebpView').then((m) => m.ImageToWebpView), { loading: ToolLoadingSkeleton });
+const CharacterCounterView = dynamic(() => import('./views/CharacterCounterView').then((m) => m.CharacterCounterView), { loading: ToolLoadingSkeleton });
+const GstCalculatorView = dynamic(() => import('./views/GstCalculatorView').then((m) => m.GstCalculatorView), { loading: ToolLoadingSkeleton });
 
 export function ToolViewResolver({ tool }: { tool: ToolItem }) {
   const slug = tool.slug.toLowerCase();

@@ -1,6 +1,7 @@
 import React, { Suspense } from 'react';
 import type { Metadata, Viewport } from 'next';
 import Script from 'next/script';
+import { Plus_Jakarta_Sans, Space_Grotesk, JetBrains_Mono } from 'next/font/google';
 import './globals.css';
 import { ThemeProvider } from '@/components/theme/ThemeContext';
 import { UserProvider } from '@/components/auth/UserContext';
@@ -14,6 +15,27 @@ import { getAllTools } from '@/lib/data/toolsRepository';
 import { BrandedLoading } from '@/components/ui/BrandedLoading';
 import { NavigationProgressBar } from '@/components/navigation/NavigationProgressBar';
 import { WhatsAppButton } from '@/components/layout/WhatsAppButton';
+
+const plusJakartaSans = Plus_Jakarta_Sans({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-sans',
+  weight: ['300', '400', '500', '600', '700', '800'],
+});
+
+const spaceGrotesk = Space_Grotesk({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-display',
+  weight: ['400', '500', '600', '700'],
+});
+
+const jetbrainsMono = JetBrains_Mono({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-mono',
+  weight: ['400', '500', '600', '700'],
+});
 
 export const viewport: Viewport = {
   width: 'device-width',
@@ -158,7 +180,11 @@ export default async function RootLayout({ children }: { children: React.ReactNo
   }));
 
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html
+      lang="en"
+      suppressHydrationWarning
+      className={`${plusJakartaSans.variable} ${spaceGrotesk.variable} ${jetbrainsMono.variable}`}
+    >
       <head />
       <body
         className="font-sans bg-slate-50 text-slate-900 dark:bg-[#0B0D11] dark:text-slate-100 min-h-screen flex flex-col antialiased selection:bg-cyan-500 selection:text-slate-950 transition-colors duration-200"
@@ -187,29 +213,28 @@ export default async function RootLayout({ children }: { children: React.ReactNo
           dangerouslySetInnerHTML={{ __html: JSON.stringify(siteJsonLd) }}
         />
 
-        {/* Optional Google AdSense client script if configured */}
-        {AD_CONFIG.client && (
-          <Script
-            src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${AD_CONFIG.client}`}
-            strategy="afterInteractive"
-            crossOrigin="anonymous"
-          />
-        )}
-
-        {/* Google tag (gtag.js) */}
+        {/* Google tag (gtag.js) deferred to eliminate main-thread TBT */}
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-1FCL4FGWRP"
-          strategy="afterInteractive"
+          strategy="lazyOnload"
         />
-        <Script id="google-tag-analytics" strategy="afterInteractive">
+        <Script id="google-tag-analytics" strategy="lazyOnload">
           {`
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
-
             gtag('config', 'G-1FCL4FGWRP');
           `}
         </Script>
+
+        {/* Optional Google AdSense client script if configured */}
+        {AD_CONFIG.client && (
+          <Script
+            src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${AD_CONFIG.client}`}
+            strategy="lazyOnload"
+            crossOrigin="anonymous"
+          />
+        )}
 
         <NavigationProgressBar />
         <ThemeProvider>

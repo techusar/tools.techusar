@@ -71,15 +71,15 @@ export function Hero3DTypography({
         aria-hidden="true"
       />
 
-      {/* Main Content Stagger Wrapper */}
+      {/* Main Content Stagger Wrapper - initial={false} enables instant first-paint LCP */}
       <motion.div
         variants={containerVariants}
-        initial="hidden"
+        initial={false}
         animate="show"
         className="relative"
       >
         {/* Top Feature Capsule Pill */}
-        <motion.div variants={itemVariants} className="inline-block">
+        <div className="inline-block">
           <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-cyan-50/90 dark:bg-[#131620]/90 border border-cyan-200/90 dark:border-cyan-500/30 text-cyan-800 dark:text-cyan-300 text-xs font-semibold mb-6 shadow-[0_1px_3px_rgba(15,23,42,0.04)] dark:shadow-none backdrop-blur-md select-none transition-transform hover:scale-[1.02] duration-200">
             <span className="flex items-center justify-center w-5 h-5 rounded-full bg-cyan-500/20 text-cyan-600 dark:text-cyan-400">
               <Sparkles className="w-3 h-3" />
@@ -89,10 +89,10 @@ export function Hero3DTypography({
               v2.4
             </span>
           </div>
-        </motion.div>
+        </div>
 
-        {/* Primary Animated Gradient Headline */}
-        <motion.div variants={itemVariants} className="relative max-w-4xl mx-auto">
+        {/* Primary Animated Gradient Headline (Immediate LCP paint) */}
+        <div className="relative max-w-4xl mx-auto">
           <h1
             id="hero-title"
             className="text-4xl sm:text-6xl lg:text-7xl font-black tracking-tight leading-[1.08] select-none"
@@ -102,19 +102,17 @@ export function Hero3DTypography({
               Fast, Private, Instant.
             </span>
           </h1>
-        </motion.div>
+        </div>
 
         {/* Subtitle Typography */}
-        <motion.p
-          variants={itemVariants}
+        <p
           className="mt-6 text-base sm:text-lg text-slate-600 dark:text-slate-300 max-w-2xl mx-auto leading-relaxed font-normal"
         >
           Over <span className="font-semibold text-slate-900 dark:text-white">{toolsCount}+ free online tools</span> for developers, SEO, images, AI, calculators, productivity, business and everyday tasks. Everything runs in-browser with zero data retention.
-        </motion.p>
+        </p>
 
         {/* Interactive Search Command Bar */}
-        <motion.div
-          variants={itemVariants}
+        <div
           className="mt-8 max-w-2xl mx-auto relative group"
         >
           {/* Glowing halo behind search input on hover/focus */}
@@ -182,11 +180,10 @@ export function Hero3DTypography({
               </button>
             ))}
           </div>
-        </motion.div>
+        </div>
 
         {/* Feature Trust Badges */}
-        <motion.div
-          variants={itemVariants}
+        <div
           className="mt-10 flex flex-wrap items-center justify-center gap-3 sm:gap-6 text-xs text-slate-600 dark:text-slate-400 select-none"
         >
           <div className="flex items-center gap-2.5 px-3.5 py-2 rounded-xl bg-white/90 dark:bg-[#11141D]/60 border border-slate-200/80 dark:border-slate-800/80 shadow-[0_1px_3px_rgba(15,23,42,0.04),0_1px_2px_rgba(15,23,42,0.02)] dark:shadow-none backdrop-blur-md transition-all hover:border-emerald-500/40 hover:scale-[1.02] duration-200">
@@ -205,7 +202,7 @@ export function Hero3DTypography({
             <Lock className="w-4 h-4 text-indigo-600 dark:text-indigo-400" />
             <span className="font-semibold text-slate-800 dark:text-slate-200">Zero Server Data Logging</span>
           </div>
-        </motion.div>
+        </div>
       </motion.div>
     </div>
   );
